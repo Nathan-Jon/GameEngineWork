@@ -11,11 +11,15 @@ namespace GameEngine
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        public static int ScreenHeight, ScreenWidth;
+        ////IEntity ient = new EntityManager();
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 900;
         }
 
         /// <summary>
@@ -27,6 +31,8 @@ namespace GameEngine
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            ScreenHeight = GraphicsDevice.Viewport.Height;
+            ScreenWidth = GraphicsDevice.Viewport.Width;
 
             base.Initialize();
         }
@@ -76,6 +82,12 @@ namespace GameEngine
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            spriteBatch.End();
+
+
+
 
             base.Draw(gameTime);
         }

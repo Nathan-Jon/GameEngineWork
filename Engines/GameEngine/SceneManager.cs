@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameEngine
 {
-    class SceneManager
+    class SceneManager : ISceneManager
     {
 
         public SceneManager()
@@ -16,18 +16,24 @@ namespace GameEngine
             
         }
 
-        public void Startup()
+        void ISceneManager.Startup()
         {
 
 
         }
-        public void ChangeScene()
+        void ISceneManager.ChangeScene()
         {
 
         }
-        public void Unload()
+        
+        void ISceneManager.UnloadScene()
         {
 
+        }
+        
+        void ISceneManager.AddEntity()
+        { 
+        
         }
 
     }

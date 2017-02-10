@@ -37,7 +37,8 @@ namespace GameEngine
         }
         void IEntity.move()
         {
-            Locn.X += 1;
+            Locn.X += 4;
+            
         }
 
         void IEntity.Draw(SpriteBatch spriteBatch)
@@ -50,14 +51,23 @@ namespace GameEngine
         {
                         //Side Of Screen//
 
-            if (getPos.X >= 1550)
+            if (getPos.X >= 850)
             {
-                Locn.X = 1550;
+                Locn.X = 850;
             }
             if (getPos.X <= 0)
             {
                 Locn.X = 0;
             }
+            if (getPos.Y >= 550)
+            {
+                Locn.Y = 550;
+            }
+            if (getPos.Y <= 0)
+            {
+                Locn.Y = 0;
+            }
+
                 
         }
 
