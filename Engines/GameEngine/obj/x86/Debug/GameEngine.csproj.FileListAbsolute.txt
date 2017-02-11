@@ -19,3 +19,6 @@ C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\D
 C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\MonoGame.Framework.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\obj\x86\Debug\GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\Content\Wall.jpg
+C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\Content\square.png
+C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\Content\Brick.jpg

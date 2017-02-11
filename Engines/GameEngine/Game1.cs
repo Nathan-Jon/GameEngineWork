@@ -12,7 +12,9 @@ namespace GameEngine
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static int ScreenHeight, ScreenWidth;
-        // IEntity ient = new EntityManager();
+        
+        IEntity ball1 = new Ball();
+        ISceneManager iscn = new SceneManager();
 
         public Game1()
         {
@@ -36,6 +38,7 @@ namespace GameEngine
             ScreenWidth = GraphicsDevice.Viewport.Width;
 
             base.Initialize();
+
         }
 
         /// <summary>
@@ -47,6 +50,11 @@ namespace GameEngine
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            iscn.Startup(Content.Load<Texture2D>("Wall"), 900, 600);
+                    //send texture to changescene method//
+            iscn.ChangeScene(Content.Load<Texture2D>("Brick"));
+            ball1.setPos(450,300);
+            ball1.setTex(Content.Load<Texture2D>("square"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -70,8 +78,9 @@ namespace GameEngine
                 Exit();
 
             // TODO: Add your update logic here
-
             base.Update(gameTime);
+            ball1.move();
+            ball1.CollisionDetection();
         }
 
         /// <summary>
@@ -80,15 +89,24 @@ namespace GameEngine
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Red);
+            //GraphicsDevice.Clear(Color.Red);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            iscn.Drawstartscn(spriteBatch);
+            
+            if(ball1 == ScreenWidth)
+            {
+               iscn.Drawnextscn(spriteBatch);
+            }
+            
+            if(ball1 == 0)
+            {
+                iscn.Drawstartscn(spriteBatch);
+            }
 
+            ball1.DrawEnt(spriteBatch);
             spriteBatch.End();
-
-
-
 
             base.Draw(gameTime);
         }

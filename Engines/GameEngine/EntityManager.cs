@@ -41,7 +41,7 @@ namespace GameEngine
             
         }
 
-        void IEntity.Draw(SpriteBatch spriteBatch)
+        void IEntity.DrawEnt(SpriteBatch spriteBatch)
         {
             //Draws the object on screen
             spriteBatch.Draw(getTex, getPos, Color.AntiqueWhite);
