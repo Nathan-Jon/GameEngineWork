@@ -65,6 +65,7 @@ namespace GameEngine
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            
         }
 
         /// <summary>
@@ -93,17 +94,9 @@ namespace GameEngine
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            iscn.Drawstartscn(spriteBatch);
+            iscn.Drawscn(spriteBatch);
             
-            if(ball1 == ScreenWidth)
-            {
-               iscn.Drawnextscn(spriteBatch);
-            }
-            
-            if(ball1 == 0)
-            {
-                iscn.Drawstartscn(spriteBatch);
-            }
+
 
             ball1.DrawEnt(spriteBatch);
             spriteBatch.End();

@@ -10,7 +10,7 @@ namespace GameEngine
 {
     class SceneManager : ISceneManager
     {
-        public Texture2D startscene;
+        public Texture2D scene;
         public Texture2D nextscene;
         int width, height;
 
@@ -21,14 +21,16 @@ namespace GameEngine
          
         void ISceneManager.Startup(Texture2D scn, int wid, int hei)
         {
-            startscene = scn;
+            scene = scn;
             width = wid;
             height = hei;
             
         }
         void ISceneManager.ChangeScene(Texture2D change)
         {
+
             nextscene = change;
+
         }
         
         void ISceneManager.UnloadScene()
@@ -37,28 +39,25 @@ namespace GameEngine
         }
         
         void ISceneManager.AddEntity()
-        { 
+        {
         
         }
 
-        void ISceneManager.Drawstartscn(SpriteBatch spriteBatch)
+        void ISceneManager.Drawscn(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(getstartScene, new Rectangle(0, 0, width, height), Color.AntiqueWhite);
+            spriteBatch.Draw(scene, new Rectangle(0, 0, width, height), Color.AntiqueWhite);
         }
         void ISceneManager.Drawnextscn(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(nextscene, new Rectangle(0, 0, width, height), Color.AntiqueWhite);
         }
 
+
         void ISceneManager.GameOver()
         {
 
         }
 
-        public Texture2D getstartScene
-        {
-            get { return startscene; }
-        }
 
     }
 }

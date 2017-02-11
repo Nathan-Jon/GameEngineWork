@@ -14,7 +14,7 @@ namespace GameEngine
         void ChangeScene(Texture2D change);
         void UnloadScene();
         void AddEntity();
-        void Drawstartscn(SpriteBatch spriteBatch);
+        void Drawscn(SpriteBatch spriteBatch);
         void Drawnextscn(SpriteBatch spriteBatch);
         void GameOver();
     }

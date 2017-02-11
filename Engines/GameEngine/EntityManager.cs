@@ -12,11 +12,12 @@ namespace GameEngine
     {
         public Texture2D Object;
         public Vector2 Locn;
+        
 
 
         public EntityManager()
         {
-            
+
         }
         void IEntity.setPos(float Xpos, float Ypos)
         {
@@ -54,6 +55,7 @@ namespace GameEngine
             if (getPos.X >= 850)
             {
                 Locn.X = 850;
+                
             }
             if (getPos.X <= 0)
             {

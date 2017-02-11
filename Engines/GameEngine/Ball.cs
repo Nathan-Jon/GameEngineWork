@@ -10,13 +10,8 @@ namespace GameEngine
 {
     class Ball : EntityManager
     {
-     public Texture2D Object;
-     public Vector2 Locn;
-
-
         public Ball()
         {
-            
         }
        
     }
