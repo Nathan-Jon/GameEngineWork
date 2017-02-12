@@ -55,6 +55,7 @@ namespace GameEngine
             if (getPos.X >= 850)
             {
                 Locn.X = 850;
+                Game1.GameOver = true;
                 
             }
             if (getPos.X <= 0)
@@ -70,6 +71,7 @@ namespace GameEngine
                 Locn.Y = 0;
             }
 
+            
                 
         }
 

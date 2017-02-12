@@ -6,58 +6,49 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace GameEngine
 {
-    class SceneManager : ISceneManager
-    {
-        public Texture2D scene;
-        public Texture2D nextscene;
-        int width, height;
+    public class SceneManager : ISceneManager
 
-        public SceneManager()
+    {
+        List<Texture2D> screens;
+        bool isinitialized = false;
+        int height;
+        int width;
+
+        void ISceneManager.Initialize(Texture2D tex, int wid, int hei)
         {
+            screens = new List<Texture2D>();
             
-        }
-         
-        void ISceneManager.Startup(Texture2D scn, int wid, int hei)
-        {
-            scene = scn;
             width = wid;
             height = hei;
+            screens.Add(tex);
+            isinitialized = true;
+        }
+
+
+        void ISceneManager.ChangeScene(Texture2D nextscn)
+        {
+            screens.Add(nextscn);
+        }
+
+        void ISceneManager.RemoveScene(int scnnum)
+        {
+            screens.Remove(screens[scnnum]);
+        }
+
+        void ISceneManager.Draw(SpriteBatch spriteBatch, int scnnum)
+        {
+            if (isinitialized)
+            {
+             //spriteBatch.Draw(screens[i], new Rectangle(0, 0, width, height), Color.AntiqueWhite);
+                spriteBatch.Draw(screens[0], new Rectangle(0, 0, width, height), Color.AntiqueWhite);
+
+            }
             
-        }
-        void ISceneManager.ChangeScene(Texture2D change)
-        {
-
-            nextscene = change;
 
         }
-        
-        void ISceneManager.UnloadScene()
-        {
-            
-        }
-        
-        void ISceneManager.AddEntity()
-        {
-        
-        }
-
-        void ISceneManager.Drawscn(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(scene, new Rectangle(0, 0, width, height), Color.AntiqueWhite);
-        }
-        void ISceneManager.Drawnextscn(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(nextscene, new Rectangle(0, 0, width, height), Color.AntiqueWhite);
-        }
-
-
-        void ISceneManager.GameOver()
-        {
-
-        }
-
 
     }
 }

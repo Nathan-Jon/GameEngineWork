@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace GameEngine
 {
     /// <summary>
@@ -12,9 +13,12 @@ namespace GameEngine
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static int ScreenHeight, ScreenWidth;
-        
+        public static bool GameOver;
+        bool remove = false;
+
         IEntity ball1 = new Ball();
         ISceneManager iscn = new SceneManager();
+        
 
         public Game1()
         {
@@ -36,6 +40,7 @@ namespace GameEngine
             // TODO: Add your initialization logic here
             ScreenHeight = GraphicsDevice.Viewport.Height;
             ScreenWidth = GraphicsDevice.Viewport.Width;
+            GameOver = false;
 
             base.Initialize();
 
@@ -49,9 +54,7 @@ namespace GameEngine
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            iscn.Startup(Content.Load<Texture2D>("Wall"), 900, 600);
-                    //send texture to changescene method//
+            iscn.Initialize(Content.Load<Texture2D>("Wall"),ScreenWidth, ScreenHeight);
             iscn.ChangeScene(Content.Load<Texture2D>("Brick"));
             ball1.setPos(450,300);
             ball1.setTex(Content.Load<Texture2D>("square"));
@@ -65,7 +68,7 @@ namespace GameEngine
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
-            
+            Content.Unload();
         }
 
         /// <summary>
@@ -90,14 +93,23 @@ namespace GameEngine
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            //GraphicsDevice.Clear(Color.Red);
+            GraphicsDevice.Clear(Color.Red);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            iscn.Drawscn(spriteBatch);
-            
-
-
+            if (GameOver == false)
+            {
+                iscn.Draw(spriteBatch, 0);
+            }
+            if(GameOver == true)
+            {
+                if (remove == false)
+                {
+                    iscn.RemoveScene(0);
+                    remove = true;
+                }
+                iscn.Draw(spriteBatch, 1);
+            } 
             ball1.DrawEnt(spriteBatch);
             spriteBatch.End();
 

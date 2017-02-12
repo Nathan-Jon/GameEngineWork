@@ -10,12 +10,9 @@ namespace GameEngine
 {
     interface ISceneManager
     {
-        void Startup(Texture2D scn, int wid, int hei);
-        void ChangeScene(Texture2D change);
-        void UnloadScene();
-        void AddEntity();
-        void Drawscn(SpriteBatch spriteBatch);
-        void Drawnextscn(SpriteBatch spriteBatch);
-        void GameOver();
+        void Initialize(Texture2D tex, int wid, int hei);
+        void ChangeScene(Texture2D nextscn);
+        void RemoveScene(int scnnum);
+        void Draw(SpriteBatch spritebatch, int scnnum);
     }
 }
