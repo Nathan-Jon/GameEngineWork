@@ -22,3 +22,4 @@ C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\obj\x86\Debug\G
 C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\Content\square.png
 C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\Content\Brick.jpg
 C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\Content\Wall.jpg
+C:\Users\User\Documents\GitHub\GameEngineWork\Engines\GameEngine\bin\WindowsGL\Debug\Content\paddle.png

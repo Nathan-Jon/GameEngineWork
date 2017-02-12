@@ -13,7 +13,8 @@ namespace GameEngine
         void setPos(float Xpos, float Ypos);
         void setTex(Texture2D tex);
         void move();
-        void DrawEnt(SpriteBatch spriteBatch);
+        void Input();
+        void Draw(SpriteBatch spriteBatch);
         void CollisionDetection();
         void Hitbox();
         

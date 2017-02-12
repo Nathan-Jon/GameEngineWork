@@ -16,6 +16,7 @@ namespace GameEngine
         public static bool GameOver;
         bool remove = false;
 
+        IEntity paddle = new Paddle();
         IEntity ball1 = new Ball();
         ISceneManager iscn = new SceneManager();
         
@@ -57,7 +58,9 @@ namespace GameEngine
             iscn.Initialize(Content.Load<Texture2D>("Wall"),ScreenWidth, ScreenHeight);
             iscn.ChangeScene(Content.Load<Texture2D>("Brick"));
             ball1.setPos(450,300);
+            paddle.setPos(0, 300);
             ball1.setTex(Content.Load<Texture2D>("square"));
+            paddle.setTex(Content.Load<Texture2D>("paddle"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -85,6 +88,8 @@ namespace GameEngine
             base.Update(gameTime);
             ball1.move();
             ball1.CollisionDetection();
+            paddle.Input();
+            paddle.CollisionDetection();
         }
 
         /// <summary>
@@ -109,8 +114,10 @@ namespace GameEngine
                     remove = true;
                 }
                 iscn.Draw(spriteBatch, 1);
-            } 
-            ball1.DrawEnt(spriteBatch);
+            }
+            
+            ball1.Draw(spriteBatch);
+            paddle.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

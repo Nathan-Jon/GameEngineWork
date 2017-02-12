@@ -12,7 +12,8 @@ namespace GameEngine
     {
         public Texture2D Object;
         public Vector2 Locn;
-        
+        public static Vector2 Locn2;
+        float facing = 1;
 
 
         public EntityManager()
@@ -23,6 +24,8 @@ namespace GameEngine
         {
             Locn.X = Xpos;
             Locn.Y = Ypos;
+            Locn2.X = Locn.X;
+            Locn2.Y = Locn.Y;
         }
         void IEntity.setTex(Texture2D tex)
         {
@@ -38,11 +41,22 @@ namespace GameEngine
         }
         void IEntity.move()
         {
-            Locn.X += 4;
-            
+            Locn.X += 4*facing;
         }
-
-        void IEntity.DrawEnt(SpriteBatch spriteBatch)
+        void IEntity.Input()
+        {
+            
+            KeyboardState state = Keyboard.GetState();
+            if (state.IsKeyDown(Keys.W))
+            {
+                Locn.Y += -1;
+            }
+            if (state.IsKeyDown(Keys.S))
+            {
+                Locn.Y += 1;
+            }
+        }
+        void IEntity.Draw(SpriteBatch spriteBatch)
         {
             //Draws the object on screen
             spriteBatch.Draw(getTex, getPos, Color.AntiqueWhite);
@@ -50,17 +64,17 @@ namespace GameEngine
 
         void IEntity.CollisionDetection()
         {
-                        //Side Of Screen//
+            //Side Of Screen//
 
             if (getPos.X >= 850)
             {
-                Locn.X = 850;
-                Game1.GameOver = true;
-                
+                //Locn.X = 850;
+                facing = facing * -1;
             }
             if (getPos.X <= 0)
             {
-                Locn.X = 0;
+                //Locn.X = 0;
+                facing = facing * -1;
             }
             if (getPos.Y >= 550)
             {
@@ -71,8 +85,6 @@ namespace GameEngine
                 Locn.Y = 0;
             }
 
-            
-                
         }
 
         void IEntity.Hitbox()
@@ -80,7 +92,7 @@ namespace GameEngine
 
 
         }
-        
+
 
     }
 }
