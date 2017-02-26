@@ -70,6 +70,7 @@ namespace GameEngine
             {
                 //Locn.X = 850;
                 facing = facing * -1;
+                Game1.GameOver = true;
             }
             if (getPos.X <= 0)
             {

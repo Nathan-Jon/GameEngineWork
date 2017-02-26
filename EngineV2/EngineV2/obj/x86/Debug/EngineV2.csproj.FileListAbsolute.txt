@@ -1,0 +1,10 @@
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\square.png
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
+G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
+E:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
+E:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
