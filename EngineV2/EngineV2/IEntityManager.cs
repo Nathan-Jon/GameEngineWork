@@ -10,7 +10,7 @@ namespace EngineV2
 {
     interface IEntityManager
     {
-        void CreateEnt<T>(ref T rqdclass);
+        T CreateEnt<T>() where T : IEntity, new();  
         void AddEnt(IEntity Ent);
         void RemoveEnt(IEntity Ent);
 

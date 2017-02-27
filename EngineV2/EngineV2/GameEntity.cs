@@ -17,20 +17,18 @@ namespace EngineV2
         {
             Position.X = Xpos;
             Position.Y = Ypos;
-
         }
+
         public override void setTex(Texture2D Tex)
         {
             Texture = Tex;
         }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
-        public override void Move()
-        {
-            Position.Y += 1;
-        }
+
 
 
 

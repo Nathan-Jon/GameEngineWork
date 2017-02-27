@@ -15,6 +15,7 @@ namespace EngineV2
         IEntity ball1;
         IEntityManager ent;
 
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -30,8 +31,9 @@ namespace EngineV2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            ball1 = new Ball();
             ent = new EntityManager();
+            ball1 = ent.CreateEnt<Ball>();
+
             base.Initialize();
         }
 
@@ -46,8 +48,8 @@ namespace EngineV2
 
             ball1.setPos(200, 400);
             ball1.setTex(Content.Load<Texture2D>("square"));
-            ent.CreateEnt<IEntity>(ref ball1);
             
+
 
 
             // TODO: use this.Content to load your game content here
@@ -71,6 +73,8 @@ namespace EngineV2
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            
+            
 
             // TODO: Add your update logic here
 

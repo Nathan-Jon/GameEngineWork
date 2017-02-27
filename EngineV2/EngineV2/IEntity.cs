@@ -12,7 +12,6 @@ namespace EngineV2
     {
         void setPos(float Xpos, float Ypos);
         void setTex(Texture2D Tex);
-        void Move();
         void Draw(SpriteBatch spriteBatch);
 
     }

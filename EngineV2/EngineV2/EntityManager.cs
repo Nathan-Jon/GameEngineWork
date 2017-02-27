@@ -10,16 +10,18 @@ namespace EngineV2
 {
     class EntityManager : IEntityManager
     {
-        List<IEntity> Entities;
+        List<IEntity> Entities = new List<IEntity>();
         
         
         //Create Entities.. ADhoc aprroach/Generics
         
-        public void CreateEnt<T>(ref T rqdclass)
+        public T CreateEnt<T>() where T : IEntity, new()
         {
-            T temp;
-            temp = rqdclass;
-
+            T Ent = new T();
+            AddEnt(Ent);
+            return Ent;
+           
+            
         }
 
         public void AddEnt(IEntity Ent)
