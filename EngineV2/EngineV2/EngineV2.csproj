@@ -38,11 +38,15 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AIManager.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="CollisionManager.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityManager.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameEntity.cs" />
+    <Compile Include="IAIManager.cs" />
+    <Compile Include="ICollisionManager.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityManager.cs" />
     <Compile Include="ISceneManager.cs" />
