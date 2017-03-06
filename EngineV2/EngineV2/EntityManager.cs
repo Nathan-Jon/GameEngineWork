@@ -10,7 +10,7 @@ namespace EngineV2
 {
     class EntityManager : IEntityManager
     {
-        List<IEntity> Entities = new List<IEntity>();
+        private List<IEntity> Entities = new List<IEntity>();
         
         
         //Create Entities.. ADhoc aprroach/Generics
@@ -21,7 +21,6 @@ namespace EngineV2
             AddEnt(Ent);
             return Ent;
            
-            
         }
 
         public void AddEnt(IEntity Ent)
@@ -33,6 +32,7 @@ namespace EngineV2
         {
             Entities.Remove(Ent);
         }
+
 
     }
 }

@@ -11,16 +11,29 @@ namespace EngineV2
     class SceneManager : ISceneManager
 
     {
-        List<IEntity> onScnEnts;
+        List<IEntity> onScnEnts = new List<IEntity>();
 
-        public void Update()
+        public void Update() 
         {
 
         }
 
-        public void Draw()
+        public void Draw(IEntity Entity, Vector2 Posn)
         {
 
+
+            spriteBatch.Draw(, Posn, Color.AntiqueWhite);
+            AddEnt(Ent);
+        }
+
+        public void AddEnt(IEntity Ent)
+        {
+            onScnEnts.Add(Ent);
+        }
+
+        public void RemoveEnt(IEntity Ent)
+        {
+            onScnEnts.Remove(Ent);
         }
 
     }

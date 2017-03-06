@@ -14,6 +14,7 @@ namespace EngineV2
 
         IEntity ball1;
         IEntityManager ent;
+        ISceneManager scn;
 
 
         public Game1()
@@ -32,7 +33,9 @@ namespace EngineV2
         {
             // TODO: Add your initialization logic here
             ent = new EntityManager();
+            scn = new SceneManager();
             ball1 = ent.CreateEnt<Ball>();
+            
 
             base.Initialize();
         }
@@ -46,7 +49,7 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ball1.setPos(200, 400);
+            //ball1.setPos(200, 400);
             ball1.setTex(Content.Load<Texture2D>("square"));
             
 
@@ -73,10 +76,11 @@ namespace EngineV2
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
-            
+
 
             // TODO: Add your update logic here
+           
+            //scn.Update<Ball>(200, 400);
 
             base.Update(gameTime);
         }
@@ -90,11 +94,12 @@ namespace EngineV2
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            ball1.Draw(spriteBatch);
+            //ball1.Draw(spriteBatch);
             spriteBatch.End();
 
 
             // TODO: Add your drawing code here
+            
 
             base.Draw(gameTime);
         }

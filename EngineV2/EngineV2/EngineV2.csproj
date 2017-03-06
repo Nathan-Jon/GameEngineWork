@@ -49,6 +49,8 @@
     <Compile Include="ICollisionManager.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityManager.cs" />
+    <Compile Include="IInputManager.cs" />
+    <Compile Include="InputManager.cs" />
     <Compile Include="ISceneManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

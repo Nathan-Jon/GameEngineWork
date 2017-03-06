@@ -11,6 +11,6 @@ namespace EngineV2
     interface ISceneManager
     {
         void Update();
-        void Draw();
+        void Draw(IEntity Entity, Vector2 Posn);
     }
 }
