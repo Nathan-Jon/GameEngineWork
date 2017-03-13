@@ -9,21 +9,27 @@ using Microsoft.Xna.Framework.Input;
 namespace EngineV2
 {
     class SceneManager : ISceneManager
-
+        
     {
+        
         List<IEntity> onScnEnts = new List<IEntity>();
+        IEntity Entities;
+        SpriteBatch sprt;
+        public void Initalize(IEntity ent, SpriteBatch spriteBatch)
+        {
+            Entities = ent;
+            sprt = spriteBatch;
+        }
 
         public void Update() 
         {
-
+            onScnEnts.Add(Entities);
+            Entities.update();
         }
 
-        public void Draw(IEntity Entity, Vector2 Posn)
+        public void Draw()
         {
-
-
-            spriteBatch.Draw(, Posn, Color.AntiqueWhite);
-            AddEnt(Ent);
+            Entities.Draw(sprt);
         }
 
         public void AddEnt(IEntity Ent)

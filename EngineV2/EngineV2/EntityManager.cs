@@ -10,7 +10,7 @@ namespace EngineV2
 {
     class EntityManager : IEntityManager
     {
-        private List<IEntity> Entities = new List<IEntity>();
+        public List<IEntity> Entities = new List<IEntity>();
         
         
         //Create Entities.. ADhoc aprroach/Generics

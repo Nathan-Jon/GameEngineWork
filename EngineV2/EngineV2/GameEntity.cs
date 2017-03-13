@@ -10,27 +10,26 @@ namespace EngineV2
 {
     class GameEntity : Entity
     {
-        Texture2D Texture;
+        public Texture2D Texture;
         Vector2 Position;
 
-        public override void setPos(float Xpos, float Ypos)
+        public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {
             Position.X = Xpos;
             Position.Y = Ypos;
-        }
-
-        public override void setTex(Texture2D Tex)
-        {
             Texture = Tex;
         }
+
+
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
 
-
-        
+        public override void update()
+        {
+        }
 
     }
 }

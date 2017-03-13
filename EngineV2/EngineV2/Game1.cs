@@ -15,6 +15,7 @@ namespace EngineV2
         IEntity ball1;
         IEntityManager ent;
         ISceneManager scn;
+        Vector2 posn;
 
 
         public Game1()
@@ -49,9 +50,8 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //ball1.setPos(200, 400);
-            ball1.setTex(Content.Load<Texture2D>("square"));
-            
+            ball1.setTexPos(Content.Load<Texture2D>("square"), 200, 400);
+            scn.Initalize(ball1, spriteBatch);
 
 
 
@@ -80,7 +80,7 @@ namespace EngineV2
 
             // TODO: Add your update logic here
            
-            //scn.Update<Ball>(200, 400);
+            
 
             base.Update(gameTime);
         }
@@ -92,12 +92,12 @@ namespace EngineV2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            
 
             spriteBatch.Begin();
-            //ball1.Draw(spriteBatch);
+            scn.Draw();
             spriteBatch.End();
-
-
+            
             // TODO: Add your drawing code here
             
 

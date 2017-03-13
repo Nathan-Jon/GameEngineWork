@@ -10,9 +10,10 @@ namespace EngineV2
 {
     interface IEntity
     {
-        void setPos(float Xpos, float Ypos);
-        void setTex(Texture2D Tex);
+        void setTexPos(Texture2D Tex, float Xpos, float Ypos);
         void Draw(SpriteBatch spriteBatch);
+        void update();
+        
 
     }
 }

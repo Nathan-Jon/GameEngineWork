@@ -14,16 +14,13 @@ namespace EngineV2
         Texture2D Texture;
         Vector2 Position;
 
-        public void setPos(float Xpos, float Ypos)
+        public void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {
             Position.X = Xpos;
             Position.Y = Ypos;
-
-        }
-        public void setTex(Texture2D Tex)
-        {
             Texture = Tex;
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
@@ -31,6 +28,10 @@ namespace EngineV2
         public void Move()
         {
             Position.X += 1;
+        }
+        public void update()
+        {
+            Move();
         }
 
     }
