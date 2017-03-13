@@ -26,9 +26,14 @@ namespace EngineV2
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
+        public virtual void Move()
+        {
+            Position.X += 4;
+        }
 
         public override void update()
         {
+            Move();
         }
 
     }

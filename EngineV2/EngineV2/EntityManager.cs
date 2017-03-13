@@ -13,8 +13,6 @@ namespace EngineV2
         public List<IEntity> Entities = new List<IEntity>();
         
         
-        //Create Entities.. ADhoc aprroach/Generics
-        
         public T CreateEnt<T>() where T : IEntity, new()
         {
             T Ent = new T();

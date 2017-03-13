@@ -14,22 +14,26 @@ namespace EngineV2
         Texture2D Texture;
         Vector2 Position;
 
-        public void setTexPos(Texture2D Tex, float Xpos, float Ypos)
+        public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {
             Position.X = Xpos;
             Position.Y = Ypos;
             Texture = Tex;
         }
-
-        public void Draw(SpriteBatch spriteBatch)
+        
+        public Vector2 getPos
+        {
+            get {return Position; }
+        }
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
-        public void Move()
+        public override void Move()
         {
-            Position.X += 1;
+           Position.X += 6;
         }
-        public void update()
+        public override void update()
         {
             Move();
         }

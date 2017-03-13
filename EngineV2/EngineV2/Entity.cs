@@ -13,5 +13,6 @@ namespace EngineV2
         public abstract void setTexPos(Texture2D Tex, float Xpos, float Ypos);        
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void update();
+        //public abstract void Move();
     }
 }
