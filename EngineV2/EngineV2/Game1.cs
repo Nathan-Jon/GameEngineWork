@@ -15,7 +15,7 @@ namespace EngineV2
         IEntity ball1;
         IEntityManager ent;
         ISceneManager scn;
-        Vector2 posn;
+        ICollisionManager col;
 
 
         public Game1()
@@ -35,6 +35,7 @@ namespace EngineV2
             // TODO: Add your initialization logic here
             ent = new EntityManager();
             scn = new SceneManager();
+            col = new CollisionManager();
             ball1 = ent.CreateEnt<Ball>();
             
 
@@ -51,7 +52,8 @@ namespace EngineV2
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             ball1.setTexPos(Content.Load<Texture2D>("square"), 200, 400);
-            scn.Initalize(ball1, spriteBatch);
+            scn.Initalize(ball1, spriteBatch, col);
+            col.Initalize(ball1);
 
 
 

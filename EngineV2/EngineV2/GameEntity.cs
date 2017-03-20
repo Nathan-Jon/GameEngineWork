@@ -36,5 +36,10 @@ namespace EngineV2
             Move();
         }
 
+        public override float getXPos()
+        {
+            return Position.X;
+        }
+
     }
 }

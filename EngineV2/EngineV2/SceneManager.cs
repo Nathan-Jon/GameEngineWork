@@ -15,21 +15,24 @@ namespace EngineV2
         List<IEntity> onScnEnts = new List<IEntity>();
         IEntity Entities;
         SpriteBatch sprt;
-        public void Initalize(IEntity ent, SpriteBatch spriteBatch)
+        ICollisionManager coli;
+        public void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col)
         {
             Entities = ent;
             sprt = spriteBatch;
+            coli = col;
         }
 
         public void Update() 
         {
-            onScnEnts.Add(Entities);
+            coli.Update();
             Entities.update();
         }
 
         public void Draw()
         {
             Entities.Draw(sprt);
+            onScnEnts.Add(Entities);
         }
 
         public void AddEnt(IEntity Ent)

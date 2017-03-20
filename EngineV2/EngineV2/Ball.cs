@@ -12,7 +12,8 @@ namespace EngineV2
     {
 
         Texture2D Texture;
-        Vector2 Position;
+        public static Vector2 Position;
+        float speed = 6;
 
         public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {
@@ -31,11 +32,16 @@ namespace EngineV2
         }
         public override void Move()
         {
-           Position.X += 6;
+           Position.X += speed* CollisionManager.mFacingdirection;
         }
         public override void update()
         {
             Move();
+        }
+
+        public override float getXPos()
+        {
+            return Position.X;
         }
 
     }

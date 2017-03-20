@@ -13,7 +13,7 @@ namespace EngineV2
         void setTexPos(Texture2D Tex, float Xpos, float Ypos);
         void Draw(SpriteBatch spriteBatch);
         void update();
-        //void Move();
+        float getXPos();
         
 
     }
