@@ -16,6 +16,7 @@ namespace EngineV2
         IEntityManager ent;
         ISceneManager scn;
         ICollisionManager col;
+        IInputManager imp;
 
 
         public Game1()
@@ -36,6 +37,7 @@ namespace EngineV2
             ent = new EntityManager();
             scn = new SceneManager();
             col = new CollisionManager();
+            imp = new InputManager();
             ball1 = ent.CreateEnt<Ball>();
             
 
@@ -54,6 +56,7 @@ namespace EngineV2
             ball1.setTexPos(Content.Load<Texture2D>("square"), 200, 400);
             scn.Initalize(ball1, spriteBatch, col);
             col.Initalize(ball1);
+            imp.Initialize(ball1);
 
 
 
@@ -80,6 +83,7 @@ namespace EngineV2
                 Exit();
 
             scn.Update();
+            
             // TODO: Add your update logic here
            
             

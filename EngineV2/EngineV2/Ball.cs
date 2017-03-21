@@ -44,5 +44,20 @@ namespace EngineV2
             return Position.X;
         }
 
+        public override float getYPos()
+        {
+            return Position.Y;
+        }
+
+        public override void setXPos(float Xpos)
+        {
+            Position.X = Xpos;
+
+        }
+        public override void setYPos(float Ypos)
+        {
+            Position.Y = Ypos;
+
+        }
     }
 }

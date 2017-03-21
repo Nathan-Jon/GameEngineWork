@@ -8,13 +8,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace EngineV2
 {
-    interface IEntity
+    public interface IEntity
     {
         void setTexPos(Texture2D Tex, float Xpos, float Ypos);
         void Draw(SpriteBatch spriteBatch);
         void update();
         float getXPos();
-        
+        float getYPos();
+        void setXPos(float Xpos);
+        void setYPos(float Ypos);
+
 
     }
 }

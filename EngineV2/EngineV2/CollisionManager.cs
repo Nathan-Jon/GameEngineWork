@@ -40,7 +40,7 @@ namespace EngineV2
 
         }
 
-        void hitobject()
+        public void hitobject()
         {
 
         }
