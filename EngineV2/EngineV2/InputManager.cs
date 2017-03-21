@@ -24,7 +24,7 @@ namespace EngineV2
         {
             entity = ent;
             oldState = Keyboard.GetState();
-            newState = Keyboard.GetState();
+            
         }
 
         public void Update()
@@ -38,12 +38,12 @@ namespace EngineV2
 
         public void upmovement()
         {
+            newState = Keyboard.GetState();
             if (newState.IsKeyDown(Keys.W))
             {
                 if (!oldState.IsKeyDown(Keys.W))
                 {
                     entity.setYPos(entity.getYPos() + -2);
-
                 }
             }
             else if (oldState.IsKeyDown(Keys.W))
@@ -56,13 +56,12 @@ namespace EngineV2
         }
         public void downmovement()
         {
-
+            newState = Keyboard.GetState();
             if (newState.IsKeyDown(Keys.S))
             {
                 if (!oldState.IsKeyDown(Keys.S))
                 {
                     entity.setYPos(entity.getYPos() + 2);
-
                 }
             }
             else if (oldState.IsKeyDown(Keys.S))
@@ -75,13 +74,12 @@ namespace EngineV2
         }
         public void leftmovement()
         {
-
+            newState = Keyboard.GetState();
             if (newState.IsKeyDown(Keys.A))
             {
                 if (!oldState.IsKeyDown(Keys.A))
                 {
                     entity.setXPos(entity.getXPos() + -2);
-
                 }
             }
             else if (oldState.IsKeyDown(Keys.A))
@@ -94,12 +92,12 @@ namespace EngineV2
         }
         public void rightmovement()
         {
+            newState = Keyboard.GetState();
             if (newState.IsKeyDown(Keys.D))
             {
                 if (!oldState.IsKeyDown(Keys.D))
                 {
                     entity.setXPos(entity.getXPos() + 2);
-
                 }
             }
             else if (oldState.IsKeyDown(Keys.D))

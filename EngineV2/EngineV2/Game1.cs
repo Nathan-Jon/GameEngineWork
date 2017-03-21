@@ -23,6 +23,9 @@ namespace EngineV2
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 900;
         }
 
         /// <summary>
@@ -83,6 +86,7 @@ namespace EngineV2
                 Exit();
 
             scn.Update();
+            imp.Update();
             
             // TODO: Add your update logic here
            

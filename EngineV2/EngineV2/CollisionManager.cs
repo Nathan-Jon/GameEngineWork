@@ -29,7 +29,12 @@ namespace EngineV2
         public void OutofBounds()
         {
 
-            if (entity.getXPos() >= 750 || entity.getXPos() <= 0)
+            if (entity.getXPos() >= 850 || entity.getXPos() <= 0)
+            {
+                mFacingdirection = mFacingdirection * -1;
+            }
+
+            if (entity.getYPos() >= 550 || entity.getYPos() <= 0)
             {
                 mFacingdirection = mFacingdirection * -1;
             }
