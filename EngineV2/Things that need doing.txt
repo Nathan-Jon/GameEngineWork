@@ -1,0 +1,7 @@
+InputManager: Need to create events that check what keys are being press and run the same code IE W and UPARROW do the same. Mouse Input.
+
+CollisonManager: Need to makes it so entitys colide with each other, and object are able to be picked up. 
+
+AIManager: Everything???
+
+BehaviourManager: Everything?????
