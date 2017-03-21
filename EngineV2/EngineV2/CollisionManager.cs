@@ -8,17 +8,19 @@ namespace EngineV2
     class CollisionManager : ICollisionManager
     {
 
-        public static float mFacingdirection = 1;
         IEntity entity;
+        int screenWidth, screenHeight;
 
         public CollisionManager()
         {
 
         }
 
-        public void Initalize(IEntity ent)
+        public void Initalize(IEntity ent, int scnWid,int scnHei)
         {
             entity = ent;
+            screenWidth = scnWid;
+            screenHeight = scnHei;
         }
 
         public void Update()
@@ -29,14 +31,22 @@ namespace EngineV2
         public void OutofBounds()
         {
 
-            if (entity.getXPos() >= 850 || entity.getXPos() <= 0)
+            if (entity.getXPos() >= screenWidth)
             {
-                mFacingdirection = mFacingdirection * -1;
+                entity.setXPos(screenWidth);
+            }
+            if (entity.getXPos() <= 0)
+            {
+                entity.setXPos(0);
             }
 
-            if (entity.getYPos() >= 550 || entity.getYPos() <= 0)
+            if (entity.getYPos() >= screenHeight)
             {
-                mFacingdirection = mFacingdirection * -1;
+                entity.setYPos(screenHeight);
+            }
+            if (entity.getYPos() <= 0)
+            {
+                entity.setYPos(0);
             }
         }
 

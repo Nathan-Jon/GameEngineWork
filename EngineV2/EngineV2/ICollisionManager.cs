@@ -7,7 +7,7 @@ namespace EngineV2
 {
     interface ICollisionManager
     {
-        void Initalize(IEntity ent);
+        void Initalize(IEntity ent, int scnWid,int scnHei);
         void Update();
         void OutofBounds();
         void hitEnt();

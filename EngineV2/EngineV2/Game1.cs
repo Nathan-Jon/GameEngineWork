@@ -17,15 +17,16 @@ namespace EngineV2
         ISceneManager scn;
         ICollisionManager col;
         IInputManager imp;
-
+        int screenWidth = 900;
+        int screenHeight = 600;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferHeight = 600;
-            graphics.PreferredBackBufferWidth = 900;
+            graphics.PreferredBackBufferHeight = screenHeight;
+            graphics.PreferredBackBufferWidth = screenWidth;
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace EngineV2
 
             ball1.setTexPos(Content.Load<Texture2D>("square"), 200, 400);
             scn.Initalize(ball1, spriteBatch, col);
-            col.Initalize(ball1);
+            col.Initalize(ball1, screenWidth, screenHeight);
             imp.Initialize(ball1);
 
 

@@ -32,11 +32,11 @@ namespace EngineV2
         }
         public override void Move()
         {
-           Position.X += speed* CollisionManager.mFacingdirection;
+           Position.X += speed;
         }
         public override void update()
         {
-            Move();
+            //Move();
         }
 
         public override float getXPos()
