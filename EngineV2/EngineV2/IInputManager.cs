@@ -13,6 +13,7 @@ namespace EngineV2
         void downmovement();
         void leftmovement();
         void rightmovement();
+        void OnMouse();
 
 
     }

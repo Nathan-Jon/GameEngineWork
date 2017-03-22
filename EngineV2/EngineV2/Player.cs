@@ -6,14 +6,16 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace EngineV2
 {
-    class Ball : GameEntity
+    class Player : GameEntity
     {
 
         Texture2D Texture;
         public static Vector2 Position;
         float speed = 6;
+        
 
         public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {

@@ -12,13 +12,15 @@ namespace EngineV2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        IEntity ball1;
+        IEntity player;
         IEntityManager ent;
         ISceneManager scn;
         ICollisionManager col;
         IInputManager imp;
-        int screenWidth = 900;
-        int screenHeight = 600;
+        int screenWidth = 850;
+        int screenHeight = 550;
+        
+
 
         public Game1()
         {
@@ -27,6 +29,7 @@ namespace EngineV2
 
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.PreferredBackBufferWidth = screenWidth;
+            this.IsMouseVisible = true;
         }
 
         /// <summary>
@@ -42,7 +45,7 @@ namespace EngineV2
             scn = new SceneManager();
             col = new CollisionManager();
             imp = new InputManager();
-            ball1 = ent.CreateEnt<Ball>();
+            player = ent.CreateEnt<Player>();
             
 
             base.Initialize();
@@ -57,10 +60,10 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ball1.setTexPos(Content.Load<Texture2D>("square"), 200, 400);
-            scn.Initalize(ball1, spriteBatch, col);
-            col.Initalize(ball1, screenWidth, screenHeight);
-            imp.Initialize(ball1);
+            player.setTexPos(Content.Load<Texture2D>("Chastings"), 200, 400);
+            scn.Initalize(player, spriteBatch, col);
+            col.Initalize(player, screenWidth, screenHeight);
+            imp.Initialize(player);
 
 
 
@@ -102,7 +105,7 @@ namespace EngineV2
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.AntiqueWhite);
             
 
             spriteBatch.Begin();
