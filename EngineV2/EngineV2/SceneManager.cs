@@ -13,6 +13,7 @@ namespace EngineV2
     {
         
         List<IEntity> onScnEnts = new List<IEntity>();
+        List<IEntity> SceneGraph = new List<IEntity>();
         IEntity Entities;
         SpriteBatch sprt;
         ICollisionManager coli;
@@ -21,6 +22,8 @@ namespace EngineV2
             Entities = ent;
             sprt = spriteBatch;
             coli = col;
+            SceneGraph.Add(Entities);
+            
         }
 
         public void Update() 
@@ -31,13 +34,14 @@ namespace EngineV2
 
         public void Draw()
         {
-            Entities.Draw(sprt);
-            onScnEnts.Add(Entities);
-        }
+            for (int i = 0;  i < SceneGraph.Count ; i++)
+            {
+                SceneGraph[i].Draw(sprt);
+                onScnEnts.Add(Entities);
 
-        public void AddEnt(IEntity Ent)
-        {
-            onScnEnts.Add(Ent);
+                
+            }      
+            
         }
 
         public void RemoveEnt(IEntity Ent)

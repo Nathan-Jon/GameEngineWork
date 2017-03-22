@@ -31,18 +31,18 @@ namespace EngineV2
         public void OutofBounds()
         {
 
-            if (entity.getXPos() >= screenWidth)
+            if (entity.getXPos() >= 750)
             {
-                entity.setXPos(screenWidth);
+                entity.setXPos(750);
             }
             if (entity.getXPos() <= 0)
             {
                 entity.setXPos(0);
             }
 
-            if (entity.getYPos() >= screenHeight)
+            if (entity.getYPos() >= 450)
             {
-                entity.setYPos(screenHeight);
+                entity.setYPos(450);
             }
             if (entity.getYPos() <= 0)
             {

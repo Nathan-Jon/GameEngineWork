@@ -13,6 +13,7 @@ namespace EngineV2
         SpriteBatch spriteBatch;
 
         IEntity player;
+        IEntity Pug;
         IEntityManager ent;
         ISceneManager scn;
         ICollisionManager col;
@@ -46,6 +47,7 @@ namespace EngineV2
             col = new CollisionManager();
             imp = new InputManager();
             player = ent.CreateEnt<Player>();
+            Pug = ent.CreateEnt<Enemy>();
             
 
             base.Initialize();
@@ -65,7 +67,9 @@ namespace EngineV2
             col.Initalize(player, screenWidth, screenHeight);
             imp.Initialize(player);
 
-
+            Pug.setTexPos(Content.Load<Texture2D>("Pug"), 100, 200);
+            scn.Initalize(Pug, spriteBatch, col);
+            col.Initalize(Pug, screenWidth, screenHeight);
 
             // TODO: use this.Content to load your game content here
         }
