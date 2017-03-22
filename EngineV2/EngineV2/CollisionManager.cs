@@ -10,6 +10,7 @@ namespace EngineV2
 
         IEntity entity;
         int screenWidth, screenHeight;
+        public List<IEntity> EntitiesCols = new List<IEntity>();
 
         public CollisionManager()
         {
@@ -19,6 +20,7 @@ namespace EngineV2
         public void Initalize(IEntity ent, int scnWid,int scnHei)
         {
             entity = ent;
+            EntitiesCols.Add(entity);
             screenWidth = scnWid;
             screenHeight = scnHei;
         }
@@ -30,23 +32,26 @@ namespace EngineV2
 
         public void OutofBounds()
         {
+            for (int i = 0; i < EntitiesCols.Count; i++)
+            {
 
-            if (entity.getXPos() >= 750)
-            {
-                entity.setXPos(750);
-            }
-            if (entity.getXPos() <= 0)
-            {
-                entity.setXPos(0);
-            }
+                if (EntitiesCols[i].getXPos() >= 750)
+                {
+                    EntitiesCols[i].setXPos(750);
+                }
+                if (EntitiesCols[i].getXPos() <= 0)
+                {
+                    EntitiesCols[i].setXPos(0);
+                }
 
-            if (entity.getYPos() >= 450)
-            {
-                entity.setYPos(450);
-            }
-            if (entity.getYPos() <= 0)
-            {
-                entity.setYPos(0);
+                if (EntitiesCols[i].getYPos() >= 450)
+                {
+                    EntitiesCols[i].setYPos(450);
+                }
+                if (EntitiesCols[i].getYPos() <= 0)
+                {
+                    EntitiesCols[i].setYPos(0);
+                }
             }
         }
 
