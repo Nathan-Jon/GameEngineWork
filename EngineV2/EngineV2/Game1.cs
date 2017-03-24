@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using EngineV2.Minds;
+//using EngineV2.Managers;
 
 namespace EngineV2
 {
@@ -9,8 +11,12 @@ namespace EngineV2
     /// </summary>
     public class Game1 : Game
     {
+        #region Instance Variables
+        //Constants
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        //Interfaces
 
         IEntity player;
         IEntity Pug;
@@ -18,9 +24,13 @@ namespace EngineV2
         ISceneManager scn;
         ICollisionManager col;
         IInputManager imp;
+        IBehaviourManager behaviours;
+
+        //Screen Size
         int screenWidth = 850;
         int screenHeight = 550;
-        
+
+        #endregion
 
 
         public Game1()
@@ -48,6 +58,7 @@ namespace EngineV2
             imp = new InputManager();
             player = ent.CreateEnt<Player>();
             Pug = ent.CreateEnt<Enemy>();
+            behaviours = new BehaviourManager();
             
 
             base.Initialize();
@@ -70,6 +81,7 @@ namespace EngineV2
             Pug.setTexPos(Content.Load<Texture2D>("Pug"), 100, 200);
             scn.Initalize(Pug, spriteBatch, col);
             col.Initalize(Pug, screenWidth, screenHeight);
+            behaviours.createMind<EnemyMind>(Pug);
 
             // TODO: use this.Content to load your game content here
         }
@@ -95,6 +107,7 @@ namespace EngineV2
 
             scn.Update();
             imp.Update();
+            behaviours.update();
             
             // TODO: Add your update logic here
            

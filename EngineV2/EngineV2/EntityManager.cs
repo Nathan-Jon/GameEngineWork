@@ -17,8 +17,7 @@ namespace EngineV2
         {
             T Ent = new T();
             AddEnt(Ent);
-            return Ent;
-           
+            return Ent;      
         }
 
         public void AddEnt(IEntity Ent)

@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using EngineV2.Behaviours;
 
 
 namespace EngineV2
@@ -16,6 +17,8 @@ namespace EngineV2
         public static Vector2 Position;
         float speed = 6;
         public Rectangle HitBox;
+
+        private IMoveBehaviour Move;
 
 
         public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
@@ -30,15 +33,11 @@ namespace EngineV2
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
-        public override void Move()
-        {
-           Position.X += speed;
-        }
+
         
         public override void update()
         {
-            
-            //Move();
+
         }
 
         public override float getXPos()

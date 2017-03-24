@@ -39,7 +39,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AIManager.cs" />
+    <Compile Include="BehaviourManager.cs" />
+    <Compile Include="Behaviours\IMoveBehaviour.cs" />
+    <Compile Include="Behaviours\xMoveBehaviour.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="IBehaviour.cs" />
+    <Compile Include="IBehaviourManager.cs" />
+    <Compile Include="Minds\EnemyMind.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="CollisionManager.cs" />
     <Compile Include="Entity.cs" />
@@ -78,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Managers\" />
   </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">
