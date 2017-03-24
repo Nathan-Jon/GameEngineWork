@@ -74,12 +74,12 @@ namespace EngineV2
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player.setTexPos(Content.Load<Texture2D>("Chastings"), 200, 400);
-            scn.Initalize(player, spriteBatch, col);
+            scn.Initalize(player, spriteBatch, col, behaviours);
             col.Initalize(player, screenWidth, screenHeight);
             imp.Initialize(player);
 
             Pug.setTexPos(Content.Load<Texture2D>("Pug"), 100, 200);
-            scn.Initalize(Pug, spriteBatch, col);
+            scn.Initalize(Pug, spriteBatch, col, behaviours);
             col.Initalize(Pug, screenWidth, screenHeight);
             behaviours.createMind<EnemyMind>(Pug);
 
@@ -106,9 +106,7 @@ namespace EngineV2
                 Exit();
 
             scn.Update();
-            imp.Update();
-            behaviours.update();
-            
+            imp.Update();            
             // TODO: Add your update logic here
            
             
