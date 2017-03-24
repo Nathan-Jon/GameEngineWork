@@ -15,8 +15,10 @@ namespace EngineV2
         public abstract void update();
         public abstract float getXPos();
         public abstract float getYPos();
+        public abstract Rectangle getHitbox();
         public abstract void setXPos(float Xpos);
         public abstract void setYPos(float Ypos);
+        
 
     }
 }

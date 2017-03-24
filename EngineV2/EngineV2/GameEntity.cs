@@ -11,16 +11,16 @@ namespace EngineV2
     class GameEntity : Entity
     {
         public Texture2D Texture;
-        Vector2 Position;
+        public Vector2 Position;
+        public Rectangle HitBox;
 
         public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {
             Position.X = Xpos;
             Position.Y = Ypos;
             Texture = Tex;
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -45,6 +45,11 @@ namespace EngineV2
             return Position.Y;
         }
 
+        public override Rectangle getHitbox()
+        {
+            return HitBox;
+        }
+
         public override void setXPos(float Xpos)
         {
             Position.X = Xpos;
@@ -55,5 +60,6 @@ namespace EngineV2
             Position.Y = Ypos;
 
         }
+
     }
 }

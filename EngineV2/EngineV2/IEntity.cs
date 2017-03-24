@@ -15,8 +15,10 @@ namespace EngineV2
         void update();
         float getXPos();
         float getYPos();
+        Rectangle getHitbox();
         void setXPos(float Xpos);
         void setYPos(float Ypos);
+        
 
 
     }

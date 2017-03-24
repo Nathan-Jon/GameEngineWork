@@ -12,22 +12,20 @@ namespace EngineV2
     class Enemy : GameEntity
     {
 
-        Texture2D Texture;
+        public Texture2D Texture;
         public static Vector2 Position;
         float speed = 6;
-        
+        public Rectangle HitBox;
+
 
         public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {
             Position.X = Xpos;
             Position.Y = Ypos;
             Texture = Tex;
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-        
-        public Vector2 getPos
-        {
-            get {return Position; }
-        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
@@ -36,9 +34,11 @@ namespace EngineV2
         {
            Position.X += speed;
         }
+        
         public override void update()
         {
-            Move();
+            
+            //Move();
         }
 
         public override float getXPos()
@@ -51,6 +51,11 @@ namespace EngineV2
             return Position.Y;
         }
 
+        public override Rectangle getHitbox()
+        {
+            return HitBox;
+        }
+
         public override void setXPos(float Xpos)
         {
             Position.X = Xpos;
@@ -61,5 +66,7 @@ namespace EngineV2
             Position.Y = Ypos;
 
         }
+
+
     }
 }
