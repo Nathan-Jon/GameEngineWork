@@ -36,18 +36,18 @@ namespace EngineV2
             for (int i = 0; i < EntitiesCols.Count; i++)
             {
 
-                if (EntitiesCols[1].getXPos() >= screenWidth)
+                if (EntitiesCols[i].getXPos() >= 875)
                 {
-                    EntitiesCols[1].setXPos(screenWidth);
+                    EntitiesCols[i].setXPos(875);
                 }
                 if (EntitiesCols[i].getXPos() <= 0)
                 {
                     EntitiesCols[i].setXPos(0);
                 }
 
-                if (EntitiesCols[i].getYPos() >= screenHeight)
+                if (EntitiesCols[i].getYPos() >= 565)
                 {
-                    EntitiesCols[i].setYPos(screenHeight);
+                    EntitiesCols[i].setYPos(565);
                 }
                 if (EntitiesCols[i].getYPos() <= 0)
                 {

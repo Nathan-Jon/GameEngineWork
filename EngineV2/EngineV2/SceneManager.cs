@@ -14,14 +14,18 @@ namespace EngineV2
         
         List<IEntity> onScnEnts = new List<IEntity>();
         List<IEntity> SceneGraph = new List<IEntity>();
+        
         IEntity Entities;
         SpriteBatch sprt;
         ICollisionManager coli;
-        public void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col)
+        IBehaviourManager behaviours;
+
+        public void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col, IBehaviourManager behav)
         {
             Entities = ent;
             sprt = spriteBatch;
             coli = col;
+            behaviours = behav;
             SceneGraph.Add(Entities);
             
         }
@@ -29,10 +33,12 @@ namespace EngineV2
         public void Update() 
         {
             coli.Update();
+
             for (int i = 0; i < SceneGraph.Count; i++)
             {
                 SceneGraph[i].update();
             }
+            behaviours.update();
         }
 
         public void Draw()

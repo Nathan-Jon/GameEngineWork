@@ -10,7 +10,7 @@ namespace EngineV2
 {
     interface ISceneManager
     {
-        void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col);
+        void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col, IBehaviourManager behav);
         void Update();
         void Draw();
     }
