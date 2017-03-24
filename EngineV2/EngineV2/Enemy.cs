@@ -14,7 +14,7 @@ namespace EngineV2
 
         public Texture2D Texture;
         public static Vector2 Position;
-        float speed = 6;
+        public static float speed = 6;
         public Rectangle HitBox;
 
 
@@ -23,7 +23,7 @@ namespace EngineV2
             Position.X = Xpos;
             Position.Y = Ypos;
             Texture = Tex;
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -39,6 +39,7 @@ namespace EngineV2
         {
             
             //Move();
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
         public override float getXPos()

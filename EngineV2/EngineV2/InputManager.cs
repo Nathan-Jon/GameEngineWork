@@ -112,7 +112,7 @@ namespace EngineV2
                 } 
             }
 
-            oldMouse = newMouse;
+            //oldMouse = newMouse;
         }
     }
     

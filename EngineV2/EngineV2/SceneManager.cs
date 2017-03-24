@@ -29,7 +29,10 @@ namespace EngineV2
         public void Update() 
         {
             coli.Update();
-            Entities.update();
+            for (int i = 0; i < SceneGraph.Count; i++)
+            {
+                SceneGraph[i].update();
+            }
         }
 
         public void Draw()

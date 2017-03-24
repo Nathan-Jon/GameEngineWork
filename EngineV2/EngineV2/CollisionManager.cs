@@ -36,9 +36,9 @@ namespace EngineV2
             for (int i = 0; i < EntitiesCols.Count; i++)
             {
 
-                if (EntitiesCols[i].getXPos() >= screenWidth)
+                if (EntitiesCols[1].getXPos() >= screenWidth)
                 {
-                    EntitiesCols[i].setXPos(screenWidth);
+                    EntitiesCols[1].setXPos(screenWidth);
                 }
                 if (EntitiesCols[i].getXPos() <= 0)
                 {
@@ -57,9 +57,8 @@ namespace EngineV2
         }
 
         public void hitEnt()
-        {
-            
-                if(EntitiesCols[1].getHitbox().Intersects(EntitiesCols[0].getHitbox()))
+        { 
+                if(EntitiesCols[0].getHitbox().Intersects(EntitiesCols[1].getHitbox()))
                 {
                     EntitiesCols[1].setXPos(400);
                 }

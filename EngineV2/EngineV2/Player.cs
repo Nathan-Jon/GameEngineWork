@@ -22,7 +22,6 @@ namespace EngineV2
             Position.X = Xpos;
             Position.Y = Ypos;
             Texture = Tex;
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
         
 
@@ -38,6 +37,7 @@ namespace EngineV2
         {
             
             //Move();
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
         public override float getXPos()
