@@ -8,17 +8,13 @@ namespace EngineV2.Behaviours
     class xMoveBehaviour : IMoveBehaviour
     {
         //Instance Variables
-        private float baseSpeed = 1;
+        private float speed = 1;
         private float facingDirection = -1;
 
         //Instance Constants
         private IEntity body;
 
-
-
         #region Constructor
-
-        // Initialise Class Variables
         public xMoveBehaviour(IEntity Ent)
         {
             body = Ent;
@@ -26,8 +22,6 @@ namespace EngineV2.Behaviours
         #endregion
 
         #region Behaviour
-
-        //move - change the entities xPos, adding the speed float to it
         public void move(IEntity body, float speed)
         {
             body.setXPos(body.getXPos() + speed);
