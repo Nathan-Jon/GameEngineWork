@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using EngineV2.Interfaces;
 
-namespace EngineV2
+namespace EngineV2.Managers
 {
-    interface IBehaviour
+    class AIManager : IAIManager
     {
-        void update();
-        void Initialise(IEntity ent);
     }
 }

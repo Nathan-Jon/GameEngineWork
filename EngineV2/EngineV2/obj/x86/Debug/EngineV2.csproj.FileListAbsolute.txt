@@ -14,7 +14,6 @@ C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\De
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
 C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
 C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
 C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\square.png
@@ -43,3 +42,5 @@ C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\User\Desktop\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Brick.jpg
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\DickButt.jpg

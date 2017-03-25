@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace EngineV2
+namespace EngineV2.Interfaces
 {
     interface IBehaviourManager
     {

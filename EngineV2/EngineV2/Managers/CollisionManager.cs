@@ -5,14 +5,17 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using EngineV2.Interfaces;
 
-namespace EngineV2
+namespace EngineV2.Managers
 {
     class CollisionManager : ICollisionManager
     {
 
         IEntity entity;
         int screenWidth, screenHeight;
+        float facing = -1;
+        public static Boolean Hit = false;
         public List<IEntity> EntitiesCols = new List<IEntity>();
 
 
@@ -36,16 +39,18 @@ namespace EngineV2
             for (int i = 0; i < EntitiesCols.Count; i++)
             {
 
-                if (EntitiesCols[i].getPos().X >= 875)
+                if (EntitiesCols[i].getPos().X >= screenWidth)
                 {
-                    EntitiesCols[i].setXPos(875);
+                    Behaviours.EnemyMind.speed = Behaviours.EnemyMind.speed * facing;
+                    
+                    
                 }
                 if (EntitiesCols[i].getPos().X <= 0)
                 {
-                    EntitiesCols[i].setXPos(0);
+                    Behaviours.EnemyMind.speed = Behaviours.EnemyMind.speed * facing;
                 }
 
-                if (EntitiesCols[i].getPos().Y >= 565)
+                if (EntitiesCols[i].getPos().Y >= screenHeight)
                 {
                     EntitiesCols[i].setYPos(565);
                 }
@@ -60,7 +65,7 @@ namespace EngineV2
         { 
                 if(EntitiesCols[0].getHitbox().Intersects(EntitiesCols[1].getHitbox()))
                 {
-                    EntitiesCols[1].setXPos(400);
+                    Hit = true;
                 }
             
         }

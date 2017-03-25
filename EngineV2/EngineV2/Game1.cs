@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Minds;
-//using EngineV2.Managers;
+using EngineV2.Interfaces;
+using EngineV2.Managers;
+using EngineV2.Entities;
+using EngineV2.Behaviours;
 
 namespace EngineV2
 {
@@ -73,16 +75,20 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            scn.addScn(Content.Load<Texture2D>("Brick"));
+            scn.addScn(Content.Load<Texture2D>("DickButt"));
+
             player.setTexPos(Content.Load<Texture2D>("Chastings"), 200, 400);
-            scn.Initalize(player, spriteBatch, col, behaviours);
+            scn.Initalize(player, spriteBatch, col, behaviours, imp);
             col.Initalize(player, screenWidth, screenHeight);
             imp.Initialize(player);
 
             Pug.setTexPos(Content.Load<Texture2D>("Pug"), 100, 200);
-            scn.Initalize(Pug, spriteBatch, col, behaviours);
+            scn.Initalize(Pug, spriteBatch, col, behaviours, imp);
             col.Initalize(Pug, screenWidth, screenHeight);
             behaviours.createMind<EnemyMind>(Pug);
-
+            
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -106,7 +112,6 @@ namespace EngineV2
                 Exit();
 
             scn.Update();
-            imp.Update();
             
             
             // TODO: Add your update logic here

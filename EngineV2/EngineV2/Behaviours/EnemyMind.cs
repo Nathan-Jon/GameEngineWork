@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EngineV2.Behaviours;
+using EngineV2.Interfaces;
 
-namespace EngineV2.Minds
+namespace EngineV2.Behaviours
 {
     class EnemyMind : IBehaviour
     {
         private IMoveBehaviour move;
         private IEntity body;
 
-        public float speed = 6;
+        public static float speed = 6;
 
         public EnemyMind()
         {

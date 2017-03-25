@@ -5,47 +5,41 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Behaviours;
 
-
-namespace EngineV2
+namespace EngineV2.Entities
 {
-    class Enemy : GameEntity
+    class GameEntity : Entity
     {
-
         public Texture2D Texture;
-        public static Vector2 Position;
-        public static float speed = 6;
+        public Vector2 Position;
         public Rectangle HitBox;
-
-        private IMoveBehaviour Move;
-
 
         public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
         {
             Position.X = Xpos;
             Position.Y = Ypos;
             Texture = Tex;
-            
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
+        public virtual void Move()
+        {
+            Position.X += 4;
+        }
 
-        
         public override void update()
-        { 
-            //Move();
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+        {
+            Move();
         }
 
         public override Vector2 getPos()
         {
             return Position;
         }
-
 
         public override Rectangle getHitbox()
         {
@@ -62,7 +56,6 @@ namespace EngineV2
             Position.Y = Ypos;
 
         }
-
 
     }
 }

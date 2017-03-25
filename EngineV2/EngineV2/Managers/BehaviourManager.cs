@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Minds;
+using EngineV2.Interfaces;
 
-namespace EngineV2
+namespace EngineV2.Managers
 {
     class BehaviourManager: IBehaviourManager
     {

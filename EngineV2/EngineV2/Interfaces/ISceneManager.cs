@@ -6,12 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace EngineV2
+namespace EngineV2.Interfaces
 {
     interface ISceneManager
     {
-        void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col, IBehaviourManager behav);
+        void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col, IBehaviourManager behav, IInputManager imput);
         void Update();
+        void addScn(Texture2D Scene);
         void Draw();
     }
 }
