@@ -24,7 +24,7 @@ namespace EngineV2.Behaviours
         #region Behaviour
         public void move(IEntity body, float speed)
         {
-            body.setXPos(body.getXPos() + speed);
+            body.setXPos(body.getPos().X + speed);
         }
     }
         #endregion

@@ -36,20 +36,20 @@ namespace EngineV2
             for (int i = 0; i < EntitiesCols.Count; i++)
             {
 
-                if (EntitiesCols[i].getXPos() >= 875)
+                if (EntitiesCols[i].getPos().X >= 875)
                 {
                     EntitiesCols[i].setXPos(875);
                 }
-                if (EntitiesCols[i].getXPos() <= 0)
+                if (EntitiesCols[i].getPos().X <= 0)
                 {
                     EntitiesCols[i].setXPos(0);
                 }
 
-                if (EntitiesCols[i].getYPos() >= 565)
+                if (EntitiesCols[i].getPos().Y >= 565)
                 {
                     EntitiesCols[i].setYPos(565);
                 }
-                if (EntitiesCols[i].getYPos() <= 0)
+                if (EntitiesCols[i].getPos().Y <= 0)
                 {
                     EntitiesCols[i].setYPos(0);
                 }

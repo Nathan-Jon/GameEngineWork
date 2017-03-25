@@ -36,13 +36,9 @@ namespace EngineV2
             Move();
         }
 
-        public override float getXPos()
+        public override Vector2 getPos()
         {
-            return Position.X;
-        }
-        public override float getYPos()
-        {
-            return Position.Y;
+            return Position;
         }
 
         public override Rectangle getHitbox()

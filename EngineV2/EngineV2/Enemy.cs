@@ -41,15 +41,11 @@ namespace EngineV2
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
-        public override float getXPos()
+        public override Vector2 getPos()
         {
-            return Position.X;
+            return Position;
         }
 
-        public override float getYPos()
-        {
-            return Position.Y;
-        }
 
         public override Rectangle getHitbox()
         {

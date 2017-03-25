@@ -13,8 +13,7 @@ namespace EngineV2
         void setTexPos(Texture2D Tex, float Xpos, float Ypos);
         void Draw(SpriteBatch spriteBatch);
         void update();
-        float getXPos();
-        float getYPos();
+        Vector2 getPos();
         Rectangle getHitbox();
         void setXPos(float Xpos);
         void setYPos(float Ypos);

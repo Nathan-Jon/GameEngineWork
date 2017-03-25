@@ -47,7 +47,7 @@ namespace EngineV2
             {
                 if (!oldState.IsKeyDown(Keys.W) || !oldState.IsKeyDown(Keys.Up))
                 {
-                    entity.setYPos(entity.getYPos() + -2);
+                    entity.setYPos(entity.getPos().Y + -2);
                 }
             }
 
@@ -62,7 +62,7 @@ namespace EngineV2
             {
                 if (!oldState.IsKeyDown(Keys.S) || !oldState.IsKeyDown(Keys.Down))
                 {
-                    entity.setYPos(entity.getYPos() + 2);
+                    entity.setYPos(entity.getPos().Y + 2);
                 }
             }
 
@@ -77,7 +77,7 @@ namespace EngineV2
             {
                 if (!oldState.IsKeyDown(Keys.A) || !oldState.IsKeyDown(Keys.Left))
                 {
-                    entity.setXPos(entity.getXPos() + -2);
+                    entity.setXPos(entity.getPos().X + -2);
                 }
             }
 
@@ -92,7 +92,7 @@ namespace EngineV2
             {
                 if (!oldState.IsKeyDown(Keys.D) || !oldState.IsKeyDown(Keys.Right))
                 {
-                    entity.setXPos(entity.getXPos() + 2);
+                    entity.setXPos(entity.getPos().X + 2);
                 }
             }
 
@@ -108,7 +108,7 @@ namespace EngineV2
             {
                 if (oldMouse.LeftButton == ButtonState.Released)
                 {
-                    entity.setYPos(entity.getYPos() + -2);
+                    entity.setYPos(entity.getPos().Y + -2);
                 } 
             }
 
