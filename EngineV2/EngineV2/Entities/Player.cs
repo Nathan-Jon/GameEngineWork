@@ -14,13 +14,11 @@ namespace EngineV2.Entities
 
         public Texture2D Texture;
         public static Vector2 Position;
-        float speed = 6;
         public Rectangle HitBox;
 
-        public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
+        public override void setTexPos(Texture2D Tex, Vector2 Posn)
         {
-            Position.X = Xpos;
-            Position.Y = Ypos;
+            Position = Posn;
             Texture = Tex;
         }
         
@@ -29,14 +27,8 @@ namespace EngineV2.Entities
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
-        public override void Move()
-        {
-           Position.X += speed;
-        }
         public override void update()
         {
-            
-            //Move();
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
