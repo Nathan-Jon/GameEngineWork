@@ -44,6 +44,11 @@ namespace EngineV2.Managers
 
         public override void Update(GameTime gameTime) 
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                Game.Exit();
+            }
+
 
             coli.Update();
             input.Update();
