@@ -43,10 +43,6 @@ C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\User\Desktop\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Brick.jpg
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\DickButt.jpg
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Brick.jpg
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\DickButt.jpg
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Pug.png
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chastings.png
 C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Brick.jpg
 C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chastings.png
 C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\DickButt.jpg
@@ -58,3 +54,5 @@ C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\Wind
 C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
 C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
 C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
+C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ChastingSprite.png
+C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
