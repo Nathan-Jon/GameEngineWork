@@ -65,7 +65,7 @@ namespace EngineV2.Managers
         { 
                 if(EntitiesCols[0].getHitbox().Intersects(EntitiesCols[1].getHitbox()))
                 {
-                    Hit = true;
+                SceneManager.onScnEnts.Clear();
                 }
             
         }

@@ -21,13 +21,13 @@ namespace EngineV2
         //Interfaces
 
         IEntity player;
-        IEntity Pug;
+        IEntity enemy;
         IEntityManager ent;
-        SceneManager scn;
+        ISceneManager scn;
         ICollisionManager col;
         IInputManager imp;
         IBehaviourManager behaviours;
-        SpriteAnimation animation;
+        AnimationMgr animation;
 
         //Screen Size
         int screenWidth = 900;
@@ -60,10 +60,10 @@ namespace EngineV2
             col = new CollisionManager();
             imp = new InputManager();
             player = ent.CreateEnt<Player>();
-            Pug = ent.CreateEnt<Enemy>();
+            enemy = ent.CreateEnt<Enemy>();
             behaviours = new BehaviourManager();
-            
-            
+
+            Components.Add((GameComponent)scn);
 
             base.Initialize();
         }
@@ -77,22 +77,18 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            scn.addScn(Content.Load<Texture2D>("Brick"));
-            scn.addScn(Content.Load<Texture2D>("DickButt"));
 
-
-            player.setTexPos(Content.Load<Texture2D>("Chastings"),new Vector2(200, 400));
+            player.setTexPos(Content.Load<Texture2D>("ChastingSprite"),new Vector2(200, 400));
             scn.Initalize(player, col, behaviours, imp);
             col.Initalize(player, screenWidth, screenHeight);
             imp.Initialize(player);
 
-            Pug.setTexPos(Content.Load<Texture2D>("Pug"), new Vector2(100, 200));
-            scn.Initalize(Pug, col, behaviours, imp);
-            col.Initalize(Pug, screenWidth, screenHeight);
-            behaviours.createMind<EnemyMind>(Pug);
+            enemy.setTexPos(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200));
+            scn.Initalize(enemy, col, behaviours, imp);
+            col.Initalize(enemy, screenWidth, screenHeight);
+            behaviours.createMind<EnemyMind>(enemy);
 
 
-            
             
             // TODO: use this.Content to load your game content here
         }
@@ -106,40 +102,37 @@ namespace EngineV2
             // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+        ///// <summary>
+        ///// Allows the game to run logic such as updating the world,
+        ///// checking for collisions, gathering input, and playing audio.
+        ///// </summary>
+        ///// <param name="gameTime">Provides a snapshot of timing values.</param>
+        //protected override void Update(GameTime gameTime)
+        //{
+        //    
 
-            scn.Update();
+        //    scn.Update();
             
 
-            // TODO: Add your update logic here
+        //    // TODO: Add your update logic here
 
 
 
-            base.Update(gameTime);
-        }
+        //    base.Update(gameTime);
+        //}
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.AntiqueWhite);
+        ///// <summary>
+        ///// This is called when the game should draw itself.
+        ///// </summary>
+        ///// <param name="gameTime">Provides a snapshot of timing values.</param>
+        //protected override void Draw(GameTime gameTime)
+        //{
+        //    GraphicsDevice.Clear(Color.AntiqueWhite);
 
-            scn.Draw();
+        //    scn.Draw();
 
-            // TODO: Add your drawing code here
-            
 
-            base.Draw(gameTime);
-        }
+        //    base.Draw(gameTime);
+        //}
     }
 }

@@ -5,10 +5,11 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using EngineV2.Interfaces;
 
-namespace EngineV2.Entities
+namespace EngineV2.Managers
 {
-    class SpriteAnimation
+    class AnimationMgr : IAnimationMgr
     {
         public Texture2D Texture;
         public int Rows, Columns;
