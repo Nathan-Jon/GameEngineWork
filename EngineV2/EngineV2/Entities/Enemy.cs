@@ -19,7 +19,7 @@ namespace EngineV2.Entities
         private IMoveBehaviour Move;
 
 
-        public override void setTexPos(Texture2D Tex, Vector2 Posn)
+        public override void Initialize(Texture2D Tex, Vector2 Posn)
         {
             Position = Posn;
             Texture = Tex;

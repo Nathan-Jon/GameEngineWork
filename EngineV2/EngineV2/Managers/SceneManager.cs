@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
+using EngineV2.Input;
 
 namespace EngineV2.Managers
 {
@@ -22,22 +23,21 @@ namespace EngineV2.Managers
         SpriteBatch spriteBatch;
         ICollisionManager coli;
         IBehaviourManager behaviours;
-        IInputManager input;
+        InputManager input;
+        InputPublisher inpUpdate;
 
-        public SceneManager(Game game) : base(game)
+        public SceneManager(Game game, InputManager inp) : base(game)
         {
-            
+            input = inp;
         }
 
-        public void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav, IInputManager imp)
+        public void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav)
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Entities = ent;
             coli = col;
-            input = imp;
             behaviours = behav;
-
             SceneGraph.Add(Entities);
             
         }
@@ -49,9 +49,8 @@ namespace EngineV2.Managers
                 Game.Exit();
             }
 
-
+            input.update();
             coli.Update();
-            input.Update();
 
             for (int i = 0; i < SceneGraph.Count; i++)
             {

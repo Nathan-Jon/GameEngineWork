@@ -5,6 +5,9 @@ using EngineV2.Interfaces;
 using EngineV2.Managers;
 using EngineV2.Entities;
 using EngineV2.Behaviours;
+using EngineV2.Input;
+using EngineV2.Input;
+
 
 namespace EngineV2
 {
@@ -25,7 +28,7 @@ namespace EngineV2
         IEntityManager ent;
         ISceneManager scn;
         ICollisionManager col;
-        IInputManager imp;
+        InputManager inputMgr;
         IBehaviourManager behaviours;
         AnimationMgr animation;
 
@@ -55,10 +58,10 @@ namespace EngineV2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            inputMgr = new InputManager();
             ent = new EntityManager();
-            scn = new SceneManager(this);
+            scn = new SceneManager(this, inputMgr);
             col = new CollisionManager();
-            imp = new InputManager();
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             behaviours = new BehaviourManager();
@@ -77,21 +80,18 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-            player.setTexPos(Content.Load<Texture2D>("ChastingSprite"),new Vector2(200, 400));
-            scn.Initalize(player, col, behaviours, imp);
+            player.setInputMgr(inputMgr);
+            player.Initialize(Content.Load<Texture2D>("ChastingSprite"),new Vector2(200, 400));
+            scn.Initalize(player, col, behaviours);
             col.Initalize(player, screenWidth, screenHeight);
-            imp.Initialize(player);
 
-            enemy.setTexPos(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200));
-            scn.Initalize(enemy, col, behaviours, imp);
+            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200));
+            scn.Initalize(enemy, col, behaviours);
             col.Initalize(enemy, screenWidth, screenHeight);
             behaviours.createMind<EnemyMind>(enemy);
 
 
-            
-            // TODO: use this.Content to load your game content here
-        }
+                    }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -101,38 +101,5 @@ namespace EngineV2
         {
             // TODO: Unload any non ContentManager content here
         }
-
-        ///// <summary>
-        ///// Allows the game to run logic such as updating the world,
-        ///// checking for collisions, gathering input, and playing audio.
-        ///// </summary>
-        ///// <param name="gameTime">Provides a snapshot of timing values.</param>
-        //protected override void Update(GameTime gameTime)
-        //{
-        //    
-
-        //    scn.Update();
-            
-
-        //    // TODO: Add your update logic here
-
-
-
-        //    base.Update(gameTime);
-        //}
-
-        ///// <summary>
-        ///// This is called when the game should draw itself.
-        ///// </summary>
-        ///// <param name="gameTime">Provides a snapshot of timing values.</param>
-        //protected override void Draw(GameTime gameTime)
-        //{
-        //    GraphicsDevice.Clear(Color.AntiqueWhite);
-
-        //    scn.Draw();
-
-
-        //    base.Draw(gameTime);
-        //}
     }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using EngineV2.Input;
+
 
 namespace EngineV2.Entities
 {
@@ -14,12 +16,15 @@ namespace EngineV2.Entities
         public Vector2 Position;
         public Rectangle HitBox;
 
-        public override void setTexPos(Texture2D Tex, Vector2 Posn)
+        public override void Initialize(Texture2D Tex, Vector2 Posn)
         {
             Position = Posn;
             Texture = Tex;
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
+
+        public override void setInputMgr(InputManager inputManager)
+        { }
 
         public override void Draw(SpriteBatch spriteBatch)
         {

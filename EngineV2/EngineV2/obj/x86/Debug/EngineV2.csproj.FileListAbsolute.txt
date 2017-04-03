@@ -26,8 +26,6 @@ C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\De
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chastings.jpg
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Pug.png
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
@@ -56,3 +54,5 @@ C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\
 C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
 C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ChastingSprite.png
 C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ChastingSprite.png
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png

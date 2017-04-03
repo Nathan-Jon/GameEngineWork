@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using EngineV2.Input;
 
 
 namespace EngineV2.Entities
@@ -16,12 +17,41 @@ namespace EngineV2.Entities
         public static Vector2 Position;
         public Rectangle HitBox;
 
-        public override void setTexPos(Texture2D Tex, Vector2 Posn)
+        float speed = 3;
+
+        //Input Management
+        private KeyboardState keyState;
+        InputManager inputMgr;
+        // InputPublisher inputPublisher; //Input publisher
+        // InputSubscriber subscribe;  //InputSubscriber
+
+        public override void Initialize(Texture2D Tex, Vector2 Posn)
         {
             Position = Posn;
             Texture = Tex;
+            inputMgr.AddListener(OnNewInput);
+
         }
-        
+
+        public override void setInputMgr(InputManager inputManager)
+        {
+            inputMgr = inputManager;
+        }
+        public virtual void OnNewInput(object source, EventData data)
+        {
+            keyState = data.newKey;
+
+            //Act on the data
+            if (keyState.IsKeyDown(Keys.W))
+            { Position.Y -= speed; }
+            if (keyState.IsKeyDown(Keys.S))
+            { Position.Y += speed; }
+            if (keyState.IsKeyDown(Keys.D))
+            { Position.X += speed; }
+            if (keyState.IsKeyDown(Keys.A))
+            { Position.X -= speed; }
+        }
+
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -53,9 +83,6 @@ namespace EngineV2.Entities
 
         }
 
-          
-  
-            
-        
+
     }
 }

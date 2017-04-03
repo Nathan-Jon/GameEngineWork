@@ -10,7 +10,7 @@ namespace EngineV2.Interfaces
 {
     interface ISceneManager
     {
-        void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav, IInputManager imput);
+        void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav);
         void addScn(Texture2D Scene);
     }
 }
