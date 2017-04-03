@@ -11,7 +11,7 @@ namespace EngineV2.Entities
 {
     abstract class Entity : IEntity
     {
-        public abstract void setTexPos(Texture2D Tex, float Xpos, float Ypos);        
+        public abstract void setTexPos(Texture2D Tex, Vector2 Posn);        
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void update();
         public abstract Vector2 getPos();

@@ -14,10 +14,9 @@ namespace EngineV2.Entities
         public Vector2 Position;
         public Rectangle HitBox;
 
-        public override void setTexPos(Texture2D Tex, float Xpos, float Ypos)
+        public override void setTexPos(Texture2D Tex, Vector2 Posn)
         {
-            Position.X = Xpos;
-            Position.Y = Ypos;
+            Position = Posn;
             Texture = Tex;
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }

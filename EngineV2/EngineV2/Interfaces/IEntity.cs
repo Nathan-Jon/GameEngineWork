@@ -10,7 +10,7 @@ namespace EngineV2.Interfaces
 {
     public interface IEntity
     {
-        void setTexPos(Texture2D Tex, float Xpos, float Ypos);
+        void setTexPos(Texture2D Tex, Vector2 Posn);
         void Draw(SpriteBatch spriteBatch);
         void update();
         Vector2 getPos();

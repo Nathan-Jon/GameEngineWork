@@ -23,10 +23,11 @@ namespace EngineV2
         IEntity player;
         IEntity Pug;
         IEntityManager ent;
-        ISceneManager scn;
+        SceneManager scn;
         ICollisionManager col;
         IInputManager imp;
         IBehaviourManager behaviours;
+        SpriteAnimation animation;
 
         //Screen Size
         int screenWidth = 900;
@@ -55,12 +56,13 @@ namespace EngineV2
         {
             // TODO: Add your initialization logic here
             ent = new EntityManager();
-            scn = new SceneManager();
+            scn = new SceneManager(this);
             col = new CollisionManager();
             imp = new InputManager();
             player = ent.CreateEnt<Player>();
             Pug = ent.CreateEnt<Enemy>();
             behaviours = new BehaviourManager();
+            
             
 
             base.Initialize();
@@ -78,15 +80,18 @@ namespace EngineV2
             scn.addScn(Content.Load<Texture2D>("Brick"));
             scn.addScn(Content.Load<Texture2D>("DickButt"));
 
-            player.setTexPos(Content.Load<Texture2D>("Chastings"), 200, 400);
-            scn.Initalize(player, spriteBatch, col, behaviours, imp);
+
+            player.setTexPos(Content.Load<Texture2D>("Chastings"),new Vector2(200, 400));
+            scn.Initalize(player, col, behaviours, imp);
             col.Initalize(player, screenWidth, screenHeight);
             imp.Initialize(player);
 
-            Pug.setTexPos(Content.Load<Texture2D>("Pug"), 100, 200);
-            scn.Initalize(Pug, spriteBatch, col, behaviours, imp);
+            Pug.setTexPos(Content.Load<Texture2D>("Pug"), new Vector2(100, 200));
+            scn.Initalize(Pug, col, behaviours, imp);
             col.Initalize(Pug, screenWidth, screenHeight);
             behaviours.createMind<EnemyMind>(Pug);
+
+
             
             
             // TODO: use this.Content to load your game content here
@@ -113,10 +118,10 @@ namespace EngineV2
 
             scn.Update();
             
-            
+
             // TODO: Add your update logic here
-           
-            
+
+
 
             base.Update(gameTime);
         }
@@ -128,12 +133,9 @@ namespace EngineV2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.AntiqueWhite);
-            
 
-            spriteBatch.Begin();
             scn.Draw();
-            spriteBatch.End();
-            
+
             // TODO: Add your drawing code here
             
 

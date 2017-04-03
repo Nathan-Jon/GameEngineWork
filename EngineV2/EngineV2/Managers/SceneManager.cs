@@ -9,8 +9,9 @@ using EngineV2.Interfaces;
 
 namespace EngineV2.Managers
 {
-    class SceneManager : ISceneManager
-        
+    class SceneManager : DrawableGameComponent, ISceneManager
+
+
     {
         
         public static List<IEntity> onScnEnts = new List<IEntity>();
@@ -18,15 +19,21 @@ namespace EngineV2.Managers
         List<Texture2D> Scenes = new List <Texture2D>();
 
         IEntity Entities;
-        SpriteBatch sprt;
+        SpriteBatch spriteBatch;
         ICollisionManager coli;
         IBehaviourManager behaviours;
         IInputManager input;
 
-        public void Initalize(IEntity ent, SpriteBatch spriteBatch, ICollisionManager col, IBehaviourManager behav, IInputManager imp)
+        public SceneManager(Game game) : base(game)
         {
+            
+        }
+
+        public void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav, IInputManager imp)
+        {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
             Entities = ent;
-            sprt = spriteBatch;
             coli = col;
             input = imp;
             behaviours = behav;
@@ -54,29 +61,64 @@ namespace EngineV2.Managers
 
         public void Draw()
         {
-            sprt.Draw(Scenes[0], new Rectangle(0, 0, 900, 600), Color.AntiqueWhite);
-            for (int i = 0;  i < SceneGraph.Count ; i++)
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(Scenes[0], new Rectangle(0, 0, 900, 600), Color.AntiqueWhite);
+            for (int i = 0; i < SceneGraph.Count; i++)
             {
                 onScnEnts = SceneGraph;
-                onScnEnts[i].Draw(sprt);
-            }      
+                onScnEnts[i].Draw(spriteBatch);
+            }
             if (CollisionManager.Hit == true)
             {
                 CollisionManager.Hit = false;
                 if (Scenes.Count == 2)
                 {
-                onScnEnts.Clear();
-                Scenes.Remove(Scenes[0]);
+                    onScnEnts.Clear();
+                    Scenes.Remove(Scenes[0]);
                 }
                 if (Scenes.Count == 1)
                 {
-                    sprt.Draw(Scenes[0], new Rectangle(0, 0, 900, 600), Color.AntiqueWhite);
+                    spriteBatch.Draw(Scenes[0], new Rectangle(0, 0, 900, 600), Color.AntiqueWhite);
                 }
-                
-                
+
             }
-            
+
+            spriteBatch.End();
         }
+
+        //public void Draw(GameTime gameTime)
+        //{
+        //    GraphicsDevice.Clear(Color.AntiqueWhite);
+
+        //    spriteBatch.Begin();
+
+        //    spriteBatch.Draw(Scenes[0], new Rectangle(0, 0, 900, 600), Color.AntiqueWhite);
+        //    for (int i = 0; i < SceneGraph.Count; i++)
+        //    {
+        //        onScnEnts = SceneGraph;
+        //        onScnEnts[i].Draw(spriteBatch);
+        //    }
+        //    if (CollisionManager.Hit == true)
+        //    {
+        //        CollisionManager.Hit = false;
+        //        if (Scenes.Count == 2)
+        //        {
+        //            onScnEnts.Clear();
+        //            Scenes.Remove(Scenes[0]);
+        //        }
+        //        if (Scenes.Count == 1)
+        //        {
+        //            spriteBatch.Draw(Scenes[0], new Rectangle(0, 0, 900, 600), Color.AntiqueWhite);
+        //        }
+
+        //    }
+
+        //    spriteBatch.End();
+
+        //    base.Draw(gameTime);
+
+        //}
 
     }
 }
