@@ -44,6 +44,7 @@ namespace EngineV2.Managers
                     Behaviours.EnemyMind.speed = Behaviours.EnemyMind.speed * facing;
                     
                     
+                    
                 }
                 if (EntitiesCols[i].getPos().X <= 0)
                 {
@@ -65,7 +66,7 @@ namespace EngineV2.Managers
         { 
                 if(EntitiesCols[0].getHitbox().Intersects(EntitiesCols[1].getHitbox()))
                 {
-                SceneManager.onScnEnts.Clear();
+                    AnimationMgr.Animation.Clear();
                 }
             
         }

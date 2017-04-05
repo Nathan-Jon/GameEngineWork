@@ -10,6 +10,6 @@ namespace EngineV2.Scenes
 {
     class Scene1
     {
-        //ISceneManager scn = new SceneManager();
+
     }
 }

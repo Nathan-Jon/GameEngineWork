@@ -65,6 +65,7 @@ namespace EngineV2
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             behaviours = new BehaviourManager();
+            animation = new AnimationMgr();
 
             Components.Add((GameComponent)scn);
 
@@ -81,17 +82,22 @@ namespace EngineV2
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player.setInputMgr(inputMgr);
-            player.Initialize(Content.Load<Texture2D>("ChastingSprite"),new Vector2(200, 400));
-            scn.Initalize(player, col, behaviours);
+            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400));
+            animation.Initialize(player, 3, 3);
+            scn.Initalize(player, col, behaviours, animation);
             col.Initalize(player, screenWidth, screenHeight);
+            
+
 
             enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200));
-            scn.Initalize(enemy, col, behaviours);
+            scn.Initalize(enemy, col, behaviours, animation);
+            animation.Initialize(enemy, 3, 3);
             col.Initalize(enemy, screenWidth, screenHeight);
             behaviours.createMind<EnemyMind>(enemy);
 
+            
 
-                    }
+          }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload

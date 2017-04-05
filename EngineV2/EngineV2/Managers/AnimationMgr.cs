@@ -11,43 +11,57 @@ namespace EngineV2.Managers
 {
     class AnimationMgr : IAnimationMgr
     {
-        public Texture2D Texture;
-        public int Rows, Columns;
+        public static List<IEntity> Animation = new List<IEntity>();
+        public static int  Width, Height;
         private int currentFrame, totalFrames;
+        private int timeSinceLastFrame = 0;
+        private int MillisecondsPerFrame = 200;
+        private int row = 1;
+        int Rows, Columns, column;
 
-        public void Initalise(Texture2D texture, int rows, int columns)
+
+        public void Initialize(IEntity ent, int rows, int columns)
         {
-            Texture = texture;
+            Animation.Add(ent);
             Rows = rows;
             Columns = columns;
             currentFrame = 0;
             totalFrames = Rows * Columns;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-             currentFrame++;
-             if(currentFrame == totalFrames)
+            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
+
+            if (timeSinceLastFrame > MillisecondsPerFrame)
+            {
+                timeSinceLastFrame -= MillisecondsPerFrame;
+
+                currentFrame++;
+                if (currentFrame == totalFrames)
                 {
                     currentFrame = 0;
                 }
 
+            }
+
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 Posn)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            int Width = Texture.Width / Columns;
-            int Height = Texture.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            for (int i = 0; i < Animation.Count; i++)
+            {
+                Width = Animation[i].getTex().Width / Columns;
+                Height = Animation[i].getTex().Height / Rows;
+                column = currentFrame % Columns;
+                
 
-            Rectangle sourceRectangle = new Rectangle(Width * column, Height * row, Width, Height);
-            Rectangle destinationRectangle = new Rectangle((int)Posn.X, (int)Posn.Y, Width, Height);
 
-            spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
+                Rectangle sourceRectangle = new Rectangle(Width * column, Height * row, Width, Height);
+                Rectangle destinationRectangle = new Rectangle((int)Animation[i].getPos().X, (int)Animation[i].getPos().Y, Width, Height);
 
+                spriteBatch.Draw(Animation[i].getTex(), destinationRectangle, sourceRectangle, Color.White);
+            }
         }
     }
 }

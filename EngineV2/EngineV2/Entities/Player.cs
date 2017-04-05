@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Input;
-
+using EngineV2.Managers;
 
 namespace EngineV2.Entities
 {
@@ -14,10 +14,10 @@ namespace EngineV2.Entities
     {
 
         public Texture2D Texture;
-        public static Vector2 Position;
+        public Vector2 Position;
         public Rectangle HitBox;
 
-        float speed = 3;
+        public float speed = 3;
 
         //Input Management
         private KeyboardState keyState;
@@ -42,13 +42,13 @@ namespace EngineV2.Entities
             keyState = data.newKey;
 
             //Act on the data
-            if (keyState.IsKeyDown(Keys.W))
+            if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
             { Position.Y -= speed; }
-            if (keyState.IsKeyDown(Keys.S))
+            if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
             { Position.Y += speed; }
-            if (keyState.IsKeyDown(Keys.D))
+            if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
             { Position.X += speed; }
-            if (keyState.IsKeyDown(Keys.A))
+            if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
             { Position.X -= speed; }
         }
 
@@ -59,12 +59,19 @@ namespace EngineV2.Entities
         }
         public override void update()
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
         }
 
         public override Vector2 getPos()
         {
             return Position;
+        }
+
+        //public override float
+
+        public override Texture2D getTex()
+        {
+            return Texture;
         }
 
         public override Rectangle getHitbox()

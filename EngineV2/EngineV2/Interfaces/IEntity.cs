@@ -15,6 +15,7 @@ namespace EngineV2.Interfaces
         void Draw(SpriteBatch spriteBatch);
         void update();
         Vector2 getPos();
+        Texture2D getTex();
         Rectangle getHitbox();
         void setXPos(float Xpos);
         void setYPos(float Ypos);

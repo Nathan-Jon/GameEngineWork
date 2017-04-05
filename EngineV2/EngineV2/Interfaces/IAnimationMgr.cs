@@ -9,8 +9,8 @@ namespace EngineV2.Interfaces
 {
     interface IAnimationMgr
     {
-        void Initalise(Texture2D texture, int rows, int columns);
-        void Update();
-        void Draw(SpriteBatch spriteBatch, Vector2 Posn);
+        void Initialize(IEntity ent, int rows, int columns);
+        void Update(GameTime gameTime);
+        void Draw(SpriteBatch spriteBatch);
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
+using EngineV2.Managers;
 
 namespace EngineV2.Entities
 {
@@ -13,7 +14,7 @@ namespace EngineV2.Entities
     {
 
         public Texture2D Texture;
-        public static Vector2 Position;
+        public Vector2 Position;
         public Rectangle HitBox;
 
         private IMoveBehaviour Move;
@@ -33,13 +34,18 @@ namespace EngineV2.Entities
 
         
         public override void update()
-        { 
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+        {
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
         }
 
         public override Vector2 getPos()
         {
             return Position;
+        }
+
+        public override Texture2D getTex()
+        {
+            return Texture;
         }
 
 

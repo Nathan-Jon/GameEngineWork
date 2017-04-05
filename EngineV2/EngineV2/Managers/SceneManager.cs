@@ -15,9 +15,8 @@ namespace EngineV2.Managers
 
     {
         
-        public static List<IEntity> onScnEnts = new List<IEntity>();
-         List<IEntity> SceneGraph = new List<IEntity>();
-        List<Texture2D> Scenes = new List <Texture2D>();
+        List<IEntity> onScnEnts = new List<IEntity>();
+        List<IEntity> SceneGraph = new List<IEntity>();
 
         IEntity Entities;
         SpriteBatch spriteBatch;
@@ -25,19 +24,21 @@ namespace EngineV2.Managers
         IBehaviourManager behaviours;
         InputManager input;
         InputPublisher inpUpdate;
+        IAnimationMgr animation;
 
         public SceneManager(Game game, InputManager inp) : base(game)
         {
             input = inp;
         }
 
-        public void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav)
+        public void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav, IAnimationMgr ani)
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Entities = ent;
             coli = col;
             behaviours = behav;
+            animation = ani;
             SceneGraph.Add(Entities);
             
         }
@@ -56,15 +57,11 @@ namespace EngineV2.Managers
             {
                 SceneGraph[i].update();
             }
+            animation.Update(gameTime);
             behaviours.update();
 
             base.Update(gameTime);
 
-        }
-
-        public void addScn(Texture2D Scene)
-        {
-            Scenes.Add(Scene);
         }
 
         public override void Draw(GameTime gameTime)
@@ -73,11 +70,7 @@ namespace EngineV2.Managers
 
             spriteBatch.Begin();
 
-            for (int i = 0; i < SceneGraph.Count; i++)
-            {
-                onScnEnts = SceneGraph;
-                onScnEnts[i].Draw(spriteBatch);
-            }
+            animation.Draw(spriteBatch);
 
             spriteBatch.End();
 

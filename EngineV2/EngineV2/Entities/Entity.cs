@@ -17,6 +17,7 @@ namespace EngineV2.Entities
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void update();
         public abstract Vector2 getPos();
+        public abstract Texture2D getTex();
         public abstract Rectangle getHitbox();
         public abstract void setXPos(float Xpos);
         public abstract void setYPos(float Ypos);

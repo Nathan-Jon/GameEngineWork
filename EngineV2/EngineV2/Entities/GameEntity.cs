@@ -44,6 +44,11 @@ namespace EngineV2.Entities
         {
             return Position;
         }
+        
+        public override Texture2D getTex()
+        {
+            return Texture;
+        }
 
         public override Rectangle getHitbox()
         {
