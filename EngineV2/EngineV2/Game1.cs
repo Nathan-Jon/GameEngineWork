@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using EngineV2.Interfaces;
 using EngineV2.Managers;
 using EngineV2.Entities;
 using EngineV2.Behaviours;
-using EngineV2.Input;
 using EngineV2.Input;
 
 
@@ -30,7 +30,8 @@ namespace EngineV2
         ICollisionManager col;
         InputManager inputMgr;
         IBehaviourManager behaviours;
-        AnimationMgr animation;
+        IAnimationMgr animation;
+        ISoundManager snd;
 
         //Screen Size
         int screenWidth = 900;
@@ -66,6 +67,7 @@ namespace EngineV2
             enemy = ent.CreateEnt<Enemy>();
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
+            snd = new SoundManager();
 
             Components.Add((GameComponent)scn);
 
@@ -96,6 +98,8 @@ namespace EngineV2
             col.Initalize(enemy, screenWidth, screenHeight, animation);
             
             behaviours.createMind<EnemyMind>(enemy);
+
+            snd.Initialize(Content.Load<SoundEffect>("background"), Content);
 
           }
 
