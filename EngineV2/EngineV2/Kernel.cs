@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using EngineV2.Interfaces;
 using EngineV2.Managers;
 using EngineV2.Entities;
 using EngineV2.Behaviours;
+using EngineV2.Collision_Management;
 using EngineV2.Input;
 
 
@@ -14,7 +14,7 @@ namespace EngineV2
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class Kernel : Game
     {
         #region Instance Variables
         //Constants
@@ -27,7 +27,8 @@ namespace EngineV2
         IEntity enemy;
         IEntityManager ent;
         ISceneManager scn;
-        ICollisionManager col;
+        CollisionManager col;
+        ICollidable collider;
         InputManager inputMgr;
         IBehaviourManager behaviours;
         IAnimationMgr animation;
@@ -40,7 +41,7 @@ namespace EngineV2
         #endregion
 
 
-        public Game1()
+        public Kernel()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -61,13 +62,14 @@ namespace EngineV2
             // TODO: Add your initialization logic here
             inputMgr = new InputManager();
             ent = new EntityManager();
-            scn = new SceneManager(this, inputMgr);
             col = new CollisionManager();
+            scn = new SceneManager(this, inputMgr, col);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
             snd = new SoundManager();
+            collider = new CollidableClass();
 
             Components.Add((GameComponent)scn);
 
@@ -83,20 +85,22 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            player.setInputMgr(inputMgr);
+            player.applyEventHandlers(inputMgr, col);
+            enemy.applyEventHandlers(inputMgr, col);
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400));
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200));
+            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400), collider);
+            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200),collider);
             
             animation.Initialize(player, 3, 3);
             animation.Initialize(enemy, 3, 3);
             
-            scn.Initalize(player, col, behaviours, animation);
-            scn.Initalize(enemy, col, behaviours, animation);
-            
-            col.Initalize(player, screenWidth, screenHeight, animation);
-            col.Initalize(enemy, screenWidth, screenHeight, animation);
-            
+            scn.Initalize(player,behaviours, animation);
+            scn.Initalize(enemy,behaviours, animation);
+
+            collider.isCollidable(player);
+            collider.isCollidable(enemy);
+
+
             behaviours.createMind<EnemyMind>(enemy);
 
             snd.Initialize(Content.Load<SoundEffect>("background"), Content);

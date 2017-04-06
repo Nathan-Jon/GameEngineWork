@@ -5,11 +5,12 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using EngineV2.Interfaces;
 
 namespace EngineV2.Interfaces
 {
     interface ISceneManager
     {
-        void Initalize(IEntity ent, ICollisionManager col, IBehaviourManager behav, IAnimationMgr ani);
+        void Initalize(IEntity ent, IBehaviourManager behav, IAnimationMgr ani);
     }
 }

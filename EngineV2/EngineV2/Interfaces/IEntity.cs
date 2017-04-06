@@ -6,12 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Input;
+using EngineV2.Collision_Management;
 
 namespace EngineV2.Interfaces
 {
     public interface IEntity
     {
-        void Initialize(Texture2D Tex, Vector2 Posn);
+        void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider);
         void Draw(SpriteBatch spriteBatch);
         void update();
         Vector2 getPos();
@@ -21,8 +22,8 @@ namespace EngineV2.Interfaces
         void setXPos(float Xpos);
         void setYPos(float Ypos);
         void setRow(int row);
-        void setInputMgr(InputManager inputManager);
-
+        void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
+        void CollidableObjs();
 
     }
 }

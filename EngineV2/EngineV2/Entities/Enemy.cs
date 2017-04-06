@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
 using EngineV2.Managers;
+using EngineV2.Collision_Management;
+using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
@@ -18,14 +20,39 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
         public int row = 1;
 
+        private IEntity collisionObj;
         private IMoveBehaviour Move;
+        private CollisionManager collisionMgr;
 
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider)
         {
             Position = Posn;
             Texture = Tex;
+            collisionMgr.subscribe(onCollision);
             
+        }
+        public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
+        {
+            collisionMgr = collisions;
+        }
+
+        public virtual void onCollision(object source, CollisionEventData data)
+        {
+            collisionObj = data.objectCollider;
+
+            if (HitBox.X >= 835)
+            {
+                Position.X = 834;
+                Behaviours.EnemyMind.speed *= -1;
+            }
+            if (HitBox.X <= 0)
+            {
+                Position.X = 1;
+                Behaviours.EnemyMind.speed *= -1;
+            }
+            //if (HitBox.Intersects(collisionObj.getHitbox()))
+            //{ speed = 9; }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Input;
 using EngineV2.Managers;
+using EngineV2.Interfaces;
+using EngineV2.Collision_Management;
 
 namespace EngineV2.Entities
 {
@@ -23,22 +25,35 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        InputManager inputMgr;
-        // InputPublisher inputPublisher; //Input publisher
-        // InputSubscriber subscribe;  //InputSubscriber
+        private InputManager inputMgr;
+        //Collision Management
+        private List<IEntity> collisionObjs;
+        private IEntity collision;
+        private CollisionManager collisionMgr;
+        private  ICollidable colliders;
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider)
         {
             Position = Posn;
             Texture = Tex;
+            colliders = _collider;
             inputMgr.AddListener(OnNewInput);
-
+            collisionMgr.subscribe(onCollision);
+            CollidableObjs();
         }
 
-        public override void setInputMgr(InputManager inputManager)
+        public override void CollidableObjs()
+        {
+            collisionObjs = colliders.getList();
+        }
+
+
+        public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
         {
             inputMgr = inputManager;
+            collisionMgr = col;
         }
+
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
@@ -70,6 +85,25 @@ namespace EngineV2.Entities
             }
         }
 
+        public virtual void onCollision(object source, CollisionEventData data)
+        {
+            collision = data.objectCollider;
+
+            if (Position.X <= 0)
+            { Position.X += speed; }
+            if (HitBox.X >= 800)
+            { Position.X -= speed; }
+            if (Position.Y <= 0)
+            { Position.Y += speed; }
+            if (HitBox.Y >= 500)
+            { Position.Y -= speed; }
+
+            for (int i = 0; i < collisionObjs.Count; i++)
+            {
+                if (HitBox.Intersects(collisionObjs[1].getHitbox()))
+                { collisionObjs[1].setXPos(300); }
+            }
+        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {

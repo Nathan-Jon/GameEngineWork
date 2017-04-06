@@ -38,11 +38,15 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collision Management\CollidableClass.cs" />
+    <Compile Include="Collision Management\CollisionEventData.cs" />
+    <Compile Include="Collision Management\CollisionManager.cs" />
     <Compile Include="Input Managment\EventData.cs" />
     <Compile Include="Input Managment\InputManager.cs" />
     <Compile Include="Input Managment\InputPublisher.cs" />
     <Compile Include="Input Managment\InputSubscriber.cs" />
     <Compile Include="Interfaces\IAnimationMgr.cs" />
+    <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\ISoundManager.cs" />
     <Compile Include="Managers\AnimationMgr.cs" />
     <Compile Include="Managers\AIManager.cs" />
@@ -54,13 +58,11 @@
     <Compile Include="Interfaces\IBehaviourManager.cs" />
     <Compile Include="Behaviours\EnemyMind.cs" />
     <Compile Include="Entities\Player.cs" />
-    <Compile Include="Managers\CollisionManager.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Managers\EntityManager.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="Kernel.cs" />
     <Compile Include="Entities\GameEntity.cs" />
     <Compile Include="Interfaces\IAIManager.cs" />
-    <Compile Include="Interfaces\ICollisionManager.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IEntityManager.cs" />
     <Compile Include="Interfaces\ISceneManager.cs" />

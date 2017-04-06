@@ -6,7 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Input;
-
+using EngineV2.Collision_Management;
+using EngineV2.Interfaces;
 
 namespace EngineV2.Entities
 {
@@ -17,16 +18,17 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
         public int row;
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider)
         {
             Position = Posn;
             Texture = Tex;
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
-        public override void setInputMgr(InputManager inputManager)
+        public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
         { }
-
+        public override void CollidableObjs()
+        {}
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
@@ -35,17 +37,14 @@ namespace EngineV2.Entities
         {
             Position.X += 4;
         }
-
         public override void update()
         {
             Move();
         }
-
         public override Vector2 getPos()
         {
             return Position;
         }
-        
         public override Texture2D getTex()
         {
             return Texture;
