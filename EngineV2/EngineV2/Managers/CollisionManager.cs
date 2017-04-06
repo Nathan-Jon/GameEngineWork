@@ -13,6 +13,7 @@ namespace EngineV2.Managers
     {
 
         IEntity entity;
+        IAnimationMgr ani;
         int screenWidth, screenHeight;
         float facing = -1;
         public static Boolean Hit = false;
@@ -20,9 +21,10 @@ namespace EngineV2.Managers
 
 
 
-        public void Initalize(IEntity ent, int scnWid,int scnHei)
+        public void Initalize(IEntity ent, int scnWid,int scnHei, IAnimationMgr animation)
         {
             entity = ent;
+            ani = animation;
             EntitiesCols.Add(entity);
             screenWidth = scnWid;
             screenHeight = scnHei;
@@ -42,16 +44,15 @@ namespace EngineV2.Managers
                 if (EntitiesCols[i].getPos().X >= screenWidth)
                 {
                     Behaviours.EnemyMind.speed = Behaviours.EnemyMind.speed * facing;
-                    
-                    
-                    
+                    EntitiesCols[1].setRow(0);
                 }
                 if (EntitiesCols[i].getPos().X <= 0)
                 {
                     Behaviours.EnemyMind.speed = Behaviours.EnemyMind.speed * facing;
+                    EntitiesCols[1].setRow(1);
                 }
 
-                if (EntitiesCols[i].getPos().Y >= screenHeight)
+                if (EntitiesCols[i].getPos().Y >= 565)
                 {
                     EntitiesCols[i].setYPos(565);
                 }

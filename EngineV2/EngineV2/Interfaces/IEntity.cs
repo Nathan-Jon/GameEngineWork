@@ -16,9 +16,11 @@ namespace EngineV2.Interfaces
         void update();
         Vector2 getPos();
         Texture2D getTex();
+        int getRows();
         Rectangle getHitbox();
         void setXPos(float Xpos);
         void setYPos(float Ypos);
+        void setRow(int row);
         void setInputMgr(InputManager inputManager);
 
 

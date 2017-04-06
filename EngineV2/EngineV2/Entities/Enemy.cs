@@ -13,9 +13,10 @@ namespace EngineV2.Entities
     class Enemy : GameEntity
     {
 
-        public Texture2D Texture;
+        public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
+        public int row = 1;
 
         private IMoveBehaviour Move;
 
@@ -47,6 +48,11 @@ namespace EngineV2.Entities
         {
             return Texture;
         }
+        
+        public override int getRows()
+        {
+            return row;
+        }
 
 
         public override Rectangle getHitbox()
@@ -65,6 +71,9 @@ namespace EngineV2.Entities
 
         }
 
-
+        public override void setRow(int rows)
+        {
+            row = rows;
+        }
     }
 }

@@ -13,9 +13,11 @@ namespace EngineV2.Entities
     class Player : GameEntity
     {
 
-        public Texture2D Texture;
+        public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
+        public int row = 1;
+        public static Boolean Animate = false;
 
         public float speed = 3;
 
@@ -43,13 +45,29 @@ namespace EngineV2.Entities
 
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
-            { Position.Y -= speed; }
+            { 
+                Position.Y -= speed;
+                Animate = true;
+                row = 2;
+            }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
-            { Position.Y += speed; }
+            { 
+                Position.Y += speed;
+                Animate = true;
+                row = 2;
+            }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            { Position.X += speed; }
+            { 
+                Position.X += speed;
+                Animate = true;
+                row = 1;
+            }
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
-            { Position.X -= speed; }
+            { 
+                Position.X -= speed;
+                Animate = true;
+                row = 0;
+            }
         }
 
 
@@ -67,11 +85,14 @@ namespace EngineV2.Entities
             return Position;
         }
 
-        //public override float
-
         public override Texture2D getTex()
         {
             return Texture;
+        }
+
+        public override int getRows()
+        {
+            return row;
         }
 
         public override Rectangle getHitbox()
@@ -88,6 +109,11 @@ namespace EngineV2.Entities
         {
             Position.Y = Ypos;
 
+        }
+
+        public override void setRow(int rows)
+        {
+            row = rows;
         }
 
 

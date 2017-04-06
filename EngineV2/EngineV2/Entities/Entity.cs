@@ -18,9 +18,11 @@ namespace EngineV2.Entities
         public abstract void update();
         public abstract Vector2 getPos();
         public abstract Texture2D getTex();
+        public abstract int getRows();
         public abstract Rectangle getHitbox();
         public abstract void setXPos(float Xpos);
         public abstract void setYPos(float Ypos);
+        public abstract void setRow(int row);
         public abstract void setInputMgr(InputManager inputManager);
 
 

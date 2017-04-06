@@ -43,6 +43,7 @@
     <Compile Include="Input Managment\InputPublisher.cs" />
     <Compile Include="Input Managment\InputSubscriber.cs" />
     <Compile Include="Interfaces\IAnimationMgr.cs" />
+    <Compile Include="Interfaces\ISoundMgr.cs" />
     <Compile Include="Managers\AnimationMgr.cs" />
     <Compile Include="Managers\AIManager.cs" />
     <Compile Include="Managers\BehaviourManager.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IEntityManager.cs" />
     <Compile Include="Interfaces\ISceneManager.cs" />
+    <Compile Include="Managers\SoundMgr.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\SceneManager.cs" />

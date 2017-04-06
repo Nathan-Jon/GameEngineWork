@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EngineV2.Interfaces;
-using EngineV2.Managers;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 
 namespace EngineV2.Scenes
 {
     class Scene1
     {
+
 
     }
 }

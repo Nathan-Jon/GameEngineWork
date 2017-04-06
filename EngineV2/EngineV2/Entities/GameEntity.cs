@@ -15,6 +15,7 @@ namespace EngineV2.Entities
         public Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
+        public int row;
 
         public override void Initialize(Texture2D Tex, Vector2 Posn)
         {
@@ -50,6 +51,11 @@ namespace EngineV2.Entities
             return Texture;
         }
 
+        public override int getRows()
+        {
+            return row;
+        }
+
         public override Rectangle getHitbox()
         {
             return HitBox;
@@ -65,6 +71,11 @@ namespace EngineV2.Entities
             Position.Y = Ypos;
 
         }
+        public override void setRow(int rows)
+        {
+            row = rows;
+        }
+
 
     }
 }

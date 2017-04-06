@@ -82,20 +82,20 @@ namespace EngineV2
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player.setInputMgr(inputMgr);
+
             player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400));
-            animation.Initialize(player, 3, 3);
-            scn.Initalize(player, col, behaviours, animation);
-            col.Initalize(player, screenWidth, screenHeight);
-            
-
-
             enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200));
-            scn.Initalize(enemy, col, behaviours, animation);
-            animation.Initialize(enemy, 3, 3);
-            col.Initalize(enemy, screenWidth, screenHeight);
-            behaviours.createMind<EnemyMind>(enemy);
-
             
+            animation.Initialize(player, 3, 3);
+            animation.Initialize(enemy, 3, 3);
+            
+            scn.Initalize(player, col, behaviours, animation);
+            scn.Initalize(enemy, col, behaviours, animation);
+            
+            col.Initalize(player, screenWidth, screenHeight, animation);
+            col.Initalize(enemy, screenWidth, screenHeight, animation);
+            
+            behaviours.createMind<EnemyMind>(enemy);
 
           }
 

@@ -7,7 +7,7 @@ namespace EngineV2.Interfaces
 {
     interface ICollisionManager
     {
-        void Initalize(IEntity ent, int scnWid,int scnHei);
+        void Initalize(IEntity ent, int scnWid, int scnHei, IAnimationMgr animation);
         void Update();
         void OutofBounds();
         void hitEnt();

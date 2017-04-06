@@ -12,5 +12,6 @@ namespace EngineV2.Interfaces
         void Initialize(IEntity ent, int rows, int columns);
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
+        void setRow(int rownum);
     }
 }
