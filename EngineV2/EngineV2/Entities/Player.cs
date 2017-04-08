@@ -30,12 +30,14 @@ namespace EngineV2.Entities
         private List<IEntity> collisionObjs;
         private IEntity collision;
         private CollisionManager collisionMgr;
-        private  ICollidable colliders;
+        private ICollidable colliders;
+        private ISoundManager sound;
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
         {
             Position = Posn;
             Texture = Tex;
+            sound = snd;
             colliders = _collider;
             inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
@@ -64,6 +66,7 @@ namespace EngineV2.Entities
                 Position.Y -= speed;
                 Animate = true;
                 row = 2;
+                sound.Playsnd(0);
             }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
             { 

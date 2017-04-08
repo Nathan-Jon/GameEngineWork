@@ -13,22 +13,39 @@ namespace EngineV2.Managers
 {
     class SoundManager : ISoundManager
     {
-        List<SoundEffect> SoundEffects;
+        List<SoundEffect> SoundEffects = new List<SoundEffect>();
+        List<SoundEffectInstance> InstanceList = new List<SoundEffectInstance>();
+        SoundEffectInstance instance;
         
 
         public void Initialize(SoundEffect snd, ContentManager Content)
         {
             
             Content.RootDirectory = "Content";
-            SoundEffects = new List<SoundEffect>();
             SoundEffects.Add(snd);
-            SoundEffects[0].Play();
+            CreateInstance();
         }
 
-        public void update()
+        public void CreateInstance()
         {
-
+            for (int i = 0; i < SoundEffects.Count; i++)
+            {   
+                instance = SoundEffects[i].CreateInstance();
+                InstanceList.Add(instance);
+            }
+            
+            
         }
 
+        public void Playsnd(int sndno)
+        {
+            InstanceList[sndno].IsLooped = true;
+            InstanceList[sndno].Play();
+        }
+
+        public void Stopsnd(int sndno)
+        {
+            InstanceList[sndno].Stop();
+        }
     }
 }

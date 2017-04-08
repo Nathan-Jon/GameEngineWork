@@ -7,9 +7,11 @@ using Microsoft.Xna.Framework.Content;
 
 namespace EngineV2.Interfaces
 {
-    interface ISoundManager
+    public interface ISoundManager
     {
         void Initialize(SoundEffect Snd, ContentManager Content);
-        void update();
+        void Playsnd(int sndno);
+        void Stopsnd(int sndno);
+        void CreateInstance();
     }
 }

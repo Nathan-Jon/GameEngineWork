@@ -14,7 +14,7 @@ namespace EngineV2.Entities
 {
     abstract class Entity : IEntity
     {
-        public abstract void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider);
+        public abstract void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd);
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void update();
         public abstract Vector2 getPos();

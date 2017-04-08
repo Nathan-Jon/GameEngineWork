@@ -18,7 +18,7 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
         public int row;
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
         {
             Position = Posn;
             Texture = Tex;

@@ -85,11 +85,13 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            snd.Initialize(Content.Load<SoundEffect>("background"), Content);
+
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400), collider);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200),collider);
+            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400), collider, snd);
+            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 200),collider, snd);
             
             animation.Initialize(player, 3, 3);
             animation.Initialize(enemy, 3, 3);
@@ -103,7 +105,7 @@ namespace EngineV2
 
             behaviours.createMind<EnemyMind>(enemy);
 
-            snd.Initialize(Content.Load<SoundEffect>("background"), Content);
+            
 
           }
 
