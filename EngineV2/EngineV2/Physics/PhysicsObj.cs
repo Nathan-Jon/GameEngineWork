@@ -22,7 +22,7 @@ namespace EngineV2.Physics
             {
                 if( isNewtonian[i].getGrav() == true)
                     {
-                    isNewtonian[i].setYPos(isNewtonian[i].getPos().Y + 1);
+                    isNewtonian[i].setYPos(isNewtonian[i].getPos().Y + 2);
                     }
             }
         }

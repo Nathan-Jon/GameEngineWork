@@ -14,13 +14,14 @@ namespace EngineV2.Entities
 {
     class Player : GameEntity
     {
-
+        #region Properties
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
         public static Boolean Animate = false;
-
+        public bool gravity = false;
+        public bool canJump = true;
         public float speed = 3;
 
         //Input Management
@@ -32,7 +33,9 @@ namespace EngineV2.Entities
         private CollisionManager collisionMgr;
         private ICollidable colliders;
         private ISoundManager sound;
+        #endregion
 
+        #region Initialisation
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
         {
             Position = Posn;
@@ -44,27 +47,24 @@ namespace EngineV2.Entities
             CollidableObjs();
             snd.CreateInstance();
         }
-
-        public override void CollidableObjs()
-        {
-            collisionObjs = colliders.getList();
-        }
-
-
+        //Subscribe to Event Handlers
         public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
         {
             inputMgr = inputManager;
             collisionMgr = col;
         }
+        #endregion
 
+        #region Input Management
+        //Input Manager
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            
+
 
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
-            { 
+            {
                 Position.Y -= speed;
                 Animate = true;
                 row = 2;
@@ -72,32 +72,49 @@ namespace EngineV2.Entities
                 sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
-            { 
+            {
                 Position.Y += speed;
                 Animate = true;
                 row = 2;
                 sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            { 
+            {
                 Position.X += speed;
                 Animate = true;
                 row = 1;
                 sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
-            { 
+            {
                 Position.X -= speed;
                 Animate = true;
                 row = 0;
                 sound.Playsnd(1);
             }
-            if (keyState.GetPressedKeys().Length == 0)
+            if (keyState.IsKeyDown(Keys.Space))
             {
-                    sound.Stopsnd(1);
+                if (canJump == true)
+                {
+                    jump();
+                }
+            }
+            if (keyState.GetPressedKeys().Length == 0 || SceneManager.animationlist.Count == 0)
+            {
+
+                sound.Stopsnd(1);
+
             }
         }
+        #endregion
 
+        #region Collision Management
+        //List of Collidable Objects
+        public override void CollidableObjs()
+        {
+            collisionObjs = colliders.getList();
+        }
+        //Collision Manager
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collision = data.objectCollider;
@@ -109,27 +126,47 @@ namespace EngineV2.Entities
             if (Position.Y <= 0)
             { Position.Y += speed; }
             if (HitBox.Y >= 565)
-            { Position.Y -= speed; }
+            {
+                Position.Y -= speed;
+                gravity = false;
+                canJump = true;
+            }
 
             for (int i = 0; i < collisionObjs.Count; i++)
             {
                 if (HitBox.Intersects(collisionObjs[1].getHitbox()))
-                { 
+                {
                     SceneManager.animationlist.Clear();
 
                 }
             }
         }
+        #endregion
 
+        #region Behaviours
+
+        public void jump()
+        {
+
+            canJump = false;
+            Position.Y = Position.Y - 50;
+            gravity = true;
+        }
+
+        #endregion
+
+        //Draw Method
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
+        //Update Method
         public override void update()
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
         }
 
+        #region get/sets
         public override Vector2 getPos()
         {
             return Position;
@@ -143,6 +180,10 @@ namespace EngineV2.Entities
         public override int getRows()
         {
             return row;
+        }
+        public override bool getGrav()
+        {
+            return gravity;
         }
 
         public override Rectangle getHitbox()
@@ -165,6 +206,7 @@ namespace EngineV2.Entities
         {
             row = rows;
         }
+        #endregion
 
 
     }
