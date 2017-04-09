@@ -14,19 +14,20 @@ namespace EngineV2.Managers
     {
         public static List<IEntity> Animation = new List<IEntity>();
         public static int  Width, Height;
-        private int currentFrame, totalFrames;
+        private int enemyCurrentFrame, playerCurrentFrame, totalFrames;
         private int timeSinceLastFrame = 0;
         private int MillisecondsPerFrame = 200;
-        public int row = 1;
-        int Rows, Columns, column;
-        public static Rectangle sourceRectangle, destinationRectangle;
+        public int playerRow, enemyRow;
+        int Rows, Columns, enemyColumn, playerColumn;
+        public static Rectangle enemySourceRectangle, enemyDestinationRectangle, playerSourceRectangle, playerDestinationRectangle;
 
         public void Initialize(IEntity ent, int rows, int columns)
         {
             Animation.Add(ent);
             Rows = rows;
             Columns = columns;
-            currentFrame = 0;
+            enemyCurrentFrame = 0;
+            playerCurrentFrame = 0;
             totalFrames = Rows * Columns;
         }
 
@@ -37,43 +38,53 @@ namespace EngineV2.Managers
             if (timeSinceLastFrame > MillisecondsPerFrame)
             {
                 timeSinceLastFrame -= MillisecondsPerFrame;
-                
+
+
                 if (Player.Animate == true)
                 {
-                currentFrame++;
+                playerCurrentFrame++;
                 Player.Animate = false;
-                if (currentFrame == totalFrames)
+                if (playerCurrentFrame == totalFrames)
                 {
-                    currentFrame = 0;
+                    playerCurrentFrame = 0;
                 }
+                }
+                enemyCurrentFrame++;
+                if (enemyCurrentFrame == totalFrames)
+                {
+                    enemyCurrentFrame = 0;
                 }
 
             }
 
         }
 
-        public void setRow(int rownum)
-        {
-            row = rownum;
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+
             for (int i = 0; i < Animation.Count; i++)
             {
 
                 Width = Animation[i].getTex().Width / Columns;
                 Height = Animation[i].getTex().Height / Rows;
-                column = currentFrame % Columns;
-                row = Animation[i].getRows();
-                
-
-                sourceRectangle = new Rectangle(Width * column, Height * row, Width, Height);
-                destinationRectangle = new Rectangle((int)Animation[i].getPos().X, (int)Animation[i].getPos().Y, Width, Height);
-
-                spriteBatch.Draw(Animation[i].getTex(), destinationRectangle, sourceRectangle, Color.White);
             }
+                playerRow = Animation[0].getRows();
+                enemyRow = Animation[1].getRows();
+
+
+                enemyColumn = enemyCurrentFrame % Columns;
+                playerColumn = playerCurrentFrame % Columns;
+
+                enemySourceRectangle = new Rectangle(Width * enemyColumn, Height * enemyRow, Width, Height);
+                enemyDestinationRectangle = new Rectangle((int)Animation[1].getPos().X, (int)Animation[1].getPos().Y, Width, Height);
+
+                playerSourceRectangle = new Rectangle(Width * playerColumn, Height * playerRow, Width, Height);
+                playerDestinationRectangle = new Rectangle((int)Animation[0].getPos().X, (int)Animation[0].getPos().Y, Width, Height);
+            
+            
+                spriteBatch.Draw(Animation[0].getTex(), playerDestinationRectangle, playerSourceRectangle, Color.White);
+                spriteBatch.Draw(Animation[1].getTex(), enemyDestinationRectangle, enemySourceRectangle, Color.White);
+            
             
         }
     }

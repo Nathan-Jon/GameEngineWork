@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using EngineV2.Interfaces;
 
 namespace EngineV2.Managers
@@ -18,12 +15,10 @@ namespace EngineV2.Managers
         SoundEffectInstance instance;
         
 
-        public void Initialize(SoundEffect snd, ContentManager Content)
+        public void Initialize(SoundEffect snd)
         {
-            
-            Content.RootDirectory = "Content";
             SoundEffects.Add(snd);
-            CreateInstance();
+            
         }
 
         public void CreateInstance()
@@ -46,6 +41,11 @@ namespace EngineV2.Managers
         public void Stopsnd(int sndno)
         {
             InstanceList[sndno].Stop();
+        }
+
+        public void Volume(int sndno, float Volumenum)
+        {
+            InstanceList[sndno].Volume = Volumenum;
         }
     }
 }

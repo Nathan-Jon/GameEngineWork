@@ -90,7 +90,8 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            snd.Initialize(Content.Load<SoundEffect>("background"), Content);
+            snd.Initialize(Content.Load<SoundEffect>("background"));
+            snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
 
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);

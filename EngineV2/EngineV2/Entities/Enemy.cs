@@ -40,15 +40,17 @@ namespace EngineV2.Entities
         {
             collisionObj = data.objectCollider;
 
-            if (HitBox.X >= 835)
+            if (HitBox.X > 850)
             {
-                Position.X = 834;
+                Position.X = 849;
+                row = 0;
                 Behaviours.EnemyMind.speed *= -1;
                 
             }
-            if (HitBox.X <= 0)
+            if (HitBox.X < 0)
             {
                 Position.X = 1;
+                row = 1;
                 Behaviours.EnemyMind.speed *= -1;
             }
 

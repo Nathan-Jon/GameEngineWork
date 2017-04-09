@@ -16,14 +16,12 @@ namespace EngineV2.Entities
     {
 
         public static Texture2D Texture;
-        public bool gravity = true;
         public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
         public static Boolean Animate = false;
-        
-        public float xSpeed = 3;
-        private float ySpeed = 5;
+
+        public float speed = 3;
 
         //Input Management
         private KeyboardState keyState;
@@ -44,12 +42,14 @@ namespace EngineV2.Entities
             inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
+            snd.CreateInstance();
         }
 
         public override void CollidableObjs()
         {
             collisionObjs = colliders.getList();
         }
+
 
         public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
         {
@@ -60,31 +60,41 @@ namespace EngineV2.Entities
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
+            
 
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
             { 
-                Position.Y -= ySpeed;
+                Position.Y -= speed;
                 Animate = true;
                 row = 2;
-                sound.Playsnd(0);
+                sound.Volume(1, 0.5f);
+                sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
             { 
-                Position.Y += ySpeed;
+                Position.Y += speed;
                 Animate = true;
                 row = 2;
+                sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            {                 Position.X += xSpeed;
+            { 
+                Position.X += speed;
                 Animate = true;
                 row = 1;
+                sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
             { 
-                Position.X -= xSpeed;
+                Position.X -= speed;
                 Animate = true;
                 row = 0;
+                sound.Playsnd(1);
+            }
+            if (keyState.GetPressedKeys().Length == 0)
+            {
+                    sound.Stopsnd(1);
             }
         }
 
@@ -93,19 +103,20 @@ namespace EngineV2.Entities
             collision = data.objectCollider;
 
             if (Position.X <= 0)
-            { Position.X += xSpeed; }
-            if (HitBox.X >= 800)
-            { Position.X -= xSpeed; }
+            { Position.X += speed; }
+            if (HitBox.X >= 850)
+            { Position.X -= speed; }
             if (Position.Y <= 0)
-            { Position.Y += ySpeed; }
-            if (HitBox.Y >= 500)
-            { Position.Y -= ySpeed; }
+            { Position.Y += speed; }
+            if (HitBox.Y >= 565)
+            { Position.Y -= speed; }
 
             for (int i = 0; i < collisionObjs.Count; i++)
             {
                 if (HitBox.Intersects(collisionObjs[1].getHitbox()))
-                { collisionObjs[1].setXPos(300);
-                    gravity = false;
+                { 
+                    SceneManager.animationlist.Clear();
+
                 }
             }
         }
@@ -138,10 +149,6 @@ namespace EngineV2.Entities
         {
             return HitBox;
         }
-        public override bool getGrav()
-        {
-            return gravity;
-        }
 
         public override void setXPos(float Xpos)
         {
@@ -157,10 +164,6 @@ namespace EngineV2.Entities
         public override void setRow(int rows)
         {
             row = rows;
-        }
-        public override void setGrav(bool active)
-        {
-            gravity = active;
         }
 
 
