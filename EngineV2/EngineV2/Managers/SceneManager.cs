@@ -16,7 +16,7 @@ namespace EngineV2.Managers
 
     {
         
-        public static List<IAnimationMgr> animationlist = new List<IAnimationMgr>();
+        List<IEntity> onScnEnts = new List<IEntity>();
         List<IEntity> SceneGraph = new List<IEntity>();
 
         IEntity Entities;
@@ -24,22 +24,27 @@ namespace EngineV2.Managers
         IBehaviourManager behaviours;
         InputManager input;
         CollisionManager coli;
+        IPhysicsMgr physicsMgr;
         InputPublisher inpUpdate;
         IAnimationMgr animation;
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision) : base(game)
+        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp) : base(game)
         {
             input = inp;
             coli = collision;
+            physicsMgr = physUp;
+
         }
 
         public void Initalize(IEntity ent, IBehaviourManager behav, IAnimationMgr ani)
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
+            Entities = ent;
             behaviours = behav;
-            animationlist.Add(ani);
-            SceneGraph.Add(ent);
+            animation = ani;
+
+            SceneGraph.Add(Entities);
             
         }
 
@@ -57,14 +62,9 @@ namespace EngineV2.Managers
             {
                 SceneGraph[i].update();
             }
-
-            for (int i = 0; i < animationlist.Count; i++)
-            {
-                
-                animationlist[i].Update(gameTime);
-            }
-
+            animation.Update(gameTime);
             behaviours.update();
+            physicsMgr.update();
 
             base.Update(gameTime);
 
@@ -76,11 +76,7 @@ namespace EngineV2.Managers
 
             spriteBatch.Begin();
 
-            for (int i = 0; i < animationlist.Count; i++)
-            {
-                animationlist[i].Draw(spriteBatch);
-            }
-
+            animation.Draw(spriteBatch);
 
             spriteBatch.End();
 

@@ -17,6 +17,7 @@ namespace EngineV2.Entities
         public Vector2 Position;
         public Rectangle HitBox;
         public int row;
+        public bool gravity = false;
 
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
         {
@@ -59,7 +60,10 @@ namespace EngineV2.Entities
         {
             return HitBox;
         }
-
+        public override bool getGrav()
+        {
+            return gravity;
+        }
         public override void setXPos(float Xpos)
         {
             Position.X = Xpos;
@@ -73,6 +77,9 @@ namespace EngineV2.Entities
         public override void setRow(int rows)
         {
             row = rows;
+        }
+        public override void setGrav(bool active)
+        {
         }
 
 

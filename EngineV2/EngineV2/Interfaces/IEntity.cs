@@ -22,6 +22,8 @@ namespace EngineV2.Interfaces
         void setXPos(float Xpos);
         void setYPos(float Ypos);
         void setRow(int row);
+        void setGrav(bool active);
+        bool getGrav();
         void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
         void CollidableObjs();
 

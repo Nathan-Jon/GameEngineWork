@@ -11,7 +11,6 @@ namespace EngineV2.Collision_Management
     public class CollisionManager
     {
         public event EventHandler<CollisionEventData> NewCollision;
-        //List<IEntity> CollidableObjs = new List<IEntity>();
         public IEntity collisionObj;
 
         //Raise the event
