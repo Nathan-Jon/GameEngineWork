@@ -7,6 +7,7 @@ using EngineV2.Entities;
 using EngineV2.Behaviours;
 using EngineV2.Collision_Management;
 using EngineV2.Input;
+using EngineV2.Physics;
 
 
 namespace EngineV2
@@ -33,6 +34,8 @@ namespace EngineV2
         IBehaviourManager behaviours;
         IAnimationMgr animation;
         ISoundManager snd;
+        PhysicsManager physicsMgr;
+        IPhysicsObj physicsObj;
 
         //Screen Size
         int screenWidth = 900;
@@ -63,7 +66,9 @@ namespace EngineV2
             inputMgr = new InputManager();
             ent = new EntityManager();
             col = new CollisionManager();
-            scn = new SceneManager(this, inputMgr, col);
+            physicsObj = new PhysicsObj();
+            physicsMgr = new PhysicsManager(physicsObj);
+            scn = new SceneManager(this, inputMgr, col, physicsMgr);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             behaviours = new BehaviourManager();
@@ -102,6 +107,7 @@ namespace EngineV2
             collider.isCollidable(player);
             collider.isCollidable(enemy);
 
+            physicsObj.hasPhysics(player);
 
             behaviours.createMind<EnemyMind>(enemy);
 

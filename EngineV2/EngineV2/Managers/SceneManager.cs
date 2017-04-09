@@ -24,22 +24,26 @@ namespace EngineV2.Managers
         IBehaviourManager behaviours;
         InputManager input;
         CollisionManager coli;
+        IPhysicsMgr physicsMgr;
         InputPublisher inpUpdate;
         IAnimationMgr animation;
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision) : base(game)
+        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp) : base(game)
         {
             input = inp;
             coli = collision;
+            physicsMgr = physUp;
+
         }
 
         public void Initalize(IEntity ent, IBehaviourManager behav, IAnimationMgr ani)
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             Entities = ent;
             behaviours = behav;
             animation = ani;
+
             SceneGraph.Add(Entities);
             
         }
@@ -60,6 +64,7 @@ namespace EngineV2.Managers
             }
             animation.Update(gameTime);
             behaviours.update();
+            physicsMgr.update();
 
             base.Update(gameTime);
 

@@ -16,12 +16,14 @@ namespace EngineV2.Entities
     {
 
         public static Texture2D Texture;
+        public bool gravity = true;
         public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
         public static Boolean Animate = false;
-
-        public float speed = 3;
+        
+        public float xSpeed = 3;
+        private float ySpeed = 5;
 
         //Input Management
         private KeyboardState keyState;
@@ -49,7 +51,6 @@ namespace EngineV2.Entities
             collisionObjs = colliders.getList();
         }
 
-
         public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
         {
             inputMgr = inputManager;
@@ -63,26 +64,25 @@ namespace EngineV2.Entities
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
             { 
-                Position.Y -= speed;
+                Position.Y -= ySpeed;
                 Animate = true;
                 row = 2;
                 sound.Playsnd(0);
             }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
             { 
-                Position.Y += speed;
+                Position.Y += ySpeed;
                 Animate = true;
                 row = 2;
             }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            { 
-                Position.X += speed;
+            {                 Position.X += xSpeed;
                 Animate = true;
                 row = 1;
             }
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
             { 
-                Position.X -= speed;
+                Position.X -= xSpeed;
                 Animate = true;
                 row = 0;
             }
@@ -93,18 +93,20 @@ namespace EngineV2.Entities
             collision = data.objectCollider;
 
             if (Position.X <= 0)
-            { Position.X += speed; }
+            { Position.X += xSpeed; }
             if (HitBox.X >= 800)
-            { Position.X -= speed; }
+            { Position.X -= xSpeed; }
             if (Position.Y <= 0)
-            { Position.Y += speed; }
+            { Position.Y += ySpeed; }
             if (HitBox.Y >= 500)
-            { Position.Y -= speed; }
+            { Position.Y -= ySpeed; }
 
             for (int i = 0; i < collisionObjs.Count; i++)
             {
                 if (HitBox.Intersects(collisionObjs[1].getHitbox()))
-                { collisionObjs[1].setXPos(300); }
+                { collisionObjs[1].setXPos(300);
+                    gravity = false;
+                }
             }
         }
 
@@ -136,6 +138,10 @@ namespace EngineV2.Entities
         {
             return HitBox;
         }
+        public override bool getGrav()
+        {
+            return gravity;
+        }
 
         public override void setXPos(float Xpos)
         {
@@ -151,6 +157,10 @@ namespace EngineV2.Entities
         public override void setRow(int rows)
         {
             row = rows;
+        }
+        public override void setGrav(bool active)
+        {
+            gravity = active;
         }
 
 

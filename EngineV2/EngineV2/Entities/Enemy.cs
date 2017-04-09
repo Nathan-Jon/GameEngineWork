@@ -29,8 +29,7 @@ namespace EngineV2.Entities
         {
             Position = Posn;
             Texture = Tex;
-            collisionMgr.subscribe(onCollision);
-            
+            collisionMgr.subscribe(onCollision);    
         }
         public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
         {
@@ -45,14 +44,14 @@ namespace EngineV2.Entities
             {
                 Position.X = 834;
                 Behaviours.EnemyMind.speed *= -1;
+                
             }
             if (HitBox.X <= 0)
             {
                 Position.X = 1;
                 Behaviours.EnemyMind.speed *= -1;
             }
-            //if (HitBox.Intersects(collisionObj.getHitbox()))
-            //{ speed = 9; }
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
