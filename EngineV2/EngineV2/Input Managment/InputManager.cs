@@ -9,7 +9,6 @@ namespace EngineV2.Input
 
         public event EventHandler<EventData> NewInput;
         public KeyboardState NewKey;
-        public KeyboardState oldInput;
 
         //Raise the event
         public virtual void OnNewInput(object source, KeyboardState data)
@@ -30,10 +29,11 @@ namespace EngineV2.Input
         {
             NewKey = Keyboard.GetState();
 
-            if (oldInput != NewKey && NewInput != null)
+            if (NewInput != null)
             {
                 OnNewInput(this, NewKey);
             }
+            
         }
     }
 }

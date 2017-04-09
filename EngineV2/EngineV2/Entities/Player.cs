@@ -42,6 +42,7 @@ namespace EngineV2.Entities
             inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
+            snd.CreateInstance();
         }
 
         public override void CollidableObjs()
@@ -59,6 +60,7 @@ namespace EngineV2.Entities
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
+            
 
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
@@ -66,25 +68,33 @@ namespace EngineV2.Entities
                 Position.Y -= speed;
                 Animate = true;
                 row = 2;
-                sound.Playsnd(0);
+                sound.Volume(1, 0.5f);
+                sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
             { 
                 Position.Y += speed;
                 Animate = true;
                 row = 2;
+                sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
             { 
                 Position.X += speed;
                 Animate = true;
                 row = 1;
+                sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
             { 
                 Position.X -= speed;
                 Animate = true;
                 row = 0;
+                sound.Playsnd(1);
+            }
+            if (keyState.GetPressedKeys().Length == 0)
+            {
+                    sound.Stopsnd(1);
             }
         }
 
@@ -94,17 +104,20 @@ namespace EngineV2.Entities
 
             if (Position.X <= 0)
             { Position.X += speed; }
-            if (HitBox.X >= 800)
+            if (HitBox.X >= 850)
             { Position.X -= speed; }
             if (Position.Y <= 0)
             { Position.Y += speed; }
-            if (HitBox.Y >= 500)
+            if (HitBox.Y >= 565)
             { Position.Y -= speed; }
 
             for (int i = 0; i < collisionObjs.Count; i++)
             {
                 if (HitBox.Intersects(collisionObjs[1].getHitbox()))
-                { collisionObjs[1].setXPos(300); }
+                { 
+                    SceneManager.animationlist.Clear();
+
+                }
             }
         }
 

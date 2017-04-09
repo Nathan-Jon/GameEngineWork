@@ -89,6 +89,9 @@
     <Content Include="Content\Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Footsteps.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

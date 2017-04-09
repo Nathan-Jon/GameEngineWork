@@ -16,7 +16,7 @@ namespace EngineV2.Managers
 
     {
         
-        List<IEntity> onScnEnts = new List<IEntity>();
+        public static List<IAnimationMgr> animationlist = new List<IAnimationMgr>();
         List<IEntity> SceneGraph = new List<IEntity>();
 
         IEntity Entities;
@@ -37,10 +37,9 @@ namespace EngineV2.Managers
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Entities = ent;
             behaviours = behav;
-            animation = ani;
-            SceneGraph.Add(Entities);
+            animationlist.Add(ani);
+            SceneGraph.Add(ent);
             
         }
 
@@ -58,7 +57,13 @@ namespace EngineV2.Managers
             {
                 SceneGraph[i].update();
             }
-            animation.Update(gameTime);
+
+            for (int i = 0; i < animationlist.Count; i++)
+            {
+                
+                animationlist[i].Update(gameTime);
+            }
+
             behaviours.update();
 
             base.Update(gameTime);
@@ -71,7 +76,11 @@ namespace EngineV2.Managers
 
             spriteBatch.Begin();
 
-            animation.Draw(spriteBatch);
+            for (int i = 0; i < animationlist.Count; i++)
+            {
+                animationlist[i].Draw(spriteBatch);
+            }
+
 
             spriteBatch.End();
 

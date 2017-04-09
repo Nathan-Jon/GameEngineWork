@@ -19,3 +19,9 @@
 /processorParam:Quality=Best
 /build:background.wav
 
+#begin Footsteps.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Footsteps.wav
+
