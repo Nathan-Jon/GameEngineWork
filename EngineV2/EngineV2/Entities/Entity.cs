@@ -26,6 +26,7 @@ namespace EngineV2.Entities
         public abstract void setRow(int row);
         public abstract void setGrav(bool active);
         public abstract bool getGrav();
+        public abstract float getDirection();
         public abstract void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
         public abstract void CollidableObjs();
 

@@ -9,15 +9,26 @@ namespace EngineV2.Collision_Management
     class CollidableClass : ICollidable
     {
         List<IEntity> CollidableObj = new List<IEntity>();
+        List<IEntity> InteractiveObj = new List<IEntity>();
 
-        public void isCollidable(IEntity obj)
+        public void isCollidableEntity(IEntity obj)
         {
             CollidableObj.Add(obj);
         }
 
-        public List<IEntity> getList()
+        public void isInteractiveCollidable(IEntity obj)
+        {
+            InteractiveObj.Add(obj);
+        }
+
+    public List<IEntity> getEntityList()
         {
             return CollidableObj;
+        }
+
+        public List<IEntity> getInteractiveObj()
+        {
+            return InteractiveObj; 
         }
     }
 }

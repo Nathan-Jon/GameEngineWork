@@ -12,5 +12,6 @@ namespace EngineV2.Interfaces
     interface ISceneManager
     {
         void Initalize(IEntity ent, IBehaviourManager behav, IAnimationMgr ani);
+        void Draw(GameTime gameTime);
     }
 }

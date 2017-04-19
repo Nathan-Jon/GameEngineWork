@@ -24,6 +24,7 @@ namespace EngineV2.Interfaces
         void setRow(int row);
         void setGrav(bool active);
         bool getGrav();
+        float getDirection();
         void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
         void CollidableObjs();
 

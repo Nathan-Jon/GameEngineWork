@@ -85,6 +85,11 @@ namespace EngineV2.Managers
 
             spriteBatch.Begin();
 
+            for (int i = 4; i < SceneGraph.Count; i++)
+            {
+                SceneGraph[i].Draw(spriteBatch);
+            }
+
             for (int i = 0; i < animationlist.Count; i++)
             {
                 animationlist[i].Draw(spriteBatch);

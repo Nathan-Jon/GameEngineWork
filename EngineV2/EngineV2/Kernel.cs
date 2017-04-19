@@ -26,6 +26,7 @@ namespace EngineV2
 
         IEntity player;
         IEntity enemy;
+        IEntity crate;
         IEntityManager ent;
         ISceneManager scn;
         CollisionManager col;
@@ -71,6 +72,7 @@ namespace EngineV2
             scn = new SceneManager(this, inputMgr, col, physicsMgr);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
+            crate = ent.CreateEnt<Crate>();
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
             snd = new SoundManager();
@@ -90,6 +92,7 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //PLAYER AND ENEMIES
             snd.Initialize(Content.Load<SoundEffect>("background"));
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
 
@@ -105,16 +108,24 @@ namespace EngineV2
             scn.Initalize(player,behaviours, animation);
             scn.Initalize(enemy,behaviours, animation);
 
-            collider.isCollidable(player);
-            collider.isCollidable(enemy);
+            collider.isCollidableEntity(player); //0
+            collider.isCollidableEntity(enemy);  //1
 
             physicsObj.hasPhysics(player);
 
             behaviours.createMind<EnemyMind>(enemy);
 
-            
+            //INTERACTIVE OBJECTS
 
-          }
+            crate.applyEventHandlers(inputMgr, col);
+
+            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd);
+                
+            //animation.Initialize(crate, 0,0);
+            scn.Initalize(crate, behaviours, animation);
+
+            collider.isInteractiveCollidable(crate);
+        }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload

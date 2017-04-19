@@ -21,8 +21,14 @@ namespace EngineV2.Entities
         public int row = 1;
         public static Boolean Animate = false;
         public bool gravity = false;
-        public bool canJump = true;
         public float speed = 3;
+        public float ySpeed = 3;
+
+        //Jump Variables
+        public bool canJump = true;
+        public float maxJump = -100;
+        public float jumpHeight;
+
 
         //Input Management
         private KeyboardState keyState;
@@ -65,7 +71,7 @@ namespace EngineV2.Entities
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
             {
-                Position.Y -= speed;
+                Position.Y -= ySpeed;
                 Animate = true;
                 row = 2;
                 sound.Volume(1, 0.5f);
@@ -73,13 +79,14 @@ namespace EngineV2.Entities
             }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
             {
-                Position.Y += speed;
+                Position.Y += ySpeed;
                 Animate = true;
                 row = 2;
                 sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
             {
+                speed = 3;
                 Position.X += speed;
                 Animate = true;
                 row = 1;
@@ -87,7 +94,8 @@ namespace EngineV2.Entities
             }
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
             {
-                Position.X -= speed;
+                speed = -3;
+                Position.X += speed;
                 Animate = true;
                 row = 0;
                 sound.Playsnd(1);
@@ -112,7 +120,7 @@ namespace EngineV2.Entities
         //List of Collidable Objects
         public override void CollidableObjs()
         {
-            collisionObjs = colliders.getList();
+            collisionObjs = colliders.getEntityList();
         }
         //Collision Manager
         public virtual void onCollision(object source, CollisionEventData data)
@@ -120,14 +128,14 @@ namespace EngineV2.Entities
             collision = data.objectCollider;
 
             if (Position.X <= 0)
-            { Position.X += speed; }
+            {Position.X += speed * -1;}
             if (HitBox.X >= 850)
-            { Position.X -= speed; }
+            { Position.X += speed * -1; }
             if (Position.Y <= 0)
-            { Position.Y += speed; }
+            { Position.Y += ySpeed; }
             if (HitBox.Y >= 565)
             {
-                Position.Y -= speed;
+                Position.Y -= ySpeed;
                 gravity = false;
                 canJump = true;
             }
@@ -147,10 +155,12 @@ namespace EngineV2.Entities
 
         public void jump()
         {
+            if (canJump == true)
+            {
+                Position.Y -= 8;
+                gravity = true;
+            }
 
-            canJump = false;
-            Position.Y = Position.Y - 50;
-            gravity = true;
         }
 
         #endregion
@@ -158,7 +168,9 @@ namespace EngineV2.Entities
         //Draw Method
         public override void Draw(SpriteBatch spriteBatch)
         {
+
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
+
         }
         //Update Method
         public override void update()
@@ -171,12 +183,10 @@ namespace EngineV2.Entities
         {
             return Position;
         }
-
         public override Texture2D getTex()
         {
             return Texture;
         }
-
         public override int getRows()
         {
             return row;
@@ -185,27 +195,31 @@ namespace EngineV2.Entities
         {
             return gravity;
         }
-
+        public float getDirection()
+        {
+            return speed;
+        }
         public override Rectangle getHitbox()
         {
             return HitBox;
         }
 
+
+
         public override void setXPos(float Xpos)
         {
             Position.X = Xpos;
-
         }
         public override void setYPos(float Ypos)
         {
             Position.Y = Ypos;
-
         }
-
         public override void setRow(int rows)
         {
             row = rows;
         }
+
+
         #endregion
 
 

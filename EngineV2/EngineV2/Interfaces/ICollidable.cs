@@ -8,8 +8,10 @@ namespace EngineV2.Interfaces
     public interface ICollidable
     {
 
-        void isCollidable(IEntity obj);
-        List<IEntity> getList();
+        void isCollidableEntity(IEntity obj);
+        void isInteractiveCollidable(IEntity obj);
+        List<IEntity> getEntityList();
+        List<IEntity> getInteractiveObj();
 
     }
 }
