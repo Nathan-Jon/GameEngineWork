@@ -44,6 +44,9 @@
     <Compile Include="Collision Management\CollisionEventData.cs" />
     <Compile Include="Collision Management\CollisionManager.cs" />
     <Compile Include="Entities\Crate.cs" />
+    <Compile Include="Entities\Door.cs" />
+    <Compile Include="Entities\Ladder.cs" />
+    <Compile Include="Entities\Lever.cs" />
     <Compile Include="Entities\Platform.cs" />
     <Compile Include="Input Managment\EventData.cs" />
     <Compile Include="Input Managment\InputManager.cs" />
