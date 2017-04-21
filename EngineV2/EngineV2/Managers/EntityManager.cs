@@ -11,7 +11,7 @@ namespace EngineV2.Managers
 {
     class EntityManager : IEntityManager
     {
-        public List<IEntity> Entities = new List<IEntity>();
+        public static List<IEntity> Entities = new List<IEntity>();
         
         
         public T CreateEnt<T>() where T : IEntity, new()

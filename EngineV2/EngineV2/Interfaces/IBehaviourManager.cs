@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace EngineV2.Interfaces
 {
-    interface IBehaviourManager
+    public interface IBehaviourManager
     {
         void update();
         T createMind<T>(IEntity ent) where T : IBehaviour, new();

@@ -6,12 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
+using EngineV2.BackGround;
 
 namespace EngineV2.Interfaces
 {
     interface ISceneManager
     {
-        void Initalize(IEntity ent, IBehaviourManager behav, IAnimationMgr ani);
+        void Initalize(IAnimationMgr ani, IBackGrounds back);
         void Draw(GameTime gameTime);
     }
 }

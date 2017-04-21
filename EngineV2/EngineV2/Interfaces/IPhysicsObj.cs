@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EngineV2.Interfaces
 {
-    interface IPhysicsObj
+    public interface IPhysicsObj
     {
         void hasPhysics(IEntity obj);
         void gravity();

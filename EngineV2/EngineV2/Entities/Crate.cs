@@ -17,7 +17,19 @@ namespace EngineV2.Entities
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
+        private float moveDirec = 3;
+        private bool moveObject = false;
+        private bool crateContact = false;
 
+        //Physics
+        public bool gravity = true;
+
+
+        //Input Management
+        private KeyboardState keyState;
+        private InputManager input;
+
+        //Collision Management
         private IEntity collisionObj;
         private CollisionManager collisionMgr;
         private ICollidable colliders;
@@ -25,22 +37,47 @@ namespace EngineV2.Entities
 
 
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
         {
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
+            input.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
-            
-          
+            _collider.isInteractiveCollidable(this);
+            phys.hasPhysics(this);
         }
 
         public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
         {
+            input = inputManager;
             collisionMgr = collisions;
         }
-        
+
+        public virtual void OnNewInput(object source, EventData data)
+        {
+            keyState = data.newKey;
+            if (crateContact && keyState.IsKeyDown(Keys.H) || keyState.IsKeyDown(Keys.Enter))
+            {
+
+                    moveObject = true;
+
+                if (moveObject && keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
+                {
+                    Position.X += 3;
+                }
+                if (moveObject  && keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
+                {
+                    Position.X += -3;
+                }
+            }
+            if (keyState.IsKeyUp(Keys.E))
+            {
+                moveObject = false;
+            }
+        }
+
         //List of Collidable Objects
         public override void CollidableObjs()
         {
@@ -54,10 +91,9 @@ namespace EngineV2.Entities
             for (int i = 0; i < interactiveObjs.Count; i++)
             {
                 if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
-                {
-                    float move = interactiveObjs[0].getDirection();
-                    Position.X += move;
-                }
+                {  crateContact = true;  }
+                else
+                {   crateContact = false; }
             }
         }
 
@@ -69,7 +105,16 @@ namespace EngineV2.Entities
 
         public override void update()
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
+
+        #region  get/Sets
+
+        public override bool getGrav()
+        {
+            return gravity;
+        }
+
+        #endregion
     }
 }

@@ -38,6 +38,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BackGround\BackGrounds.cs" />
+    <Compile Include="BackGround\IBackGrounds.cs" />
     <Compile Include="Collision Management\CollidableClass.cs" />
     <Compile Include="Collision Management\CollisionEventData.cs" />
     <Compile Include="Collision Management\CollisionManager.cs" />
@@ -53,7 +55,6 @@
     <Compile Include="Interfaces\IPhysicsObj.cs" />
     <Compile Include="Interfaces\ISoundManager.cs" />
     <Compile Include="Managers\AnimationMgr.cs" />
-    <Compile Include="Managers\AIManager.cs" />
     <Compile Include="Managers\BehaviourManager.cs" />
     <Compile Include="Interfaces\IMoveBehaviour.cs" />
     <Compile Include="Behaviours\xMoveBehaviour.cs" />
@@ -66,7 +67,6 @@
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="Entities\GameEntity.cs" />
-    <Compile Include="Interfaces\IAIManager.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IEntityManager.cs" />
     <Compile Include="Interfaces\ISceneManager.cs" />
@@ -89,10 +89,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Chasting.png">
+    <Content Include="Content\BackgroundTex1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Crate Sprite.jpg">
+    <Content Include="Content\Chasting.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\crate.png">

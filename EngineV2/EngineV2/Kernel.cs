@@ -8,7 +8,7 @@ using EngineV2.Behaviours;
 using EngineV2.Collision_Management;
 using EngineV2.Input;
 using EngineV2.Physics;
-
+using EngineV2.BackGround;
 
 namespace EngineV2
 {
@@ -37,10 +37,15 @@ namespace EngineV2
         ISoundManager snd;
         PhysicsManager physicsMgr;
         IPhysicsObj physicsObj;
+        IBackGrounds back;
+
+        public static Kernel instance;
 
         //Screen Size
         int screenWidth = 900;
         int screenHeight = 600;
+
+        
 
         #endregion
 
@@ -53,6 +58,8 @@ namespace EngineV2
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.PreferredBackBufferWidth = screenWidth;
             this.IsMouseVisible = true;
+
+            instance = this;
         }
 
         /// <summary>
@@ -77,6 +84,7 @@ namespace EngineV2
             animation = new AnimationMgr();
             snd = new SoundManager();
             collider = new CollidableClass();
+            back = new BackGrounds(screenWidth, screenHeight);
 
             Components.Add((GameComponent)scn);
 
@@ -92,39 +100,33 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
+
             //PLAYER AND ENEMIES
             snd.Initialize(Content.Load<SoundEffect>("background"));
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
+            snd.CreateInstance();
 
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400), collider, snd);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 564),collider, snd);
+            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400), collider, snd, physicsObj, behaviours);
+            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 564), collider, snd, physicsObj, behaviours);
             
             animation.Initialize(player, 3, 3);
             animation.Initialize(enemy, 3, 3);
             
-            scn.Initalize(player,behaviours, animation);
-            scn.Initalize(enemy,behaviours, animation);
+            scn.Initalize(animation, back);
 
-            collider.isCollidableEntity(player); //0
-            collider.isCollidableEntity(enemy);  //1
 
-            physicsObj.hasPhysics(player);
-
-            behaviours.createMind<EnemyMind>(enemy);
 
             //INTERACTIVE OBJECTS
 
             crate.applyEventHandlers(inputMgr, col);
 
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd);
-                
-            //animation.Initialize(crate, 0,0);
-            scn.Initalize(crate, behaviours, animation);
+            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd, physicsObj, behaviours);
+            
 
-            collider.isInteractiveCollidable(crate);
         }
 
         /// <summary>

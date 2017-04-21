@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EngineV2.Interfaces
 {
-    interface IBehaviour
+    public interface IBehaviour
     {
         void update();
         void Initialise(IEntity ent);

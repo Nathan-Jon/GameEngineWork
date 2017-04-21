@@ -20,7 +20,7 @@ namespace EngineV2.Entities
         public bool gravity = false;
         public float speed;
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
         {
             Position = Posn;
             Texture = Tex;

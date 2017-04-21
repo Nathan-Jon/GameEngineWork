@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
 using EngineV2.Input;
 using EngineV2.Collision_Management;
+using EngineV2.BackGround;
 
 namespace EngineV2.Managers
 {
@@ -15,19 +16,15 @@ namespace EngineV2.Managers
 
 
     {
-        
-        List<IEntity> onScnEnts = new List<IEntity>();
+        List<IBehaviour> behaviours = new List<IBehaviour>();
         List<IEntity> SceneGraph = new List<IEntity>();
         public static List<IAnimationMgr> animationlist = new List<IAnimationMgr>();
 
-        IEntity Entities;
         SpriteBatch spriteBatch;
-        IBehaviourManager behaviours;
         InputManager input;
         CollisionManager coli;
         IPhysicsMgr physicsMgr;
-        InputPublisher inpUpdate;
-        IAnimationMgr animation;
+        IBackGrounds background;
 
         public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp) : base(game)
         {
@@ -37,17 +34,14 @@ namespace EngineV2.Managers
 
         }
 
-        public void Initalize(IEntity ent, IBehaviourManager behav, IAnimationMgr ani)
+        public void Initalize(IAnimationMgr ani, IBackGrounds back)
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
-            Entities = ent;
-            behaviours = behav;
-            animation = ani;
-            animationlist.Add(ani);
-            SceneGraph.Add(ent);
 
-            SceneGraph.Add(Entities);
+            background = back;
+            behaviours = BehaviourManager.behaviours;
+            animationlist.Add(ani);
+            SceneGraph = EntityManager.Entities;
             
         }
 
@@ -72,7 +66,12 @@ namespace EngineV2.Managers
                 animationlist[i].Update(gameTime);
             }
 
-            behaviours.update();
+            for (int i = 0; i < behaviours.Count; i++)
+            {
+
+                behaviours[i].update();
+            }
+
             physicsMgr.update();
 
             base.Update(gameTime);
@@ -85,7 +84,9 @@ namespace EngineV2.Managers
 
             spriteBatch.Begin();
 
-            for (int i = 4; i < SceneGraph.Count; i++)
+            background.Draw(spriteBatch);
+
+            for (int i = 2; i < SceneGraph.Count; i++)
             {
                 SceneGraph[i].Draw(spriteBatch);
             }

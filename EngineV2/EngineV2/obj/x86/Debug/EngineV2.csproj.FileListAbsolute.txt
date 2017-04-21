@@ -30,8 +30,6 @@ C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\User\Desktop\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
 C:\Users\User\Desktop\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chastings.jpg
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Pug.png
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
@@ -73,3 +71,10 @@ C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Crate Sprite.jpg
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb

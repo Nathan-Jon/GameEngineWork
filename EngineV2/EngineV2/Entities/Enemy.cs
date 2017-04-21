@@ -9,6 +9,7 @@ using EngineV2.Interfaces;
 using EngineV2.Managers;
 using EngineV2.Collision_Management;
 using EngineV2.Input;
+using EngineV2.Behaviours;
 
 namespace EngineV2.Entities
 {
@@ -25,11 +26,13 @@ namespace EngineV2.Entities
         private CollisionManager collisionMgr;
 
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
         {
             Position = Posn;
             Texture = Tex;
-            collisionMgr.subscribe(onCollision);    
+            collisionMgr.subscribe(onCollision);
+            _collider.isCollidableEntity(this);
+            behaviours.createMind<EnemyMind>(this);
         }
         public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
         {

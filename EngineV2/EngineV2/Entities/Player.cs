@@ -19,15 +19,15 @@ namespace EngineV2.Entities
         public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
-        public static Boolean Animate = false;
+        public static bool Animate = false;
         public bool gravity = false;
-        public float speed = 3;
-        public float ySpeed = 3;
+        private float speed = 3;
+        private float ySpeed = 3;
 
         //Jump Variables
-        public bool canJump = true;
-        public float maxJump = -100;
-        public float jumpHeight;
+        private bool canJump = true;
+        private float maxJump = -100;
+        private float jumpHeight;
 
 
         //Input Management
@@ -42,7 +42,7 @@ namespace EngineV2.Entities
         #endregion
 
         #region Initialisation
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
         {
             Position = Posn;
             Texture = Tex;
@@ -51,7 +51,8 @@ namespace EngineV2.Entities
             inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
-            snd.CreateInstance();
+            _collider.isCollidableEntity(this);
+            phys.hasPhysics(this);
         }
         //Subscribe to Event Handlers
         public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
@@ -67,6 +68,7 @@ namespace EngineV2.Entities
         {
             keyState = data.newKey;
 
+            sound.Volume(1, 0.5f);
 
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
@@ -74,7 +76,6 @@ namespace EngineV2.Entities
                 Position.Y -= ySpeed;
                 Animate = true;
                 row = 2;
-                sound.Volume(1, 0.5f);
                 sound.Playsnd(1);
             }
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
@@ -160,7 +161,6 @@ namespace EngineV2.Entities
                 Position.Y -= 8;
                 gravity = true;
             }
-
         }
 
         #endregion
@@ -179,6 +179,7 @@ namespace EngineV2.Entities
         }
 
         #region get/sets
+
         public override Vector2 getPos()
         {
             return Position;
@@ -204,8 +205,6 @@ namespace EngineV2.Entities
             return HitBox;
         }
 
-
-
         public override void setXPos(float Xpos)
         {
             Position.X = Xpos;
@@ -218,7 +217,6 @@ namespace EngineV2.Entities
         {
             row = rows;
         }
-
 
         #endregion
 

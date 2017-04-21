@@ -11,7 +11,7 @@ namespace EngineV2.Managers
 {
     class BehaviourManager: IBehaviourManager
     {
-        private List<IBehaviour> behaviours = new List<IBehaviour>();
+        public static List<IBehaviour> behaviours = new List<IBehaviour>();
 
         public void update()
         {
