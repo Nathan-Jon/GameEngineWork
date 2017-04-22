@@ -80,3 +80,4 @@ C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.x
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
+C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav

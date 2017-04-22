@@ -76,7 +76,7 @@ namespace EngineV2
             col = new CollisionManager();
             physicsObj = new PhysicsObj();
             physicsMgr = new PhysicsManager(physicsObj);
-            scn = new SceneManager(this, inputMgr, col, physicsMgr);
+            scn = new SceneManager(this, inputMgr, col, physicsMgr, Content);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             crate = ent.CreateEnt<Crate>();
@@ -105,17 +105,18 @@ namespace EngineV2
             //PLAYER AND ENEMIES
             snd.Initialize(Content.Load<SoundEffect>("background"));
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
+            snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
             snd.CreateInstance();
 
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"),new Vector2(200, 400), collider, snd, physicsObj, behaviours);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 564), collider, snd, physicsObj, behaviours);
-            
+            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(200, 400), collider, snd, physicsObj, behaviours);
+            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 562), collider, snd, physicsObj, behaviours);
+
             animation.Initialize(player, 3, 3);
             animation.Initialize(enemy, 3, 3);
-            
+
             scn.Initalize(animation, back);
 
 
@@ -125,7 +126,7 @@ namespace EngineV2
             crate.applyEventHandlers(inputMgr, col);
 
             crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd, physicsObj, behaviours);
-            
+
 
         }
 

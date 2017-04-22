@@ -68,7 +68,7 @@ namespace EngineV2.Entities
         {
             keyState = data.newKey;
 
-            sound.Volume(1, 0.5f);
+            sound.Volume(1, 0.1f);
 
             //Act on the data
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))

@@ -42,14 +42,18 @@ namespace EngineV2.Managers
 
                 if (Player.Animate == true)
                 {
-                playerCurrentFrame++;
-                Player.Animate = false;
+                
+                    playerCurrentFrame++;
+                    Player.Animate = false;
+
                 if (playerCurrentFrame == totalFrames)
                 {
                     playerCurrentFrame = 0;
                 }
                 }
-                enemyCurrentFrame++;
+
+                    enemyCurrentFrame++;
+
                 if (enemyCurrentFrame == totalFrames)
                 {
                     enemyCurrentFrame = 0;

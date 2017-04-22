@@ -5,10 +5,12 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 using EngineV2.Interfaces;
 using EngineV2.Input;
 using EngineV2.Collision_Management;
 using EngineV2.BackGround;
+using EngineV2.Scenes;
 
 namespace EngineV2.Managers
 {
@@ -24,19 +26,29 @@ namespace EngineV2.Managers
         InputManager input;
         CollisionManager coli;
         IPhysicsMgr physicsMgr;
-        IBackGrounds background;
+        static IBackGrounds background;
+        Scene1 scene;
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp) : base(game)
+        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp, ContentManager content) : base(game)
         {
             input = inp;
             coli = collision;
             physicsMgr = physUp;
+            //scene = new Scene1();
+            //scene.LoadContent(content);
 
+        }
+
+        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp)
+            : base(game)
+        {
+            input = inp;
+            coli = collision;
+            physicsMgr = physUp;
         }
 
         public void Initalize(IAnimationMgr ani, IBackGrounds back)
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             background = back;
             behaviours = BehaviourManager.behaviours;
@@ -80,6 +92,7 @@ namespace EngineV2.Managers
 
         public override void Draw(GameTime gameTime)
         {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
             GraphicsDevice.Clear(Color.AntiqueWhite);
 
             spriteBatch.Begin();

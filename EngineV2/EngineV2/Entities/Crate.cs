@@ -22,7 +22,7 @@ namespace EngineV2.Entities
         private bool crateContact = false;
 
         //Physics
-        public bool gravity = true;
+        public bool gravity;
 
 
         //Input Management
@@ -33,7 +33,9 @@ namespace EngineV2.Entities
         private IEntity collisionObj;
         private CollisionManager collisionMgr;
         private ICollidable colliders;
+        private ISoundManager sound;
         private List<IEntity> interactiveObjs;
+        
 
 
 
@@ -42,6 +44,7 @@ namespace EngineV2.Entities
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
+            sound = snd;
             input.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
@@ -58,23 +61,29 @@ namespace EngineV2.Entities
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (crateContact && keyState.IsKeyDown(Keys.H) || keyState.IsKeyDown(Keys.Enter))
+            if (crateContact && keyState.IsKeyDown(Keys.E) || crateContact && keyState.IsKeyDown(Keys.Enter))
             {
 
                     moveObject = true;
+                    sound.Volume(2, 0.2f);
 
-                if (moveObject && keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
+                    if (moveObject && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
                 {
                     Position.X += 3;
+                    sound.Playsnd(2);
                 }
-                if (moveObject  && keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
+                    if (moveObject && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
                 {
                     Position.X += -3;
+                    sound.Playsnd(2);
                 }
+                    
             }
-            if (keyState.IsKeyUp(Keys.E))
+
+
+            if (crateContact == false)
             {
-                moveObject = false;
+                sound.Stopsnd(2);
             }
         }
 

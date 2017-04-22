@@ -23,6 +23,7 @@ namespace EngineV2.Scenes
     {
         IEntity player;
         IEntity enemy;
+        IEntity crate;
         IEntityManager ent;
         IBackGrounds back;
         CollisionManager col;
@@ -47,6 +48,7 @@ namespace EngineV2.Scenes
             scn = new SceneManager(Kernel.instance, inputMgr, col, physicsMgr);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
+            crate = ent.CreateEnt<Crate>();
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
             snd = new SoundManager();
@@ -57,20 +59,33 @@ namespace EngineV2.Scenes
         {
             back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
 
-            snd.Initialize(Content.Load<SoundEffect>("background"));
-            snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
+            ////Scene 1////
 
-            player.applyEventHandlers(inputMgr, col);
-            enemy.applyEventHandlers(inputMgr, col);
+            //back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(200, 400), collider, snd, physicsObj, behaviours);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 564), collider, snd, physicsObj, behaviours);
+            ////PLAYER AND ENEMIES
+            //snd.Initialize(Content.Load<SoundEffect>("background"));
+            //snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
+            //snd.CreateInstance();
 
-            animation.Initialize(player, 3, 3);
-            animation.Initialize(enemy, 3, 3);
+            //player.applyEventHandlers(inputMgr, col);
+            //enemy.applyEventHandlers(inputMgr, col);
 
-            scn.Initalize(animation, back);
-            scn.Initalize(animation, back);
+            //player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(200, 400), collider, snd, physicsObj, behaviours);
+            //enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 564), collider, snd, physicsObj, behaviours);
+
+            //animation.Initialize(player, 3, 3);
+            //animation.Initialize(enemy, 3, 3);
+
+            //scn.Initalize(animation, back);
+
+
+
+            ////INTERACTIVE OBJECTS
+
+            //crate.applyEventHandlers(inputMgr, col);
+
+            //crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd, physicsObj, behaviours);
 
 
         }
