@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="BackGround\BackGrounds.cs" />
     <Compile Include="BackGround\IBackGrounds.cs" />
+    <Compile Include="Buttons\ButtonList.cs" />
     <Compile Include="Buttons\ExitButton.cs" />
     <Compile Include="Buttons\IButton.cs" />
     <Compile Include="Buttons\ResumeButton.cs" />
@@ -47,6 +48,9 @@
     <Compile Include="Collision Management\CollidableClass.cs" />
     <Compile Include="Collision Management\CollisionEventData.cs" />
     <Compile Include="Collision Management\CollisionManager.cs" />
+    <Compile Include="Entities\LLadder.cs" />
+    <Compile Include="Entities\MLadder.cs" />
+    <Compile Include="Entities\SLadder.cs" />
     <Compile Include="Entities\Crate.cs" />
     <Compile Include="Entities\Door.cs" />
     <Compile Include="Entities\Ladder.cs" />
@@ -86,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\SceneManager.cs" />
     <Compile Include="Scenes\IScene.cs" />
+    <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\Scene1.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +122,9 @@
     <Content Include="Content\Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Exit Button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\ExitLevelSFX.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -129,10 +137,25 @@
     <Content Include="Content\Lever.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\LLadderTex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\LPlatformTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\MenuBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\MLadderTex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Platform.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\SLadderTex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Start Button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\XLPlatformTex.png">

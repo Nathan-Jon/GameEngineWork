@@ -21,31 +21,35 @@ namespace EngineV2.Managers
         List<IBehaviour> behaviours = new List<IBehaviour>();
         List<IEntity> SceneGraph = new List<IEntity>();
         public static List<IAnimationMgr> animationlist = new List<IAnimationMgr>();
+        public static List<IScene> SceneList;
 
         SpriteBatch spriteBatch;
         InputManager input;
         CollisionManager coli;
         IPhysicsMgr physicsMgr;
         static IBackGrounds background;
-        IScene scn;
 
-        public static bool Level1 = true;
+        public static bool Level1 = false;
+        public static bool mainmenu = true;
+        public static bool ExitGame = false;
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp, IScene scene) : base(game)
+        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp) : base(game)
         {
             input = inp;
             coli = collision;
             physicsMgr = physUp;
-            scn = scene;
+            
         }
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp)
+        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp, List<IScene> scenelist)
             : base(game)
         {
             input = inp;
             coli = collision;
             physicsMgr = physUp;
+            SceneList = scenelist;
         }
+
 
         public void Initalize(IAnimationMgr ani, IBackGrounds back, ISoundManager sound)
         {
@@ -59,14 +63,19 @@ namespace EngineV2.Managers
 
         public override void Update(GameTime gameTime) 
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (ExitGame == true)
             {
                 Game.Exit();
             }
 
-            if (Kernel.StartGame == true)
+            if (mainmenu == true)
             {
-                scn.update(gameTime);
+                SceneList[0].update(gameTime);
+            }
+
+            if (Level1 == true)
+            {
+                SceneList[1].update(gameTime);
             }
 
             base.Update(gameTime);
@@ -79,11 +88,16 @@ namespace EngineV2.Managers
            
 
             spriteBatch.Begin();
+            if (mainmenu == true)
+            {
+                SceneList[0].Draw(spriteBatch);
+            }
 
             if (Level1 == true)
             {
-                scn.Draw(spriteBatch);
+                SceneList[1].Draw(spriteBatch);
             }
+
 
             spriteBatch.End();
             base.Draw(gameTime);

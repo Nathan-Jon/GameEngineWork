@@ -7,10 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace EngineV2.Buttons
 {
-    class ResumeButton
+    class ResumeButton : IButton
     {
         public Texture2D Texture;
         public Vector2 Position;
+        public Rectangle HitBox;
 
         public void Initialize(Texture2D tex, Vector2 Posn)
         {
@@ -23,6 +24,25 @@ namespace EngineV2.Buttons
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
 
+        }
+
+        public Vector2 GetButtonPos()
+        {
+            return Position;
+        }
+        
+        public void update()
+        {
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+        }
+
+        public Rectangle getHitbox()
+        {
+            return HitBox;
+        }
+
+        public void click()
+        {
         }
     }
 }
