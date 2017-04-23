@@ -11,5 +11,9 @@ namespace EngineV2.Buttons
     {
         void Initialize(Texture2D tex, Vector2 Posn);
         void Draw(SpriteBatch spriteBatch);
+        Vector2 GetButtonPos();
+        void update();
+        Rectangle getHitbox();
+        void click();
     }
 }

@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
+using EngineV2.Buttons;
+using EngineV2.BackGround;
+using EngineV2.Managers;
+
+namespace EngineV2.Scenes
+{
+    class MainMenu : IScene
+    {
+        public static List<IButton> Buttons = new List<IButton>();
+        IButton StartBut, ResumeBut, ExitBut;
+        IBackGrounds back;
+        ButtonList buttonlist;
+        MouseState mouseinput;
+
+        public MainMenu()
+        {
+            
+            back = new BackGrounds(900, 600);
+            StartBut = new StartButton();
+            ResumeBut = new ResumeButton();
+            ExitBut = new ExitButton();
+            buttonlist = new ButtonList();
+        }
+
+        public void LoadContent(ContentManager Content)
+        {
+            back.Initialize(Content.Load<Texture2D>("MenuBackground"));
+
+            StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400));
+            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500));
+
+            Buttons = ButtonList.menuButtons;
+            buttonlist.Initalize(StartBut);
+            buttonlist.Initalize(ExitBut);
+
+        }
+
+        public void update(GameTime gameTime)
+        {
+            for (int i = 0; i < Buttons.Count; i++)
+            {
+                Buttons[i].update();
+            }
+            mouseinput = Mouse.GetState();
+
+            if (Buttons.Count > 0)
+            {
+                if (mouseinput.X > Buttons[0].getHitbox().X && mouseinput.Y > Buttons[0].getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
+                {
+                    Buttons[0].click();
+                }
+                if (mouseinput.X > Buttons[1].getHitbox().X && mouseinput.Y > Buttons[1].getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
+                {
+                    Buttons[1].click();
+                }
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+                back.Draw(spriteBatch);
+                for (int i = 0; i < Buttons.Count; i++)
+                {
+                    Buttons[i].Draw(spriteBatch);
+                }
+        }
+    }
+}

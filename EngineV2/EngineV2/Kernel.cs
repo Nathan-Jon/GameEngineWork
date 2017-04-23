@@ -1,6 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using EngineV2.Interfaces;
 using EngineV2.Managers;
 using EngineV2.Entities;
@@ -23,37 +27,19 @@ namespace EngineV2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        //Interfaces
-
-        //Environment
-        IEntity platform;
-        IEntity platform1;
-
-        //AI
-        IEntity enemy;
-
-        //Player
-        IEntity player;
-
-        // Interactables
-        IEntity crate;
-
-        //Managers
-        IEntityManager ent;
         ISceneManager scn;
         CollisionManager col;
         ICollidable collider;
         InputManager inputMgr;
-        IBehaviourManager behaviours;
-        IAnimationMgr animation;
-        ISoundManager snd;
         PhysicsManager physicsMgr;
         IPhysicsObj physicsObj;
-        IBackGrounds back;
+
+        List<IScene> SceneList = new List<IScene>();
         IScene scene;
+        IScene mainmenu;
 
         public static Kernel instance;
-        public static bool StartGame = false;
+
 
         //Screen Size
         int screenWidth = 900;
@@ -89,8 +75,12 @@ namespace EngineV2
             col = new CollisionManager();
             physicsObj = new PhysicsObj();
             physicsMgr = new PhysicsManager(physicsObj);
+            mainmenu = new MainMenu();
+            SceneList.Add(mainmenu);
             scene = new Scene1();
-            scn = new SceneManager(this, inputMgr, col, physicsMgr, scene);
+            SceneList.Add(scene);
+            scn = new SceneManager(this, inputMgr, col, physicsMgr, SceneList);
+            SceneManager.mainmenu = true;
 
             Components.Add((GameComponent)scn);
 
@@ -104,6 +94,7 @@ namespace EngineV2
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+            mainmenu.LoadContent(Content);
             scene.LoadContent(Content);
         }
 
