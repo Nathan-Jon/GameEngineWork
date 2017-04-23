@@ -18,11 +18,11 @@ namespace EngineV2.Entities
     *when player comes into contact with this entity they can go and and down on the y axis
     *
     */
-     class Ladder : GameEntity
+    class Ladder : GameEntity
     {
         #region Instance Variables
 
-
+        public string tag = "Ladder";
 
         //Input Management
         private KeyboardState keyState;
@@ -32,7 +32,7 @@ namespace EngineV2.Entities
         private IEntity collisionObj;
         private CollisionManager collisionMgr;
         private ICollidable colliders;
-        private List<IEntity> interactiveObjs;
+        private List<IEntity> playerObj;
 
         #endregion
 
@@ -50,6 +50,7 @@ namespace EngineV2.Entities
 
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
+            _collider.isInteractiveCollidable(this);
         }
         #region EVENTS
 
@@ -60,20 +61,18 @@ namespace EngineV2.Entities
             collisionMgr = collisions;
         }
 
+        #region INPUT
         //INPUT EVENTS
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (keyState.IsKeyDown(Keys.H) || keyState.IsKeyDown(Keys.Enter))
-            {
-                //set y move value
-            }
         }
-
+        #endregion
+        #region COLLISIONS
         //INITIALISE INTERACTIVEOBJS LIST
         public override void CollidableObjs()
         {
-            interactiveObjs = colliders.getEntityList();
+            playerObj = colliders.getPlayableObj();
         }
 
         //COLLISION EVENTS
@@ -81,15 +80,33 @@ namespace EngineV2.Entities
         {
             collisionObj = data.objectCollider;
 
-            for (int i = 0; i < interactiveObjs.Count; i++)
-            {
-                //checks to see if player is in contact with the ladder 
-                if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
-                {
-                    //set y move action
-                }
-            }
         }
         #endregion
+        #endregion
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
+        }
+        public override void update()
+        {
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+        }
+        public override Rectangle getHitbox()
+        {
+            return HitBox;
+        }
+        public override string getTag()
+        {
+            return tag;
+        }
+        public override void setXPos(float Xpos)
+        {
+            Position.X = Xpos;
+        }
+        public override void setYPos(float Ypos)
+        {
+            Position.Y = Ypos;
+        }
     }
 }

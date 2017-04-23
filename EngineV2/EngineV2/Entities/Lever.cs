@@ -19,8 +19,9 @@ namespace EngineV2.Entities
 
         //BEHAVIOURS
         //LEVER RESPONSIBILITY CLASS
+        IEntity target;
 
-
+        private bool canTrigger = false;
         //Input Management
         private KeyboardState keyState;
         private InputManager input;
@@ -29,7 +30,8 @@ namespace EngineV2.Entities
         private IEntity collisionObj;
         private CollisionManager collisionMgr;
         private ICollidable colliders;
-        private List<IEntity> interactiveObjs;
+        private List<IEntity> playerObj;
+        private List<IEntity> targetObjs;
 
         #endregion
 
@@ -48,6 +50,7 @@ namespace EngineV2.Entities
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
         }
+
         #region EVENTS
 
         //INITIALISE EVENT HANDLERS
@@ -57,20 +60,22 @@ namespace EngineV2.Entities
             collisionMgr = collisions;
         }
 
+
         //INPUT EVENTS
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (keyState.IsKeyDown(Keys.H) || keyState.IsKeyDown(Keys.Enter))
+            if (canTrigger && keyState.IsKeyDown(Keys.H) || keyState.IsKeyDown(Keys.Enter))
             {
-                //ACTIVATE LEVER BY CALLING METHOD FROM SEPERATE CLASS
+                targetObjs[2].setYPos(30);
             }
         }
 
         //INITIALISE INTERACTIVEOBJS LIST
         public override void CollidableObjs()
         {
-            interactiveObjs = colliders.getEntityList();
+            playerObj = colliders.getPlayableObj();
+            targetObjs = colliders.getEnvironment();
         }
 
         //COLLISION EVENTS
@@ -78,14 +83,46 @@ namespace EngineV2.Entities
         {
             collisionObj = data.objectCollider;
 
-            for (int i = 0; i < interactiveObjs.Count; i++)
+            for (int i = 0; i < playerObj.Count; i++)
             {
                 //checks to see if player is in contact with the lever 
-                if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
+                if (HitBox.Intersects((playerObj[0].getHitbox())))
                 {
                     //CAN ACTIVATE LEVER
+                    canTrigger = true;
                 }
+                else canTrigger = false;
             }
+        }
+
+        //Draw Method
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+
+            spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
+
+        }
+        //Update Method
+        public override void update()
+        {
+
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
+        }
+        #endregion
+
+
+        #region GET/SETS
+                public override void setXPos(float Xpos)
+        {
+            Position.X = Xpos;
+        }
+        public override void setYPos(float Ypos)
+        {
+            Position.Y = Ypos;
+        }
+        public override void setRow(int rows)
+        {
+            row = rows;
         }
         #endregion
     }

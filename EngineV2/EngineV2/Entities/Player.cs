@@ -16,6 +16,7 @@ namespace EngineV2.Entities
     class Player : GameEntity
     {
         #region Properties
+        public string tag = "Player";
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -24,7 +25,8 @@ namespace EngineV2.Entities
         public bool gravity = true;
         public bool onTerrain = false;
         private float speed = 3;
-        private float ySpeed = 3;
+        private float ySpeed = 2;
+        private bool canClimb = false;
 
         //Jump Variables
         private float jumpForce = 10;
@@ -84,15 +86,17 @@ namespace EngineV2.Entities
 
             //Act on the data
             #region ARROWS & WASD
-            if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
+            if (canClimb && keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
             {
+                gravity = false;
                 Position.Y -= ySpeed;
                 Animate = true;
                 row = 2;
                 sound.Playsnd(1);
             }
-            if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
+            if (canClimb && keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
             {
+                gravity = false;
                 Position.Y += ySpeed;
                 Animate = true;
                 row = 2;
@@ -119,7 +123,6 @@ namespace EngineV2.Entities
             #region SPACEBAR
             if (keyState.IsKeyDown(Keys.Space))
             {
-                //canJump = true;
                 isJumping = true;
                 jump();
             }
@@ -172,16 +175,48 @@ namespace EngineV2.Entities
                 }
             }
 
-            #region Crate Collision
+            #region Interactive Obj collisions
             for (int i = 0; i < interactiveObjs.Count; i++)
             {
-                if (HitBox.Intersects(interactiveObjs[0].getHitbox()))
+                if (HitBox.Intersects(interactiveObjs[i].getHitbox()))// && interactiveObjs[i].getTag() == "Crate")
                 {
-                    gravity = false;
-                    canJump = true;
+
+                    if (interactiveObjs[i].getTag() == "Crate")
+                    {
+                        gravity = false;
+                        canJump = true;
+                    }
+
+                    if (interactiveObjs[i].getTag() == "Ladder")
+                    {
+                        gravity = false;
+                        canClimb = true;
+                    }
+                    //else
+                    //    canClimb = false;
+
                 }
-                else gravity = true;
+                else if (interactiveObjs[i].getTag() == null)
+                    gravity = true;
+
+                // else gravity = true;
+
+                //}
+
+                //if (HitBox.Intersects(interactiveObjs[0].getHitbox()))
+                //    {
+                //        canJump = true;
+                //    }
+                //    else gravity = true;
+
+                //    if (HitBox.Intersects(interactiveObjs[i].getHitbox()))
+                //    {
+                //        gravity = false;
+                //        canClimb = true;
+                //    }
+                //    else canClimb = false;
             }
+
 
             for (int i = 0; i < environment.Count; i++)
             {
@@ -192,20 +227,19 @@ namespace EngineV2.Entities
 
             }
         }
-            #endregion
-            //gravity = true;
+        #endregion
 
 
-            #endregion
+        #endregion
 
-            #region Behaviours
+        #region Behaviours
 
         public void jump()
         {
 
             if (canJump)
             {
-                gravity = false;
+                //            gravity = false;
                 if (isJumping)
                 {
                     Position.Y -= jumpForce;
@@ -216,7 +250,6 @@ namespace EngineV2.Entities
                 if (jumpHeight >= maxJump)
                 {
 
-                    //isJumping = false;
                     canJump = false;
                     jumpHeight = 0;
                 }
@@ -265,7 +298,10 @@ namespace EngineV2.Entities
         {
             return HitBox;
         }
-
+        public override string getTag()
+        {
+            return tag;
+        }
         public override void setXPos(float Xpos)
         {
             Position.X = Xpos;

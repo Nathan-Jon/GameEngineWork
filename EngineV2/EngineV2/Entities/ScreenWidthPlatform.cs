@@ -12,7 +12,7 @@ using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
-    class Platform : GameEntity
+    class ScreenWidthPlatform : GameEntity
     {
         public static Texture2D Texture;
         public Vector2 Position;

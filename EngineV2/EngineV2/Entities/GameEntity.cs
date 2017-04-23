@@ -13,6 +13,7 @@ namespace EngineV2.Entities
 {
     class GameEntity : Entity
     {
+        public string tag = "";
         public Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -54,12 +55,10 @@ namespace EngineV2.Entities
         {
             return Texture;
         }
-
         public override int getRows()
         {
             return row;
         }
-
         public override Rectangle getHitbox()
         {
             return HitBox;
@@ -68,7 +67,10 @@ namespace EngineV2.Entities
         {
             return gravity;
         }
-
+        public override string getTag()
+        {
+            return tag;
+        }
         public override float getDirection()
         {
             return speed;

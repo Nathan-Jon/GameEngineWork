@@ -14,6 +14,7 @@ namespace EngineV2.Entities
 {
     class Crate : GameEntity
     {
+        public string tag = "Crate";
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -70,12 +71,12 @@ namespace EngineV2.Entities
                 moveObject = true;
                 sound.Volume(2, 0.2f);
 
-                if (moveObject && canMove && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
+                if (crateContact && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
                 {
                     Position.X += 3;
                     sound.Playsnd(2);
                 }
-                if (moveObject && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
+                if (crateContact && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
                 {
                     Position.X += -3;
                     sound.Playsnd(2);
@@ -118,18 +119,19 @@ namespace EngineV2.Entities
             #region Player Collision
             for (int i = 0; i < player.Count; i++)
             {
-                if (HitBox.Intersects((player[0].getHitbox())))
-                { crateContact = true; }
+                if (HitBox.Intersects((player[i].getHitbox())))
+                {
+                    //if (player[i].getTag() == "Player")
+                    //{ crateContact = true; }
+                    //else if (player[i].getTag() != "Player")
+                    //{ crateContact = false; }
+
+                    crateContact = true;
+                }
                 else
                 { crateContact = false; }
+
             }
-            //for (int i = 0; i < terrain.Count; i++)
-            //{
-            //    if (HitBox.Intersects(terrain[i].getHitbox()))
-            //    {
-            //        gravity = false;
-            //    }
-            //}
             gravity = true;
             #endregion
         }
@@ -160,6 +162,10 @@ namespace EngineV2.Entities
         public override bool getGrav()
         {
             return gravity;
+        }
+        public override string getTag()
+        {
+            return tag;
         }
 
         public override void setYPos(float Ypos)

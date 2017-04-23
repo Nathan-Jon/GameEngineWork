@@ -21,6 +21,7 @@ namespace EngineV2.Entities
         public abstract Texture2D getTex();
         public abstract int getRows();
         public abstract Rectangle getHitbox();
+        public abstract string getTag();
         public abstract void setXPos(float Xpos);
         public abstract void setYPos(float Ypos);
         public abstract void setRow(int row);

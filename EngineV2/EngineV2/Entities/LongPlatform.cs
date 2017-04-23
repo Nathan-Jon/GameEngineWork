@@ -12,7 +12,7 @@ using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
-    class Platform : GameEntity
+    class LongPlatform : GameEntity
     {
         public static Texture2D Texture;
         public Vector2 Position;
@@ -91,6 +91,5 @@ namespace EngineV2.Entities
         {
             Position.Y = Ypos;
         }
-
     }
 }

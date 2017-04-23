@@ -51,7 +51,9 @@
     <Compile Include="Entities\Door.cs" />
     <Compile Include="Entities\Ladder.cs" />
     <Compile Include="Entities\Lever.cs" />
+    <Compile Include="Entities\LongPlatform.cs" />
     <Compile Include="Entities\Platform.cs" />
+    <Compile Include="Entities\ScreenWidthPlatform.cs" />
     <Compile Include="Input Managment\EventData.cs" />
     <Compile Include="Input Managment\InputManager.cs" />
     <Compile Include="Input Managment\InputPublisher.cs" />
@@ -115,8 +117,20 @@
     <Content Include="Content\Footsteps.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Ladder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Lever.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\LPlatformTex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\XLPlatformTex.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
