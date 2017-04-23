@@ -38,8 +38,9 @@ namespace EngineV2.Scenes
 
         IEntity ladder1;
 
-        //levers
+        //Triggers
         IEntity lever1;
+        IEntity pressurePlate;
 
         //Managers
         IEntityManager ent;
@@ -76,6 +77,7 @@ namespace EngineV2.Scenes
             ladder1 = ent.CreateEnt<Ladder>();
             crate = ent.CreateEnt<Crate>();
             door = ent.CreateEnt<Door>();
+            pressurePlate = ent.CreateEnt<PressurePlate>();
 
 
             //Levers
@@ -108,9 +110,13 @@ namespace EngineV2.Scenes
 
             animation.Initialize(player, 3, 3);
             animation.Initialize(enemy, 3, 3);
-            
+
 
             #region INTERACTIVE OBJECTS
+            //Pressure Plates
+            pressurePlate.applyEventHandlers(inputMgr, col);
+
+            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(50, 580), collider, snd, physicsObj, behaviours);
 
             //Crates
             crate.applyEventHandlers(inputMgr, col);
@@ -129,9 +135,10 @@ namespace EngineV2.Scenes
             //Doors
             door.applyEventHandlers(inputMgr, col);
             door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(855, 555), collider, snd, physicsObj, behaviours);
-        
+
             //NPCs
             #endregion
+            scn.Initalize(animation, back, snd);
 
             #region Environment
             SWPlatform.applyEventHandlers(inputMgr, col);
@@ -147,7 +154,7 @@ namespace EngineV2.Scenes
             #endregion
 
 
-            scn.Initalize(animation, back, snd);
+
 
             Scenegraph = EntityManager.Entities;
             Behaviours = BehaviourManager.behaviours;

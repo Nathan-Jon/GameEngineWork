@@ -12,8 +12,9 @@ using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
-    class LongPlatform : GameEntity
+    class TriggerWall : GameEntity
     {
+        private string tag = "triggerWall";
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -50,11 +51,7 @@ namespace EngineV2.Entities
         {
             collisionMgr = collisions;
         }
-        //public override void CollidableObjs()
-        //{
-        //    physicsObjs = physics.getPhysicsList();
-        //}
-
+ 
         public virtual void onCollision(object source, CollisionEventData data)
         {
 
@@ -65,9 +62,7 @@ namespace EngineV2.Entities
             for (int i = 0; i < physicsObjs.Count; i++)
             {
                 if (HitBox.Intersects(physicsObjs[i].getHitbox()))
-                { physicsObjs[i].setGrav(false); }
-
-
+                { physicsObjs[i].setXPos(physicsObjs[i].getPos().X + 3); }
             }
         }
         public override void Draw(SpriteBatch spriteBatch)

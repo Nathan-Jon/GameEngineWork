@@ -4,7 +4,7 @@
   <Platform>WindowsGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Grebby/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/background.wav</File>
-    <File>C:/Users/Grebby/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/Footsteps.wav</File>
+    <File>C:/Users/Nathan/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/background.wav</File>
+    <File>C:/Users/Nathan/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/Footsteps.wav</File>
   </SourceFiles>
 </SourceFileCollection>
