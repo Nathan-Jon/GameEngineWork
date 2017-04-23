@@ -125,9 +125,8 @@ namespace EngineV2.Scenes
             #endregion
 
             #region Environment
-
-            longPlat.applyEventHandlers(inputMgr, col);
             SWPlatform.applyEventHandlers(inputMgr, col);
+            longPlat.applyEventHandlers(inputMgr, col);
             platform.applyEventHandlers(inputMgr, col);
             platform1.applyEventHandlers(inputMgr, col);
 

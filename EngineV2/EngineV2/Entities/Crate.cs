@@ -127,6 +127,7 @@ namespace EngineV2.Entities
                     //{ crateContact = false; }
 
                     crateContact = true;
+                    player[i].setGrav(false);
                 }
                 else
                 { crateContact = false; }

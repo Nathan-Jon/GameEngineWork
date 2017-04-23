@@ -40,7 +40,7 @@ namespace EngineV2.Entities
             collisionMgr.subscribe(onCollision);
             physicsObjs = physics.getPhysicsList();
 
-            //CollidableObjs();
+            CollidableObjs();
 
             _collider.isEnvironmentCollidable(this);
 
@@ -50,15 +50,13 @@ namespace EngineV2.Entities
         {
             collisionMgr = collisions;
         }
-        //public override void CollidableObjs()
-        //{
-        //    physicsObjs = physics.getPhysicsList();
-        //}
+        public override void CollidableObjs()
+        {
+            physicsObjs = physics.getPhysicsList();
+        }
 
         public virtual void onCollision(object source, CollisionEventData data)
         {
-
-            bool onTerrain = false;
 
             collision = data.objectCollider;
 
@@ -66,7 +64,6 @@ namespace EngineV2.Entities
             {
                 if (HitBox.Intersects(physicsObjs[i].getHitbox()))
                 { physicsObjs[i].setGrav(false); }
-
 
             }
         }
@@ -91,6 +88,5 @@ namespace EngineV2.Entities
         {
             Position.Y = Ypos;
         }
-
     }
 }

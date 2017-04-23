@@ -149,6 +149,8 @@ namespace EngineV2.Entities
         {
             collision = data.objectCollider;
 
+            gravity = true;
+
             if (HitBox.X <= 0)
             { Position.X -= -3; }
 
@@ -160,7 +162,6 @@ namespace EngineV2.Entities
 
             if (HitBox.Y >= 559)
             {
-                Position.Y -= ySpeed;
                 gravity = false;
                 canJump = true;
             }
@@ -178,43 +179,22 @@ namespace EngineV2.Entities
             #region Interactive Obj collisions
             for (int i = 0; i < interactiveObjs.Count; i++)
             {
-                if (HitBox.Intersects(interactiveObjs[i].getHitbox()))// && interactiveObjs[i].getTag() == "Crate")
+                if (HitBox.Intersects(interactiveObjs[i].getHitbox()) && interactiveObjs[i].getTag() == "Crate")
                 {
-
-                    if (interactiveObjs[i].getTag() == "Crate")
-                    {
-                        gravity = false;
-                        canJump = true;
-                    }
-
-                    if (interactiveObjs[i].getTag() == "Ladder")
-                    {
-                        gravity = false;
-                        canClimb = true;
-                    }
-                    //else
-                    //    canClimb = false;
-
+                    canJump = true;
                 }
-                else if (interactiveObjs[i].getTag() == null)
-                    gravity = true;
 
-                // else gravity = true;
-
-                //}
-
-                //if (HitBox.Intersects(interactiveObjs[0].getHitbox()))
-                //    {
-                //        canJump = true;
-                //    }
-                //    else gravity = true;
-
-                //    if (HitBox.Intersects(interactiveObjs[i].getHitbox()))
-                //    {
-                //        gravity = false;
-                //        canClimb = true;
-                //    }
-                //    else canClimb = false;
+                if (HitBox.Intersects(interactiveObjs[i].getHitbox()) && interactiveObjs[i].getTag() == "Ladder")
+                {
+                    gravity = false;
+                    canClimb = true;
+                }
+                else canClimb = false;
+                if (HitBox.Intersects(interactiveObjs[i].getHitbox()))
+                {
+                    gravity = false;
+                }
+                else gravity = true;
             }
 
 
@@ -222,6 +202,7 @@ namespace EngineV2.Entities
             {
                 if (HitBox.Intersects(environment[i].getHitbox()))
                 {
+                    gravity = false;
                     canJump = true;
                 }
 
@@ -268,7 +249,7 @@ namespace EngineV2.Entities
         //Update Method
         public override void update()
         {
-
+           
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
         }
 
