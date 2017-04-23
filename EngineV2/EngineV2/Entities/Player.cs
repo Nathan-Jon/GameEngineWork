@@ -173,6 +173,7 @@ namespace EngineV2.Entities
                     EntityManager.Entities.Clear();
                     BehaviourManager.behaviours.Clear();
                     Scene1.Animation.Clear();
+                    SceneManager.ExitGame = true;
                 }
             }
 
@@ -189,12 +190,12 @@ namespace EngineV2.Entities
                     gravity = false;
                     canClimb = true;
                 }
-                else canClimb = false;
+                // else canClimb = false;
                 if (HitBox.Intersects(interactiveObjs[i].getHitbox()))
                 {
                     gravity = false;
                 }
-                else gravity = true;
+                //else gravity = true;
             }
 
 
@@ -208,7 +209,7 @@ namespace EngineV2.Entities
 
             }
         }
-        #endregion
+            #endregion
 
 
         #endregion
@@ -249,7 +250,7 @@ namespace EngineV2.Entities
         //Update Method
         public override void update()
         {
-           
+
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
         }
 

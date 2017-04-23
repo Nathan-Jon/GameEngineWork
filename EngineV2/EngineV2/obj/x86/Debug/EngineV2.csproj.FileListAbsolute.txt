@@ -127,3 +127,4 @@ C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.p
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
 C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png

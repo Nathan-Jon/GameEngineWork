@@ -133,7 +133,6 @@ namespace EngineV2.Entities
                 { crateContact = false; }
 
             }
-            gravity = true;
             #endregion
         }
 

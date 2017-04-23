@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/User/Desktop/EngineV2/EngineV2/Content/background.wav</SourceFile>
+  <SourceFile>C:/Users/User/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/background.wav</SourceFile>
   <SourceTime>2017-04-21T13:29:43.1614847+01:00</SourceTime>
-  <DestFile>C:/Users/User/Desktop/EngineV2/EngineV2/Content/bin/WindowsGL/background.xnb</DestFile>
-  <DestTime>2017-04-23T22:25:14.9207842+01:00</DestTime>
+  <DestFile>C:/Users/User/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/bin/WindowsGL/background.xnb</DestFile>
+  <DestTime>2017-04-23T23:45:51.8712388+01:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2015-04-29T18:14:44+01:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

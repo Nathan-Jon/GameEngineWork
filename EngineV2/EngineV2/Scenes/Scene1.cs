@@ -41,6 +41,9 @@ namespace EngineV2.Scenes
         IEntity platform1;
         IEntity platform2;
         IEntity platform3;
+        IEntity platform4;
+        IEntity platform5;
+        IEntity platform6;
 
         IEntityManager ent;
         IBackGrounds back;
@@ -78,9 +81,11 @@ namespace EngineV2.Scenes
             
             //Platforms
             platform1 = ent.CreateEnt<ScreenWidthPlatform>();
-            platform2 = ent.CreateEnt<LongPlatform>();
-            platform3 = ent.CreateEnt<MPlatform>();
-
+            platform2 = ent.CreateEnt<MPlatform>();
+            platform3 = ent.CreateEnt<LongPlatform>();
+            platform4 = ent.CreateEnt<MPlatform>();
+            platform5 = ent.CreateEnt<MPlatform>();
+            platform6 = ent.CreateEnt<ScreenWidthPlatform>();
 
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
@@ -115,7 +120,7 @@ namespace EngineV2.Scenes
 
             Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 105), collider, snd, physicsObj, behaviours);
             Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, snd, physicsObj, behaviours);
-            Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(700, 107), collider, snd, physicsObj, behaviours);
+            Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, snd, physicsObj, behaviours);
             
 
             //Door
@@ -127,10 +132,16 @@ namespace EngineV2.Scenes
             platform1.applyEventHandlers(inputMgr, col);
             platform2.applyEventHandlers(inputMgr, col);
             platform3.applyEventHandlers(inputMgr, col);
+            platform4.applyEventHandlers(inputMgr, col);
+            platform5.applyEventHandlers(inputMgr, col);
+            platform6.applyEventHandlers(inputMgr, col);
             
-            platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 550/*595*/), collider, snd, physicsObj, behaviours);
-            platform2.Initialize(Content.Load<Texture2D>("LPlatformTex"), new Vector2(-50, 345), collider, snd, physicsObj, behaviours);
-            platform3.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(720, 475), collider, snd, physicsObj, behaviours);
+            platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, snd, physicsObj, behaviours);
+            platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, snd, physicsObj, behaviours);
+            platform3.Initialize(Content.Load<Texture2D>("LPlatformTex"), new Vector2(0, 345), collider, snd, physicsObj, behaviours);
+            platform4.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(450, 345), collider, snd, physicsObj, behaviours);
+            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-5, 105), collider, snd, physicsObj, behaviours);
+            platform6.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, 105), collider, snd, physicsObj, behaviours);
 
 
             //Animation
