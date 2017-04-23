@@ -24,9 +24,20 @@ namespace EngineV2
 
         //Interfaces
 
-        IEntity player;
+        //Environment
+        IEntity platform;
+        IEntity platform1;
+
+        //AI
         IEntity enemy;
+
+        //Player
+        IEntity player;
+
+        // Interactables
         IEntity crate;
+
+        //Managers
         IEntityManager ent;
         ISceneManager scn;
         CollisionManager col;
@@ -84,6 +95,9 @@ namespace EngineV2
             animation = new AnimationMgr();
             snd = new SoundManager();
             collider = new CollidableClass();
+            platform = ent.CreateEnt<Platform>();
+            platform1 = ent.CreateEnt<Platform>();
+
             back = new BackGrounds(screenWidth, screenHeight);
 
             Components.Add((GameComponent)scn);
@@ -102,11 +116,16 @@ namespace EngineV2
 
             back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
 
-            //PLAYER AND ENEMIES
+
+              
+            //AUDIO
             snd.Initialize(Content.Load<SoundEffect>("background"));
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
             snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
+
             snd.CreateInstance();
+
+            //PLAYER AND ENEMIES
 
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);
@@ -120,12 +139,17 @@ namespace EngineV2
             scn.Initalize(animation, back);
 
 
-
             //INTERACTIVE OBJECTS
-
             crate.applyEventHandlers(inputMgr, col);
 
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd, physicsObj, behaviours);
+            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(100, 300), collider, snd, physicsObj, behaviours);
+
+            //ENVIRONMENT 
+            platform.applyEventHandlers(inputMgr, col);
+            platform1.applyEventHandlers(inputMgr, col);
+
+            platform.Initialize(Content.Load<Texture2D>("Platform"), new Vector2(100, 400), collider, snd, physicsObj, behaviours);
+            platform1.Initialize(Content.Load<Texture2D>("Platform"), new Vector2(100, 550), collider, snd, physicsObj, behaviours);
 
 
         }

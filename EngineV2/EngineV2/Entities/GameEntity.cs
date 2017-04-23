@@ -18,6 +18,7 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
         public int row;
         public bool gravity = false;
+        public bool onTerrain;
         public float speed;
 
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
@@ -29,8 +30,10 @@ namespace EngineV2.Entities
 
         public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
         { }
+        public override void accessPhysics(IPhysicsObj obj)
+        { }
         public override void CollidableObjs()
-        {}
+        { }
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
@@ -86,8 +89,11 @@ namespace EngineV2.Entities
         }
         public override void setGrav(bool active)
         {
+            gravity = active;
         }
 
-
     }
+
+
 }
+

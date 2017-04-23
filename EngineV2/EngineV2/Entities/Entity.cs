@@ -28,6 +28,7 @@ namespace EngineV2.Entities
         public abstract bool getGrav();
         public abstract float getDirection();
         public abstract void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
+        public abstract void accessPhysics(IPhysicsObj obj);
         public abstract void CollidableObjs();
 
 

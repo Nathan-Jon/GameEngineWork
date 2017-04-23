@@ -19,10 +19,11 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
         private float moveDirec = 3;
         private bool moveObject = false;
+        private bool canMove = true;
         private bool crateContact = false;
 
         //Physics
-        public bool gravity;
+        public bool gravity = true;
 
 
         //Input Management
@@ -34,8 +35,10 @@ namespace EngineV2.Entities
         private CollisionManager collisionMgr;
         private ICollidable colliders;
         private ISoundManager sound;
+        //Lists
         private List<IEntity> interactiveObjs;
-        
+        private List<IEntity> player;
+        private List<IEntity> terrain;
 
 
 
@@ -61,25 +64,24 @@ namespace EngineV2.Entities
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (crateContact && keyState.IsKeyDown(Keys.E) || crateContact && keyState.IsKeyDown(Keys.Enter))
+            if (crateContact && keyState.IsKeyDown(Keys.H) || crateContact && keyState.IsKeyDown(Keys.Enter))
             {
 
-                    moveObject = true;
-                    sound.Volume(2, 0.2f);
+                moveObject = true;
+                sound.Volume(2, 0.2f);
 
-                    if (moveObject && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
+                if (moveObject && canMove && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
                 {
                     Position.X += 3;
                     sound.Playsnd(2);
                 }
-                    if (moveObject && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
+                if (moveObject && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
                 {
                     Position.X += -3;
                     sound.Playsnd(2);
                 }
-                    
-            }
 
+            }
 
             if (crateContact == false)
             {
@@ -90,20 +92,46 @@ namespace EngineV2.Entities
         //List of Collidable Objects
         public override void CollidableObjs()
         {
-            interactiveObjs = colliders.getEntityList();
+            //interactiveObjs = colliders.getEntityList();
+            player = colliders.getPlayableObj();
+            //terrain = colliders.getTerrain();
         }
 
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collisionObj = data.objectCollider;
 
-            for (int i = 0; i < interactiveObjs.Count; i++)
+            #region wall collisions
+
+            if (Position.X <= 0)
+            { Position.X -= -3; }
+            if (HitBox.X >= 850)
+            { Position.X -= 3; }
+            if (Position.Y >= 570)
             {
-                if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
-                {  crateContact = true;  }
-                else
-                {   crateContact = false; }
+                gravity = false;
+                Position.Y -= 2;
             }
+
+            #endregion
+
+            #region Player Collision
+            for (int i = 0; i < player.Count; i++)
+            {
+                if (HitBox.Intersects((player[0].getHitbox())))
+                { crateContact = true; }
+                else
+                { crateContact = false; }
+            }
+            //for (int i = 0; i < terrain.Count; i++)
+            //{
+            //    if (HitBox.Intersects(terrain[i].getHitbox()))
+            //    {
+            //        gravity = false;
+            //    }
+            //}
+            gravity = true;
+            #endregion
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -111,17 +139,40 @@ namespace EngineV2.Entities
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
 
-
         public override void update()
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
+
         #region  get/Sets
 
+
+        public override Vector2 getPos()
+        {
+            return Position;
+        }
+
+        public override Rectangle getHitbox()
+        {
+            return HitBox;
+        }
         public override bool getGrav()
         {
             return gravity;
+        }
+
+        public override void setYPos(float Ypos)
+        {
+            Position.Y = Ypos;
+        }
+        public override void setXPos(float Xpos)
+        {
+            Position.X = Xpos;
+        }
+        public override void setGrav(bool active)
+        {
+            gravity = active;
         }
 
         #endregion

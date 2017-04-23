@@ -26,6 +26,7 @@ namespace EngineV2.Interfaces
         bool getGrav();
         float getDirection();
         void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
+        void accessPhysics(IPhysicsObj obj);
         void CollidableObjs();
 
     }

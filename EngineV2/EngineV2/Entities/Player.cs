@@ -20,7 +20,8 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
         public int row = 1;
         public static bool Animate = false;
-        public bool gravity = false;
+        public bool gravity = true;
+        public bool onTerrain = false;
         private float speed = 3;
         private float ySpeed = 3;
 
@@ -33,8 +34,14 @@ namespace EngineV2.Entities
         //Input Management
         private KeyboardState keyState;
         private InputManager inputMgr;
+
         //Collision Management
+
+        //Lists
         private List<IEntity> collisionObjs;
+        private List<IEntity> interactiveObjs;
+        private List<IEntity> environment;
+
         private IEntity collision;
         private CollisionManager collisionMgr;
         private ICollidable colliders;
@@ -51,7 +58,7 @@ namespace EngineV2.Entities
             inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
-            _collider.isCollidableEntity(this);
+            _collider.isPlayerEntity(this);
             phys.hasPhysics(this);
         }
         //Subscribe to Event Handlers
@@ -122,19 +129,26 @@ namespace EngineV2.Entities
         public override void CollidableObjs()
         {
             collisionObjs = colliders.getEntityList();
+            interactiveObjs = colliders.getInteractiveObj();
+            environment = colliders.getEnvironment();
         }
         //Collision Manager
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collision = data.objectCollider;
 
-            if (Position.X <= 0)
-            {Position.X += speed * -1;}
-            if (HitBox.X >= 850)
-            { Position.X += speed * -1; }
-            if (Position.Y <= 0)
+            bool onCrate = false;
+             
+            if (HitBox.X <= 0)
+            { Position.X -= -3; }
+
+            if (HitBox.X >= 875)
+            { Position.X -= 3; }
+
+            if (HitBox.Y <= 0)
             { Position.Y += ySpeed; }
-            if (HitBox.Y >= 565)
+
+            if (HitBox.Y >= 559)
             {
                 Position.Y -= ySpeed;
                 gravity = false;
@@ -143,12 +157,27 @@ namespace EngineV2.Entities
 
             for (int i = 0; i < collisionObjs.Count; i++)
             {
-                if (HitBox.Intersects(collisionObjs[1].getHitbox()))
+                if (HitBox.Intersects(collisionObjs[0].getHitbox()))
                 {
                     SceneManager.animationlist.Clear();
-
                 }
             }
+
+            #region Crate Collision
+            for (int i = 0; i < interactiveObjs.Count; i++)
+            {
+                if (HitBox.Intersects(interactiveObjs[0].getHitbox()))
+                {
+                    gravity = false;
+
+                }
+                else gravity = true;
+
+            }
+
+            #endregion
+            //gravity = true;
+
         }
         #endregion
 
@@ -162,7 +191,6 @@ namespace EngineV2.Entities
                 gravity = true;
             }
         }
-
         #endregion
 
         //Draw Method
@@ -216,6 +244,11 @@ namespace EngineV2.Entities
         public override void setRow(int rows)
         {
             row = rows;
+        }
+
+        public override void setGrav(bool active)
+        {
+            gravity = active;
         }
 
         #endregion

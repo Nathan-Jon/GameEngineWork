@@ -8,9 +8,16 @@ namespace EngineV2.Collision_Management
 {
     class CollidableClass : ICollidable
     {
+
+        #region CREATE LISTS
         List<IEntity> CollidableObj = new List<IEntity>();
         List<IEntity> InteractiveObj = new List<IEntity>();
+        List<IEntity> playerObjs = new List<IEntity>();
+        List<IEntity> environmentObjs = new List<IEntity>();
 
+        #endregion
+
+        #region ADD TO LISTS
         public void isCollidableEntity(IEntity obj)
         {
             CollidableObj.Add(obj);
@@ -21,14 +28,34 @@ namespace EngineV2.Collision_Management
             InteractiveObj.Add(obj);
         }
 
-    public List<IEntity> getEntityList()
+        public void isPlayerEntity(IEntity obj)
+        {
+            playerObjs.Add(obj);
+        }
+
+        public void isEnvironmentCollidable(IEntity obj)
+        {
+            environmentObjs.Add(obj);
+        }
+        #endregion
+
+        #region GET LISTS
+        public List<IEntity> getEntityList()
         {
             return CollidableObj;
         }
-
         public List<IEntity> getInteractiveObj()
         {
-            return InteractiveObj; 
+            return InteractiveObj;
         }
+        public List<IEntity> getPlayableObj()
+        {
+            return playerObjs;
+        }
+        public List<IEntity> getEnvironment()
+        {
+            return environmentObjs;
+        }
+        #endregion
     }
 }
