@@ -83,3 +83,5 @@ C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav

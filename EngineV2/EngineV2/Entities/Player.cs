@@ -9,6 +9,7 @@ using EngineV2.Input;
 using EngineV2.Managers;
 using EngineV2.Interfaces;
 using EngineV2.Collision_Management;
+using EngineV2.Scenes;
 
 namespace EngineV2.Entities
 {
@@ -165,7 +166,9 @@ namespace EngineV2.Entities
             {
                 if (HitBox.Intersects(collisionObjs[0].getHitbox()))
                 {
-                    SceneManager.animationlist.Clear();
+                    EntityManager.Entities.Clear();
+                    BehaviourManager.behaviours.Clear();
+                    Scene1.Animation.Clear();
                 }
             }
 

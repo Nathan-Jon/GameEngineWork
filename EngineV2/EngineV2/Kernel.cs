@@ -9,6 +9,7 @@ using EngineV2.Collision_Management;
 using EngineV2.Input;
 using EngineV2.Physics;
 using EngineV2.BackGround;
+using EngineV2.Scenes;
 
 namespace EngineV2
 {
@@ -49,8 +50,10 @@ namespace EngineV2
         PhysicsManager physicsMgr;
         IPhysicsObj physicsObj;
         IBackGrounds back;
+        IScene scene;
 
         public static Kernel instance;
+        public static bool StartGame = false;
 
         //Screen Size
         int screenWidth = 900;
@@ -83,22 +86,11 @@ namespace EngineV2
         {
             // TODO: Add your initialization logic here
             inputMgr = new InputManager();
-            ent = new EntityManager();
             col = new CollisionManager();
             physicsObj = new PhysicsObj();
             physicsMgr = new PhysicsManager(physicsObj);
-            scn = new SceneManager(this, inputMgr, col, physicsMgr, Content);
-            player = ent.CreateEnt<Player>();
-            enemy = ent.CreateEnt<Enemy>();
-            crate = ent.CreateEnt<Crate>();
-            behaviours = new BehaviourManager();
-            animation = new AnimationMgr();
-            snd = new SoundManager();
-            collider = new CollidableClass();
-            platform = ent.CreateEnt<Platform>();
-            platform1 = ent.CreateEnt<Platform>();
-
-            back = new BackGrounds(screenWidth, screenHeight);
+            scene = new Scene1();
+            scn = new SceneManager(this, inputMgr, col, physicsMgr, scene);
 
             Components.Add((GameComponent)scn);
 
@@ -112,46 +104,7 @@ namespace EngineV2
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
-
-
-              
-            //AUDIO
-            snd.Initialize(Content.Load<SoundEffect>("background"));
-            snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
-            snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
-
-            snd.CreateInstance();
-
-            //PLAYER AND ENEMIES
-
-            player.applyEventHandlers(inputMgr, col);
-            enemy.applyEventHandlers(inputMgr, col);
-
-            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(120, 200), collider, snd, physicsObj, behaviours);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 562), collider, snd, physicsObj, behaviours);
-
-            animation.Initialize(player, 3, 3);
-            animation.Initialize(enemy, 3, 3);
-
-            scn.Initalize(animation, back);
-
-
-            //INTERACTIVE OBJECTS
-            crate.applyEventHandlers(inputMgr, col);
-
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(100, 300), collider, snd, physicsObj, behaviours);
-
-            //ENVIRONMENT 
-            platform.applyEventHandlers(inputMgr, col);
-            platform1.applyEventHandlers(inputMgr, col);
-
-            platform.Initialize(Content.Load<Texture2D>("Platform"), new Vector2(100, 400), collider, snd, physicsObj, behaviours);
-            platform1.Initialize(Content.Load<Texture2D>("Platform"), new Vector2(100, 550), collider, snd, physicsObj, behaviours);
-
-
+            scene.LoadContent(Content);
         }
 
         /// <summary>

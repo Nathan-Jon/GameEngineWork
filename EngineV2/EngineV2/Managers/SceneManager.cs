@@ -27,16 +27,16 @@ namespace EngineV2.Managers
         CollisionManager coli;
         IPhysicsMgr physicsMgr;
         static IBackGrounds background;
-        Scene1 scene;
+        IScene scn;
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp, ContentManager content) : base(game)
+        public static bool Level1 = true;
+
+        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp, IScene scene) : base(game)
         {
             input = inp;
             coli = collision;
             physicsMgr = physUp;
-            //scene = new Scene1();
-            //scene.LoadContent(content);
-
+            scn = scene;
         }
 
         public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp)
@@ -47,7 +47,7 @@ namespace EngineV2.Managers
             physicsMgr = physUp;
         }
 
-        public void Initalize(IAnimationMgr ani, IBackGrounds back)
+        public void Initalize(IAnimationMgr ani, IBackGrounds back, ISoundManager sound)
         {
 
             background = back;
@@ -64,27 +64,10 @@ namespace EngineV2.Managers
                 Game.Exit();
             }
 
-            input.update();
-            coli.update();
-
-            for (int i = 0; i < SceneGraph.Count; i++)
+            if (Kernel.StartGame == true)
             {
-                SceneGraph[i].update();
+                scn.update(gameTime);
             }
-
-            for (int i = 0; i < animationlist.Count; i++)
-            {
-
-                animationlist[i].Update(gameTime);
-            }
-
-            for (int i = 0; i < behaviours.Count; i++)
-            {
-
-                behaviours[i].update();
-            }
-
-            physicsMgr.update();
 
             base.Update(gameTime);
 
@@ -93,24 +76,16 @@ namespace EngineV2.Managers
         public override void Draw(GameTime gameTime)
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            GraphicsDevice.Clear(Color.AntiqueWhite);
+           
 
             spriteBatch.Begin();
 
-            background.Draw(spriteBatch);
-
-            for (int i = 2; i < SceneGraph.Count; i++)
+            if (Level1 == true)
             {
-                SceneGraph[i].Draw(spriteBatch);
-            }
-
-            for (int i = 0; i < animationlist.Count; i++)
-            {
-                animationlist[i].Draw(spriteBatch);
+                scn.Draw(spriteBatch);
             }
 
             spriteBatch.End();
-
             base.Draw(gameTime);
 
         }
