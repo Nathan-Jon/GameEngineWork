@@ -28,6 +28,7 @@ namespace EngineV2.Scenes
         IEntity player;
         IEntity enemy;
         IEntity crate;
+        IEntity door;
 
         //Environment Entities
         IEntity platform;
@@ -65,7 +66,7 @@ namespace EngineV2.Scenes
             scn = new SceneManager(Kernel.instance, inputMgr, col, physicsMgr, this);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
-            crate = ent.CreateEnt<Crate>();
+            
 
             //Platforms / Environment
             SWPlatform = ent.CreateEnt<ScreenWidthPlatform>();
@@ -73,7 +74,9 @@ namespace EngineV2.Scenes
             platform = ent.CreateEnt<Platform>();
             platform1 = ent.CreateEnt<Platform>();
             ladder1 = ent.CreateEnt<Ladder>();
-            
+            crate = ent.CreateEnt<Crate>();
+            door = ent.CreateEnt<Door>();
+
 
             //Levers
             lever1 = ent.CreateEnt<Lever>();
@@ -90,6 +93,7 @@ namespace EngineV2.Scenes
             snd.Initialize(Content.Load<SoundEffect>("background"));
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
             snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
+            snd.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
             snd.CreateInstance();
 
             back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
@@ -121,6 +125,11 @@ namespace EngineV2.Scenes
             //Ladders
             ladder1.applyEventHandlers(inputMgr, col);
             ladder1.Initialize(Content.Load<Texture2D>("Ladder"), new Vector2(0, 500), collider, snd, physicsObj, behaviours);
+
+            //Doors
+            door.applyEventHandlers(inputMgr, col);
+            door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(855, 555), collider, snd, physicsObj, behaviours);
+        
             //NPCs
             #endregion
 

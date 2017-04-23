@@ -22,7 +22,7 @@ namespace EngineV2.Behaviours
     class Door : GameEntity
     {
         #region Instance Variables
-
+        public Boolean doorContact = false;
         
 
         //Input Management
@@ -33,9 +33,13 @@ namespace EngineV2.Behaviours
         private IEntity collisionObj;
         private CollisionManager collisionMgr;
         private ICollidable colliders;
-        private List<IEntity> interactiveObjs;
+        private ISoundManager sound;
+        
 
-#endregion
+        //Lists
+        private List<IEntity> interactiveObjs;
+        
+        #endregion
 
         //OnKeyboard Event Change scene
 
@@ -44,6 +48,7 @@ namespace EngineV2.Behaviours
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
+            sound = snd;
 
             //SUBSCRIBERS
             input.AddListener(OnNewInput);
@@ -52,10 +57,27 @@ namespace EngineV2.Behaviours
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
         }
-        #region EVENTS
 
-        //INITIALISE EVENT HANDLERS
-        public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
+        }
+
+        public override void update()
+        {
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+        }
+        
+        #region Player Collision
+        
+        
+        #endregion
+
+
+#region EVENTS
+
+//INITIALISE EVENT HANDLERS
+public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
         {
             input = inputManager;
             collisionMgr = collisions;
@@ -65,16 +87,21 @@ namespace EngineV2.Behaviours
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (keyState.IsKeyDown(Keys.H) || keyState.IsKeyDown(Keys.Enter))
+            if (doorContact && keyState.IsKeyDown(Keys.W) || doorContact && keyState.IsKeyDown(Keys.Up))
             {
-                //CHANGE SCENE
+                sound.Volume(3, 0.5f);
+                sound.Playsnd(3); 
+            }
+            if (doorContact == false)
+            {
+                sound.Stopsnd(3);
             }
         }
 
         //INITIALISE INTERACTIVEOBJS LIST
         public override void CollidableObjs()
         {
-            interactiveObjs = colliders.getEntityList();
+            interactiveObjs = colliders.getPlayableObj();
         }
 
         //COLLISION EVENTS
@@ -87,7 +114,11 @@ namespace EngineV2.Behaviours
                 //checks to see if player is in contact with the door 
                 if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
                 {
-                    //CHANGE SCENE
+                    doorContact = true;
+                }
+                else
+                {
+                    doorContact = false;
                 }
             }
         }

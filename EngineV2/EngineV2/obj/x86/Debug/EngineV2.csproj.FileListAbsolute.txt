@@ -89,3 +89,15 @@ C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
