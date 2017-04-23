@@ -26,9 +26,12 @@ namespace EngineV2.Entities
         private float ySpeed = 3;
 
         //Jump Variables
-        private bool canJump = true;
-        private float maxJump = -100;
-        private float jumpHeight;
+        private float jumpForce = 10;
+        private float maxJump = 120;
+        private bool canJump = false;
+        private bool isJumping = false;
+        private float jumpHeight = 0;
+
 
 
         //Input Management
@@ -60,6 +63,7 @@ namespace EngineV2.Entities
             CollidableObjs();
             _collider.isPlayerEntity(this);
             phys.hasPhysics(this);
+
         }
         //Subscribe to Event Handlers
         public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
@@ -78,6 +82,7 @@ namespace EngineV2.Entities
             sound.Volume(1, 0.1f);
 
             //Act on the data
+            #region ARROWS & WASD
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
             {
                 Position.Y -= ySpeed;
@@ -108,18 +113,21 @@ namespace EngineV2.Entities
                 row = 0;
                 sound.Playsnd(1);
             }
+            #endregion
+
+            #region SPACEBAR
             if (keyState.IsKeyDown(Keys.Space))
             {
-                if (canJump == true)
-                {
-                    jump();
-                }
+                //canJump = true;
+                isJumping = true;
+                jump();
             }
+            #endregion
+
+
             if (keyState.GetPressedKeys().Length == 0 || SceneManager.animationlist.Count == 0)
             {
-
                 sound.Stopsnd(1);
-
             }
         }
         #endregion
@@ -137,8 +145,6 @@ namespace EngineV2.Entities
         {
             collision = data.objectCollider;
 
-            bool onCrate = false;
-             
             if (HitBox.X <= 0)
             { Position.X -= -3; }
 
@@ -169,28 +175,51 @@ namespace EngineV2.Entities
                 if (HitBox.Intersects(interactiveObjs[0].getHitbox()))
                 {
                     gravity = false;
-
+                    canJump = true;
                 }
                 else gravity = true;
-
             }
 
+            for (int i = 0; i < environment.Count; i++)
+            {
+                if (HitBox.Intersects(environment[i].getHitbox()))
+                {
+                    canJump = true;
+                }
+
+            }
+        }
             #endregion
             //gravity = true;
 
-        }
-        #endregion
 
-        #region Behaviours
+            #endregion
+
+            #region Behaviours
 
         public void jump()
         {
-            if (canJump == true)
+
+            if (canJump)
             {
-                Position.Y -= 8;
-                gravity = true;
+                gravity = false;
+                if (isJumping)
+                {
+                    Position.Y -= jumpForce;
+                    jumpHeight += jumpForce;
+                    Position.Y += 3f;
+                }
+
+                if (jumpHeight >= maxJump)
+                {
+
+                    //isJumping = false;
+                    canJump = false;
+                    jumpHeight = 0;
+                }
             }
         }
+
         #endregion
 
         //Draw Method
@@ -203,6 +232,7 @@ namespace EngineV2.Entities
         //Update Method
         public override void update()
         {
+
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
         }
 
@@ -255,4 +285,5 @@ namespace EngineV2.Entities
 
 
     }
+
 }

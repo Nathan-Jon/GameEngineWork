@@ -130,7 +130,7 @@ namespace EngineV2
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(200, 400), collider, snd, physicsObj, behaviours);
+            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(120, 200), collider, snd, physicsObj, behaviours);
             enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 562), collider, snd, physicsObj, behaviours);
 
             animation.Initialize(player, 3, 3);

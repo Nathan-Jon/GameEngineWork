@@ -78,5 +78,10 @@ namespace EngineV2.Entities
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
+
+        public override Rectangle getHitbox()
+        {
+            return HitBox;
+        }
     }
 }
