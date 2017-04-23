@@ -28,21 +28,20 @@ namespace EngineV2.Scenes
         IEntity player;
         IEntity enemy;
         IEntity crate;
-        IEntity door;
 
-        //Environment Entities
-        IEntity platform;
+        //Ladder
+        IEntity Ladder1;
+        IEntity Ladder2;
+        IEntity Ladder3;
+
+        //Door
+        IEntity Door;
+
+        //Platforms
         IEntity platform1;
-        IEntity longPlat;
-        IEntity SWPlatform;
+        IEntity platform2;
+        IEntity platform3;
 
-        IEntity ladder1;
-
-        //Triggers
-        IEntity lever1;
-        IEntity pressurePlate;
-
-        //Managers
         IEntityManager ent;
         IBackGrounds back;
         CollisionManager col;
@@ -64,30 +63,29 @@ namespace EngineV2.Scenes
             col = new CollisionManager();
             physicsObj = new PhysicsObj();
             physicsMgr = new PhysicsManager(physicsObj);
-            scn = new SceneManager(Kernel.instance, inputMgr, col, physicsMgr, this);
+            scn = new SceneManager(Kernel.instance, inputMgr, col, physicsMgr);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
-            
-
-            //Platforms / Environment
-            SWPlatform = ent.CreateEnt<ScreenWidthPlatform>();
-            longPlat = ent.CreateEnt<LongPlatform>();
-            platform = ent.CreateEnt<Platform>();
-            platform1 = ent.CreateEnt<Platform>();
-            ladder1 = ent.CreateEnt<Ladder>();
             crate = ent.CreateEnt<Crate>();
-            door = ent.CreateEnt<Door>();
-            pressurePlate = ent.CreateEnt<PressurePlate>();
+            
+            //Ladders
+            Ladder1 = ent.CreateEnt<SLadder>();
+            Ladder2 = ent.CreateEnt<LLadder>();
+            Ladder3 = ent.CreateEnt<LLadder>();
 
+            //Door
+            Door = ent.CreateEnt<Door>();
+            
+            //Platforms
+            platform1 = ent.CreateEnt<ScreenWidthPlatform>();
+            platform2 = ent.CreateEnt<LongPlatform>();
+            platform3 = ent.CreateEnt<MPlatform>();
 
-            //Levers
-            lever1 = ent.CreateEnt<Lever>();
 
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
             snd = new SoundManager();
             collider = new CollidableClass();
-            Kernel.StartGame = true;
         }
 
         public void LoadContent(ContentManager Content)
@@ -104,56 +102,50 @@ namespace EngineV2.Scenes
 
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);
+            
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(100, 200), collider, snd, physicsObj, behaviours);
+            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(200, 400), collider, snd, physicsObj, behaviours);
             enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 564), collider, snd, physicsObj, behaviours);
+            
+            //Ladders
+            Ladder1.applyEventHandlers(inputMgr, col);
+            Ladder2.applyEventHandlers(inputMgr, col);
+            Ladder3.applyEventHandlers(inputMgr, col);
 
+
+            Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 105), collider, snd, physicsObj, behaviours);
+            Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, snd, physicsObj, behaviours);
+            Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(700, 107), collider, snd, physicsObj, behaviours);
+            
+
+            //Door
+            Door.applyEventHandlers(inputMgr, col);
+
+            Door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, snd, physicsObj, behaviours);
+
+            //Platforms
+            platform1.applyEventHandlers(inputMgr, col);
+            platform2.applyEventHandlers(inputMgr, col);
+            platform3.applyEventHandlers(inputMgr, col);
+            
+            platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 550/*595*/), collider, snd, physicsObj, behaviours);
+            platform2.Initialize(Content.Load<Texture2D>("LPlatformTex"), new Vector2(-50, 345), collider, snd, physicsObj, behaviours);
+            platform3.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(720, 475), collider, snd, physicsObj, behaviours);
+
+
+            //Animation
             animation.Initialize(player, 3, 3);
             animation.Initialize(enemy, 3, 3);
+            
 
-
-            #region INTERACTIVE OBJECTS
-            //Pressure Plates
-            pressurePlate.applyEventHandlers(inputMgr, col);
-
-            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(50, 580), collider, snd, physicsObj, behaviours);
-
-            //Crates
-            crate.applyEventHandlers(inputMgr, col);
-
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(100, 300), collider, snd, physicsObj, behaviours);
-
-            //Levers
-            lever1.applyEventHandlers(inputMgr, col);
-
-            lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(100, 100), collider, snd, physicsObj, behaviours);
-
-            //Ladders
-            ladder1.applyEventHandlers(inputMgr, col);
-            ladder1.Initialize(Content.Load<Texture2D>("Ladder"), new Vector2(0, 500), collider, snd, physicsObj, behaviours);
-
-            //Doors
-            door.applyEventHandlers(inputMgr, col);
-            door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(855, 555), collider, snd, physicsObj, behaviours);
-
-            //NPCs
-            #endregion
             scn.Initalize(animation, back, snd);
 
-            #region Environment
-            SWPlatform.applyEventHandlers(inputMgr, col);
-            longPlat.applyEventHandlers(inputMgr, col);
-            platform.applyEventHandlers(inputMgr, col);
-            platform1.applyEventHandlers(inputMgr, col);
 
+            //INTERACTIVE OBJECTS
 
-            longPlat.Initialize(Content.Load<Texture2D>("LPlatformTex"), new Vector2(50,100), collider, snd, physicsObj, behaviours);
-            SWPlatform.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, snd, physicsObj, behaviours);
-            platform.Initialize(Content.Load<Texture2D>("Platform"), new Vector2(100, 400), collider, snd, physicsObj, behaviours);     
-            platform1.Initialize(Content.Load<Texture2D>("Platform"), new Vector2(100, 550), collider, snd, physicsObj, behaviours);
-            #endregion
+            crate.applyEventHandlers(inputMgr, col);
 
-
+            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd, physicsObj, behaviours);
 
 
             Scenegraph = EntityManager.Entities;
@@ -164,8 +156,8 @@ namespace EngineV2.Scenes
         public void update(GameTime gameTime)
         {
 
-           
-
+            if (SceneManager.Level1 == true)
+            {
                 inputMgr.update();
                 col.update();
 
@@ -186,23 +178,27 @@ namespace EngineV2.Scenes
                     Behaviours[i].update();
                 }
 
+
                 physicsMgr.update();
+            }
         }
+
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            back.Draw(spriteBatch);
+
+                back.Draw(spriteBatch);
 
 
-            for (int i = 2; i <  Scenegraph.Count; i++)
+                for (int i = 2; i < Scenegraph.Count; i++)
                 {
                     Scenegraph[i].Draw(spriteBatch);
                 }
 
-            for (int i = 0; i < Animation.Count; i++)
-            {
-                Animation[i].Draw(spriteBatch);
-            }
+                for (int i = 0; i < Animation.Count; i++)
+                {
+                    Animation[i].Draw(spriteBatch);
+                }
 
         }
 
