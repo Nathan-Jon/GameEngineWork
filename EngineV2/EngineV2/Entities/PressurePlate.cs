@@ -90,6 +90,7 @@ namespace EngineV2.Entities
                 {
                     activate();
                 }
+              //  else reset();
 
             }
             #endregion

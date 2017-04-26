@@ -64,7 +64,6 @@ namespace EngineV2.Entities
             {
                 if (HitBox.Intersects(physicsObjs[i].getHitbox()))
                 { physicsObjs[i].setGrav(false); }
-
             }
         }
         public override void Draw(SpriteBatch spriteBatch)

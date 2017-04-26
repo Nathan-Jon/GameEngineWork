@@ -45,6 +45,10 @@ namespace EngineV2.Scenes
         IEntity platform5;
         IEntity platform6;
 
+        //Pressure Plates & walls
+        IEntity pressurePlate;
+        IEntity wall;
+
         IEntityManager ent;
         IBackGrounds back;
         CollisionManager col;
@@ -86,6 +90,10 @@ namespace EngineV2.Scenes
             platform4 = ent.CreateEnt<MPlatform>();
             platform5 = ent.CreateEnt<MPlatform>();
             platform6 = ent.CreateEnt<ScreenWidthPlatform>();
+
+            //PresurePLates and wall
+            pressurePlate = ent.CreateEnt<PressurePlate>();
+            wall = ent.CreateEnt<TriggerWall>();
 
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
@@ -153,11 +161,19 @@ namespace EngineV2.Scenes
 
 
             //INTERACTIVE OBJECTS
-
+            //Crates
             crate.applyEventHandlers(inputMgr, col);
 
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 500), collider, snd, physicsObj, behaviours);
+            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 320), collider, snd, physicsObj, behaviours);
 
+            //Pressure Plates
+            pressurePlate.applyEventHandlers(inputMgr, col);
+
+            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 345), collider, snd, physicsObj, behaviours);
+
+            wall.applyEventHandlers(inputMgr, col);
+
+            wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(750, 520), collider, snd, physicsObj, behaviours);
 
             Scenegraph = EntityManager.Entities;
             Behaviours = BehaviourManager.behaviours;

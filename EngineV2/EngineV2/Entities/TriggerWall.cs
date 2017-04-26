@@ -51,7 +51,7 @@ namespace EngineV2.Entities
         {
             collisionMgr = collisions;
         }
- 
+
         public virtual void onCollision(object source, CollisionEventData data)
         {
 
@@ -61,8 +61,15 @@ namespace EngineV2.Entities
 
             for (int i = 0; i < physicsObjs.Count; i++)
             {
+                //if (HitBox.Intersects(physicsObjs[i].getHitbox()))
+                //{ physicsObjs[i].setXPos(physicsObjs[i].getPos().X - 3); }
                 if (HitBox.Intersects(physicsObjs[i].getHitbox()))
-                { physicsObjs[i].setXPos(physicsObjs[i].getPos().X + 3); }
+                {
+                    if (physicsObjs[i].getPos().X < HitBox.Width)
+                    { physicsObjs[i].setXPos(physicsObjs[i].getPos().X - 3); }
+                    if (physicsObjs[i].getPos().X > HitBox.Width/2)
+                    { physicsObjs[i].setXPos(physicsObjs[i].getPos().X - 3); }
+                }
             }
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -90,5 +97,7 @@ namespace EngineV2.Entities
         {
             Position.Y = Ypos;
         }
+        public override Vector2 getPos()
+        { return Position; }
     }
 }

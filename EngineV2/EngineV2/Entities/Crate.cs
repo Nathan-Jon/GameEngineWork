@@ -113,7 +113,6 @@ namespace EngineV2.Entities
                 gravity = false;
                 Position.Y -= 2;
             }
-
             #endregion
 
             #region Player Collision
