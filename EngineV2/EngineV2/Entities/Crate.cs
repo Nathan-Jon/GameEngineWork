@@ -65,7 +65,7 @@ namespace EngineV2.Entities
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (crateContact && keyState.IsKeyDown(Keys.E) || crateContact && keyState.IsKeyDown(Keys.H))
+            if (crateContact && keyState.IsKeyDown(Keys.H) || crateContact && keyState.IsKeyDown(Keys.E))
             {
 
                 moveObject = true;

@@ -23,7 +23,7 @@ namespace EngineV2.Behaviours
     {
         #region Instance Variables
         public bool keyContact = false;
-        public static bool unlock = false;
+        public static bool Unlock = false;
 
 
         //Input Management
@@ -92,7 +92,8 @@ namespace EngineV2.Behaviours
             {
                 sound.Volume(4, 0.5f);
                 sound.Playsnd(4);
-                unlock = true;
+                Unlock = true;
+
             }
             if (keyContact == false)
             {

@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
-  <SourceFile>C:/Users/Grebby/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/Footsteps.wav</SourceFile>
-  <SourceTime>2017-05-01T13:40:31.7410694+01:00</SourceTime>
-  <DestFile>C:/Users/Grebby/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/bin/WindowsGL/Footsteps.xnb</DestFile>
-  <DestTime>2017-05-01T13:55:18.6181294+01:00</DestTime>
-=======
-  <SourceFile>C:/Users/Nathan/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/Footsteps.wav</SourceFile>
-  <SourceTime>2017-05-01T13:48:00.4535742+01:00</SourceTime>
-  <DestFile>C:/Users/Nathan/Documents/GitHub/GameEngineWork/EngineV2/EngineV2/Content/bin/WindowsGL/Footsteps.xnb</DestFile>
-  <DestTime>2017-05-01T14:01:45.1636277+01:00</DestTime>
->>>>>>> origin/master
+  <SourceFile>C:/Users/Grebby/Desktop/GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79/EngineV2/EngineV2/Content/Footsteps.wav</SourceFile>
+  <SourceTime>2017-05-01T14:28:08.2949417+01:00</SourceTime>
+  <DestFile>C:/Users/Grebby/Desktop/GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79/EngineV2/EngineV2/Content/bin/WindowsGL/Footsteps.xnb</DestFile>
+  <DestTime>2017-05-01T14:34:09.4235233+01:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2015-04-29T18:14:44+01:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
