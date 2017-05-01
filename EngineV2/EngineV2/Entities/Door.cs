@@ -88,7 +88,7 @@ public override void applyEventHandlers(InputManager inputManager, CollisionMana
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (doorContact && keyState.IsKeyDown(Keys.W) || doorContact && keyState.IsKeyDown(Keys.Up))
+            if (doorContact && keyState.IsKeyDown(Keys.W) && Key.unlock|| doorContact && keyState.IsKeyDown(Keys.Up) && Key.unlock)
             {
                 sound.Volume(3, 0.5f);
                 sound.Playsnd(3);

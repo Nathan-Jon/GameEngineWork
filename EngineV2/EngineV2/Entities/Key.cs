@@ -22,7 +22,8 @@ namespace EngineV2.Behaviours
     class Key : GameEntity
     {
         #region Instance Variables
-        public Boolean keyContact = false;
+        public bool keyContact = false;
+        public static bool unlock = false;
 
 
         //Input Management
@@ -91,6 +92,7 @@ namespace EngineV2.Behaviours
             {
                 sound.Volume(4, 0.5f);
                 sound.Playsnd(4);
+                unlock = true;
             }
             if (keyContact == false)
             {

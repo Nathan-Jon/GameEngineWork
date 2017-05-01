@@ -108,7 +108,7 @@ namespace EngineV2.Entities
                 }
             }
             OriginalPosition.Y = triggerWall.getPos().Y;
-            triggerWall.setYPos(getPos().Y + 40);
+            triggerWall.setYPos(700);
         }
 
         public void reset()

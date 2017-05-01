@@ -11,7 +11,7 @@ namespace EngineV2.Behaviours
         private IMoveBehaviour move;
         private IEntity body;
 
-        public static float speed = 6;
+        public static float speed = 4;
 
         public EnemyMind()
         {

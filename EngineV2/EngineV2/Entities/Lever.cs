@@ -65,7 +65,7 @@ namespace EngineV2.Entities
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
-            if (canTrigger && keyState.IsKeyDown(Keys.H) || keyState.IsKeyDown(Keys.Enter))
+            if (canTrigger && keyState.IsKeyDown(Keys.H) || canTrigger && keyState.IsKeyDown(Keys.Enter))
             {
                 targetObjs[2].setYPos(30);
             }
