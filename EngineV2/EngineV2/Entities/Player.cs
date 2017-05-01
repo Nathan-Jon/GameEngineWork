@@ -17,6 +17,7 @@ namespace EngineV2.Entities
     {
         #region Properties
         public string tag = "Player";
+
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -26,7 +27,7 @@ namespace EngineV2.Entities
         public bool onTerrain = false;
         private float speed = 3;
         private float ySpeed = 2;
-        private bool canClimb = false;
+        public static bool canClimb = false;
 
         //Jump Variables
         private float jumpForce = 10;
@@ -86,17 +87,15 @@ namespace EngineV2.Entities
 
             //Act on the data
             #region ARROWS & WASD
-            if (canClimb && keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
+            if (canClimb && keyState.IsKeyDown(Keys.W) || canClimb && keyState.IsKeyDown(Keys.Up))
             {
-                gravity = false;
                 Position.Y -= ySpeed;
                 Animate = true;
                 row = 2;
                 sound.Playsnd(1);
             }
-            if (canClimb && keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
+            if (canClimb && keyState.IsKeyDown(Keys.S) || canClimb && keyState.IsKeyDown(Keys.Down))
             {
-                gravity = false;
                 Position.Y += ySpeed;
                 Animate = true;
                 row = 2;
@@ -150,7 +149,9 @@ namespace EngineV2.Entities
             collision = data.objectCollider;
 
             gravity = true;
+            canClimb = false;
 
+            #region map corners 
             if (HitBox.X <= 0)
             { Position.X -= -3; }
 
@@ -165,7 +166,9 @@ namespace EngineV2.Entities
                 gravity = false;
                 canJump = true;
             }
+            #endregion
 
+            #region enemy collisions
             for (int i = 0; i < collisionObjs.Count; i++)
             {
                 if (HitBox.Intersects(collisionObjs[0].getHitbox()))
@@ -176,6 +179,7 @@ namespace EngineV2.Entities
                     SceneManager.ExitGame = true;
                 }
             }
+            #endregion
 
             #region Interactive Obj collisions
             for (int i = 0; i < interactiveObjs.Count; i++)
@@ -188,12 +192,14 @@ namespace EngineV2.Entities
                 if (HitBox.Intersects(interactiveObjs[i].getHitbox()) && interactiveObjs[i].getTag() == "Ladder")
                 {
                     gravity = false;
+                    ySpeed = 2;
                     canClimb = true;
                 }
-                // else canClimb = false;
+
                 if (HitBox.Intersects(interactiveObjs[i].getHitbox()))
                 {
                     gravity = false;
+                    //canClimb = false;
                 }
                 //else gravity = true;
             }
@@ -206,7 +212,6 @@ namespace EngineV2.Entities
                     gravity = false;
                     canJump = true;
                 }
-
             }
         }
             #endregion
