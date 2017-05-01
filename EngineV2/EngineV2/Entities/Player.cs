@@ -85,6 +85,7 @@ namespace EngineV2.Entities
             keyState = data.newKey;
 
             sound.Volume(1, 0.1f);
+            sound.Volume(5, 0.1f);
 
             //Act on the data
             #region ARROWS & WASD
@@ -93,14 +94,14 @@ namespace EngineV2.Entities
                 Position.Y -= ySpeed;
                 Animate = true;
                 row = 2;
-                sound.Playsnd(1);
+                sound.Playsnd(5);
             }
             if (canClimb && keyState.IsKeyDown(Keys.S) || canClimb && keyState.IsKeyDown(Keys.Down))
             {
                 Position.Y += ySpeed;
                 Animate = true;
                 row = 2;
-                sound.Playsnd(1);
+                sound.Playsnd(5);
             }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
             {
@@ -151,6 +152,7 @@ namespace EngineV2.Entities
             if (keyState.GetPressedKeys().Length == 0 || SceneManager.animationlist.Count == 0)
             {
                 sound.Stopsnd(1);
+                sound.Stopsnd(5);
             }
         }
         #endregion

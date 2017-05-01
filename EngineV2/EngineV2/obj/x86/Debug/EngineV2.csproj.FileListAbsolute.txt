@@ -225,3 +225,5 @@ C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\
 C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
 C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LadderClimbSFX.wav

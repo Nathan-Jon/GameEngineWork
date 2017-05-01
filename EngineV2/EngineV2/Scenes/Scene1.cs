@@ -46,7 +46,6 @@ namespace EngineV2.Scenes
         IEntity platform3;
         IEntity platform4;
         IEntity platform5;
-        IEntity platform6;
 
         //Levers
         IEntity Lever1;
@@ -82,12 +81,9 @@ namespace EngineV2.Scenes
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             crate = ent.CreateEnt<Crate>();
-            
-            
-            //Ladders
-            Ladder1 = ent.CreateEnt<SLadder>();
-            Ladder2 = ent.CreateEnt<LLadder>();
-            Ladder3 = ent.CreateEnt<LLadder>();
+
+            //Walls
+            wall = ent.CreateEnt<TriggerWall>();
 
             //Door
             Door = ent.CreateEnt<Door>();
@@ -98,10 +94,9 @@ namespace EngineV2.Scenes
             //Platforms
             platform1 = ent.CreateEnt<ScreenWidthPlatform>();
             platform2 = ent.CreateEnt<MPlatform>();
-            platform3 = ent.CreateEnt<LongPlatform>();
-            platform4 = ent.CreateEnt<MPlatform>();
+            platform3 = ent.CreateEnt<ScreenWidthPlatform>();
+            platform4 = ent.CreateEnt<ScreenWidthPlatform>();
             platform5 = ent.CreateEnt<MPlatform>();
-            platform6 = ent.CreateEnt<ScreenWidthPlatform>();
 
             //Lever
             Lever1 = ent.CreateEnt<Lever>();
@@ -109,8 +104,10 @@ namespace EngineV2.Scenes
             //Presure PLates
             pressurePlate = ent.CreateEnt<PressurePlate>();
 
-            //Walls
-            wall = ent.CreateEnt<TriggerWall>();
+            //Ladders
+            Ladder1 = ent.CreateEnt<SLadder>();
+            Ladder2 = ent.CreateEnt<LLadder>();
+            Ladder3 = ent.CreateEnt<LLadder>();
 
             behaviours = new BehaviourManager();
             animation = new AnimationMgr();
@@ -125,6 +122,7 @@ namespace EngineV2.Scenes
             snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
             snd.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
             snd.Initialize(Content.Load<SoundEffect>("KeyPickupSFX"));
+            snd.Initialize(Content.Load<SoundEffect>("LadderClimbSFX"));
             snd.CreateInstance();
 
             back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
@@ -135,8 +133,8 @@ namespace EngineV2.Scenes
             enemy.applyEventHandlers(inputMgr, col);
             
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(200, 400), collider, snd, physicsObj, behaviours);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(100, 564), collider, snd, physicsObj, behaviours);
+            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, snd, physicsObj, behaviours);
+            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
             
             //Ladders
             Ladder1.applyEventHandlers(inputMgr, col);
@@ -144,7 +142,7 @@ namespace EngineV2.Scenes
             Ladder3.applyEventHandlers(inputMgr, col);
 
 
-            Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 105), collider, snd, physicsObj, behaviours);
+            Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, snd, physicsObj, behaviours);
             Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, snd, physicsObj, behaviours);
             Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, snd, physicsObj, behaviours);
             
@@ -165,14 +163,12 @@ namespace EngineV2.Scenes
             platform3.applyEventHandlers(inputMgr, col);
             platform4.applyEventHandlers(inputMgr, col);
             platform5.applyEventHandlers(inputMgr, col);
-            platform6.applyEventHandlers(inputMgr, col);
             
             platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, snd, physicsObj, behaviours);
             platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, snd, physicsObj, behaviours);
-            platform3.Initialize(Content.Load<Texture2D>("LPlatformTex"), new Vector2(0, 345), collider, snd, physicsObj, behaviours);
-            platform4.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(450, 345), collider, snd, physicsObj, behaviours);
-            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-5, 105), collider, snd, physicsObj, behaviours);
-            platform6.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, 105), collider, snd, physicsObj, behaviours);
+            platform3.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, snd, physicsObj, behaviours);
+            platform4.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, 105), collider, snd, physicsObj, behaviours);
+            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 105), collider, snd, physicsObj, behaviours);
 
 
             //Animation
@@ -192,18 +188,18 @@ namespace EngineV2.Scenes
             //Pressure Plates
             pressurePlate.applyEventHandlers(inputMgr, col);
 
-            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 345), collider, snd, physicsObj, behaviours);
+            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, snd, physicsObj, behaviours);
 
             //Walls
             wall.applyEventHandlers(inputMgr, col);
 
-            wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(750, 520), collider, snd, physicsObj, behaviours);
+            wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, snd, physicsObj, behaviours);
 
             //Lever
 
             Lever1.applyEventHandlers(inputMgr, col);
 
-            Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(780, 450), collider, snd, physicsObj, behaviours);
+            Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, snd, physicsObj, behaviours);
 
             Scenegraph = EntityManager.Entities;
             Behaviours = BehaviourManager.behaviours;

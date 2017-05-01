@@ -25,7 +25,6 @@ namespace EngineV2.Entities
 
         //Physics
         public bool gravity = true;
-        public Vector2 OriginalPosition;
 
         //Input Management
         private KeyboardState keyState;
@@ -90,9 +89,9 @@ namespace EngineV2.Entities
                 {
                     activate();
                 }
-              //  else reset();
-
+                
             }
+            
             #endregion
         }
 
@@ -107,12 +106,11 @@ namespace EngineV2.Entities
                     triggerWall = environementObjs[i];
                 }
             }
-            OriginalPosition.Y = triggerWall.getPos().Y;
-            triggerWall.setYPos(700);
+            triggerWall.setYPos(481);
         }
 
         public void reset()
-        { triggerWall.setYPos(OriginalPosition.Y); }
+        { triggerWall.setYPos(351); }
 
         #endregion
 

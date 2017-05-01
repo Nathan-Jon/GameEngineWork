@@ -100,7 +100,7 @@ public override void applyEventHandlers(InputManager inputManager, CollisionMana
                 SceneManager.WinGame = true;
 
 
-                doorContact = false;
+                //doorContact = false;
 
             }
             if (doorContact == false)
