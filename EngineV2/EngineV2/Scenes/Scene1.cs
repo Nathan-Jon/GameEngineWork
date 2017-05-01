@@ -48,8 +48,13 @@ namespace EngineV2.Scenes
         IEntity platform5;
         IEntity platform6;
 
-        //Pressure Plates & walls
+        //Levers
+        IEntity Lever1;
+
+        //Pressure Plates
         IEntity pressurePlate;
+        
+        //Walls
         IEntity wall;
 
         IEntityManager ent;
@@ -98,8 +103,13 @@ namespace EngineV2.Scenes
             platform5 = ent.CreateEnt<MPlatform>();
             platform6 = ent.CreateEnt<ScreenWidthPlatform>();
 
-            //PresurePLates and wall
+            //Lever
+            Lever1 = ent.CreateEnt<Lever>();
+
+            //Presure PLates
             pressurePlate = ent.CreateEnt<PressurePlate>();
+
+            //Walls
             wall = ent.CreateEnt<TriggerWall>();
 
             behaviours = new BehaviourManager();
@@ -184,9 +194,16 @@ namespace EngineV2.Scenes
 
             pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 345), collider, snd, physicsObj, behaviours);
 
+            //Walls
             wall.applyEventHandlers(inputMgr, col);
 
             wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(750, 520), collider, snd, physicsObj, behaviours);
+
+            //Lever
+
+            Lever1.applyEventHandlers(inputMgr, col);
+
+            Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(780, 450), collider, snd, physicsObj, behaviours);
 
             Scenegraph = EntityManager.Entities;
             Behaviours = BehaviourManager.behaviours;
