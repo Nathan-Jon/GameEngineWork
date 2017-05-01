@@ -37,6 +37,9 @@ namespace EngineV2.Scenes
         //Door
         IEntity Door;
 
+        //Key
+        IEntity key;
+
         //Platforms
         IEntity platform1;
         IEntity platform2;
@@ -75,6 +78,7 @@ namespace EngineV2.Scenes
             enemy = ent.CreateEnt<Enemy>();
             crate = ent.CreateEnt<Crate>();
             
+            
             //Ladders
             Ladder1 = ent.CreateEnt<SLadder>();
             Ladder2 = ent.CreateEnt<LLadder>();
@@ -82,7 +86,10 @@ namespace EngineV2.Scenes
 
             //Door
             Door = ent.CreateEnt<Door>();
-            
+
+            //Key
+            key = ent.CreateEnt<Key>();
+
             //Platforms
             platform1 = ent.CreateEnt<ScreenWidthPlatform>();
             platform2 = ent.CreateEnt<MPlatform>();
@@ -107,6 +114,7 @@ namespace EngineV2.Scenes
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
             snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
             snd.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
+            snd.Initialize(Content.Load<SoundEffect>("KeyPickupSFX"));
             snd.CreateInstance();
 
             back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
@@ -136,6 +144,11 @@ namespace EngineV2.Scenes
 
             Door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, snd, physicsObj, behaviours);
 
+            //Key
+            key.applyEventHandlers(inputMgr, col);
+
+            key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, 80), collider, snd, physicsObj, behaviours);
+            
             //Platforms
             platform1.applyEventHandlers(inputMgr, col);
             platform2.applyEventHandlers(inputMgr, col);

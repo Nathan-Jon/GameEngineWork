@@ -48,6 +48,7 @@
     <Compile Include="Collision Management\CollidableClass.cs" />
     <Compile Include="Collision Management\CollisionEventData.cs" />
     <Compile Include="Collision Management\CollisionManager.cs" />
+    <Compile Include="Entities\Key.cs" />
     <Compile Include="Entities\MPlatform.cs" />
     <Compile Include="Entities\LLadder.cs" />
     <Compile Include="Entities\MLadder.cs" />
@@ -132,6 +133,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Footsteps.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Key.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\KeyPickupSFX.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Ladder.png">
