@@ -39,7 +39,7 @@ namespace EngineV2.Entities
         //Lists
         private List<IEntity> interactiveObjs;
         private List<IEntity> player;
-        private List<IEntity> terrain;
+        private List<IEntity> environment;
 
 
 
@@ -95,12 +95,13 @@ namespace EngineV2.Entities
         {
             //interactiveObjs = colliders.getEntityList();
             player = colliders.getPlayableObj();
-            //terrain = colliders.getTerrain();
+            environment = colliders.getEnvironment();
         }
 
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collisionObj = data.objectCollider;
+            gravity = true;
 
             #region wall collisions
 
@@ -131,6 +132,13 @@ namespace EngineV2.Entities
                 else
                 { crateContact = false; }
 
+            }
+            for (int i = 0; i < environment.Count; i++)
+            {
+                if (HitBox.Intersects(environment[i].getHitbox()))
+                {
+                    gravity = false;
+                }
             }
             #endregion
         }

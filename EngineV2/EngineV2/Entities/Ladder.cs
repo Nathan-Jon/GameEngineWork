@@ -80,6 +80,16 @@ namespace EngineV2.Entities
         {
             collisionObj = data.objectCollider;
 
+            for (int i = 0; i < playerObj.Count; i++)
+            {
+                if (HitBox.Intersects(playerObj[i].getHitbox()) && playerObj[i].getTag() == "Player")
+                {
+                    Player.canClimb = true;
+                }
+
+            }
+
+
         }
         #endregion
         #endregion
