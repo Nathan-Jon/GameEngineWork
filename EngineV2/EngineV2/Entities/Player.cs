@@ -173,7 +173,7 @@ namespace EngineV2.Entities
                     EntityManager.Entities.Clear();
                     BehaviourManager.behaviours.Clear();
                     Scene1.Animation.Clear();
-                    //SceneManager.ExitGame = true;
+                    SceneManager.ExitGame = true;
                 }
             }
 

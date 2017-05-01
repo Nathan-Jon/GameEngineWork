@@ -112,7 +112,7 @@ namespace EngineV2.Entities
 
 
         #region GET/SETS
-        public override void setXPos(float Xpos)
+                public override void setXPos(float Xpos)
         {
             Position.X = Xpos;
         }

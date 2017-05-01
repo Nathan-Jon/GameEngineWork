@@ -13,7 +13,6 @@ using EngineV2.Input;
 using EngineV2.Scenes;
 using EngineV2.Buttons;
 
-
 namespace EngineV2.Behaviours
 {
     /**
@@ -25,7 +24,6 @@ namespace EngineV2.Behaviours
     {
         #region Instance Variables
         public Boolean doorContact = false;
-        
         
 
         //Input Management
@@ -103,7 +101,7 @@ public override void applyEventHandlers(InputManager inputManager, CollisionMana
 
 
                 doorContact = false;
-                
+
             }
             if (doorContact == false)
             {
@@ -128,10 +126,6 @@ public override void applyEventHandlers(InputManager inputManager, CollisionMana
                 if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
                 {
                     doorContact = true;
-                    
-                    
-                    
-
                 }
                 else
                 {

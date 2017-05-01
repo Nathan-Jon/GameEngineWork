@@ -26,7 +26,7 @@ namespace EngineV2.Scenes
             back = new BackGrounds(900, 600);
             ExitBut = new ExitButton();
         }
-    
+
 
         public void LoadContent(ContentManager Content)
         {
@@ -40,11 +40,11 @@ namespace EngineV2.Scenes
             ExitBut.update();
             mouseinput = Mouse.GetState();
 
-            
-                if (mouseinput.X > ExitBut.getHitbox().X && mouseinput.Y > ExitBut.getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
-                {
-                    ExitBut.click();
-                }
+
+            if (mouseinput.X > ExitBut.getHitbox().X && mouseinput.Y > ExitBut.getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
+            {
+                ExitBut.click();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

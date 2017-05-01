@@ -37,7 +37,7 @@ namespace EngineV2
         List<IScene> SceneList = new List<IScene>();
         IScene scene;
         IScene mainmenu;
-        IScene wingame;
+        IScene Wingame;
 
         public static Kernel instance;
 
@@ -80,8 +80,8 @@ namespace EngineV2
             SceneList.Add(mainmenu);
             scene = new Scene1();
             SceneList.Add(scene);
-            wingame = new WinScreen();
-            SceneList.Add(wingame);
+            Wingame = new WinScreen();
+            SceneList.Add(Wingame);
             scn = new SceneManager(this, inputMgr, col, physicsMgr, SceneList);
             SceneManager.mainmenu = true;
 
@@ -99,8 +99,7 @@ namespace EngineV2
             // Create a new SpriteBatch, which can be used to draw textures.
             mainmenu.LoadContent(Content);
             scene.LoadContent(Content);
-            wingame.LoadContent(Content);
-            
+            Wingame.LoadContent(Content);
         }
 
         /// <summary>

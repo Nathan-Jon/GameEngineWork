@@ -49,7 +49,6 @@
     <Compile Include="Collision Management\CollisionEventData.cs" />
     <Compile Include="Collision Management\CollisionManager.cs" />
     <Compile Include="Entities\Key.cs" />
-    <Compile Include="Entities\Lever.cs" />
     <Compile Include="Entities\MPlatform.cs" />
     <Compile Include="Entities\LLadder.cs" />
     <Compile Include="Entities\MLadder.cs" />
@@ -58,6 +57,7 @@
     <Compile Include="Entities\Crate.cs" />
     <Compile Include="Entities\Door.cs" />
     <Compile Include="Entities\Ladder.cs" />
+    <Compile Include="Entities\Lever.cs" />
     <Compile Include="Entities\LongPlatform.cs" />
     <Compile Include="Entities\Platform.cs" />
     <Compile Include="Entities\ScreenWidthPlatform.cs" />
@@ -96,7 +96,7 @@
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\Scene1.cs" />
-    <Compile Include="Scenes\WinScreen.cs" />
+    <Compile Include="Scenes\Wingame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -145,6 +145,9 @@
     <Content Include="Content\Ladder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Lever.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\LLadderTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -180,9 +183,6 @@
     </Content>
     <Content Include="Content\XLPlatformTex.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Lever.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>

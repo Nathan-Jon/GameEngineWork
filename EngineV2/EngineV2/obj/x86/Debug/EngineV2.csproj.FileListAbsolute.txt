@@ -150,4 +150,41 @@ C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\
 C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
 C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
 C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
+C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png

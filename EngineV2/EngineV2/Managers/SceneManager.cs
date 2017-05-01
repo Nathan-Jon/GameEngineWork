@@ -29,8 +29,8 @@ namespace EngineV2.Managers
         IPhysicsMgr physicsMgr;
         static IBackGrounds background;
 
-        public static bool Level1 = false;
         public static bool WinGame = false;
+        public static bool Level1 = false;
         public static bool mainmenu = true;
         public static bool ExitGame = false;
 
@@ -85,7 +85,6 @@ namespace EngineV2.Managers
             if (WinGame == true)
             {
                 SceneList[2].update(gameTime);
-
             }
 
             base.Update(gameTime);
@@ -111,7 +110,6 @@ namespace EngineV2.Managers
             if (WinGame == true)
             {
                 SceneList[2].Draw(spriteBatch);
-                
             }
 
 
