@@ -188,4 +188,10 @@ C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\Engine
 C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
 C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
+<<<<<<< HEAD
 C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
+=======
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
+>>>>>>> origin/master

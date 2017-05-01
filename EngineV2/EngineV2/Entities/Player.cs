@@ -25,9 +25,12 @@ namespace EngineV2.Entities
         public static bool Animate = false;
         public bool gravity = true;
         public bool onTerrain = false;
+
+        //Movement
         private float speed = 3;
         private float ySpeed = 2;
         public static bool canClimb = false;
+        public bool sprint = false;
 
         //Jump Variables
         private float jumpForce = 10;
@@ -35,8 +38,6 @@ namespace EngineV2.Entities
         private bool canJump = false;
         private bool isJumping = false;
         private float jumpHeight = 0;
-
-
 
         //Input Management
         private KeyboardState keyState;
@@ -103,7 +104,11 @@ namespace EngineV2.Entities
             }
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
             {
-                speed = 3;
+                if (sprint)
+                {
+                    speed = 6;
+                }
+                else speed = 3;
                 Position.X += speed;
                 Animate = true;
                 row = 1;
@@ -111,7 +116,11 @@ namespace EngineV2.Entities
             }
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
             {
-                speed = -3;
+                if (sprint)
+                {
+                    speed = -6;
+                }
+                else speed = -3;
                 Position.X += speed;
                 Animate = true;
                 row = 0;
@@ -124,6 +133,17 @@ namespace EngineV2.Entities
             {
                 isJumping = true;
                 jump();
+            }
+            #endregion
+
+            #region LEFT SHIFT
+            if (keyState.IsKeyDown(Keys.LeftShift))
+            {
+                sprint = true;
+            }
+            else if (keyState.IsKeyUp(Keys.LeftShift))
+            {
+                sprint = false;
             }
             #endregion
 
