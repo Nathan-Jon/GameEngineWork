@@ -47,7 +47,10 @@ namespace EngineV2.Scenes
         {
             for (int i = 0; i < Buttons.Count; i++)
             {
-                Buttons[i].update();
+                
+                    Buttons[i].update();
+                
+                
             }
             mouseinput = Mouse.GetState();
 
@@ -58,8 +61,8 @@ namespace EngineV2.Scenes
                     Buttons[0].click();
                 }
                 if (mouseinput.X > Buttons[1].getHitbox().X && mouseinput.Y > Buttons[1].getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
-                {
-                    Buttons[1].click();
+                {   Buttons[1].click();
+                 
                 }
             }
         }

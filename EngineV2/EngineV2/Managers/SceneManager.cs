@@ -30,6 +30,7 @@ namespace EngineV2.Managers
         static IBackGrounds background;
 
         public static bool Level1 = false;
+        public static bool WinGame = false;
         public static bool mainmenu = true;
         public static bool ExitGame = false;
 
@@ -81,6 +82,12 @@ namespace EngineV2.Managers
                 SceneList[1].update(gameTime);
             }
 
+            if (WinGame == true)
+            {
+                SceneList[2].update(gameTime);
+
+            }
+
             base.Update(gameTime);
 
         }
@@ -99,6 +106,12 @@ namespace EngineV2.Managers
             if (Level1 == true)
             {
                 SceneList[1].Draw(spriteBatch);
+            }
+
+            if (WinGame == true)
+            {
+                SceneList[2].Draw(spriteBatch);
+                
             }
 
 

@@ -48,8 +48,13 @@ namespace EngineV2.Scenes
         IEntity platform5;
         IEntity platform6;
 
-        //Pressure Plates & walls
+        //Levers
+        IEntity Lever1;
+
+        //Pressure Plates
         IEntity pressurePlate;
+
+        //Walls
         IEntity wall;
 
         IEntityManager ent;
@@ -98,8 +103,14 @@ namespace EngineV2.Scenes
             platform5 = ent.CreateEnt<MPlatform>();
             platform6 = ent.CreateEnt<ScreenWidthPlatform>();
 
-            //PresurePLates and wall
+            //Lever
+
+            Lever1 = ent.CreateEnt<Lever>();
+
+            //PresurePLates
             pressurePlate = ent.CreateEnt<PressurePlate>();
+
+            //Walls
             wall = ent.CreateEnt<TriggerWall>();
 
             behaviours = new BehaviourManager();
@@ -179,10 +190,18 @@ namespace EngineV2.Scenes
 
             crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 320), collider, snd, physicsObj, behaviours);
 
+            //Levers
+
+           Lever1.applyEventHandlers(inputMgr, col);
+
+           Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(780, 450), collider, snd, physicsObj, behaviours);
+
             //Pressure Plates
             pressurePlate.applyEventHandlers(inputMgr, col);
 
             pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 345), collider, snd, physicsObj, behaviours);
+
+            //Walls
 
             wall.applyEventHandlers(inputMgr, col);
 
@@ -226,7 +245,8 @@ namespace EngineV2.Scenes
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            if (SceneManager.Level1 == true)
+            {
                 back.Draw(spriteBatch);
 
 
@@ -239,7 +259,7 @@ namespace EngineV2.Scenes
                 {
                     Animation[i].Draw(spriteBatch);
                 }
-
+            }
         }
 
 

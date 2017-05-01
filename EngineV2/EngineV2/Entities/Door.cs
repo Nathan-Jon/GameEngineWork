@@ -10,6 +10,8 @@ using EngineV2.Managers;
 using EngineV2.Collision_Management;
 using EngineV2.Entities;
 using EngineV2.Input;
+using EngineV2.Scenes;
+using EngineV2.Buttons;
 
 
 namespace EngineV2.Behaviours
@@ -23,6 +25,7 @@ namespace EngineV2.Behaviours
     {
         #region Instance Variables
         public Boolean doorContact = false;
+        
         
 
         //Input Management
@@ -90,7 +93,17 @@ public override void applyEventHandlers(InputManager inputManager, CollisionMana
             if (doorContact && keyState.IsKeyDown(Keys.W) || doorContact && keyState.IsKeyDown(Keys.Up))
             {
                 sound.Volume(3, 0.5f);
-                sound.Playsnd(3); 
+                sound.Playsnd(3);
+                EntityManager.Entities.Clear();
+                BehaviourManager.behaviours.Clear();
+                ButtonList.menuButtons.Clear();
+                Scene1.Animation.Clear();
+                SceneManager.Level1 = false;
+                SceneManager.WinGame = true;
+
+
+                doorContact = false;
+                
             }
             if (doorContact == false)
             {
@@ -115,6 +128,10 @@ public override void applyEventHandlers(InputManager inputManager, CollisionMana
                 if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
                 {
                     doorContact = true;
+                    
+                    
+                    
+
                 }
                 else
                 {

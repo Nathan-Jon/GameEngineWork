@@ -150,3 +150,4 @@ C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\
 C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
 C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
 C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
+C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
