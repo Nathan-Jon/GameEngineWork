@@ -119,7 +119,8 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            snd.Initialize(Content.Load<SoundEffect>("background"));
+
+            snd.Initialize(Content.Load<SoundEffect>("Level1Music"));
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
             snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
             snd.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
@@ -241,6 +242,11 @@ namespace EngineV2.Scenes
 
 
                 physicsMgr.update();
+
+                if (SceneManager.Level1 == true)
+                {
+                    snd.Playsnd(0);
+                }
             }
         }
 

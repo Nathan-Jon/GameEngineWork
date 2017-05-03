@@ -6,9 +6,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 using EngineV2.Buttons;
 using EngineV2.BackGround;
 using EngineV2.Managers;
+using EngineV2.Interfaces;
 
 namespace EngineV2.Scenes
 {
@@ -18,6 +20,7 @@ namespace EngineV2.Scenes
         IButton ExitBut;
         IBackGrounds back;
         MouseState mouseinput;
+        ISoundManager snd;
 
 
         public GameOver()
@@ -25,13 +28,18 @@ namespace EngineV2.Scenes
 
             back = new BackGrounds(900, 600);
             ExitBut = new ExitButton();
+            snd = new SoundManager();
         }
 
 
         public void LoadContent(ContentManager Content)
         {
+            snd.Initialize(Content.Load<SoundEffect>("background"));
+            snd.CreateInstance();
+
+
             back.Initialize(Content.Load<Texture2D>("LoseGame"));
-            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300));
+            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300), snd);
 
         }
 
@@ -45,6 +53,12 @@ namespace EngineV2.Scenes
             {
                 ExitBut.click();
             }
+
+            if (SceneManager.LoseScreen = true)
+            {
+                snd.Playsnd(0);
+            }
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

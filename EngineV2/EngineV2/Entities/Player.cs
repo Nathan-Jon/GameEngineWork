@@ -86,7 +86,7 @@ namespace EngineV2.Entities
             keyState = data.newKey;
 
             sound.Volume(1, 0.1f);
-            sound.Volume(5, 0.1f);
+            sound.Volume(5, 0.3f);
 
             //Act on the data
             #region ARROWS & WASD
@@ -96,6 +96,7 @@ namespace EngineV2.Entities
                 Animate = true;
                 row = 2;
                 sound.Playsnd(5);
+
             }
             if (canClimb && keyState.IsKeyDown(Keys.S) || canClimb && keyState.IsKeyDown(Keys.Down))
             {
@@ -174,7 +175,7 @@ namespace EngineV2.Entities
             gravity = true;
             canClimb = false;
 
-            #region map corners 
+            #region Map corners 
             if (HitBox.X <= 0)
             { Position.X -= -3; }
 
@@ -191,7 +192,7 @@ namespace EngineV2.Entities
             }
             #endregion
 
-            #region enemy collisions
+            #region Enemy collisions
             for (int i = 0; i < collisionObjs.Count; i++)
             {
                 if (HitBox.Intersects(collisionObjs[0].getHitbox()))
@@ -200,6 +201,7 @@ namespace EngineV2.Entities
                     BehaviourManager.behaviours.Clear();
                     Scene1.Animation.Clear();
                     SceneManager.LoseScreen = true;
+                    sound.Stopsnd(0);
                 }
             }
             #endregion

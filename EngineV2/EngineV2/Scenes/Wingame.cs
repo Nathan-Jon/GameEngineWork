@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Content;
 using EngineV2.Buttons;
 using EngineV2.BackGround;
 using EngineV2.Managers;
+using EngineV2.Interfaces;
 
 namespace EngineV2.Scenes
 {
@@ -18,6 +19,7 @@ namespace EngineV2.Scenes
         IButton ExitBut;
         IBackGrounds back;
         MouseState mouseinput;
+        ISoundManager snd;
 
 
         public WinScreen()
@@ -31,7 +33,7 @@ namespace EngineV2.Scenes
         public void LoadContent(ContentManager Content)
         {
             back.Initialize(Content.Load<Texture2D>("WinGame"));
-            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300));
+            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300), snd);
 
         }
 

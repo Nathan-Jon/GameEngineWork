@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using EngineV2.Managers;
 using EngineV2.Scenes;
+using EngineV2.Interfaces;
 
 namespace EngineV2.Buttons
 {
@@ -14,11 +15,15 @@ namespace EngineV2.Buttons
         public Texture2D Texture;
         public static Vector2 Position;
         public Rectangle HitBox;
+        ISoundManager snd;
 
-        public void Initialize(Texture2D tex, Vector2 Posn)
+
+
+        public void Initialize(Texture2D tex, Vector2 Posn, ISoundManager sound)
         {
             Texture = tex;
             Position = Posn;
+            snd = sound;
         }
 
 
@@ -47,7 +52,7 @@ namespace EngineV2.Buttons
         {
             SceneManager.mainmenu = false;
             SceneManager.Level1 = true;
-            
+            snd.Stopsnd(0);
         }
 
 
