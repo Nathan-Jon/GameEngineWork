@@ -12,8 +12,9 @@ using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
-    class LongPlatform : GameEntity
+    class TriggerPlatform : GameEntity
     {
+        public string tag = "leverObj";
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -50,10 +51,14 @@ namespace EngineV2.Entities
         {
             collisionMgr = collisions;
         }
-        //public override void CollidableObjs()
-        //{
-        //    physicsObjs = physics.getPhysicsList();
-        //}
+
+        #region behaviours
+        public void lower()
+        {
+            if (Position.Y < 107)
+                Position.Y += 1;
+        }
+        #endregion
 
         public virtual void onCollision(object source, CollisionEventData data)
         {
@@ -77,6 +82,7 @@ namespace EngineV2.Entities
         public override void update()
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+
         }
 
         public override Rectangle getHitbox()
@@ -91,5 +97,10 @@ namespace EngineV2.Entities
         {
             Position.Y = Ypos;
         }
+        public override string getTag()
+        {
+            return tag;
+        }
+
     }
 }

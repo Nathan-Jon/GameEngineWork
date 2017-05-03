@@ -24,6 +24,7 @@ namespace EngineV2.Behaviours
         #region Instance Variables
         public bool keyContact = false;
         public static bool Unlock = false;
+        public bool gravity = true;
 
 
         //Input Management
@@ -35,6 +36,7 @@ namespace EngineV2.Behaviours
         private CollisionManager collisionMgr;
         private ICollidable colliders;
         private ISoundManager sound;
+
 
 
         //Lists
@@ -57,6 +59,9 @@ namespace EngineV2.Behaviours
 
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
+            phys.hasPhysics(this);
+
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -111,6 +116,7 @@ namespace EngineV2.Behaviours
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collisionObj = data.objectCollider;
+            gravity = true;
 
             for (int i = 0; i < interactiveObjs.Count; i++)
             {
@@ -125,6 +131,16 @@ namespace EngineV2.Behaviours
                     keyContact = false;
                 }
             }
+        }
+        #endregion
+        #region GET/SETS
+        public override bool getGrav()
+        {
+            return gravity;
+        }
+        public override void setGrav(bool active)
+        {
+            gravity = active;
         }
         #endregion
     }

@@ -44,7 +44,7 @@ namespace EngineV2.Scenes
         IEntity platform1;
         IEntity platform2;
         IEntity platform3;
-        IEntity platform4;
+        IEntity leverPlatformTarget;
         IEntity platform5;
 
         //Levers
@@ -95,7 +95,7 @@ namespace EngineV2.Scenes
             platform1 = ent.CreateEnt<ScreenWidthPlatform>();
             platform2 = ent.CreateEnt<MPlatform>();
             platform3 = ent.CreateEnt<ScreenWidthPlatform>();
-            platform4 = ent.CreateEnt<ScreenWidthPlatform>();
+            leverPlatformTarget = ent.CreateEnt<TriggerPlatform>();
             platform5 = ent.CreateEnt<MPlatform>();
 
             //Lever
@@ -155,20 +155,20 @@ namespace EngineV2.Scenes
             //Key
             key.applyEventHandlers(inputMgr, col);
 
-            key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, 80), collider, snd, physicsObj, behaviours);
+            key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, snd, physicsObj, behaviours);
             
             //Platforms
             platform1.applyEventHandlers(inputMgr, col);
             platform2.applyEventHandlers(inputMgr, col);
             platform3.applyEventHandlers(inputMgr, col);
-            platform4.applyEventHandlers(inputMgr, col);
+            leverPlatformTarget.applyEventHandlers(inputMgr, col);
             platform5.applyEventHandlers(inputMgr, col);
             
             platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, snd, physicsObj, behaviours);
             platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, snd, physicsObj, behaviours);
             platform3.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, snd, physicsObj, behaviours);
-            platform4.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, 105), collider, snd, physicsObj, behaviours);
-            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 105), collider, snd, physicsObj, behaviours);
+            leverPlatformTarget.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, snd, physicsObj, behaviours);
+            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, snd, physicsObj, behaviours);
 
 
             //Animation
@@ -180,10 +180,12 @@ namespace EngineV2.Scenes
 
 
             //INTERACTIVE OBJECTS
+
+
             //Crates
             crate.applyEventHandlers(inputMgr, col);
 
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(300, 320), collider, snd, physicsObj, behaviours);
+            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, snd, physicsObj, behaviours);
 
             //Pressure Plates
             pressurePlate.applyEventHandlers(inputMgr, col);

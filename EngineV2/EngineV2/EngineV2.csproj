@@ -49,6 +49,7 @@
     <Compile Include="Collision Management\CollisionEventData.cs" />
     <Compile Include="Collision Management\CollisionManager.cs" />
     <Compile Include="Entities\Key.cs" />
+    <Compile Include="Entities\LeverTarget.cs" />
     <Compile Include="Entities\MPlatform.cs" />
     <Compile Include="Entities\LLadder.cs" />
     <Compile Include="Entities\MLadder.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\SceneManager.cs" />
+    <Compile Include="Entities\TriggerPlatform.cs" />
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\Scene1.cs" />

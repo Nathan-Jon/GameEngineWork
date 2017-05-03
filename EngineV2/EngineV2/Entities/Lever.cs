@@ -67,7 +67,15 @@ namespace EngineV2.Entities
             keyState = data.newKey;
             if (canTrigger && keyState.IsKeyDown(Keys.H) || canTrigger && keyState.IsKeyDown(Keys.E))
             {
-                targetObjs[2].setYPos(30);
+                for (int i = 0; i < targetObjs.Count; i++)
+                {
+                    if (targetObjs[i].getTag() == "leverObj")
+                    {
+                        if (targetObjs[i].getPos().Y <= 107)
+                        targetObjs[i].setYPos(105);
+                            
+                    }
+                }
             }
         }
 

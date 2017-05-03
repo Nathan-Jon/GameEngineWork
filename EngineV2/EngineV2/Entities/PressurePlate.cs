@@ -106,7 +106,7 @@ namespace EngineV2.Entities
                     triggerWall = environementObjs[i];
                 }
             }
-            triggerWall.setYPos(481);
+            triggerWall.setYPos(1000);
         }
 
         public void reset()

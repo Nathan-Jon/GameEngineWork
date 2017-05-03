@@ -12,8 +12,10 @@ using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
-    class LongPlatform : GameEntity
+    class LeverTarget : GameEntity
     {
+        public String tag = "LeverTarget";
+
         public static Texture2D Texture;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -65,9 +67,9 @@ namespace EngineV2.Entities
             for (int i = 0; i < physicsObjs.Count; i++)
             {
                 if (HitBox.Intersects(physicsObjs[i].getHitbox()))
-                {
-                    physicsObjs[i].setGrav(false);
-                }
+                { physicsObjs[i].setGrav(false); }
+
+
             }
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -93,3 +95,4 @@ namespace EngineV2.Entities
         }
     }
 }
+
