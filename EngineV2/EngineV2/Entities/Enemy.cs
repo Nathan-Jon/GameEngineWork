@@ -32,7 +32,7 @@ namespace EngineV2.Entities
             Texture = Tex;
             collisionMgr.subscribe(onCollision);
             _collider.isCollidableEntity(this);
-                //behaviours.createMind<EnemyMind>(this);
+                behaviours.createMind<EnemyMind>(this);
         }
         public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
         {
