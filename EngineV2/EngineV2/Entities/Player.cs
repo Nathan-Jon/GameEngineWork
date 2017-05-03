@@ -26,6 +26,7 @@ namespace EngineV2.Entities
         public bool gravity = true;
         public bool onTerrain = false;
 
+
         //Movement
         private float speed = 3;
         private float ySpeed = 2;
@@ -198,7 +199,7 @@ namespace EngineV2.Entities
                     EntityManager.Entities.Clear();
                     BehaviourManager.behaviours.Clear();
                     Scene1.Animation.Clear();
-                    SceneManager.ExitGame = true;
+                    SceneManager.LoseScreen = true;
                 }
             }
             #endregion

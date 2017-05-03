@@ -33,6 +33,7 @@ namespace EngineV2.Managers
         public static bool Level1 = false;
         public static bool mainmenu = true;
         public static bool ExitGame = false;
+        public static bool LoseScreen = false;
 
         public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp) : base(game)
         {
@@ -86,7 +87,10 @@ namespace EngineV2.Managers
             {
                 SceneList[2].update(gameTime);
             }
-
+            if (LoseScreen == true)
+            {
+                SceneList[3].update(gameTime);
+            }
             base.Update(gameTime);
 
         }
@@ -110,6 +114,11 @@ namespace EngineV2.Managers
             if (WinGame == true)
             {
                 SceneList[2].Draw(spriteBatch);
+            }
+
+            if (LoseScreen == true)
+            {
+                SceneList[3].Draw(spriteBatch);
             }
 
 

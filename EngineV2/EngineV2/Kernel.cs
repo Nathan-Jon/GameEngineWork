@@ -38,6 +38,7 @@ namespace EngineV2
         IScene scene;
         IScene mainmenu;
         IScene Wingame;
+        IScene LoseScreen;
 
         public static Kernel instance;
 
@@ -46,7 +47,7 @@ namespace EngineV2
         int screenWidth = 900;
         int screenHeight = 600;
 
-        
+
 
         #endregion
 
@@ -82,8 +83,9 @@ namespace EngineV2
             SceneList.Add(scene);
             Wingame = new WinScreen();
             SceneList.Add(Wingame);
+            LoseScreen = new GameOver();
+            SceneList.Add(LoseScreen);
             scn = new SceneManager(this, inputMgr, col, physicsMgr, SceneList);
-            SceneManager.mainmenu = true;
 
             Components.Add((GameComponent)scn);
 
@@ -100,6 +102,7 @@ namespace EngineV2
             mainmenu.LoadContent(Content);
             scene.LoadContent(Content);
             Wingame.LoadContent(Content);
+            LoseScreen.LoadContent(Content);
         }
 
         /// <summary>

@@ -27,6 +27,7 @@ namespace EngineV2.Scenes
 
         IEntity player;
         IEntity enemy;
+        //IEntity enemy1;
         IEntity crate;
 
         //Ladder
@@ -80,6 +81,7 @@ namespace EngineV2.Scenes
             scn = new SceneManager(Kernel.instance, inputMgr, col, physicsMgr);
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
+            //enemy1 = ent.CreateEnt<Enemy>();
             crate = ent.CreateEnt<Crate>();
 
             //Walls
@@ -131,11 +133,14 @@ namespace EngineV2.Scenes
 
             player.applyEventHandlers(inputMgr, col);
             enemy.applyEventHandlers(inputMgr, col);
-            
+           // enemy1.applyEventHandlers(inputMgr, col);
+
 
             player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, snd, physicsObj, behaviours);
             enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
-            
+          //  enemy1.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 200), collider, snd, physicsObj, behaviours);
+
+
             //Ladders
             Ladder1.applyEventHandlers(inputMgr, col);
             Ladder2.applyEventHandlers(inputMgr, col);
@@ -174,7 +179,8 @@ namespace EngineV2.Scenes
             //Animation
             animation.Initialize(player, 3, 3);
             animation.Initialize(enemy, 3, 3);
-            
+       //     animation.Initialize(enemy1, 3, 3);
+
 
             scn.Initalize(animation, back, snd);
 
