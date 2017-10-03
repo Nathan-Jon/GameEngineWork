@@ -15,6 +15,7 @@ using EngineV2.Collision_Management;
 using EngineV2.Input;
 using EngineV2.Physics;
 using EngineV2.BackGround;
+using EngineV2.Input_Managment;
 
 
 namespace EngineV2.Scenes
@@ -67,6 +68,7 @@ namespace EngineV2.Scenes
         ISoundManager snd;
         PhysicsManager physicsMgr;
         IPhysicsObj physicsObj;
+        private InputSingleton singleInput;
 
         public Scene1()
         {
@@ -81,7 +83,7 @@ namespace EngineV2.Scenes
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             crate = ent.CreateEnt<Crate>();
-
+            singleInput = InputSingleton.GetInputInstance;
             //Walls
             wall = ent.CreateEnt<TriggerWall>();
 
@@ -213,7 +215,8 @@ namespace EngineV2.Scenes
 
             if (SceneManager.Level1 == true)
             {
-                inputMgr.update();
+                singleInput.update();
+                //inputMgr.update();
                 col.update();
 
                 for (int i = 0; i < Scenegraph.Count; i++)

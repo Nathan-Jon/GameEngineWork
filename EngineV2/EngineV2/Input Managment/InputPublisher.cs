@@ -7,6 +7,5 @@ namespace EngineV2.Input
     interface InputPublisher
     {
         void OnNewInput(object source, KeyboardState data);
-        void update();
     }
 }

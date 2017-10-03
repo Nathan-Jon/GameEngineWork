@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using EngineV2.Behaviours.Player_Behaviours;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -23,7 +24,7 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
         public int row = 1;
         public static bool Animate = false;
-        public bool gravity = true;
+        public bool gravity = false;
         public bool onTerrain = false;
 
         //Movement
@@ -41,9 +42,11 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager inputMgr;
+       // private InputManager inputMgr;
 
-        //Collision Management
+        //Behaviours
+        private IBehaviour playerController;
+
 
         //Lists
         private List<IEntity> collisionObjs;
@@ -63,17 +66,18 @@ namespace EngineV2.Entities
             Texture = Tex;
             sound = snd;
             colliders = _collider;
-            inputMgr.AddListener(OnNewInput);
+            //inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
             _collider.isPlayerEntity(this);
             phys.hasPhysics(this);
+           behaviours.createMind<PlayerMind>(this);
 
         }
         //Subscribe to Event Handlers
         public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
         {
-            inputMgr = inputManager;
+            //inputMgr = inputManager;
             collisionMgr = col;
         }
         #endregion
@@ -103,30 +107,30 @@ namespace EngineV2.Entities
                 row = 2;
                 sound.Playsnd(5);
             }
-            if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            {
-                if (sprint)
-                {
-                    speed = 6;
-                }
-                else speed = 3;
-                Position.X += speed;
-                Animate = true;
-                row = 1;
-                sound.Playsnd(1);
-            }
-            if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
-            {
-                if (sprint)
-                {
-                    speed = -6;
-                }
-                else speed = -3;
-                Position.X += speed;
-                Animate = true;
-                row = 0;
-                sound.Playsnd(1);
-            }
+            //if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
+            //{
+            //    if (sprint)
+            //    {
+            //        speed = 6;
+            //    }
+            //    else speed = 3;
+            //    Position.X += speed;
+            //    Animate = true;
+            //    row = 1;
+            //    sound.Playsnd(1);
+            //}
+            //if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
+            //{
+            //    if (sprint)
+            //    {
+            //        speed = -6;
+            //    }
+            //    else speed = -3;
+            //    Position.X += speed;
+            //    Animate = true;
+            //    row = 0;
+            //    sound.Playsnd(1);
+            //}
             #endregion
 
             #region SPACEBAR

@@ -4,9 +4,8 @@ using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
 
 namespace EngineV2.Input
 {
-    public class InputManager : InputPublisher, InputSubscriber
+    public sealed class InputManager : InputPublisher, InputSubscriber
     {
-
 
         public event EventHandler<EventData> NewInput;
         public KeyboardState NewKey;
@@ -33,9 +32,9 @@ namespace EngineV2.Input
             if (NewInput != null)
             {
                 OnNewInput(this, NewKey);
-            }           
+            }
+            
         }
-
     }
 }
 
