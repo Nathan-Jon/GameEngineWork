@@ -29,7 +29,7 @@ namespace EngineV2.Entities
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
-        public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
+        public override void applyEventHandlers(CollisionManager col)
         { }
         public override void accessPhysics(IPhysicsObj obj)
         { }

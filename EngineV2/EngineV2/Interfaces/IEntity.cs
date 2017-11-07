@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using EngineV2.Input;
 using EngineV2.Collision_Management;
 
 namespace EngineV2.Interfaces
@@ -26,7 +24,7 @@ namespace EngineV2.Interfaces
         bool getGrav();
         string getTag();
         float getDirection();
-        void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
+        void applyEventHandlers(CollisionManager collisions);
         void accessPhysics(IPhysicsObj obj);
         void CollidableObjs();
 

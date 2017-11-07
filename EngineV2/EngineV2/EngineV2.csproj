@@ -51,6 +51,7 @@
     <Compile Include="Collision Management\CollidableClass.cs" />
     <Compile Include="Collision Management\CollisionEventData.cs" />
     <Compile Include="Collision Management\CollisionManager.cs" />
+    <Compile Include="Collision Management\CollisionManagerSingleton.cs" />
     <Compile Include="Entities\Interactive\Key.cs" />
     <Compile Include="Entities\Interactive\LeverTarget.cs" />
     <Compile Include="Entities\Environment\MPlatform.cs" />
@@ -67,7 +68,7 @@
     <Compile Include="Entities\Environment\ScreenWidthPlatform.cs" />
     <Compile Include="Entities\Environment\TriggerWall.cs" />
     <Compile Include="Input Managment\EventData.cs" />
-    <Compile Include="Input Managment\InputManager.cs" />
+    <Compile Include="Input Managment\OldInput.cs" />
     <Compile Include="Input Managment\InputPublisher.cs" />
     <Compile Include="Input Managment\InputSingleton.cs" />
     <Compile Include="Input Managment\InputSubscriber.cs" />

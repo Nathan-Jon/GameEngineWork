@@ -10,6 +10,7 @@ using EngineV2.Managers;
 using EngineV2.Collision_Management;
 using EngineV2.Entities;
 using EngineV2.Input;
+using EngineV2.Input_Managment;
 
 namespace EngineV2.Entities
 {
@@ -26,7 +27,7 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager input;
+        private InputManager InputMgr;
 
         //Collision Management Variables
         private IEntity collisionObj;
@@ -45,7 +46,8 @@ namespace EngineV2.Entities
             colliders = _collider;
 
             //SUBSCRIBERS
-            input.AddListener(OnNewInput);
+            InputMgr = InputManager.GetInputInstance;
+            InputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
 
             //CALL COLLIDABLEOBJS()
@@ -55,9 +57,8 @@ namespace EngineV2.Entities
         #region EVENTS
 
         //INITIALISE EVENT HANDLERS
-        public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
+        public override void applyEventHandlers(CollisionManager collisions)
         {
-            input = inputManager;
             collisionMgr = collisions;
         }
 

@@ -66,18 +66,16 @@ namespace EngineV2.Entities
             Texture = Tex;
             sound = snd;
             colliders = _collider;
-            //inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
             _collider.isPlayerEntity(this);
             phys.hasPhysics(this);
-           behaviours.createMind<PlayerMind>(this);
+            behaviours.createMind<PlayerMind>(this);
 
         }
         //Subscribe to Event Handlers
-        public override void applyEventHandlers(InputManager inputManager, CollisionManager col)
+        public override void applyEventHandlers(CollisionManager col)
         {
-            //inputMgr = inputManager;
             collisionMgr = col;
         }
         #endregion

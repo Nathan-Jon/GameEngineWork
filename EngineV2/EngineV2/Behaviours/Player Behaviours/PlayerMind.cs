@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using EngineV2.Input;
+﻿using EngineV2.Input;
 using EngineV2.Input_Managment;
 using EngineV2.Interfaces;
 using Microsoft.Xna.Framework.Input;
@@ -18,7 +13,6 @@ namespace EngineV2.Behaviours.Player_Behaviours
         private KeyboardState keyState;
         private InputManager inputMgr;
 
-        private InputSingleton singleInput;
 
         private int speed = 4;
 
@@ -30,8 +24,8 @@ namespace EngineV2.Behaviours.Player_Behaviours
         {
             body = ent;
             moveXBehaviour = new xMoveBehaviour(body);
-            singleInput = InputSingleton.GetInputInstance;
-            singleInput.AddListener(OnNewInput);
+            inputMgr = InputManager.GetInputInstance;
+            inputMgr.AddListener(OnNewInput);
         }
 
         public virtual void OnNewInput(object source, EventData data)

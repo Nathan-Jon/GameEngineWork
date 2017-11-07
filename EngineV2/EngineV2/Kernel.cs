@@ -1,18 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Audio;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EngineV2.Interfaces;
 using EngineV2.Managers;
-using EngineV2.Entities;
-using EngineV2.Behaviours;
 using EngineV2.Collision_Management;
-using EngineV2.Input;
 using EngineV2.Physics;
-using EngineV2.BackGround;
+using EngineV2.Input_Managment;
 using EngineV2.Scenes;
 
 namespace EngineV2
@@ -72,7 +65,7 @@ namespace EngineV2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            inputMgr = new InputManager();
+            inputMgr = InputManager.GetInputInstance;
             col = new CollisionManager();
             physicsObj = new PhysicsObj();
             physicsMgr = new PhysicsManager(physicsObj);
@@ -82,7 +75,7 @@ namespace EngineV2
             SceneList.Add(scene);
             Wingame = new WinScreen();
             SceneList.Add(Wingame);
-            scn = new SceneManager(this, inputMgr, col, physicsMgr, SceneList);
+            scn = new SceneManager(this, col, physicsMgr, SceneList);
             SceneManager.mainmenu = true;
 
             Components.Add((GameComponent)scn);

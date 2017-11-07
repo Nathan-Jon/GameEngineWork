@@ -1,6 +1,4 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Input;
-using OpenTK.Input;
 using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
 
 

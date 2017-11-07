@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
-using EngineV2.Managers;
 using EngineV2.Collision_Management;
-using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
@@ -47,7 +41,7 @@ namespace EngineV2.Entities
 
         }
 
-        public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
+        public override void applyEventHandlers(CollisionManager collisions)
         {
             collisionMgr = collisions;
         }

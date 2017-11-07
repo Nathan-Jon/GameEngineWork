@@ -48,7 +48,7 @@ namespace EngineV2.Entities
 
         }
 
-        public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
+        public override void applyEventHandlers(CollisionManager collisions)
         {
             collisionMgr = collisions;
         }

@@ -8,13 +8,40 @@ using EngineV2.Interfaces;
 
 namespace EngineV2.Collision_Management
 {
-    public class CollisionManager
+    public sealed class CollisionManagerSingleton
     {
         public event EventHandler<CollisionEventData> NewCollision;
         public IEntity collisionObj;
 
+        private static CollisionManagerSingleton instance = null;
+        private static object syncInstance = new object();
+
+
+        //SETING UP SINGLETON
+        private CollisionManagerSingleton()
+        { }
+
+        public static CollisionManagerSingleton GetColliderInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncInstance)
+                    {
+                        if (instance == null)
+                            instance = new CollisionManagerSingleton();
+                    }
+                }
+                return instance;
+            }
+        }
+
+
+
+
         //Raise the event
-        public virtual void onCollision(object source, IEntity collidedObject)
+        public void onCollision(object source, IEntity collidedObject)
         {
             CollisionEventData collision = new CollisionEventData(collidedObject);
             NewCollision(this, collision);
@@ -31,17 +58,12 @@ namespace EngineV2.Collision_Management
         {
             //for (int i = 0; i < CollidableObjs.Count; i++)
             //{
-                if (NewCollision != null)
-                {
-                    onCollision(this, collisionObj);
-                }
+            if (NewCollision != null)
+            {
+                onCollision(this, collisionObj);
+            }
             //}
 
         }
     }
 }
-
-
-
-
-

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Input;
+using EngineV2.Input_Managment;
 
 namespace EngineV2.Buttons
 {
@@ -13,7 +14,7 @@ namespace EngineV2.Buttons
         IButton start;
 
         bool selected = false;
-        InputManager input;
+        private InputManager input;
         private KeyboardState keyState;
 
         public static List<IButton> menuButtons= new List<IButton>();

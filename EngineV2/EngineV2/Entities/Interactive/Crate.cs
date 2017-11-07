@@ -9,6 +9,7 @@ using EngineV2.Interfaces;
 using EngineV2.Managers;
 using EngineV2.Collision_Management;
 using EngineV2.Input;
+using EngineV2.Input_Managment;
 
 namespace EngineV2.Entities
 {
@@ -29,7 +30,7 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager input;
+        private InputManager InputMgr;
 
         //Collision Management
         private IEntity collisionObj;
@@ -49,16 +50,16 @@ namespace EngineV2.Entities
             Texture = Tex;
             colliders = _collider;
             sound = snd;
-            input.AddListener(OnNewInput);
+            InputMgr = InputManager.GetInputInstance;
+            InputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
             _collider.isInteractiveCollidable(this);
             phys.hasPhysics(this);
         }
 
-        public override void applyEventHandlers(InputManager inputManager, CollisionManager collisions)
+        public override void applyEventHandlers(CollisionManager collisions)
         {
-            input = inputManager;
             collisionMgr = collisions;
         }
 

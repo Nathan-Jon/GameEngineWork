@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Schema;
 using EngineV2.Input;
 using Microsoft.Xna.Framework.Input;
 using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
@@ -10,22 +6,22 @@ using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
 
 namespace EngineV2.Input_Managment
 {
-    public sealed class InputSingleton
+    public sealed class InputManager
     {
 
-        private static InputSingleton instance = null;
+        private static InputManager instance = null;
         private static object syncInstance = new object();
 
         public event EventHandler<EventData> NewInput;
         public KeyboardState NewKey;
 
         //PRIVATE INSTANTIATER
-        private InputSingleton()
+        private InputManager()
         { }
 
 
         //RETURN INSTANCE
-        public static InputSingleton GetInputInstance
+        public static InputManager GetInputInstance
         {
             get
             {
@@ -34,7 +30,7 @@ namespace EngineV2.Input_Managment
                     lock (syncInstance)
                     {
                         if (instance == null)
-                            instance = new InputSingleton();
+                            instance = new InputManager();
                     }
                 }
                 return instance;
@@ -49,7 +45,6 @@ namespace EngineV2.Input_Managment
             NewInput(this, args);
             NewKey = args.newKey;
         }
-
 
         public void AddListener(EventHandler<EventData> handler)
         {

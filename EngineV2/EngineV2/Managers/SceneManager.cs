@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
 using EngineV2.Interfaces;
-using EngineV2.Input;
 using EngineV2.Collision_Management;
 using EngineV2.BackGround;
+using EngineV2.Input_Managment;
 using EngineV2.Scenes;
 
 namespace EngineV2.Managers
@@ -24,7 +20,7 @@ namespace EngineV2.Managers
         public static List<IScene> SceneList;
 
         SpriteBatch spriteBatch;
-        InputManager input;
+        InputManager inputMgr;
         CollisionManager coli;
         IPhysicsMgr physicsMgr;
         static IBackGrounds background;
@@ -34,18 +30,18 @@ namespace EngineV2.Managers
         public static bool mainmenu = true;
         public static bool ExitGame = false;
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp) : base(game)
+        public SceneManager(Game game,CollisionManager collision, IPhysicsMgr physUp) : base(game)
         {
-            input = inp;
+            inputMgr = InputManager.GetInputInstance;
             coli = collision;
             physicsMgr = physUp;
             
         }
 
-        public SceneManager(Game game, InputManager inp, CollisionManager collision, IPhysicsMgr physUp, List<IScene> scenelist)
+        public SceneManager(Game game,CollisionManager collision, IPhysicsMgr physUp, List<IScene> scenelist)
             : base(game)
         {
-            input = inp;
+            inputMgr = InputManager.GetInputInstance;
             coli = collision;
             physicsMgr = physUp;
             SceneList = scenelist;

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
-using EngineV2.Input;
 using EngineV2.Collision_Management;
 
 
@@ -28,7 +22,7 @@ namespace EngineV2.Entities
         public abstract void setGrav(bool active);
         public abstract bool getGrav();
         public abstract float getDirection();
-        public abstract void applyEventHandlers(InputManager inputManager, CollisionManager collisions);
+        public abstract void applyEventHandlers(CollisionManager collisions);
         public abstract void accessPhysics(IPhysicsObj obj);
         public abstract void CollidableObjs();
 

@@ -4,7 +4,7 @@ using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
 
 namespace EngineV2.Input
 {
-    public class InputManager : InputPublisher, InputSubscriber
+    public class OldInput : InputPublisher, InputSubscriber
     {
 
 

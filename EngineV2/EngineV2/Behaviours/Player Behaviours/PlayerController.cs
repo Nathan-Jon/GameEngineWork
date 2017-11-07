@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using EngineV2.Input;
+﻿using EngineV2.Input_Managment;
 using EngineV2.Interfaces;
 using Microsoft.Xna.Framework.Input;
 

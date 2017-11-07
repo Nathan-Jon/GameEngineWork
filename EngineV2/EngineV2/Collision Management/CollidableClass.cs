@@ -6,7 +6,7 @@ using EngineV2.Interfaces;
 
 namespace EngineV2.Collision_Management
 {
-    class CollidableClass : ICollidable
+    sealed class CollidableClass : ICollidable
     {
 
         #region CREATE LISTS
