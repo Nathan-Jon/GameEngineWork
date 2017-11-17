@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Content;
 using EngineV2.Buttons;
 using EngineV2.BackGround;
 using EngineV2.Managers;
+using EngineV2.Interfaces;
+using Microsoft.Xna.Framework.Audio;
 
 namespace EngineV2.Scenes
 {
@@ -19,6 +21,7 @@ namespace EngineV2.Scenes
         IBackGrounds back;
         ButtonList buttonlist;
         MouseState mouseinput;
+        ISoundManager snd;
 
         public MainMenu()
         {
@@ -28,14 +31,20 @@ namespace EngineV2.Scenes
             ResumeBut = new ResumeButton();
             ExitBut = new ExitButton();
             buttonlist = new ButtonList();
+            snd = new SoundManager();
+
         }
 
         public void LoadContent(ContentManager Content)
         {
+            snd.Initialize(Content.Load<SoundEffect>("MenuMusic"));
+            snd.CreateInstance();
+
+
             back.Initialize(Content.Load<Texture2D>("MenuBackground"));
 
-            StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400));
-            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500));
+            StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400), snd);
+            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500), snd);
 
             Buttons = ButtonList.menuButtons;
             buttonlist.Initalize(StartBut);
@@ -61,6 +70,10 @@ namespace EngineV2.Scenes
                 {
                     Buttons[1].click();
                 }
+            }
+            if (SceneManager.mainmenu == true)
+            {
+                snd.Playsnd(0);
             }
         }
 

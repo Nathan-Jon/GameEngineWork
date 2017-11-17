@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using EngineV2.Managers;
+using EngineV2.Interfaces;
 
 namespace EngineV2.Buttons
 {
@@ -14,7 +15,7 @@ namespace EngineV2.Buttons
         public Vector2 Position;
         public Rectangle HitBox;
 
-        public void Initialize(Texture2D tex, Vector2 Posn)
+        public void Initialize(Texture2D tex, Vector2 Posn, ISoundManager sound)
         {
             Texture = tex;
             Position = Posn;
