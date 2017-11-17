@@ -16,12 +16,10 @@ namespace EngineV2.Managers
     {
         List<IBehaviour> behaviours = new List<IBehaviour>();
         List<IEntity> SceneGraph = new List<IEntity>();
-        public static List<IAnimationMgr> animationlist = new List<IAnimationMgr>();
         public static List<IScene> SceneList;
 
         SpriteBatch spriteBatch;
         InputManager inputMgr;
-        CollisionManager coli;
         IPhysicsMgr physicsMgr;
         static IBackGrounds background;
 
@@ -31,30 +29,27 @@ namespace EngineV2.Managers
         public static bool ExitGame = false;
         public static bool LoseScreen = false;
 
-        public SceneManager(Game game,CollisionManager collision, IPhysicsMgr physUp) : base(game)
+        public SceneManager(Game game, IPhysicsMgr physUp) : base(game)
         {
             inputMgr = InputManager.GetInputInstance;
-            coli = collision;
             physicsMgr = physUp;
             
         }
 
-        public SceneManager(Game game,CollisionManager collision, IPhysicsMgr physUp, List<IScene> scenelist)
+        public SceneManager(Game game, IPhysicsMgr physUp, List<IScene> scenelist)
             : base(game)
         {
             inputMgr = InputManager.GetInputInstance;
-            coli = collision;
             physicsMgr = physUp;
             SceneList = scenelist;
         }
 
 
-        public void Initalize(IAnimationMgr ani, IBackGrounds back, ISoundManager sound)
+        public void Initalize(IBackGrounds back, ISoundManager sound)
         {
 
             background = back;
             behaviours = BehaviourManager.behaviours;
-            animationlist.Add(ani);
             SceneGraph = EntityManager.Entities;
             
         }

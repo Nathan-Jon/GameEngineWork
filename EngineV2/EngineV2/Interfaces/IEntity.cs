@@ -12,7 +12,7 @@ namespace EngineV2.Interfaces
     {
         void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours);
         void Draw(SpriteBatch spriteBatch);
-        void update();
+        void update(GameTime game);
         Vector2 getPos();
         Texture2D getTex();
         int getRows();
@@ -24,7 +24,6 @@ namespace EngineV2.Interfaces
         bool getGrav();
         string getTag();
         float getDirection();
-        void applyEventHandlers(CollisionManager collisions);
         void accessPhysics(IPhysicsObj obj);
         void CollidableObjs();
 

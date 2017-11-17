@@ -68,7 +68,7 @@ namespace EngineV2.Behaviours
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
 
-        public override void update()
+        public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
@@ -93,7 +93,6 @@ namespace EngineV2.Behaviours
                 EntityManager.Entities.Clear();
                 BehaviourManager.behaviours.Clear();
                 ButtonList.menuButtons.Clear();
-                Scene1.Animation.Clear();
                 SceneManager.Level1 = false;
                 SceneManager.WinGame = true;
 

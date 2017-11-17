@@ -21,7 +21,6 @@ namespace EngineV2
         SpriteBatch spriteBatch;
 
         ISceneManager scn;
-        CollisionManager col;
         ICollidable collider;
         InputManager inputMgr;
         PhysicsManager physicsMgr;
@@ -31,6 +30,7 @@ namespace EngineV2
         IScene scene;
         IScene mainmenu;
         IScene Wingame;
+        IScene LoseScreen;
 
         public static Kernel instance;
 
@@ -66,7 +66,6 @@ namespace EngineV2
         {
             // TODO: Add your initialization logic here
             inputMgr = InputManager.GetInputInstance;
-            col = new CollisionManager();
             physicsObj = new PhysicsObj();
             physicsMgr = new PhysicsManager(physicsObj);
             mainmenu = new MainMenu();
@@ -75,7 +74,9 @@ namespace EngineV2
             SceneList.Add(scene);
             Wingame = new WinScreen();
             SceneList.Add(Wingame);
-            scn = new SceneManager(this, col, physicsMgr, SceneList);
+            LoseScreen = new GameOver();
+            SceneList.Add(LoseScreen);
+            scn = new SceneManager(this,physicsMgr, SceneList);
             SceneManager.mainmenu = true;
 
             Components.Add((GameComponent)scn);

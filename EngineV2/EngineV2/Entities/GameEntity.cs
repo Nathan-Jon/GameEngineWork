@@ -29,8 +29,6 @@ namespace EngineV2.Entities
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
-        public override void applyEventHandlers(CollisionManager col)
-        { }
         public override void accessPhysics(IPhysicsObj obj)
         { }
         public override void CollidableObjs()
@@ -43,7 +41,7 @@ namespace EngineV2.Entities
         {
             Position.X += 4;
         }
-        public override void update()
+        public override void update(GameTime game)
         {
             Move();
         }

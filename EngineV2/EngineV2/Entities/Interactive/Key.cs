@@ -72,7 +72,7 @@ namespace EngineV2.Behaviours
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
 
-        public override void update()
+        public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }

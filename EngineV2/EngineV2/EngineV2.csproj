@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animations\PlayerAnimation.cs" />
     <Compile Include="BackGround\BackGrounds.cs" />
     <Compile Include="BackGround\IBackGrounds.cs" />
     <Compile Include="Behaviours\Player Behaviours\IPlayerBehaviour.cs" />
@@ -50,7 +51,6 @@
     <Compile Include="Buttons\StartButton.cs" />
     <Compile Include="Collision Management\CollidableClass.cs" />
     <Compile Include="Collision Management\CollisionEventData.cs" />
-    <Compile Include="Collision Management\CollisionManager.cs" />
     <Compile Include="Collision Management\CollisionManagerSingleton.cs" />
     <Compile Include="Entities\Interactive\Key.cs" />
     <Compile Include="Entities\Interactive\LeverTarget.cs" />
@@ -68,16 +68,14 @@
     <Compile Include="Entities\Environment\ScreenWidthPlatform.cs" />
     <Compile Include="Entities\Environment\TriggerWall.cs" />
     <Compile Include="Input Managment\EventData.cs" />
-    <Compile Include="Input Managment\OldInput.cs" />
     <Compile Include="Input Managment\InputPublisher.cs" />
     <Compile Include="Input Managment\InputManager.cs" />
     <Compile Include="Input Managment\InputSubscriber.cs" />
-    <Compile Include="Interfaces\IAnimationMgr.cs" />
+    <Compile Include="Interfaces\IAnimations.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IPhysicsMgr.cs" />
     <Compile Include="Interfaces\IPhysicsObj.cs" />
     <Compile Include="Interfaces\ISoundManager.cs" />
-    <Compile Include="Managers\AnimationMgr.cs" />
     <Compile Include="Managers\BehaviourManager.cs" />
     <Compile Include="Interfaces\IMoveBehaviour.cs" />
     <Compile Include="Behaviours\xMoveBehaviour.cs" />
@@ -100,6 +98,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\SceneManager.cs" />
     <Compile Include="Entities\Environment\TriggerPlatform.cs" />
+    <Compile Include="Scenes\GameOver.cs" />
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\Scene1.cs" />
@@ -116,6 +115,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\background.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\BackgroundTex1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -134,7 +136,9 @@
     <Content Include="Content\Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\EnterDoor.png" />
+    <Content Include="Content\EnterDoor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Exit Button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -156,16 +160,25 @@
     <Content Include="Content\LadderClimbSFX.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Level1Music.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Lever.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\LLadderTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\LoseGame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\LPlatformTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\MenuBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\MenuMusic.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\MLadderTex.png">
@@ -193,7 +206,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\XLPlatformTex.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>

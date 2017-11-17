@@ -109,10 +109,10 @@ namespace EngineV2.Entities
 
         }
         //Update Method
-        public override void update()
+        public override void update(GameTime game)
         {
 
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
         #endregion
 

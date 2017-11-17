@@ -12,7 +12,7 @@ namespace EngineV2.Interfaces
 {
     interface ISceneManager
     {
-        void Initalize(IAnimationMgr ani, IBackGrounds back, ISoundManager sound);
+        void Initalize(IBackGrounds back, ISoundManager sound);
         void Draw(GameTime gameTime);
     }
 }

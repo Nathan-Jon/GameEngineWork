@@ -24,7 +24,6 @@ namespace EngineV2.Scenes
     {
         List<IEntity> Scenegraph = new List<IEntity>();
         List<IBehaviour> Behaviours = new List<IBehaviour>();
-        public static List<IAnimationMgr> Animation = new List<IAnimationMgr>();
 
         IEntity player;
         IEntity enemy;
@@ -59,12 +58,10 @@ namespace EngineV2.Scenes
 
         IEntityManager ent;
         IBackGrounds back;
-        CollisionManager col;
         ICollidable collider;
         InputManager inputMgr;
         ISceneManager scn;
         IBehaviourManager behaviours;
-        IAnimationMgr animation;
         ISoundManager snd;
         PhysicsManager physicsMgr;
         IPhysicsObj physicsObj;
@@ -76,14 +73,12 @@ namespace EngineV2.Scenes
 #region Instantiate Managers
             inputMgr = InputManager.GetInputInstance;
             ent = new EntityManager();
-            col = new CollisionManager();
             physicsObj = new PhysicsObj();
 
             physicsMgr = new PhysicsManager(physicsObj);
-            scn = new SceneManager(Kernel.instance, col, physicsMgr);
+            scn = new SceneManager(Kernel.instance, physicsMgr);
 
             behaviours = new BehaviourManager();
-            animation = new AnimationMgr();
             snd = new SoundManager();
             collider = new CollidableClass();
             ColMgr = CollisionManagerSingleton.GetColliderInstance;
@@ -131,7 +126,7 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            snd.Initialize(Content.Load<SoundEffect>("background"));
+            snd.Initialize(Content.Load<SoundEffect>("Level1Music"));
             snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
             snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
             snd.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
@@ -149,33 +144,18 @@ namespace EngineV2.Scenes
             enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
             
             //Ladders
-            Ladder1.applyEventHandlers(col);
-            Ladder2.applyEventHandlers(col);
-            Ladder3.applyEventHandlers(col);
-
-
             Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, snd, physicsObj, behaviours);
             Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, snd, physicsObj, behaviours);
             Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, snd, physicsObj, behaviours);
             
 
             //Door
-            Door.applyEventHandlers(col);
-
             Door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, snd, physicsObj, behaviours);
 
             //Key
-            key.applyEventHandlers(col);
-
             key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, snd, physicsObj, behaviours);
             
-            //Platforms
-            platform1.applyEventHandlers(col);
-            platform2.applyEventHandlers(col);
-            platform3.applyEventHandlers(col);
-            leverPlatformTarget.applyEventHandlers(col);
-            platform5.applyEventHandlers(col);
-            
+            //Platforms          
             platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, snd, physicsObj, behaviours);
             platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, snd, physicsObj, behaviours);
             platform3.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, snd, physicsObj, behaviours);
@@ -183,41 +163,26 @@ namespace EngineV2.Scenes
             platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, snd, physicsObj, behaviours);
 
 
-            //Animation
-            animation.Initialize(player, 3, 3);
-            animation.Initialize(enemy, 3, 3);
-            
-
-            scn.Initalize(animation, back, snd);
+            scn.Initalize(back, snd);
 
 
             //INTERACTIVE OBJECTS
 
 
             //Crates
-            crate.applyEventHandlers(col);
-
             crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, snd, physicsObj, behaviours);
 
             //Pressure Plates
-            pressurePlate.applyEventHandlers(col);
-
             pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, snd, physicsObj, behaviours);
 
             //Walls
-            wall.applyEventHandlers(col);
-
             wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, snd, physicsObj, behaviours);
 
             //Lever
-
-            Lever1.applyEventHandlers(col);
-
             Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, snd, physicsObj, behaviours);
 
             Scenegraph = EntityManager.Entities;
             Behaviours = BehaviourManager.behaviours;
-            Animation.Add(animation);
         }
 
         public void update(GameTime gameTime)
@@ -227,25 +192,23 @@ namespace EngineV2.Scenes
             {
                 inputMgr.update();
                 ColMgr.update();
-                //inputMgr.update();
-                col.update();
 
 
                 for (int i = 0; i < Scenegraph.Count; i++)
                 {
-                    Scenegraph[i].update();
+                    Scenegraph[i].update(gameTime);
                 }
 
-                for (int i = 0; i < Animation.Count; i++)
-                {
-
-                    Animation[i].Update(gameTime);
-                }
 
                 for (int i = 0; i < Behaviours.Count; i++)
                 {
 
                     Behaviours[i].update();
+                }
+                
+                if (SceneManager.Level1 == true)
+                {
+                    snd.Playsnd(0);
                 }
 
 
@@ -260,15 +223,11 @@ namespace EngineV2.Scenes
                 back.Draw(spriteBatch);
 
 
-                for (int i = 2; i < Scenegraph.Count; i++)
+                for (int i = 0; i < Scenegraph.Count; i++)
                 {
                     Scenegraph[i].Draw(spriteBatch);
                 }
 
-                for (int i = 0; i < Animation.Count; i++)
-                {
-                    Animation[i].Draw(spriteBatch);
-                }
 
         }
 

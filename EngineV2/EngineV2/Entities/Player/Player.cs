@@ -12,6 +12,7 @@ using EngineV2.Interfaces;
 using EngineV2.Collision_Management;
 using EngineV2.Input_Managment;
 using EngineV2.Scenes;
+using EngineV2.Animations;
 
 namespace EngineV2.Entities
 {
@@ -21,6 +22,7 @@ namespace EngineV2.Entities
         public string tag = "Player";
 
         public static Texture2D Texture;
+        public IAnimations ani;
         public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
@@ -67,6 +69,7 @@ namespace EngineV2.Entities
             collisionMgr = CollisionManagerSingleton.GetColliderInstance;
             inputMgr = InputManager.GetInputInstance;
             Position = Posn;
+            ani = new PlayerAnimation();
             Texture = Tex;
             sound = snd;
             colliders = _collider;
@@ -76,6 +79,7 @@ namespace EngineV2.Entities
             _collider.isPlayerEntity(this);
             phys.hasPhysics(this);
             behaviours.createMind<PlayerMind>(this);
+            ani.Initialize(this, 3, 3);
 
         }
 
@@ -153,7 +157,7 @@ namespace EngineV2.Entities
             #endregion
 
 
-            if (keyState.GetPressedKeys().Length == 0 || SceneManager.animationlist.Count == 0)
+            if (keyState.GetPressedKeys().Length == 0 )
             {
                 sound.Stopsnd(1);
                 sound.Stopsnd(5);
@@ -201,7 +205,6 @@ namespace EngineV2.Entities
                 {
                     EntityManager.Entities.Clear();
                     BehaviourManager.behaviours.Clear();
-                    Scene1.Animation.Clear();
                     SceneManager.LoseScreen = true;
                     sound.Stopsnd(0);
                 }
@@ -276,14 +279,21 @@ namespace EngineV2.Entities
         public override void Draw(SpriteBatch spriteBatch)
         {
 
-            spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
+            ani.Draw(spriteBatch);
+
 
         }
         //Update Method
-        public override void update()
+        public override void update(GameTime game)
         {
 
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, AnimationMgr.Width, AnimationMgr.Height);
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, PlayerAnimation.Width, PlayerAnimation.Height);
+
+            if (Animate == true)
+            {
+                ani.Update(game);
+            }
+            Animate = false;
         }
 
         #region get/sets
