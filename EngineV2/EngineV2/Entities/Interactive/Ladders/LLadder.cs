@@ -26,7 +26,7 @@ namespace EngineV2.Entities
 
         //Collision Management Variables
         private IEntity collisionObj;
-        private CollisionManager collisionMgr;
+        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
         private List<IEntity> playerObj;
 
@@ -42,6 +42,8 @@ namespace EngineV2.Entities
 
             //SUBSCRIBERS
             InputMgr = InputManager.GetInputInstance;
+            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
+
             InputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
 
@@ -50,12 +52,6 @@ namespace EngineV2.Entities
             _collider.isInteractiveCollidable(this);
         }
         #region EVENTS
-
-        //INITIALISE EVENT HANDLERS
-        public override void applyEventHandlers(CollisionManager collisions)
-        {
-            collisionMgr = collisions;
-        }
 
         #region INPUT
         //INPUT EVENTS
@@ -78,6 +74,7 @@ namespace EngineV2.Entities
 
         }
         #endregion
+
         #endregion
 
         public override void Draw(SpriteBatch spriteBatch)

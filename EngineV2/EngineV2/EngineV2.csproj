@@ -70,7 +70,7 @@
     <Compile Include="Input Managment\EventData.cs" />
     <Compile Include="Input Managment\OldInput.cs" />
     <Compile Include="Input Managment\InputPublisher.cs" />
-    <Compile Include="Input Managment\InputSingleton.cs" />
+    <Compile Include="Input Managment\InputManager.cs" />
     <Compile Include="Input Managment\InputSubscriber.cs" />
     <Compile Include="Interfaces\IAnimationMgr.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />

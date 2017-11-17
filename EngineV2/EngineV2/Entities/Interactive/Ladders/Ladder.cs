@@ -26,7 +26,7 @@ namespace EngineV2.Entities
 
         //Collision Management Variables
         private IEntity collisionObj;
-        private CollisionManager collisionMgr;
+        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
         private List<IEntity> playerObj;
 
@@ -42,6 +42,8 @@ namespace EngineV2.Entities
 
             //SUBSCRIBERS
             inputMgr = InputManager.GetInputInstance;
+            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
+
             inputMgr.AddListener(OnNewInput);
             collisionMgr.subscribe(onCollision);
 
@@ -52,10 +54,6 @@ namespace EngineV2.Entities
         #region EVENTS
 
         //INITIALISE EVENT HANDLERS
-        public override void applyEventHandlers(CollisionManager collisions)
-        {
-            collisionMgr = collisions;
-        }
 
         #region INPUT
         //INPUT EVENTS
@@ -83,6 +81,7 @@ namespace EngineV2.Entities
                     Player.canClimb = true;
                 }
 
+                Player.canClimb = false;
             }
 
 

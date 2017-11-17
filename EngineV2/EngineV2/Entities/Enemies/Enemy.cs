@@ -23,21 +23,18 @@ namespace EngineV2.Entities
 
         private IEntity collisionObj;
         private IMoveBehaviour Move;
-        private CollisionManager collisionMgr;
+        private CollisionManagerSingleton collisionMgr;
 
 
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
         {
-            Position = Posn;
-            Texture = Tex;
+            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
             collisionMgr.subscribe(onCollision);
             _collider.isCollidableEntity(this);
+            Position = Posn;
+            Texture = Tex;
             behaviours.createMind<EnemyMind>(this);
             phys.hasPhysics(this);
-        }
-        public override void applyEventHandlers(CollisionManager collisions)
-        {
-            collisionMgr = collisions;
         }
 
         public virtual void onCollision(object source, CollisionEventData data)

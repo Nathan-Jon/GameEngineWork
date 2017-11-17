@@ -28,7 +28,7 @@ namespace EngineV2.Entities
 
         //Collision Management Variables
         private IEntity collisionObj;
-        private CollisionManager collisionMgr;
+        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
         private List<IEntity> playerObj;
 
@@ -48,16 +48,12 @@ namespace EngineV2.Entities
             collisionMgr.subscribe(onCollision);
 
             //CALL COLLIDABLEOBJS()
+            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
+
             CollidableObjs();
             _collider.isInteractiveCollidable(this);
         }
         #region EVENTS
-
-        //INITIALISE EVENT HANDLERS
-        public override void applyEventHandlers(CollisionManager collisions)
-        {
-            collisionMgr = collisions;
-        }
 
         #region INPUT
         //INPUT EVENTS

@@ -72,6 +72,7 @@ namespace EngineV2.Scenes
 
         public Scene1()
         {
+
 #region Instantiate Managers
             inputMgr = InputManager.GetInputInstance;
             ent = new EntityManager();
@@ -142,8 +143,6 @@ namespace EngineV2.Scenes
 
             //PLAYER AND ENEMIES
 
-            player.applyEventHandlers(col);
-            enemy.applyEventHandlers(col);
             
 
             player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, snd, physicsObj, behaviours);

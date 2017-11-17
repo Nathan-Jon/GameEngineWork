@@ -33,7 +33,7 @@ namespace EngineV2.Entities
 
         //Collision Management
         private IEntity collisionObj;
-        private CollisionManager collisionMgr;
+        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
         private ISoundManager sound;
         IPhysicsObj physics;
@@ -55,14 +55,11 @@ namespace EngineV2.Entities
             physics = phys;
             InputMgr = InputManager.GetInputInstance;
             InputMgr.AddListener(OnNewInput);
+
+            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
             collisionMgr.subscribe(onCollision);
             CollidableObjs();
             _collider.isInteractiveCollidable(this);
-        }
-
-        public override void applyEventHandlers(CollisionManager collisions)
-        {
-            collisionMgr = collisions;
         }
 
         public virtual void OnNewInput(object source, EventData data)

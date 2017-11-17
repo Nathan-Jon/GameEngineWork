@@ -10,6 +10,7 @@ using EngineV2.Input;
 using EngineV2.Managers;
 using EngineV2.Interfaces;
 using EngineV2.Collision_Management;
+using EngineV2.Input_Managment;
 using EngineV2.Scenes;
 
 namespace EngineV2.Entities
@@ -42,7 +43,7 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-       // private InputManager inputMgr;
+        private InputManager inputMgr;
 
         //Behaviours
         private IBehaviour playerController;
@@ -54,7 +55,7 @@ namespace EngineV2.Entities
         private List<IEntity> environment;
 
         private IEntity collision;
-        private CollisionManager collisionMgr;
+        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
         private ISoundManager sound;
         #endregion
@@ -62,22 +63,21 @@ namespace EngineV2.Entities
         #region Initialisation
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
         {
+            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
+            inputMgr = InputManager.GetInputInstance;
             Position = Posn;
             Texture = Tex;
             sound = snd;
             colliders = _collider;
             collisionMgr.subscribe(onCollision);
+            inputMgr.AddListener(OnNewInput);
             CollidableObjs();
             _collider.isPlayerEntity(this);
             phys.hasPhysics(this);
             behaviours.createMind<PlayerMind>(this);
 
         }
-        //Subscribe to Event Handlers
-        public override void applyEventHandlers(CollisionManager col)
-        {
-            collisionMgr = col;
-        }
+
         #endregion
 
         #region Input Management
@@ -91,7 +91,7 @@ namespace EngineV2.Entities
 
             //Act on the data
             #region ARROWS & WASD
-            if (canClimb && keyState.IsKeyDown(Keys.W) || canClimb && keyState.IsKeyDown(Keys.Up))
+            if (canClimb && keyState.IsKeyDown(Keys.W) ||canClimb &&keyState.IsKeyDown(Keys.Up))
             {
                 Position.Y -= ySpeed;
                 Animate = true;
@@ -233,7 +233,7 @@ namespace EngineV2.Entities
             {
                 if (HitBox.Intersects(environment[i].getHitbox()))
                 {
-                    gravity = false;
+                   // gravity = false;
                     canJump = true;
                 }
             }

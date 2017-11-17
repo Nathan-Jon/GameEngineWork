@@ -14,7 +14,7 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
 
         //COLLISIONS
-        private CollisionManager collisionMgr;
+        private CollisionManagerSingleton collisionMgr;
         private IEntity collisionObj;
         private IEntity collision;
 
@@ -32,6 +32,8 @@ namespace EngineV2.Entities
             Texture = Tex;
             physics = phys;
 
+            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
+
             collisionMgr.subscribe(onCollision);
             physicsObjs = physics.getPhysicsList();
 
@@ -41,10 +43,6 @@ namespace EngineV2.Entities
 
         }
 
-        public override void applyEventHandlers(CollisionManager collisions)
-        {
-            collisionMgr = collisions;
-        }
 
         #region behaviours
         public void lower()
