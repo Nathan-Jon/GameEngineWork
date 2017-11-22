@@ -23,6 +23,7 @@ namespace EngineV2
         ISceneManager scn;
         ICollidable collider;
         InputManager inputMgr;
+        PhysicsManager physicsMgr;
         IPhysicsObj physicsObj;
 
         List<IScene> SceneList = new List<IScene>();
@@ -66,6 +67,7 @@ namespace EngineV2
             // TODO: Add your initialization logic here
             inputMgr = InputManager.GetInputInstance;
             physicsObj = new PhysicsObj();
+            physicsMgr = new PhysicsManager(physicsObj);
             mainmenu = new MainMenu();
             SceneList.Add(mainmenu);
             scene = new Scene1();
@@ -74,7 +76,7 @@ namespace EngineV2
             SceneList.Add(Wingame);
             LoseScreen = new GameOver();
             SceneList.Add(LoseScreen);
-            scn = new SceneManager(this,SceneList);
+            scn = new SceneManager(this, SceneList);
             SceneManager.mainmenu = true;
 
             Components.Add((GameComponent)scn);

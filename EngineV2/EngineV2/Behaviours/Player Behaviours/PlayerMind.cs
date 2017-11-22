@@ -2,21 +2,16 @@
 using EngineV2.Input_Managment;
 using EngineV2.Interfaces;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Animations;
-using EngineV2.Entities;
-
 
 namespace EngineV2.Behaviours.Player_Behaviours
 {
     class PlayerMind: IBehaviour
     {
         private IEntity body;
+        private IMoveBehaviour moveXBehaviour;
 
         private KeyboardState keyState;
         private InputManager inputMgr;
-
-        private Player player;
-        private PlayerAnimation ani;
 
 
         private int speed = 4;
@@ -25,11 +20,10 @@ namespace EngineV2.Behaviours.Player_Behaviours
         {
             
         }
-
         public  void Initialise(IEntity ent)
         {
             body = ent;
-            ani = new PlayerAnimation();
+            moveXBehaviour = new xMoveBehaviour(body);
             inputMgr = InputManager.GetInputInstance;
             inputMgr.AddListener(OnNewInput);
         }
@@ -39,13 +33,10 @@ namespace EngineV2.Behaviours.Player_Behaviours
             keyState = data.newKey;
 
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            { 
+            {
 
                 speed = 4;
                 body.setXPos(body.getPos().X + speed);
-                Player.Animate = true;
-                Player.row = 1;
-                
             }
 
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
@@ -53,33 +44,13 @@ namespace EngineV2.Behaviours.Player_Behaviours
 
                 speed = -4;
                 body.setXPos(body.getPos().X + speed);
-                Player.Animate = true;
-                Player.row = 0;
-            }
-
-            if (Player.canClimb && keyState.IsKeyDown(Keys.W) || Player.canClimb && keyState.IsKeyDown(Keys.Up))
-            {
-                speed = -4;
-                body.setYPos(body.getPos().Y + speed);
-                Player.Animate = true;
-                Player.row = 2;
-              //  sound.Playsnd(5);
-
-            }
-            if (Player.canClimb && keyState.IsKeyDown(Keys.S) || Player.canClimb && keyState.IsKeyDown(Keys.Down))
-            {
-                speed = 4;
-                body.setYPos(body.getPos().Y + speed);
-                Player.Animate = true;
-                Player.row = 2;
-                //sound.Playsnd(5);
             }
         }
 
         public void update()
         {
+        //    body.setXPos(body.getPos().X + speed);
 
         }
-
     }
 }

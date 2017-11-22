@@ -26,7 +26,8 @@ namespace EngineV2.Scenes
         List<IBehaviour> Behaviours = new List<IBehaviour>();
 
         IEntity player;
-        IEntity enemy;
+        IEntity thug1;
+        IEntity thug2;
         IEntity crate;
 
         //Ladder
@@ -72,16 +73,14 @@ namespace EngineV2.Scenes
 
 #region Instantiate Managers
             inputMgr = InputManager.GetInputInstance;
-            ent = EntityManager.getEntityManager;
+            ent = new EntityManager();
             physicsObj = new PhysicsObj();
 
-            physicsMgr = PhysicsManager.getPhysicsInstance;
-            physicsMgr.setPhysicsList(physicsObj);
+            physicsMgr = new PhysicsManager(physicsObj);
+            scn = new SceneManager(Kernel.instance);
 
-            scn = new SceneManager(Kernel.instance, physicsMgr);
-
-            behaviours = BehaviourManager.getBehaviourManager;
-            snd = SoundManager.getSoundInstance;
+            behaviours = new BehaviourManager();
+            snd = new SoundManager();
             collider = new CollidableClass();
             ColMgr = CollisionManagerSingleton.GetColliderInstance;
             
@@ -89,8 +88,10 @@ namespace EngineV2.Scenes
 
 #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
+            physicsObj = new PhysicsObj();
             player = ent.CreateEnt<Player>();
-            enemy = ent.CreateEnt<Enemy>();
+            thug1 = ent.CreateEnt<Enemy>();
+            thug2 = ent.CreateEnt<Enemy>();
             crate = ent.CreateEnt<Crate>();
 
 
@@ -142,7 +143,8 @@ namespace EngineV2.Scenes
             
 
             player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, snd, physicsObj, behaviours);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
+            thug1.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
+            thug2.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 400), collider, snd, physicsObj, behaviours);
             
             //Ladders
             Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, snd, physicsObj, behaviours);

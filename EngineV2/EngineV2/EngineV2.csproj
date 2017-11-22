@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animations\PlayerAnimation.cs" />
+    <Compile Include="Animations\ThugAnimation.cs" />
     <Compile Include="BackGround\BackGrounds.cs" />
     <Compile Include="BackGround\IBackGrounds.cs" />
     <Compile Include="Behaviours\Player Behaviours\IPlayerBehaviour.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Managers\BehaviourManager.cs" />
     <Compile Include="Interfaces\IMoveBehaviour.cs" />
     <Compile Include="Behaviours\xMoveBehaviour.cs" />
-    <Compile Include="Entities\Enemies\Enemy.cs" />
+    <Compile Include="Entities\Enemies\Thug.cs" />
     <Compile Include="Interfaces\IBehaviour.cs" />
     <Compile Include="Interfaces\IBehaviourManager.cs" />
     <Compile Include="Behaviours\EnemyMind.cs" />
