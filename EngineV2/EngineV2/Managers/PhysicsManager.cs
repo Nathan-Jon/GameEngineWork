@@ -6,34 +6,11 @@ using EngineV2.Interfaces;
 
 namespace EngineV2.Managers
 {
-   public sealed class PhysicsManager : IPhysicsMgr
+    class PhysicsManager : IPhysicsMgr
     {
         IPhysicsObj physicsObjs;
 
-        private static PhysicsManager instance = null;
-        private static object syncInstance = new object();
-
-        private PhysicsManager()
-        { }
-
-        public static PhysicsManager getPhysicsInstance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncInstance)
-                    {
-                        if (instance == null)
-                            instance = new PhysicsManager();
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-        public void setPhysicsList(IPhysicsObj physics)
+        public PhysicsManager(IPhysicsObj physics)
         {
             physicsObjs = physics;
         }
