@@ -234,3 +234,7 @@ C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\De
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\EnterDoor.png
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Level1Music.wav
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LoseGame.png
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.wav
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\EnterDoor.png
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Level1Music.wav
+C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuMusic.wav
