@@ -72,14 +72,16 @@ namespace EngineV2.Scenes
 
 #region Instantiate Managers
             inputMgr = InputManager.GetInputInstance;
-            ent = new EntityManager();
+            ent = EntityManager.getEntityManager;
             physicsObj = new PhysicsObj();
 
-            physicsMgr = new PhysicsManager(physicsObj);
+            physicsMgr = PhysicsManager.getPhysicsInstance;
+            physicsMgr.setPhysicsList(physicsObj);
+
             scn = new SceneManager(Kernel.instance, physicsMgr);
 
-            behaviours = new BehaviourManager();
-            snd = new SoundManager();
+            behaviours = BehaviourManager.getBehaviourManager;
+            snd = SoundManager.getSoundInstance;
             collider = new CollidableClass();
             ColMgr = CollisionManagerSingleton.GetColliderInstance;
             
@@ -87,7 +89,6 @@ namespace EngineV2.Scenes
 
 #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
-            physicsObj = new PhysicsObj();
             player = ent.CreateEnt<Player>();
             enemy = ent.CreateEnt<Enemy>();
             crate = ent.CreateEnt<Crate>();
