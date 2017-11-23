@@ -9,10 +9,33 @@ using EngineV2.Interfaces;
 
 namespace EngineV2.Managers
 {
-    class EntityManager : IEntityManager
+    public sealed class EntityManager : IEntityManager
     {
         public static List<IEntity> Entities = new List<IEntity>();
-        
+
+        private static EntityManager instance = null;
+        private static object syncInstance = new object();
+
+        public EntityManager()
+        {
+
+        }
+
+        public static EntityManager getEntityManager
+        {
+           get
+            {
+                if (instance == null)
+                {
+                    lock (syncInstance)
+                        if (instance == null)
+                            instance = new EntityManager();
+                }
+
+                return instance;
+
+            }
+        }
         
         public T CreateEnt<T>() where T : IEntity, new()
         {

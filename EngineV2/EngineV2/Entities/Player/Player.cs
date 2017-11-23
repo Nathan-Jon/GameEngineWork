@@ -23,9 +23,10 @@ namespace EngineV2.Entities
 
         public static Texture2D Texture;
         public IAnimations ani;
+        public static int row = 1;
+
         public Vector2 Position;
         public Rectangle HitBox;
-        public int row = 1;
         public static bool Animate = false;
         public bool gravity = false;
         public bool onTerrain = false;
@@ -68,13 +69,16 @@ namespace EngineV2.Entities
         {
             collisionMgr = CollisionManagerSingleton.GetColliderInstance;
             inputMgr = InputManager.GetInputInstance;
-            Position = Posn;
             ani = new PlayerAnimation();
+
+            Position = Posn;
             Texture = Tex;
             sound = snd;
             colliders = _collider;
+
             collisionMgr.subscribe(onCollision);
             inputMgr.AddListener(OnNewInput);
+
             CollidableObjs();
             _collider.isPlayerEntity(this);
             phys.hasPhysics(this);
@@ -93,49 +97,6 @@ namespace EngineV2.Entities
 
             sound.Volume(1, 0.1f);
             sound.Volume(5, 0.3f);
-
-            //Act on the data
-            #region ARROWS & WASD
-            if (canClimb && keyState.IsKeyDown(Keys.W) ||canClimb &&keyState.IsKeyDown(Keys.Up))
-            {
-                Position.Y -= ySpeed;
-                Animate = true;
-                row = 2;
-                sound.Playsnd(5);
-
-            }
-            if (canClimb && keyState.IsKeyDown(Keys.S) || canClimb && keyState.IsKeyDown(Keys.Down))
-            {
-                Position.Y += ySpeed;
-                Animate = true;
-                row = 2;
-                sound.Playsnd(5);
-            }
-            //if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            //{
-            //    if (sprint)
-            //    {
-            //        speed = 6;
-            //    }
-            //    else speed = 3;
-            //    Position.X += speed;
-            //    Animate = true;
-            //    row = 1;
-            //    sound.Playsnd(1);
-            //}
-            //if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
-            //{
-            //    if (sprint)
-            //    {
-            //        speed = -6;
-            //    }
-            //    else speed = -3;
-            //    Position.X += speed;
-            //    Animate = true;
-            //    row = 0;
-            //    sound.Playsnd(1);
-            //}
-            #endregion
 
             #region SPACEBAR
             if (keyState.IsKeyDown(Keys.Space))
@@ -297,7 +258,6 @@ namespace EngineV2.Entities
         }
 
         #region get/sets
-
         public override Vector2 getPos()
         {
             return Position;
