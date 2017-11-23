@@ -21,6 +21,7 @@ namespace EngineV2.Scenes
         IBackGrounds back;
         ButtonList buttonlist;
         MouseState mouseinput;
+        Point mousePosition;
         ISoundManager snd;
 
         public MainMenu()
@@ -32,6 +33,7 @@ namespace EngineV2.Scenes
             ExitBut = new ExitButton();
             buttonlist = new ButtonList();
             snd = new SoundManager();
+            
 
         }
 
@@ -54,19 +56,21 @@ namespace EngineV2.Scenes
 
         public void update(GameTime gameTime)
         {
+            
             for (int i = 0; i < Buttons.Count; i++)
             {
                 Buttons[i].update();
             }
             mouseinput = Mouse.GetState();
+            mousePosition = new Point(mouseinput.X, mouseinput.Y);
 
             if (Buttons.Count > 0)
             {
-                if (mouseinput.X > Buttons[0].getHitbox().X && mouseinput.Y > Buttons[0].getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
+                if (Buttons[0].getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
                 {
                     Buttons[0].click();
                 }
-                if (mouseinput.X > Buttons[1].getHitbox().X && mouseinput.Y > Buttons[1].getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
+                if (Buttons[1].getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
                 {
                     Buttons[1].click();
                 }
