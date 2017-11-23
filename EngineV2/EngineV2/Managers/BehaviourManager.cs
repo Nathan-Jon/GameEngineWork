@@ -9,8 +9,32 @@ using EngineV2.Interfaces;
 
 namespace EngineV2.Managers
 {
-    class BehaviourManager: IBehaviourManager
+    public sealed class BehaviourManager: IBehaviourManager
     {
+
+        private static BehaviourManager instance = null;
+        private static object syncnstance = new object();
+
+        public BehaviourManager()
+        {
+
+        }
+
+        public static BehaviourManager getBehaviourManager
+        {
+            get
+            {
+                if(instance == null)
+                {
+                    lock (syncnstance)
+                        if (instance == null)
+                            instance = new BehaviourManager();
+                }
+                return instance;
+            }
+        }
+
+
         public static List<IBehaviour> behaviours = new List<IBehaviour>();
 
         public void update()

@@ -14,10 +14,11 @@ using EngineV2.Animations;
 
 namespace EngineV2.Entities
 {
-    class Enemy : GameEntity
+    class Thug : GameEntity
     {
 
         public static Texture2D Texture;
+        public IAnimations ani;
         public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
@@ -25,7 +26,6 @@ namespace EngineV2.Entities
         private IEntity collisionObj;
         private IMoveBehaviour Move;
         private CollisionManagerSingleton collisionMgr;
-        public IAnimations ani;
 
 
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
@@ -70,7 +70,9 @@ namespace EngineV2.Entities
         public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
-            ani.Update(game);
+
+                ani.Update(game);
+
         }
 
         public override Vector2 getPos()

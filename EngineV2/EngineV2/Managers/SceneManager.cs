@@ -19,23 +19,28 @@ namespace EngineV2.Managers
         public static List<IScene> SceneList;
 
         SpriteBatch spriteBatch;
+        InputManager inputMgr;
+        IPhysicsMgr physicsMgr;
         static IBackGrounds background;
 
-        public static bool mainmenu = true;
+        public static bool WinGame = false;
         public static bool Level1 = false;
-
+        public static bool mainmenu = true;
         public static bool ExitGame = false;
         public static bool LoseScreen = false;
-        public static bool WinGame = false;
 
         public SceneManager(Game game) : base(game)
         {
+            inputMgr = InputManager.GetInputInstance;
+            physicsMgr = PhysicsManager.getPhysicsInstance;
             
         }
 
         public SceneManager(Game game, List<IScene> scenelist)
             : base(game)
         {
+            inputMgr = InputManager.GetInputInstance;
+            physicsMgr = PhysicsManager.getPhysicsInstance;
             SceneList = scenelist;
         }
 
