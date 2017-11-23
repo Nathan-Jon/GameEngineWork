@@ -10,13 +10,15 @@ using EngineV2.Managers;
 using EngineV2.Collision_Management;
 using EngineV2.Input;
 using EngineV2.Behaviours;
+using EngineV2.Animations;
 
 namespace EngineV2.Entities
 {
-    class Enemy : GameEntity
+    class Thug : GameEntity
     {
 
         public static Texture2D Texture;
+        public IAnimations ani;
         public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
@@ -35,6 +37,8 @@ namespace EngineV2.Entities
             Texture = Tex;
             behaviours.createMind<EnemyMind>(this);
             phys.hasPhysics(this);
+            ani = new ThugAnimation();
+            ani.Initialize(this, 3, 3);
         }
 
         public virtual void onCollision(object source, CollisionEventData data)
@@ -59,13 +63,16 @@ namespace EngineV2.Entities
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
+            ani.Draw(spriteBatch);
         }
 
 
         public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+
+                ani.Update(game);
+
         }
 
         public override Vector2 getPos()

@@ -29,7 +29,7 @@ namespace EngineV2.Managers
         public static bool ExitGame = false;
         public static bool LoseScreen = false;
 
-        public SceneManager(Game gamep) : base(game)
+        public SceneManager(Game game) : base(game)
         {
             inputMgr = InputManager.GetInputInstance;
             physicsMgr = PhysicsManager.getPhysicsInstance;

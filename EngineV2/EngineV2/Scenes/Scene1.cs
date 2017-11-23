@@ -26,7 +26,7 @@ namespace EngineV2.Scenes
         List<IBehaviour> Behaviours = new List<IBehaviour>();
 
         IEntity player;
-        IEntity enemy;
+        IEntity thug;
         IEntity crate;
 
         //Ladder
@@ -78,7 +78,7 @@ namespace EngineV2.Scenes
             physicsMgr = PhysicsManager.getPhysicsInstance;
             physicsMgr.setPhysicsList(physicsObj);
 
-            scn = new SceneManager(Kernel.instance, physicsMgr);
+            scn = new SceneManager(Kernel.instance);
 
             behaviours = BehaviourManager.getBehaviourManager;
             snd = SoundManager.getSoundInstance;
@@ -90,7 +90,7 @@ namespace EngineV2.Scenes
 #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
             player = ent.CreateEnt<Player>();
-            enemy = ent.CreateEnt<Enemy>();
+            thug = ent.CreateEnt<Thug>();
             crate = ent.CreateEnt<Crate>();
 
 
@@ -142,7 +142,7 @@ namespace EngineV2.Scenes
             
 
             player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, snd, physicsObj, behaviours);
-            enemy.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
+            thug.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
             
             //Ladders
             Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, snd, physicsObj, behaviours);
