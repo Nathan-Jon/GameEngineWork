@@ -19,7 +19,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
         private PlayerAnimation ani;
 
 
-        private int speed = 4;
+        private float speed = 2.5f;
 
         public PlayerMind()
         {
@@ -39,9 +39,9 @@ namespace EngineV2.Behaviours.Player_Behaviours
             keyState = data.newKey;
 
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-            { 
+            {
 
-                speed = 4;
+                speed = 2.5f;
                 body.setXPos(body.getPos().X + speed);
                 Player.Animate = true;
                 Player.row = 1;
@@ -51,7 +51,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
             {
 
-                speed = -4;
+                speed = -2.5f;
                 body.setXPos(body.getPos().X + speed);
                 Player.Animate = true;
                 Player.row = 0;
@@ -59,7 +59,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
 
             if (Player.canClimb && keyState.IsKeyDown(Keys.W) || Player.canClimb && keyState.IsKeyDown(Keys.Up))
             {
-                speed = -4;
+                speed = -2.5f;
                 body.setYPos(body.getPos().Y + speed);
                 Player.Animate = true;
                 Player.row = 2;
@@ -68,7 +68,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
             }
             if (Player.canClimb && keyState.IsKeyDown(Keys.S) || Player.canClimb && keyState.IsKeyDown(Keys.Down))
             {
-                speed = 4;
+                speed = 2.5f;
                 body.setYPos(body.getPos().Y + speed);
                 Player.Animate = true;
                 Player.row = 2;
