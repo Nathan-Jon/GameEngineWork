@@ -89,7 +89,7 @@ namespace EngineV2.Scenes
 
 #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
-            player = ent.CreateEnt<Player>();
+            
             thug = ent.CreateEnt<Thug>();
             crate = ent.CreateEnt<Crate>();
 
@@ -121,6 +121,9 @@ namespace EngineV2.Scenes
             Ladder1 = ent.CreateEnt<SLadder>();
             Ladder2 = ent.CreateEnt<LLadder>();
             Ladder3 = ent.CreateEnt<LLadder>();
+            
+            player = ent.CreateEnt<Player>();
+            thug = ent.CreateEnt<Thug>();
 #endregion
 
         }
