@@ -19,6 +19,7 @@ namespace EngineV2.Scenes
         IButton ExitBut;
         IBackGrounds back;
         MouseState mouseinput;
+        Point mousePosition;
         ISoundManager snd;
 
 
@@ -41,9 +42,10 @@ namespace EngineV2.Scenes
         {
             ExitBut.update();
             mouseinput = Mouse.GetState();
+            mousePosition = new Point(mouseinput.X, mouseinput.Y);
 
 
-            if (mouseinput.X > ExitBut.getHitbox().X && mouseinput.Y > ExitBut.getHitbox().Y && mouseinput.LeftButton == ButtonState.Pressed)
+            if (ExitBut.getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
             {
                 ExitBut.click();
             }

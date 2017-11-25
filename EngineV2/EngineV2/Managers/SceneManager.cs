@@ -25,9 +25,9 @@ namespace EngineV2.Managers
 
         public static bool WinGame = false;
         public static bool Level1 = false;
-        public static bool mainmenu = true;
+        public static bool mainmenu = false;
         public static bool ExitGame = false;
-        public static bool LoseScreen = false;
+        public static bool LoseScreen = true;
 
         public SceneManager(Game game) : base(game)
         {
