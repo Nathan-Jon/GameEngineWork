@@ -90,7 +90,6 @@ namespace EngineV2.Scenes
 #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
             
-            thug = ent.CreateEnt<Thug>();
             crate = ent.CreateEnt<Crate>();
 
 
@@ -144,27 +143,27 @@ namespace EngineV2.Scenes
 
             
 
-            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, snd, physicsObj, behaviours);
-            thug.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, snd, physicsObj, behaviours);
+            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, physicsObj, behaviours);
+            thug.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, physicsObj, behaviours);
             
             //Ladders
-            Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, snd, physicsObj, behaviours);
-            Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, snd, physicsObj, behaviours);
-            Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, snd, physicsObj, behaviours);
+            Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, physicsObj, behaviours);
+            Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, physicsObj, behaviours);
+            Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, physicsObj, behaviours);
             
 
             //Door
-            Door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, snd, physicsObj, behaviours);
+            Door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, physicsObj, behaviours);
 
             //Key
-            key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, snd, physicsObj, behaviours);
+            key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, physicsObj, behaviours);
             
             //Platforms          
-            platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, snd, physicsObj, behaviours);
-            platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, snd, physicsObj, behaviours);
-            platform3.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, snd, physicsObj, behaviours);
-            leverPlatformTarget.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, snd, physicsObj, behaviours);
-            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, snd, physicsObj, behaviours);
+            platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, physicsObj, behaviours);
+            platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, physicsObj, behaviours);
+            platform3.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, physicsObj, behaviours);
+            leverPlatformTarget.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, physicsObj, behaviours);
+            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, physicsObj, behaviours);
 
 
             scn.Initalize(back, snd);
@@ -174,16 +173,16 @@ namespace EngineV2.Scenes
 
 
             //Crates
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, snd, physicsObj, behaviours);
+            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, physicsObj, behaviours);
 
             //Pressure Plates
-            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, snd, physicsObj, behaviours);
+            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, physicsObj, behaviours);
 
             //Walls
-            wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, snd, physicsObj, behaviours);
+            wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, physicsObj, behaviours);
 
             //Lever
-            Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, snd, physicsObj, behaviours);
+            Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, physicsObj, behaviours);
 
             Scenegraph = EntityManager.Entities;
             Behaviours = BehaviourManager.behaviours;

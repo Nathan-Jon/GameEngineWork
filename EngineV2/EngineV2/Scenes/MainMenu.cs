@@ -32,7 +32,7 @@ namespace EngineV2.Scenes
             ResumeBut = new ResumeButton();
             ExitBut = new ExitButton();
             buttonlist = new ButtonList();
-            snd = new SoundManager();
+            snd = SoundManager.getSoundInstance;
             
 
         }
