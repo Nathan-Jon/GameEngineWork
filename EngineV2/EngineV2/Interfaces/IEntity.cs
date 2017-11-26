@@ -10,7 +10,7 @@ namespace EngineV2.Interfaces
 {
     public interface IEntity
     {
-        void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours);
+        void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours);
         void Draw(SpriteBatch spriteBatch);
         void update(GameTime game);
         Vector2 getPos();

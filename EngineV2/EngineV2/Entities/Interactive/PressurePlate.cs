@@ -46,12 +46,12 @@ namespace EngineV2.Entities
 
 
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
         {
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
-            sound = snd;
+            sound = SoundManager.getSoundInstance;
             physics = phys;
             InputMgr = InputManager.GetInputInstance;
             InputMgr.AddListener(OnNewInput);

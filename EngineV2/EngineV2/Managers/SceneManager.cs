@@ -24,10 +24,10 @@ namespace EngineV2.Managers
         static IBackGrounds background;
 
         public static bool WinGame = false;
-        public static bool Level1 = false;
+        public static bool Level1 = true;
         public static bool mainmenu = false;
         public static bool ExitGame = false;
-        public static bool LoseScreen = true;
+        public static bool LoseScreen = false;
 
         public SceneManager(Game game) : base(game)
         {

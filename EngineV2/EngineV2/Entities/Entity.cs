@@ -8,7 +8,7 @@ namespace EngineV2.Entities
 {
     abstract class Entity : IEntity
     {
-        public abstract void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours);
+        public abstract void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours);
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void update(GameTime game);
         public abstract Vector2 getPos();

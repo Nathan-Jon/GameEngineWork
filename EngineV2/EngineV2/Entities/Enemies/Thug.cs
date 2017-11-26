@@ -16,7 +16,7 @@ namespace EngineV2.Entities
 {
     class Thug : GameEntity
     {
-
+        public string tag ="Thug";
         public static Texture2D Texture;
         public IAnimations ani;
         public Vector2 Position;
@@ -28,7 +28,7 @@ namespace EngineV2.Entities
         private CollisionManagerSingleton collisionMgr;
 
 
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
         {
             collisionMgr = CollisionManagerSingleton.GetColliderInstance;
             collisionMgr.subscribe(onCollision);
@@ -71,7 +71,7 @@ namespace EngineV2.Entities
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
 
-                ani.Update(game);
+            ani.Update(game);
 
         }
 
@@ -110,6 +110,10 @@ namespace EngineV2.Entities
         public override void setRow(int rows)
         {
             row = rows;
+        }
+        public override string getTag()
+        {
+            return tag;
         }
     }
 }

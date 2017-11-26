@@ -65,7 +65,7 @@ namespace EngineV2.Entities
         #endregion
 
         #region Initialisation
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, ISoundManager snd, IPhysicsObj phys, IBehaviourManager behaviours)
+        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
         {
             collisionMgr = CollisionManagerSingleton.GetColliderInstance;
             inputMgr = InputManager.GetInputInstance;
@@ -73,7 +73,7 @@ namespace EngineV2.Entities
 
             Position = Posn;
             Texture = Tex;
-            sound = snd;
+            sound = SoundManager.getSoundInstance;
             colliders = _collider;
 
             collisionMgr.subscribe(onCollision);
@@ -162,7 +162,7 @@ namespace EngineV2.Entities
             #region Enemy collisions
             for (int i = 0; i < collisionObjs.Count; i++)
             {
-                if (HitBox.Intersects(collisionObjs[0].getHitbox()))
+                if (HitBox.Intersects(collisionObjs[i].getHitbox()) && collisionObjs[i].getTag() == "Thug")
                 {
                     EntityManager.Entities.Clear();
                     BehaviourManager.behaviours.Clear();
