@@ -12,7 +12,7 @@ namespace EngineV2.Managers
     public sealed class BehaviourManager: IBehaviourManager
     {
 
-        private static BehaviourManager instance = null;
+        private static IBehaviourManager instance = null;
         private static object syncnstance = new object();
 
         public BehaviourManager()
@@ -20,7 +20,7 @@ namespace EngineV2.Managers
 
         }
 
-        public static BehaviourManager getBehaviourManager
+        public static IBehaviourManager getBehaviourManager
         {
             get
             {

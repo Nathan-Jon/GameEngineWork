@@ -4,6 +4,7 @@ using EngineV2.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using EngineV2.Animations;
 using EngineV2.Entities;
+using EngineV2.Managers;
 
 
 namespace EngineV2.Behaviours.Player_Behaviours
@@ -13,8 +14,6 @@ namespace EngineV2.Behaviours.Player_Behaviours
         private IEntity body;
 
         private KeyboardState keyState;
-        private InputManager inputMgr;
-
         private Player player;
         private PlayerAnimation ani;
 
@@ -30,8 +29,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
         {
             body = ent;
             ani = new PlayerAnimation();
-            inputMgr = InputManager.GetInputInstance;
-            inputMgr.AddListener(OnNewInput);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
         }
 
         public virtual void OnNewInput(object source, EventData data)
@@ -63,7 +61,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
                 body.setYPos(body.getPos().Y + speed);
                 Player.Animate = true;
                 Player.row = 2;
-              //  sound.Playsnd(5);
+                SoundManager.getSoundInstance.Playsnd(5, 0.3f);
 
             }
             if (Player.canClimb && keyState.IsKeyDown(Keys.S) || Player.canClimb && keyState.IsKeyDown(Keys.Down))
@@ -72,7 +70,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
                 body.setYPos(body.getPos().Y + speed);
                 Player.Animate = true;
                 Player.row = 2;
-                //sound.Playsnd(5);
+                SoundManager.getSoundInstance.Playsnd(5, 0.3f);
             }
         }
 

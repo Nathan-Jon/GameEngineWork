@@ -47,7 +47,6 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager inputMgr;
 
         //Behaviours
         private IBehaviour playerController;
@@ -59,25 +58,21 @@ namespace EngineV2.Entities
         private List<IEntity> environment;
 
         private IEntity collision;
-        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
-        private ISoundManager sound;
         #endregion
 
         #region Initialisation
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
         {
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            inputMgr = InputManager.GetInputInstance;
+            
             ani = new PlayerAnimation();
 
             Position = Posn;
             Texture = Tex;
-            sound = SoundManager.getSoundInstance;
             colliders = _collider;
 
-            collisionMgr.subscribe(onCollision);
-            inputMgr.AddListener(OnNewInput);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
 
             CollidableObjs();
             _collider.isPlayerEntity(this);
@@ -95,8 +90,6 @@ namespace EngineV2.Entities
         {
             keyState = data.newKey;
 
-            sound.Volume(1, 0.1f);
-            sound.Volume(5, 0.3f);
 
             #region SPACEBAR
             if (keyState.IsKeyDown(Keys.Space))
@@ -120,8 +113,8 @@ namespace EngineV2.Entities
 
             if (keyState.GetPressedKeys().Length == 0 )
             {
-                sound.Stopsnd(1);
-                sound.Stopsnd(5);
+                SoundManager.getSoundInstance.Stopsnd(1);
+                SoundManager.getSoundInstance.Stopsnd(5);
             }
         }
         #endregion
@@ -167,7 +160,7 @@ namespace EngineV2.Entities
                     EntityManager.Entities.Clear();
                     BehaviourManager.behaviours.Clear();
                     SceneManager.LoseScreen = true;
-                    sound.Stopsnd(0);
+                    SoundManager.getSoundInstance.Stopsnd(0);
                 }
             }
             #endregion

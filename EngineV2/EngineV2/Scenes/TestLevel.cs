@@ -20,7 +20,7 @@ using EngineV2.Input_Managment;
 
 namespace EngineV2.Scenes
 {
-    class Scene1 :  IScene
+    class TestLevel :  IScene
     {
         List<IEntity> Scenegraph = new List<IEntity>();
         List<IBehaviour> Behaviours = new List<IBehaviour>();
@@ -59,19 +59,16 @@ namespace EngineV2.Scenes
         IEntityManager ent;
         IBackGrounds back;
         ICollidable collider;
-        InputManager inputMgr;
         ISceneManager scn;
         IBehaviourManager behaviours;
-        ISoundManager snd;
         PhysicsManager physicsMgr;
         IPhysicsObj physicsObj;
-        private CollisionManagerSingleton ColMgr;
 
-        public Scene1()
+        public TestLevel()
         {
 
 #region Instantiate Managers
-            inputMgr = InputManager.GetInputInstance;
+           
             ent = EntityManager.getEntityManager;
             physicsObj = new PhysicsObj();
 
@@ -81,18 +78,15 @@ namespace EngineV2.Scenes
             scn = new SceneManager(Kernel.instance);
 
             behaviours = BehaviourManager.getBehaviourManager;
-            snd = SoundManager.getSoundInstance;
             collider = new CollidableClass();
-            ColMgr = CollisionManagerSingleton.GetColliderInstance;
             
             #endregion
 
 #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
-            
+
+            //Crate
             crate = ent.CreateEnt<Crate>();
-
-
 
             //Walls
             wall = ent.CreateEnt<TriggerWall>();
@@ -102,6 +96,11 @@ namespace EngineV2.Scenes
 
             //Key
             key = ent.CreateEnt<Key>();
+
+            //Ladders
+            Ladder1 = ent.CreateEnt<SLadder>();
+            Ladder2 = ent.CreateEnt<LLadder>();
+            Ladder3 = ent.CreateEnt<LLadder>();
 
             //Platforms
             platform1 = ent.CreateEnt<ScreenWidthPlatform>();
@@ -116,11 +115,8 @@ namespace EngineV2.Scenes
             //Presure PLates
             pressurePlate = ent.CreateEnt<PressurePlate>();
 
-            //Ladders
-            Ladder1 = ent.CreateEnt<SLadder>();
-            Ladder2 = ent.CreateEnt<LLadder>();
-            Ladder3 = ent.CreateEnt<LLadder>();
-            
+
+            //Player and enemies
             player = ent.CreateEnt<Player>();
             thug = ent.CreateEnt<Thug>();
 #endregion
@@ -129,23 +125,22 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            snd.Initialize(Content.Load<SoundEffect>("Level1Music"));
-            snd.Initialize(Content.Load<SoundEffect>("Footsteps"));
-            snd.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
-            snd.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
-            snd.Initialize(Content.Load<SoundEffect>("KeyPickupSFX"));
-            snd.Initialize(Content.Load<SoundEffect>("LadderClimbSFX"));
-            snd.CreateInstance();
+            //Sounds
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("Level1Music"));
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("Footsteps"));
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("KeyPickupSFX"));
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("LadderClimbSFX"));
+            SoundManager.getSoundInstance.CreateInstance();
 
+            //BackGround
             back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
 
             //PLAYER AND ENEMIES
-
-            
-
             player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, physicsObj, behaviours);
             thug.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, physicsObj, behaviours);
-            
+
             //Ladders
             Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, physicsObj, behaviours);
             Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, physicsObj, behaviours);
@@ -166,7 +161,7 @@ namespace EngineV2.Scenes
             platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, physicsObj, behaviours);
 
 
-            scn.Initalize(back, snd);
+            scn.Initalize(back);
 
 
             //INTERACTIVE OBJECTS
@@ -193,8 +188,8 @@ namespace EngineV2.Scenes
 
             if (SceneManager.Level1 == true)
             {
-                inputMgr.update();
-                ColMgr.update();
+                InputManager.GetInputInstance.update();
+                CollisionManager.GetColliderInstance.update();
 
 
                 for (int i = 0; i < Scenegraph.Count; i++)
@@ -211,7 +206,7 @@ namespace EngineV2.Scenes
                 
                 if (SceneManager.Level1 == true)
                 {
-                    snd.Playsnd(0);
+                    SoundManager.getSoundInstance.Playsnd(0, 0.5f);
                 }
 
 

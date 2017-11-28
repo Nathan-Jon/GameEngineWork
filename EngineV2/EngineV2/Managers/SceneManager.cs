@@ -15,42 +15,37 @@ namespace EngineV2.Managers
 
     {
         List<IBehaviour> behaviours = new List<IBehaviour>();
-        List<IEntity> SceneGraph = new List<IEntity>();
         public static List<IScene> SceneList;
 
         SpriteBatch spriteBatch;
-        InputManager inputMgr;
-        IPhysicsMgr physicsMgr;
+        IRenderable render;
         static IBackGrounds background;
 
         public static bool WinGame = false;
-        public static bool Level1 = true;
-        public static bool mainmenu = false;
+        public static bool Level1 = false;
+        public static bool mainmenu = true;
         public static bool ExitGame = false;
         public static bool LoseScreen = false;
 
         public SceneManager(Game game) : base(game)
         {
-            inputMgr = InputManager.GetInputInstance;
-            physicsMgr = PhysicsManager.getPhysicsInstance;
-            
+
         }
 
         public SceneManager(Game game, List<IScene> scenelist)
             : base(game)
         {
-            inputMgr = InputManager.GetInputInstance;
-            physicsMgr = PhysicsManager.getPhysicsInstance;
+            render = new Renderable();
+            spriteBatch = new SpriteBatch(GraphicsDevice);
             SceneList = scenelist;
+            render.Initalise(SceneList, spriteBatch);
         }
 
 
-        public void Initalize(IBackGrounds back, ISoundManager sound)
+        public void Initalize(IBackGrounds back)
         {
-
             background = back;
             behaviours = BehaviourManager.behaviours;
-            SceneGraph = EntityManager.Entities;
             
         }
 
@@ -58,6 +53,8 @@ namespace EngineV2.Managers
         {
             if(Keyboard.GetState().IsKeyDown(Keys.Escape))
             Game.Exit();
+
+            render.Draw();
 
             if (ExitGame == true)
             {
@@ -83,38 +80,6 @@ namespace EngineV2.Managers
                 SceneList[3].update(gameTime);
             }
             base.Update(gameTime);
-
-        }
-
-        public override void Draw(GameTime gameTime)
-        {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-           
-
-            spriteBatch.Begin();
-            if (mainmenu == true)
-            {
-                SceneList[0].Draw(spriteBatch);
-            }
-
-            if (Level1 == true)
-            {
-                SceneList[1].Draw(spriteBatch);
-            }
-
-            if (WinGame == true)
-            {
-                SceneList[2].Draw(spriteBatch);
-            }
-
-            if (LoseScreen == true)
-            {
-                SceneList[3].Draw(spriteBatch);
-            }
-
-
-            spriteBatch.End();
-            base.Draw(gameTime);
 
         }
 

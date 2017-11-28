@@ -52,7 +52,7 @@
     <Compile Include="Buttons\StartButton.cs" />
     <Compile Include="Collision Management\CollidableClass.cs" />
     <Compile Include="Collision Management\CollisionEventData.cs" />
-    <Compile Include="Collision Management\CollisionManagerSingleton.cs" />
+    <Compile Include="Collision Management\CollisionManager.cs" />
     <Compile Include="Entities\Interactive\Key.cs" />
     <Compile Include="Entities\Interactive\LeverTarget.cs" />
     <Compile Include="Entities\Environment\MPlatform.cs" />
@@ -74,8 +74,10 @@
     <Compile Include="Input Managment\InputSubscriber.cs" />
     <Compile Include="Interfaces\IAnimations.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
+    <Compile Include="Interfaces\ICollisionManager.cs" />
     <Compile Include="Interfaces\IPhysicsMgr.cs" />
     <Compile Include="Interfaces\IPhysicsObj.cs" />
+    <Compile Include="Interfaces\IRenderable.cs" />
     <Compile Include="Interfaces\ISoundManager.cs" />
     <Compile Include="Managers\BehaviourManager.cs" />
     <Compile Include="Interfaces\IMoveBehaviour.cs" />
@@ -99,10 +101,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\SceneManager.cs" />
     <Compile Include="Entities\Environment\TriggerPlatform.cs" />
+    <Compile Include="Renderable.cs" />
     <Compile Include="Scenes\GameOver.cs" />
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
-    <Compile Include="Scenes\Scene1.cs" />
+    <Compile Include="Scenes\TestLevel.cs" />
     <Compile Include="Scenes\Wingame.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -77,7 +77,7 @@ namespace EngineV2.Scenes
             }
             if (SceneManager.mainmenu == true)
             {
-                snd.Playsnd(0);
+                snd.Playsnd(0, 0.5f);
             }
         }
 

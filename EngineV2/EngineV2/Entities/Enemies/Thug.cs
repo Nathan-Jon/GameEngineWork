@@ -25,13 +25,12 @@ namespace EngineV2.Entities
 
         private IEntity collisionObj;
         private IMoveBehaviour Move;
-        private CollisionManagerSingleton collisionMgr;
 
 
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
         {
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            collisionMgr.subscribe(onCollision);
+
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
             _collider.isCollidableEntity(this);
             Position = Posn;
             Texture = Tex;

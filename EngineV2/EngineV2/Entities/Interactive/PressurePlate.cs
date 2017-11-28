@@ -29,13 +29,10 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager InputMgr;
 
         //Collision Management
         private IEntity collisionObj;
-        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
-        private ISoundManager sound;
         IPhysicsObj physics;
 
         //Lists
@@ -51,13 +48,10 @@ namespace EngineV2.Entities
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
-            sound = SoundManager.getSoundInstance;
             physics = phys;
-            InputMgr = InputManager.GetInputInstance;
-            InputMgr.AddListener(OnNewInput);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
 
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            collisionMgr.subscribe(onCollision);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
             CollidableObjs();
             _collider.isInteractiveCollidable(this);
         }

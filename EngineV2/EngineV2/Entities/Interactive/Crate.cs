@@ -30,13 +30,10 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager InputMgr;
 
         //Collision Management
         private IEntity collisionObj;
-        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
-        private ISoundManager sound;
         //Lists
         private List<IEntity> interactiveObjs;
         private List<IEntity> player;
@@ -49,12 +46,9 @@ namespace EngineV2.Entities
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
-            sound = SoundManager.getSoundInstance;
-            InputMgr = InputManager.GetInputInstance;
-            InputMgr.AddListener(OnNewInput);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
 
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            collisionMgr.subscribe(onCollision);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
             CollidableObjs();
             _collider.isInteractiveCollidable(this);
             phys.hasPhysics(this);
@@ -68,24 +62,23 @@ namespace EngineV2.Entities
             {
 
                 moveObject = true;
-                sound.Volume(2, 0.2f);
 
                 if (crateContact && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
                 {
                     Position.X += 3;
-                    sound.Playsnd(2);
+                    SoundManager.getSoundInstance.Playsnd(2, 0.2f);
                 }
                 if (crateContact && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
                 {
                     Position.X += -3;
-                    sound.Playsnd(2);
+                    SoundManager.getSoundInstance.Playsnd(2, 0.2f);
                 }
 
             }
 
             if (crateContact == false)
             {
-                sound.Stopsnd(2);
+                SoundManager.getSoundInstance.Stopsnd(2);
             }
         }
 

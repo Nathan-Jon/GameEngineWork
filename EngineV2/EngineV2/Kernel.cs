@@ -22,7 +22,6 @@ namespace EngineV2
 
         ISceneManager scn;
         ICollidable collider;
-        InputManager inputMgr;
         IPhysicsObj physicsObj;
 
         List<IScene> SceneList = new List<IScene>();
@@ -64,11 +63,10 @@ namespace EngineV2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            inputMgr = InputManager.GetInputInstance;
             physicsObj = new PhysicsObj();
             mainmenu = new MainMenu();
             SceneList.Add(mainmenu);
-            scene = new Scene1();
+            scene = new TestLevel();
             SceneList.Add(scene);
             Wingame = new WinScreen();
             SceneList.Add(Wingame);
