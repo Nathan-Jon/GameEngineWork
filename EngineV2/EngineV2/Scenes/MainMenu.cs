@@ -22,7 +22,6 @@ namespace EngineV2.Scenes
         ButtonList buttonlist;
         MouseState mouseinput;
         Point mousePosition;
-        ISoundManager snd;
 
         public MainMenu()
         {
@@ -32,21 +31,20 @@ namespace EngineV2.Scenes
             ResumeBut = new ResumeButton();
             ExitBut = new ExitButton();
             buttonlist = new ButtonList();
-            snd = SoundManager.getSoundInstance;
             
 
         }
 
         public void LoadContent(ContentManager Content)
         {
-            snd.Initialize(Content.Load<SoundEffect>("MenuMusic"));
-            snd.CreateInstance();
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("MenuMusic"));
+            SoundManager.getSoundInstance.CreateInstance();
 
 
             back.Initialize(Content.Load<Texture2D>("MenuBackground"));
 
-            StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400), snd);
-            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500), snd);
+            StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400));
+            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500));
 
             Buttons = ButtonList.menuButtons;
             buttonlist.Initalize(StartBut);
@@ -77,7 +75,7 @@ namespace EngineV2.Scenes
             }
             if (SceneManager.mainmenu == true)
             {
-                snd.Playsnd(0, 0.5f);
+                SoundManager.getSoundInstance.Playsnd(0, 0.5f);
             }
         }
 

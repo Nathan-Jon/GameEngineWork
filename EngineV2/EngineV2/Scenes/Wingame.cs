@@ -20,7 +20,6 @@ namespace EngineV2.Scenes
         IBackGrounds back;
         MouseState mouseinput;
         Point mousePosition;
-        ISoundManager snd;
 
 
         public WinScreen()
@@ -34,7 +33,7 @@ namespace EngineV2.Scenes
         public void LoadContent(ContentManager Content)
         {
             back.Initialize(Content.Load<Texture2D>("WinGame"));
-            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300), snd);
+            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300));
 
         }
 

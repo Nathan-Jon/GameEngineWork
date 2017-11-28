@@ -15,7 +15,7 @@ namespace EngineV2.Buttons
         public Vector2 Position;
         public Rectangle HitBox;
 
-        public void Initialize(Texture2D tex, Vector2 Posn, ISoundManager sound)
+        public void Initialize(Texture2D tex, Vector2 Posn)
         {
             Texture = tex;
             Position = Posn;

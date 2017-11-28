@@ -20,7 +20,6 @@ namespace EngineV2.Scenes
         IButton ExitBut;
         IBackGrounds back;
         MouseState mouseinput;
-        ISoundManager snd;
         Point mousePosition;
 
 
@@ -29,18 +28,17 @@ namespace EngineV2.Scenes
 
             back = new BackGrounds(900, 600);
             ExitBut = new ExitButton();
-            snd = new SoundManager();
         }
 
 
         public void LoadContent(ContentManager Content)
         {
-            snd.Initialize(Content.Load<SoundEffect>("background"));
-            snd.CreateInstance();
+            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("background"));
+            SoundManager.getSoundInstance.CreateInstance();
 
 
             back.Initialize(Content.Load<Texture2D>("LoseGame"));
-            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300), snd);
+            ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300));
 
         }
 
@@ -55,9 +53,9 @@ namespace EngineV2.Scenes
                 ExitBut.click();
             }
 
-            if (SceneManager.LoseScreen = true)
+            if (SceneManager.LoseScreen == true)
             {
-                snd.Playsnd(0, 0.5f);
+                SoundManager.getSoundInstance.Playsnd(0, 0.5f);
             }
 
         }

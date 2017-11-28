@@ -10,7 +10,7 @@ namespace EngineV2.Buttons
 {
     public interface IButton
     {
-        void Initialize(Texture2D tex, Vector2 Posn, ISoundManager sound);
+        void Initialize(Texture2D tex, Vector2 Posn);
         void Draw(SpriteBatch spriteBatch);
         Vector2 GetButtonPos();
         void update();

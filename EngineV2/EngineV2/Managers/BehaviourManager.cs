@@ -12,19 +12,25 @@ namespace EngineV2.Managers
     public sealed class BehaviourManager: IBehaviourManager
     {
 
+        public static List<IBehaviour> behaviours = new List<IBehaviour>();
+
+
         private static IBehaviourManager instance = null;
         private static object syncnstance = new object();
 
+        //constructor
         public BehaviourManager()
-        {
+        { }
 
-        }
-
+        /// <summary>
+        /// Returns an instance of the Behavious Manager Interface
+        /// </summary>
         public static IBehaviourManager getBehaviourManager
         {
             get
             {
-                if(instance == null)
+                //Ensures only one class can access this if statement at a time
+                if (instance == null)
                 {
                     lock (syncnstance)
                         if (instance == null)
@@ -34,9 +40,10 @@ namespace EngineV2.Managers
             }
         }
 
-
-        public static List<IBehaviour> behaviours = new List<IBehaviour>();
-
+       
+        /// <summary>
+        /// loops through the behaviours list, running the update methods on the objects contained
+        /// </summary>
         public void update()
         {
             for (int i = 0;i < behaviours.Count; i++)
@@ -45,6 +52,12 @@ namespace EngineV2.Managers
             }
         }
 
+        /// <summary>
+        /// Creates a new class of type IBehaviour and attaches an entity body to the behaviour
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ent"></param>
+        /// <returns></returns>
         public T createMind<T>(IEntity ent) where T : IBehaviour, new()
         {
             T Mind = new T();
@@ -53,6 +66,11 @@ namespace EngineV2.Managers
             return Mind;
         }
 
+
+        /// <summary>
+        /// Removes a beahaviour from the behaviours list
+        /// </summary>
+        /// <param name="mind"></param>
         public void removeMind(IBehaviour mind)
         {
             behaviours.Remove(mind);
