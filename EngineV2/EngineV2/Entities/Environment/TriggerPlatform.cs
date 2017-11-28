@@ -14,7 +14,6 @@ namespace EngineV2.Entities
         public Rectangle HitBox;
 
         //COLLISIONS
-        private CollisionManagerSingleton collisionMgr;
         private IEntity collisionObj;
         private IEntity collision;
 
@@ -32,9 +31,7 @@ namespace EngineV2.Entities
             Texture = Tex;
             physics = phys;
 
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-
-            collisionMgr.subscribe(onCollision);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
             physicsObjs = physics.getPhysicsList();
 
             //CollidableObjs();

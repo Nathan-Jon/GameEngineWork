@@ -30,13 +30,10 @@ namespace EngineV2.Behaviours
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager InputMgr;
 
         //Collision Management Variables
         private IEntity collisionObj;
-        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
-        private ISoundManager sound;
 
 
 
@@ -52,15 +49,12 @@ namespace EngineV2.Behaviours
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
-            sound = SoundManager.getSoundInstance;
 
             //SUBSCRIBERS
-            InputMgr = InputManager.GetInputInstance;
-            InputMgr.AddListener(OnNewInput);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
 
             //CALL COLLIDABLEOBJS()
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            collisionMgr.subscribe(onCollision);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
             CollidableObjs();
             phys.hasPhysics(this);
 
@@ -91,14 +85,13 @@ namespace EngineV2.Behaviours
             keyState = data.newKey;
             if (keyContact)
             {
-                sound.Volume(4, 0.5f);
-                sound.Playsnd(4);
+                SoundManager.getSoundInstance.Playsnd(4, 0.5f);
                 Unlock = true;
 
             }
             if (keyContact == false)
             {
-                sound.Stopsnd(4);
+                SoundManager.getSoundInstance.Stopsnd(4);
             }
         }
 

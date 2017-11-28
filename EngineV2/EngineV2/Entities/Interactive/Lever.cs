@@ -25,11 +25,9 @@ namespace EngineV2.Entities
         private bool canTrigger = false;
         //Input Management
         private KeyboardState keyState;
-        private InputManager InputMgr;
 
         //Collision Management
         private IEntity collisionObj;
-        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
         private List<IEntity> playerObj;
         private List<IEntity> targetObjs;
@@ -45,11 +43,8 @@ namespace EngineV2.Entities
             colliders = _collider;
 
             //SUBSCRIBERS
-            InputMgr= InputManager.GetInputInstance;
-            InputMgr.AddListener(OnNewInput);
-
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            collisionMgr.subscribe(onCollision);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
       
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
@@ -69,9 +64,8 @@ namespace EngineV2.Entities
                 {
                     if (targetObjs[i].getTag() == "leverObj")
                     {
-                        if (targetObjs[i].getPos().Y <= 107)
-                        targetObjs[i].setYPos(105);
-                            
+                            targetObjs[i].setYPos(105);
+   
                     }
                 }
             }

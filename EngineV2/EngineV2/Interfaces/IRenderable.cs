@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using EngineV2.Interfaces;
-using EngineV2.BackGround;
+using EngineV2.Scenes;
 
 namespace EngineV2.Interfaces
 {
-    interface ISceneManager
+    interface IRenderable
     {
-        void Initalize(IBackGrounds back);
-        void Draw(GameTime gameTime);
+        void Initalise(List<IScene> sceneList, SpriteBatch sprite);
+        void Draw();
     }
 }

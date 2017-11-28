@@ -11,9 +11,8 @@ namespace EngineV2.Interfaces
     {
         void Initialize(SoundEffect Snd);
         void CreateInstance();
-        void Playsnd(int sndno);
+        void Playsnd(int sndno, float Volume);
         void Stopsnd(int sndno);
-        void Volume(int sndno, float Volume);
         
     }
 }

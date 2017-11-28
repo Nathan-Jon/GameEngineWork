@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using Microsoft.Xna.Framework.Graphics;
 using EngineV2.Interfaces;
 
 namespace EngineV2.Collision_Management
 {
-    public sealed class CollisionManagerSingleton
+    public sealed class CollisionManager : ICollisionManager
     {
         public event EventHandler<CollisionEventData> NewCollision;
         public IEntity collisionObj;
 
-        private static CollisionManagerSingleton instance = null;
+        private static CollisionManager instance = null;
         private static object syncInstance = new object();
 
 
         //SETING UP SINGLETON
-        private CollisionManagerSingleton()
+        private CollisionManager()
         { }
 
-        public static CollisionManagerSingleton GetColliderInstance
+        public static ICollisionManager GetColliderInstance
         {
             get
             {
@@ -30,7 +30,7 @@ namespace EngineV2.Collision_Management
                     lock (syncInstance)
                     {
                         if (instance == null)
-                            instance = new CollisionManagerSingleton();
+                            instance = new CollisionManager();
                     }
                 }
                 return instance;

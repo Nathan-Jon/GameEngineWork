@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace EngineV2.Interfaces
 {
-    interface IEntityManager
+    public interface IEntityManager
     {
         T CreateEnt<T>() where T : IEntity, new();  
         void AddEnt(IEntity Ent);

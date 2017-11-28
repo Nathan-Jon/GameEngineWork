@@ -27,11 +27,9 @@ namespace EngineV2.Entities
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager InputMgr;
 
         //Collision Management Variables
         private IEntity collisionObj;
-        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
         private List<IEntity> playerObj;
 
@@ -46,12 +44,10 @@ namespace EngineV2.Entities
             colliders = _collider;
 
             //SUBSCRIBERS
-            InputMgr = InputManager.GetInputInstance;
-            InputMgr.AddListener(OnNewInput);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
 
             //CALL COLLIDABLEOBJS()
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            collisionMgr.subscribe(onCollision);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
             
             CollidableObjs();
             _collider.isInteractiveCollidable(this);

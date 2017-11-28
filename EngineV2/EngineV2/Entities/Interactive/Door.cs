@@ -29,13 +29,10 @@ namespace EngineV2.Behaviours
 
         //Input Management
         private KeyboardState keyState;
-        private InputManager InputMgr;
 
         //Collision Management Variables
         private IEntity collisionObj;
-        private CollisionManagerSingleton collisionMgr;
         private ICollidable colliders;
-        private ISoundManager sound;
         
 
         //Lists
@@ -50,14 +47,11 @@ namespace EngineV2.Behaviours
             Position = Posn;
             Texture = Tex;
             colliders = _collider;
-            sound = SoundManager.getSoundInstance;
 
             //SUBSCRIBERS
-            InputMgr = InputManager.GetInputInstance;
-            InputMgr.AddListener(OnNewInput);
+            InputManager.GetInputInstance.AddListener(OnNewInput);
 
-            collisionMgr = CollisionManagerSingleton.GetColliderInstance;
-            collisionMgr.subscribe(onCollision);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
 
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
@@ -88,8 +82,7 @@ namespace EngineV2.Behaviours
             keyState = data.newKey;
             if (doorContact && keyState.IsKeyDown(Keys.W) && Key.Unlock|| doorContact && keyState.IsKeyDown(Keys.Up) && Key.Unlock)
             {
-                sound.Volume(3, 0.5f);
-                sound.Playsnd(3);
+                SoundManager.getSoundInstance.Playsnd(3, 0.5f);
                 EntityManager.Entities.Clear();
                 BehaviourManager.behaviours.Clear();
                 ButtonList.menuButtons.Clear();
@@ -102,7 +95,7 @@ namespace EngineV2.Behaviours
             }
             if (doorContact == false)
             {
-                sound.Stopsnd(3);
+                SoundManager.getSoundInstance.Stopsnd(3);
             }
         }
 

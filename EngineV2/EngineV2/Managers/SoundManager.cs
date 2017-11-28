@@ -23,7 +23,7 @@ namespace EngineV2.Managers
 
         }
 
-        public static SoundManager getSoundInstance
+        public static ISoundManager getSoundInstance
         {
             get
             {
@@ -59,10 +59,11 @@ namespace EngineV2.Managers
             
         }
 
-        public void Playsnd(int sndno)
+        public void Playsnd(int sndno, float Volumenum)
         {
             InstanceList[sndno].IsLooped = true;
             InstanceList[sndno].Play();
+            InstanceList[sndno].Volume = Volumenum;
         }
 
         public void Stopsnd(int sndno)
@@ -70,9 +71,5 @@ namespace EngineV2.Managers
             InstanceList[sndno].Stop();
         }
 
-        public void Volume(int sndno, float Volumenum)
-        {
-            InstanceList[sndno].Volume = Volumenum;
-        }
     }
 }

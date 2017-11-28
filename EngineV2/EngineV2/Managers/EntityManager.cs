@@ -21,7 +21,7 @@ namespace EngineV2.Managers
 
         }
 
-        public static EntityManager getEntityManager
+        public static IEntityManager getEntityManager
         {
            get
             {
