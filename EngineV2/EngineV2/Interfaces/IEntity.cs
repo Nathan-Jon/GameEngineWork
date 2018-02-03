@@ -26,6 +26,7 @@ namespace EngineV2.Interfaces
         float getDirection();
         void accessPhysics(IPhysicsObj obj);
         void CollidableObjs();
+        void UniqueData();
 
     }
 }

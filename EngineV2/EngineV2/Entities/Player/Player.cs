@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using EngineV2.Behaviours.Player_Behaviours;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,25 +8,27 @@ using EngineV2.Managers;
 using EngineV2.Interfaces;
 using EngineV2.Collision_Management;
 using EngineV2.Input_Managment;
-using EngineV2.Scenes;
 using EngineV2.Animations;
 
 namespace EngineV2.Entities
 {
+    /// <summary>
+    /// Class for Player Entity
+    /// 
+    /// Author: Nathan Robertson & Carl Chalmers
+    /// Date of change: 03/02/18
+    /// Version 0.5
+    /// 
+    /// </summary>
     class Player : GameEntity
     {
         #region Properties
         public string tag = "Player";
 
-        public static Texture2D Texture;
+        //Animation Variable
         public IAnimations ani;
         public static int row = 1;
-
-        public Vector2 Position;
-        public Rectangle HitBox;
         public static bool Animate = false;
-        public bool gravity = false;
-        public bool onTerrain = false;
 
 
         //Movement
@@ -48,44 +47,34 @@ namespace EngineV2.Entities
         //Input Management
         private KeyboardState keyState;
 
-        //Behaviours
-        private IBehaviour playerController;
-
-
-        //Lists
+        //Collision Lists
         private List<IEntity> collisionObjs;
         private List<IEntity> interactiveObjs;
         private List<IEntity> environment;
 
         private IEntity collision;
-        private ICollidable colliders;
+
         #endregion
 
-        #region Initialisation
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
+        /// <summary>
+        /// Initialise the Variables specific to this object
+        /// </summary>
+        public override void UniqueData()
         {
-            
             ani = new PlayerAnimation();
-
-            Position = Posn;
-            Texture = Tex;
-            colliders = _collider;
+            ani.Initialize(this, 3, 3);
+            CollidableObjs();
+            _BehaviourManager.createMind<PlayerMind>(this);
 
             CollisionManager.GetColliderInstance.subscribe(onCollision);
             InputManager.GetInputInstance.AddListener(OnNewInput);
-
-            CollidableObjs();
-            _collider.isPlayerEntity(this);
-            phys.hasPhysics(this);
-            behaviours.createMind<PlayerMind>(this);
-            ani.Initialize(this, 3, 3);
-
         }
 
-        #endregion
-
-        #region Input Management
-        //Input Manager
+        /// <summary>
+        /// Event Handler for Keyboard Input
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
@@ -111,31 +100,36 @@ namespace EngineV2.Entities
             #endregion
 
 
-            if (keyState.GetPressedKeys().Length == 0 )
+            if (keyState.GetPressedKeys().Length == 0)
             {
                 SoundManager.getSoundInstance.Stopsnd("Walk");
                 SoundManager.getSoundInstance.Stopsnd("Ladder");
             }
         }
-        #endregion
 
         #region Collision Management
-        //List of Collidable Objects
+        /// <summary>
+        /// Gets the lists for the collidable Objecs
+        /// </summary>
         public override void CollidableObjs()
         {
-            collisionObjs = colliders.getCollidableList();
-            interactiveObjs = colliders.getInteractiveObj();
-            environment = colliders.getEnvironment();
+            collisionObjs = _Collisions.getCollidableList();
+            interactiveObjs = _Collisions.getInteractiveObj();
+            environment = _Collisions.getEnvironment();
         }
-        //Collision Manager
+        /// <summary>
+        /// Send Event to collision Event Manager
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collision = data.objectCollider;
 
-            gravity = true;
+            //gravity = true;
             canClimb = false;
 
-            #region Map Edges
+            #region Map corners 
             if (HitBox.X <= 0)
             { Position.X -= -3; }
 
@@ -157,10 +151,9 @@ namespace EngineV2.Entities
             {
                 if (HitBox.Intersects(collisionObjs[i].getHitbox()) && collisionObjs[i].getTag() == "Thug")
                 {
-                    //BehaviourManager.behaviours.Clear();
-                    //EntityManager.Entities.Clear();
+                    EntityManager.Entities.Clear();
+                    BehaviourManager.behaviours.Clear();
                     SceneManager.LoseScreen = true;
-                    //SoundManager.getSoundInstance.Stopsnd(0);
                 }
             }
             #endregion
@@ -169,9 +162,7 @@ namespace EngineV2.Entities
             for (int i = 0; i < interactiveObjs.Count; i++)
             {
                 if (HitBox.Intersects(interactiveObjs[i].getHitbox()) && interactiveObjs[i].getTag() == "Crate")
-                {
-                    canJump = true;
-                }
+                { }
 
                 if (HitBox.Intersects(interactiveObjs[i].getHitbox()) && interactiveObjs[i].getTag() == "Ladder")
                 {
@@ -182,29 +173,35 @@ namespace EngineV2.Entities
 
                 if (HitBox.Intersects(interactiveObjs[i].getHitbox()))
                 {
-                    gravity = false;
-                    //canClimb = false;
+                    //gravity = false;
+                    canClimb = false;
                 }
-                //else gravity = true;
+                else gravity = true;
             }
-
 
             for (int i = 0; i < environment.Count; i++)
             {
                 if (HitBox.Intersects(environment[i].getHitbox()))
                 {
-                   // gravity = false;
+                    gravity = false;
                     canJump = true;
                 }
+                else if (!HitBox.Intersects(environment[i].getHitbox()))
+                {
+                    gravity = true;
+                }
             }
+
         }
-            #endregion
+        #endregion
 
 
         #endregion
 
         #region Behaviours
-
+        /// <summary>
+        /// Moves the Player up onthe Y axis up to a maximum point
+        /// </summary>
         public void jump()
         {
 
@@ -229,18 +226,20 @@ namespace EngineV2.Entities
 
         #endregion
 
-        //Draw Method
+        /// <summary>
+        /// Draws the entty based on the texture and position obtained from the animation class
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-
             ani.Draw(spriteBatch);
-
-
         }
-        //Update Method
+        /// <summary>
+        /// Called Every Frame
+        /// </summary>
+        /// <param name="game"></param>
         public override void update(GameTime game)
         {
-
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, PlayerAnimation.Width, PlayerAnimation.Height);
 
             if (Animate == true)
@@ -291,7 +290,6 @@ namespace EngineV2.Entities
         {
             row = rows;
         }
-
         public override void setGrav(bool active)
         {
             gravity = active;

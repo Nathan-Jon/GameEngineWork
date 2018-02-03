@@ -8,12 +8,18 @@ using Microsoft.Xna.Framework.Input;
 
 namespace EngineV2.Interfaces
 {
+    /// <summary>
+    /// 
+    /// Interface for Entity Manager Factory
+    /// Author: Nathan Robertson
+    /// Edit Date: 03/02/18
+    /// Version 0.5
+    /// 
+    /// </summary>
     public interface IEntityManager
     {
-        T CreateEnt<T>() where T : IEntity, new();  
+        T CreateEnt<T>(Texture2D text, Vector2 Posn, ICollidable col, IPhysicsObj phys, IBehaviourManager IBehave) where T : IEntity, new();  
         void AddEnt(IEntity Ent);
-        void RemoveEnt(IEntity Ent);
-        
-
+        void RemoveEnt(IEntity Ent);   
     }
 }

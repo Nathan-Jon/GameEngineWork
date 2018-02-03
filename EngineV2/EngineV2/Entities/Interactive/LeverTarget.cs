@@ -12,13 +12,13 @@ using EngineV2.Input;
 
 namespace EngineV2.Entities
 {
+    /// <summary>
+    /// ojbect which is triggered by lever
+    /// </summary>
     class LeverTarget : GameEntity
     {
-        public String tag = "LeverTarget";
-
-        public static Texture2D Texture;
-        public Vector2 Position;
-        public Rectangle HitBox;
+        //Tag Identifier
+        public string tag = "LeverTarget";
 
         //COLLISIONS
         private IEntity collisionObj;
@@ -31,28 +31,22 @@ namespace EngineV2.Entities
         //LISTS
         private List<IEntity> physicsObjs;
 
-
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
+        /// <summary>
+        /// Initialise the Variables specific to this object
+        /// </summary>
+        public override void UniqueData()
         {
-            Position = Posn;
-            Texture = Tex;
-            physics = phys;
-
+            _Collisions.isEnvironmentCollidable(this);
+            physicsObjs = _PhysicsObj.getPhysicsList();
             CollisionManager.GetColliderInstance.subscribe(onCollision);
-            physicsObjs = physics.getPhysicsList();
-
-            //CollidableObjs();
-
-            _collider.isEnvironmentCollidable(this);
 
         }
 
-        
-        //public override void CollidableObjs()
-        //{
-        //    physicsObjs = physics.getPhysicsList();
-        //}
-
+        /// <summary>
+        /// Send Event to collision Event Manager
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void onCollision(object source, CollisionEventData data)
         {
 
@@ -68,15 +62,26 @@ namespace EngineV2.Entities
 
             }
         }
+
+        /// <summary>
+        /// Draws the entty based on the texture and position obtained from the animation class
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
+
+        /// <summary>
+        /// Called Every Frame
+        /// </summary>
+        /// <param name="game"></param>
         public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
+        #region get/sets
         public override Rectangle getHitbox()
         {
             return HitBox;
@@ -89,6 +94,7 @@ namespace EngineV2.Entities
         {
             Position.Y = Ypos;
         }
+        #endregion
     }
 }
 

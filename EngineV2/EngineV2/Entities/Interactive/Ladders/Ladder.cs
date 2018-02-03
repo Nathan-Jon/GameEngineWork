@@ -9,11 +9,12 @@ using EngineV2.Input_Managment;
 
 namespace EngineV2.Entities
 {
-    /*
-    *
-    *when player comes into contact with this entity they can go and and down on the y axis
-    *
-    */
+    /// <summary>
+    /// Interactive object for the player allowing them to go up and down the y axis
+    /// Author: Nathan Roberson & Carl Chalmers
+    /// Date of Change: 03/02/18
+    /// Version: 0.4
+    /// </summary>
     class Ladder : GameEntity
     {
         #region Instance Variables
@@ -30,42 +31,40 @@ namespace EngineV2.Entities
 
         #endregion
 
-        //OnKeyboard Event Change scene
-
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
+        /// <summary>
+        /// Initialise the Variables specific to this object
+        /// </summary>
+        public override void UniqueData()
         {
-            Position = Posn;
-            Texture = Tex;
-            colliders = _collider;
-
-            //SUBSCRIBERS
-
             InputManager.GetInputInstance.AddListener(OnNewInput);
             CollisionManager.GetColliderInstance.subscribe(onCollision);
-
-            //CALL COLLIDABLEOBJS()
+            _Collisions.isInteractiveCollidable(this);
             CollidableObjs();
-            _collider.isInteractiveCollidable(this);
         }
-        #region EVENTS
-
-        //INITIALISE EVENT HANDLERS
-
-        #region INPUT
-        //INPUT EVENTS
+        
+        /// <summary>
+        /// Initialise Keyboard Event Handler
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
         }
-        #endregion
-        #region COLLISIONS
-        //INITIALISE INTERACTIVEOBJS LIST
+        
+        /// <summary>
+        /// Get the player Object list
+        /// </summary>
         public override void CollidableObjs()
         {
-            playerObj = colliders.getPlayableObj();
+            playerObj = _Collisions.getPlayableObj();
         }
 
-        //COLLISION EVENTS
+        /// <summary>
+        /// Call collision Evem
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collisionObj = data.objectCollider;
@@ -82,17 +81,25 @@ namespace EngineV2.Entities
 
 
         }
-        #endregion
-        #endregion
 
+        /// <summary>
+        /// Draws the entty based on the texture and position obtained from the animation class
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
+        /// <summary>
+        /// Called Every Frame
+        /// </summary>
+        /// <param name="game"></param>
         public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
+
+        #region get/sets
         public override Rectangle getHitbox()
         {
             return HitBox;
@@ -109,5 +116,6 @@ namespace EngineV2.Entities
         {
             Position.Y = Ypos;
         }
+        #endregion
     }
 }
