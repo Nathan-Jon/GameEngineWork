@@ -24,7 +24,6 @@ namespace EngineV2.Entities
         public int row = 1;
 
         private IEntity collisionObj;
-        private IMoveBehaviour Move;
 
 
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
