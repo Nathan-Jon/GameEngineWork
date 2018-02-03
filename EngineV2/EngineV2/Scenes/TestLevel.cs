@@ -25,37 +25,7 @@ namespace EngineV2.Scenes
         List<IEntity> Scenegraph = new List<IEntity>();
         List<IBehaviour> Behaviours = new List<IBehaviour>();
 
-        IEntity player;
-        IEntity thug;
-        IEntity crate;
-
-        //Ladder
-        IEntity Ladder1;
-        IEntity Ladder2;
-        IEntity Ladder3;
-
-        //Door
-        IEntity Door;
-
-        //Key
-        IEntity key;
-
-        //Platforms
-        IEntity platform1;
-        IEntity platform2;
-        IEntity platform3;
-        IEntity leverPlatformTarget;
-        IEntity platform5;
-
-        //Levers
-        IEntity Lever1;
-
-        //Pressure Plates
-        IEntity pressurePlate;
-
-        //Walls
-        IEntity wall;
-
+        //Managers
         IEntityManager ent;
         IBackGrounds back;
         ICollidable collider;
@@ -82,44 +52,7 @@ namespace EngineV2.Scenes
 
             #endregion
 
-            #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
-
-            //Crate
-            crate = ent.CreateEnt<Crate>();
-
-            //Walls
-            wall = ent.CreateEnt<TriggerWall>();
-
-            //Door
-            Door = ent.CreateEnt<Door>();
-
-            //Key
-            key = ent.CreateEnt<Key>();
-
-            //Ladders
-            Ladder1 = ent.CreateEnt<SLadder>();
-            Ladder2 = ent.CreateEnt<LLadder>();
-            Ladder3 = ent.CreateEnt<LLadder>();
-
-            //Platforms
-            platform1 = ent.CreateEnt<ScreenWidthPlatform>();
-            platform2 = ent.CreateEnt<MPlatform>();
-            platform3 = ent.CreateEnt<ScreenWidthPlatform>();
-            leverPlatformTarget = ent.CreateEnt<TriggerPlatform>();
-            platform5 = ent.CreateEnt<MPlatform>();
-
-            //Lever
-            Lever1 = ent.CreateEnt<Lever>();
-
-            //Presure PLates
-            pressurePlate = ent.CreateEnt<PressurePlate>();
-
-
-            //Player and enemies
-            player = ent.CreateEnt<Player>();
-            thug = ent.CreateEnt<Thug>();
-            #endregion
 
         }
 
@@ -137,45 +70,43 @@ namespace EngineV2.Scenes
             //BackGround
             back.Initialize("Background" ,Content.Load<Texture2D>("BackgroundTex1"));
 
-            //PLAYER AND ENEMIES
-            player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, physicsObj, behaviours);
-            thug.Initialize(Content.Load<Texture2D>("Thug"), new Vector2(630, 564), collider, physicsObj, behaviours);
-
             //Ladders
-            Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, physicsObj, behaviours);
-            Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, physicsObj, behaviours);
-            Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, physicsObj, behaviours);
+            IEntity Ladder1 = ent.CreateEnt<Ladder>(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, physicsObj, behaviours);
+            IEntity Ladder2 = ent.CreateEnt<Ladder>(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, physicsObj, behaviours);
+            IEntity Ladder3 = ent.CreateEnt<Ladder>(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, physicsObj, behaviours);
 
 
             //Door
-            Door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, physicsObj, behaviours);
+            IEntity Door = ent.CreateEnt<Door>(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, physicsObj, behaviours);
 
             //Key
-            key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, physicsObj, behaviours);
+            IEntity key = ent.CreateEnt<Key>(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, physicsObj, behaviours);
 
             //Platforms          
-            platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, physicsObj, behaviours);
-            platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, physicsObj, behaviours);
-            platform3.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, physicsObj, behaviours);
-            leverPlatformTarget.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, physicsObj, behaviours);
-            platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, physicsObj, behaviours);
-
-
-
+            IEntity platform1 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, physicsObj, behaviours);
+            IEntity platform2 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, physicsObj, behaviours);
+            IEntity platform3 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, physicsObj, behaviours);
+            IEntity leverPlatformTarget = ent.CreateEnt<TriggerPlatform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, physicsObj, behaviours);
+            IEntity platform5 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, physicsObj, behaviours);
             //INTERACTIVE OBJECTS
 
-
             //Crates
-            crate.Initialize(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, physicsObj, behaviours);
+            IEntity crate = ent.CreateEnt<Crate>(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, physicsObj, behaviours);
 
             //Pressure Plates
-            pressurePlate.Initialize(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, physicsObj, behaviours);
+            IEntity pressurePlate = ent.CreateEnt<PressurePlate>(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, physicsObj, behaviours);
 
             //Walls
-            wall.Initialize(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, physicsObj, behaviours);
+            IEntity wall = ent.CreateEnt<TriggerWall>(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, physicsObj, behaviours);
 
             //Lever
-            Lever1.Initialize(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, physicsObj, behaviours);
+            IEntity Lever1 = ent.CreateEnt<Lever>(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, physicsObj, behaviours);
+
+            //The Player
+            IEntity player = ent.CreateEnt<Player>(Content.Load<Texture2D>("Chasting"), new Vector2(50, 100), collider, physicsObj, behaviours);
+
+            //Enemies
+            IEntity thug = ent.CreateEnt<Thug>(Content.Load<Texture2D>("Thug"), new Vector2(630, 564), collider, physicsObj, behaviours);
 
             Scenegraph = EntityManager.Entities;
             Behaviours = BehaviourManager.behaviours;

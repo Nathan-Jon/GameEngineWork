@@ -17,7 +17,6 @@ namespace EngineV2.Entities
     class Thug : GameEntity
     {
         public string tag ="Thug";
-        public static Texture2D Texture;
         public IAnimations ani;
         public Vector2 Position;
         public Rectangle HitBox;
@@ -25,18 +24,18 @@ namespace EngineV2.Entities
 
         private IEntity collisionObj;
 
-
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
+        /// <summary>
+        /// Initialise the Variables specific to this object
+        /// </summary>
+        public override void UniqueData()
         {
-
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
-            _collider.isCollidableEntity(this);
-            Position = Posn;
-            Texture = Tex;
-            behaviours.createMind<EnemyMind>(this);
-            phys.hasPhysics(this);
             ani = new ThugAnimation();
             ani.Initialize(this, 3, 3);
+            _BehaviourManager.createMind<EnemyMind>(this);
+            _Collisions.isCollidableEntity(this);
+            _PhysicsObj.hasPhysics(this);
+            CollisionManager.GetColliderInstance.subscribe(onCollision);
+
 
         }
 

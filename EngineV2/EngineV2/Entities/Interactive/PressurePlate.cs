@@ -13,12 +13,13 @@ using EngineV2.Input_Managment;
 
 namespace EngineV2.Entities
 {
+    /// <summary>
+    /// Trigger Object
+    /// </summary>
     class PressurePlate : GameEntity
     {
+        //tag Identifier
         public string tag = "PressurePlate";
-        public static Texture2D Texture;
-        public Vector2 Position;
-        public Rectangle HitBox;
         private float moveDirec = 3;
         private bool moveObject = false;
         private bool canMove = true;
@@ -36,39 +37,47 @@ namespace EngineV2.Entities
         IPhysicsObj physics;
 
         //Lists
-        private List<IEntity> physicsObj;
         private List<IEntity> environementObjs;
         private List<IEntity> interactiveObj;
         private IEntity triggerWall;
 
-
-
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
+        /// <summary>
+        /// Initialise the Variables specific to this object
+        /// </summary>
+        public override void UniqueData()
         {
-            Position = Posn;
-            Texture = Tex;
-            colliders = _collider;
-            physics = phys;
             InputManager.GetInputInstance.AddListener(OnNewInput);
 
             CollisionManager.GetColliderInstance.subscribe(onCollision);
             CollidableObjs();
-            _collider.isInteractiveCollidable(this);
+            _Collisions.isInteractiveCollidable(this);
         }
 
+        /// <summary>
+        /// Trigger Input Event
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
         }
 
-        //List of Collidable Objects
+        /// <summary>
+        /// Get the list of interactive objects
+        /// </summary>
         public override void CollidableObjs()
         {
             //physicsObj = physics.getPhysicsList();
-            environementObjs = colliders.getEnvironment();
-            interactiveObj = colliders.getInteractiveObj();
+            environementObjs = _Collisions.getEnvironment();
+            interactiveObj = _Collisions.getInteractiveObj();
         }
 
+        /// <summary>
+        /// Send Event to collision Event Manager
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collisionObj = data.objectCollider;
@@ -106,12 +115,19 @@ namespace EngineV2.Entities
 
         #endregion
 
-
+        /// <summary>
+        /// Draws the entty based on the texture and position obtained from the animation class
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
 
+        /// <summary>
+        /// Called Every Frame
+        /// </summary>
+        /// <param name="game"></param>
         public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);

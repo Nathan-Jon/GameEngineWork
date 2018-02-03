@@ -14,6 +14,9 @@ using EngineV2.Input_Managment;
 
 namespace EngineV2.Entities
 {
+    /// <summary>
+    /// Lever Used to Trigger the event on an object
+    /// </summary>
     class Lever : GameEntity
     {
         #region Instance Variables
@@ -34,27 +37,24 @@ namespace EngineV2.Entities
 
         #endregion
 
-        //OnKeyboard Event Change scene
-
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
+        /// <summary>
+        /// Initialise the Variables specific to this object
+        /// </summary>
+        public override void UniqueData()
         {
-            Position = Posn;
-            Texture = Tex;
-            colliders = _collider;
-
             //SUBSCRIBERS
             InputManager.GetInputInstance.AddListener(OnNewInput);
             CollisionManager.GetColliderInstance.subscribe(onCollision);
-      
+
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
         }
 
-        #region EVENTS
-
-        //INITIALISE EVENT HANDLERS
-
-        //INPUT EVENTS
+        /// <summary>
+        /// Trigger Input Event
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
@@ -71,14 +71,20 @@ namespace EngineV2.Entities
             }
         }
 
-        //INITIALISE INTERACTIVEOBJS LIST
+        /// <summary>
+        /// Get the list of interactive objects
+        /// </summary>
         public override void CollidableObjs()
         {
-            playerObj = colliders.getPlayableObj();
-            targetObjs = colliders.getEnvironment();
+            playerObj = _Collisions.getPlayableObj();
+            targetObjs = _Collisions.getEnvironment();
         }
 
-        //COLLISION EVENTS
+        /// <summary>
+        /// Send Event to collision Event Manager
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collisionObj = data.objectCollider;
@@ -95,20 +101,26 @@ namespace EngineV2.Entities
             }
         }
 
-        //Draw Method
+        /// <summary>
+        /// Draws the entty based on the texture and position obtained from the animation class
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
 
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
 
         }
-        //Update Method
+
+        /// <summary>
+        /// Called Every Frame
+        /// </summary>
+        /// <param name="game"></param>
         public override void update(GameTime game)
         {
 
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-        #endregion
 
 
         #region GET/SETS

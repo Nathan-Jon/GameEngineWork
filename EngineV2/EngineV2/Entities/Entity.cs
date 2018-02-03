@@ -24,6 +24,7 @@ namespace EngineV2.Entities
         public abstract float getDirection();
         public abstract void accessPhysics(IPhysicsObj obj);
         public abstract void CollidableObjs();
+        public abstract void UniqueData();
 
 
     }

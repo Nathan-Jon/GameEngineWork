@@ -16,15 +16,16 @@ using EngineV2.Input_Managment;
 
 namespace EngineV2.Behaviours
 {
-    /**
-    * on collision with player and keyboard input Enter the next scene 
-    *
-    *
-    */
+    /// <summary>
+    /// INteractive object that changes the scene
+    /// Author: Nathan Roberson & Carl Chalmers
+    /// Date of Change: 03/02/18
+    /// Version: 0.4
+    /// </summary>
     class Door : GameEntity
     {
         #region Instance Variables
-        public Boolean doorContact = false;
+        public bool doorContact = false;
         
 
         //Input Management
@@ -37,18 +38,14 @@ namespace EngineV2.Behaviours
 
         //Lists
         private List<IEntity> interactiveObjs;
-        
+
         #endregion
 
-        //OnKeyboard Event Change scene
-
-        public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
+        /// <summary>
+        /// Initialise the Variables specific to this object
+        /// </summary>
+        public override void UniqueData()
         {
-            Position = Posn;
-            Texture = Tex;
-            colliders = _collider;
-
-            //SUBSCRIBERS
             InputManager.GetInputInstance.AddListener(OnNewInput);
 
             CollisionManager.GetColliderInstance.subscribe(onCollision);
@@ -57,29 +54,35 @@ namespace EngineV2.Behaviours
             CollidableObjs();
         }
 
+        /// <summary>
+        /// Draws the entty based on the texture and position obtained from the animation class
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
         }
 
+        /// <summary>
+        /// Called Every Frame
+        /// </summary>
+        /// <param name="game"></param>
         public override void update(GameTime game)
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-        
-        #region Player Collision
-        
-        
-        #endregion
 
 
-#region EVENTS
-
-
-        //INPUT EVENTS
+        /// <summary>
+        /// Trigger Input Event
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void OnNewInput(object source, EventData data)
         {
             keyState = data.newKey;
+
+            //if Plyaer has unlocked the door, change scene and play audio instance
             if (doorContact && keyState.IsKeyDown(Keys.W) && Key.Unlock|| doorContact && keyState.IsKeyDown(Keys.Up) && Key.Unlock)
             {
                 SoundManager.getSoundInstance.Playsnd("Exit", 0.5f);
@@ -99,13 +102,19 @@ namespace EngineV2.Behaviours
             }
         }
 
-        //INITIALISE INTERACTIVEOBJS LIST
+        /// <summary>
+        /// Get the list of interactive objects
+        /// </summary>
         public override void CollidableObjs()
         {
-            interactiveObjs = colliders.getCollidableList();
+            interactiveObjs = _Collisions.getCollidableList();
         }
 
-        //COLLISION EVENTS
+        /// <summary>
+        /// Send Event to collision Event Manager
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="data"></param>
         public virtual void onCollision(object source, CollisionEventData data)
         {
             collisionObj = data.objectCollider;
@@ -123,6 +132,5 @@ namespace EngineV2.Behaviours
                 }
             }
         }
-#endregion
     }
 }
