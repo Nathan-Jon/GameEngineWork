@@ -49,8 +49,7 @@ namespace EngineV2.Buttons
         public void click()
         {
             SceneManager.mainmenu = false;
-            SceneManager.Level1 = true;
-            SoundManager.getSoundInstance.Stopsnd(0);
+            SceneManager.TestLevel = true;
         }
 
 

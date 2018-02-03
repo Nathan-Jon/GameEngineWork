@@ -40,7 +40,7 @@ namespace EngineV2.Collision_Management
         #endregion
 
         #region GET LISTS
-        public List<IEntity> getEntityList()
+        public List<IEntity> getCollidableList()
         {
             return CollidableObj;
         }

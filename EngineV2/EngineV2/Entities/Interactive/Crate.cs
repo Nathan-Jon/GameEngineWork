@@ -66,19 +66,19 @@ namespace EngineV2.Entities
                 if (crateContact && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
                 {
                     Position.X += 3;
-                    SoundManager.getSoundInstance.Playsnd(2, 0.2f);
+                    SoundManager.getSoundInstance.Playsnd("Crate", 0.2f);
                 }
                 if (crateContact && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
                 {
                     Position.X += -3;
-                    SoundManager.getSoundInstance.Playsnd(2, 0.2f);
+                    SoundManager.getSoundInstance.Playsnd("Crate", 0.2f);
                 }
 
             }
 
             if (crateContact == false)
             {
-                SoundManager.getSoundInstance.Stopsnd(2);
+                SoundManager.getSoundInstance.Stopsnd("Crate");
             }
         }
 

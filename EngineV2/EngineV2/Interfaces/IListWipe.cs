@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GameEngine
+namespace EngineV2.Interfaces
 {
-    class Ball : EntityManager
+    public interface IListWipe
     {
+        void Clear();
     }
 }

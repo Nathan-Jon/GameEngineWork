@@ -113,8 +113,8 @@ namespace EngineV2.Entities
 
             if (keyState.GetPressedKeys().Length == 0 )
             {
-                SoundManager.getSoundInstance.Stopsnd(1);
-                SoundManager.getSoundInstance.Stopsnd(5);
+                SoundManager.getSoundInstance.Stopsnd("Walk");
+                SoundManager.getSoundInstance.Stopsnd("Ladder");
             }
         }
         #endregion
@@ -123,7 +123,7 @@ namespace EngineV2.Entities
         //List of Collidable Objects
         public override void CollidableObjs()
         {
-            collisionObjs = colliders.getEntityList();
+            collisionObjs = colliders.getCollidableList();
             interactiveObjs = colliders.getInteractiveObj();
             environment = colliders.getEnvironment();
         }
@@ -135,7 +135,7 @@ namespace EngineV2.Entities
             gravity = true;
             canClimb = false;
 
-            #region Map corners 
+            #region Map Edges
             if (HitBox.X <= 0)
             { Position.X -= -3; }
 
@@ -157,10 +157,10 @@ namespace EngineV2.Entities
             {
                 if (HitBox.Intersects(collisionObjs[i].getHitbox()) && collisionObjs[i].getTag() == "Thug")
                 {
-                    EntityManager.Entities.Clear();
-                    BehaviourManager.behaviours.Clear();
+                    //BehaviourManager.behaviours.Clear();
+                    //EntityManager.Entities.Clear();
                     SceneManager.LoseScreen = true;
-                    SoundManager.getSoundInstance.Stopsnd(0);
+                    //SoundManager.getSoundInstance.Stopsnd(0);
                 }
             }
             #endregion

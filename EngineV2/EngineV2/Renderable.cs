@@ -15,9 +15,9 @@ namespace EngineV2
     {
         
         SpriteBatch spriteBatch;
-        List<IScene> scenes;
+        IDictionary<string, IScene> scenes = new Dictionary<string, IScene>();
 
-        public void Initalise(List<IScene> sceneList, SpriteBatch sprite)
+        public void Initalise(IDictionary<string, IScene> sceneList, SpriteBatch sprite)
         {
             scenes = sceneList;
             spriteBatch = sprite;
@@ -29,22 +29,22 @@ namespace EngineV2
             spriteBatch.Begin();
             if (SceneManager.mainmenu == true)
             {
-                scenes[0].Draw(spriteBatch);
+                scenes["Mainmenu"].Draw(spriteBatch);
             }
 
-            if (SceneManager.Level1 == true)
+            if (SceneManager.TestLevel == true)
             {
-                scenes[1].Draw(spriteBatch);
+                scenes["TestLevel"].Draw(spriteBatch);
             }
 
             if (SceneManager.WinGame == true)
             {
-                scenes[2].Draw(spriteBatch);
+                scenes["WinGame"].Draw(spriteBatch);
             }
 
             if (SceneManager.LoseScreen == true)
             {
-                scenes[3].Draw(spriteBatch);
+                scenes["LoseScreen"].Draw(spriteBatch);
             }
 
 

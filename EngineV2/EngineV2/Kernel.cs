@@ -24,8 +24,8 @@ namespace EngineV2
         ICollidable collider;
         IPhysicsObj physicsObj;
 
-        List<IScene> SceneList = new List<IScene>();
-        IScene scene;
+        IDictionary<string, IScene> Scenes = new Dictionary<string, IScene>();
+        IScene TestScene;
         IScene mainmenu;
         IScene Wingame;
         IScene LoseScreen;
@@ -65,14 +65,14 @@ namespace EngineV2
             // TODO: Add your initialization logic here
             physicsObj = new PhysicsObj();
             mainmenu = new MainMenu();
-            SceneList.Add(mainmenu);
-            scene = new TestLevel();
-            SceneList.Add(scene);
+            Scenes.Add("Mainmenu", mainmenu);
+            TestScene = new TestLevel();
+            Scenes.Add("TestLevel", TestScene);
             Wingame = new WinScreen();
-            SceneList.Add(Wingame);
+            Scenes.Add("Wingame", Wingame);
             LoseScreen = new GameOver();
-            SceneList.Add(LoseScreen);
-            scn = new SceneManager(this,SceneList);
+            Scenes.Add("LoseScreen", LoseScreen);
+            scn = new SceneManager(this, Scenes);
             SceneManager.mainmenu = true;
 
             Components.Add((GameComponent)scn);
@@ -86,11 +86,12 @@ namespace EngineV2
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
+            
             mainmenu.LoadContent(Content);
-            scene.LoadContent(Content);
+            TestScene.LoadContent(Content);
             Wingame.LoadContent(Content);
             LoseScreen.LoadContent(Content);
+
         }
 
         /// <summary>

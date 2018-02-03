@@ -16,16 +16,12 @@ namespace EngineV2.Managers
         private PhysicsManager()
         { }
 
-        /// <summary>
-        /// Returns an instance of the Physics Manager
-        /// </summary>
         public static PhysicsManager getPhysicsInstance
         {
             get
             {
                 if (instance == null)
                 {
-                    //Ensures only one class can access this if statement at a time
                     lock (syncInstance)
                     {
                         if (instance == null)
@@ -37,18 +33,11 @@ namespace EngineV2.Managers
             }
         }
 
-        /// <summary>
-        /// Sets the passed IPhysicsObj to the physicsObj variable
-        /// </summary>
-        /// <param name="physics"></param>
         public void setPhysicsList(IPhysicsObj physics)
         {
             physicsObjs = physics;
         }
 
-        /// <summary>
-        /// Runs the gravity method on the physicsObjs instance
-        /// </summary>
         public void update()
         {
             physicsObjs.gravity();

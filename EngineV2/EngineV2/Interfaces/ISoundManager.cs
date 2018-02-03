@@ -9,10 +9,10 @@ namespace EngineV2.Interfaces
 {
     public interface ISoundManager
     {
-        void Initialize(SoundEffect Snd);
+        void Initialize(string soundname, SoundEffect snd);
         void CreateInstance();
-        void Playsnd(int sndno, float Volume);
-        void Stopsnd(int sndno);
+        void Playsnd(string soundName, float Volume);
+        void Stopsnd(string soundName);
         
     }
 }

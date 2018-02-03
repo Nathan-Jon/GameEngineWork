@@ -61,7 +61,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
                 body.setYPos(body.getPos().Y + speed);
                 Player.Animate = true;
                 Player.row = 2;
-                SoundManager.getSoundInstance.Playsnd(5, 0.3f);
+                SoundManager.getSoundInstance.Playsnd("Ladder", 0.3f);
 
             }
             if (Player.canClimb && keyState.IsKeyDown(Keys.S) || Player.canClimb && keyState.IsKeyDown(Keys.Down))
@@ -70,7 +70,7 @@ namespace EngineV2.Behaviours.Player_Behaviours
                 body.setYPos(body.getPos().Y + speed);
                 Player.Animate = true;
                 Player.row = 2;
-                SoundManager.getSoundInstance.Playsnd(5, 0.3f);
+                SoundManager.getSoundInstance.Playsnd("Ladder", 0.3f);
             }
         }
 

@@ -75,10 +75,12 @@
     <Compile Include="Interfaces\IAnimations.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\ICollisionManager.cs" />
+    <Compile Include="Interfaces\IListWipe.cs" />
     <Compile Include="Interfaces\IPhysicsMgr.cs" />
     <Compile Include="Interfaces\IPhysicsObj.cs" />
     <Compile Include="Interfaces\IRenderable.cs" />
     <Compile Include="Interfaces\ISoundManager.cs" />
+    <Compile Include="ListWipe.cs" />
     <Compile Include="Managers\BehaviourManager.cs" />
     <Compile Include="Interfaces\IMoveBehaviour.cs" />
     <Compile Include="Behaviours\xMoveBehaviour.cs" />
@@ -137,7 +139,7 @@
     <Content Include="Content\Door.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Enemy.png">
+    <Content Include="Content\Thug.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\EnterDoor.png">
@@ -197,6 +199,9 @@
     <Content Include="Content\PPlateTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Rat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\SLadderTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -216,9 +221,6 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">

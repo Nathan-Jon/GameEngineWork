@@ -24,7 +24,6 @@ namespace EngineV2.Entities
         public int row = 1;
 
         private IEntity collisionObj;
-        private IMoveBehaviour Move;
 
 
         public override void Initialize(Texture2D Tex, Vector2 Posn, ICollidable _collider, IPhysicsObj phys, IBehaviourManager behaviours)
@@ -38,6 +37,7 @@ namespace EngineV2.Entities
             phys.hasPhysics(this);
             ani = new ThugAnimation();
             ani.Initialize(this, 3, 3);
+
         }
 
         public virtual void onCollision(object source, CollisionEventData data)
@@ -49,7 +49,6 @@ namespace EngineV2.Entities
                 Position.X = 849;
                 row = 0;
                 Behaviours.EnemyMind.speed *= -1;
-                
             }
             if (HitBox.X < 0)
             {

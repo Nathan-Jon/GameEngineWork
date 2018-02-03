@@ -85,13 +85,13 @@ namespace EngineV2.Behaviours
             keyState = data.newKey;
             if (keyContact)
             {
-                SoundManager.getSoundInstance.Playsnd(4, 0.5f);
+                SoundManager.getSoundInstance.Playsnd("Key", 0.5f);
                 Unlock = true;
 
             }
             if (keyContact == false)
             {
-                SoundManager.getSoundInstance.Stopsnd(4);
+                SoundManager.getSoundInstance.Stopsnd("Key");
             }
         }
 

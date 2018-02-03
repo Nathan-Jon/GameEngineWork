@@ -9,7 +9,6 @@ namespace EngineV2.Behaviours
     class xMoveBehaviour : IMoveBehaviour
     {
         //Instance Variables
-        private float speed = 1;
         private float facingDirection = -1;
 
         //Instance Constants

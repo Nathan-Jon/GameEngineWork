@@ -1,26 +1,31 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace EngineV2.BackGround
 {
     class BackGrounds :IBackGrounds
     {
-
-        public Texture2D Texture;
+        public static IDictionary<string, Texture2D> Backgrounds = new Dictionary<string, Texture2D>();
         public Rectangle Size;
+        string B;
 
         public BackGrounds(int width, int height)
         {
             Size = new Rectangle(0, 0, width, height); 
         }
 
-        public void Initialize(Texture2D tex)
+        public void Initialize(string BackgroundName, Texture2D Texture)
         {
-            Texture = tex;
+            Backgrounds.Add(BackgroundName, Texture);
+            B = BackgroundName;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, Size, Color.AntiqueWhite);
+            spriteBatch.Draw(Backgrounds[B], Size, Color.AntiqueWhite);
 
         }
     }
