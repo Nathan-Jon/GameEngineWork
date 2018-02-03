@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
 using EngineV2.Interfaces;
@@ -8,6 +12,7 @@ using EngineV2.Managers;
 using EngineV2.Entities;
 using EngineV2.Behaviours;
 using EngineV2.Collision_Management;
+using EngineV2.Input;
 using EngineV2.Physics;
 using EngineV2.BackGround;
 using EngineV2.Input_Managment;
@@ -15,7 +20,7 @@ using EngineV2.Input_Managment;
 
 namespace EngineV2.Scenes
 {
-    class TestLevel :  IScene
+    class TestLevel : IScene
     {
         List<IEntity> Scenegraph = new List<IEntity>();
         List<IBehaviour> Behaviours = new List<IBehaviour>();
@@ -47,7 +52,7 @@ namespace EngineV2.Scenes
 
         //Pressure Plates
         IEntity pressurePlate;
-        
+
         //Walls
         IEntity wall;
 
@@ -62,8 +67,8 @@ namespace EngineV2.Scenes
         public TestLevel()
         {
 
-#region Instantiate Managers
-           
+            #region Instantiate Managers
+
             ent = EntityManager.getEntityManager;
             physicsObj = new PhysicsObj();
 
@@ -74,10 +79,10 @@ namespace EngineV2.Scenes
 
             behaviours = BehaviourManager.getBehaviourManager;
             collider = new CollidableClass();
-            
+
             #endregion
 
-#region Instantiate Scene Entites
+            #region Instantiate Scene Entites
             back = new BackGrounds(900, 600);
 
             //Crate
@@ -114,40 +119,40 @@ namespace EngineV2.Scenes
             //Player and enemies
             player = ent.CreateEnt<Player>();
             thug = ent.CreateEnt<Thug>();
-#endregion
+            #endregion
 
         }
 
         public void LoadContent(ContentManager Content)
         {
             //Sounds
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("Level1Music"));
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("Footsteps"));
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("CratePushSFX"));
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("ExitLevelSFX"));
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("KeyPickupSFX"));
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("LadderClimbSFX"));
+            SoundManager.getSoundInstance.Initialize("Level1" , Content.Load<SoundEffect>("Level1Music"));
+            SoundManager.getSoundInstance.Initialize("Walk" , Content.Load<SoundEffect>("Footsteps"));
+            SoundManager.getSoundInstance.Initialize("Crate", Content.Load<SoundEffect>("CratePushSFX"));
+            SoundManager.getSoundInstance.Initialize("Exit", Content.Load<SoundEffect>("ExitLevelSFX"));
+            SoundManager.getSoundInstance.Initialize("Key", Content.Load<SoundEffect>("KeyPickupSFX"));
+            SoundManager.getSoundInstance.Initialize("Ladder", Content.Load<SoundEffect>("LadderClimbSFX"));
             SoundManager.getSoundInstance.CreateInstance();
 
             //BackGround
-            back.Initialize(Content.Load<Texture2D>("BackgroundTex1"));
+            back.Initialize("Background" ,Content.Load<Texture2D>("BackgroundTex1"));
 
             //PLAYER AND ENEMIES
             player.Initialize(Content.Load<Texture2D>("Chasting"), new Vector2(50, 558), collider, physicsObj, behaviours);
-            thug.Initialize(Content.Load<Texture2D>("Enemy"), new Vector2(630, 564), collider, physicsObj, behaviours);
+            thug.Initialize(Content.Load<Texture2D>("Thug"), new Vector2(630, 564), collider, physicsObj, behaviours);
 
             //Ladders
             Ladder1.Initialize(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, physicsObj, behaviours);
             Ladder2.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, physicsObj, behaviours);
             Ladder3.Initialize(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, physicsObj, behaviours);
-            
+
 
             //Door
             Door.Initialize(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, physicsObj, behaviours);
 
             //Key
             key.Initialize(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, physicsObj, behaviours);
-            
+
             //Platforms          
             platform1.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, physicsObj, behaviours);
             platform2.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, physicsObj, behaviours);
@@ -155,8 +160,6 @@ namespace EngineV2.Scenes
             leverPlatformTarget.Initialize(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, physicsObj, behaviours);
             platform5.Initialize(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, physicsObj, behaviours);
 
-
-            scn.Initalize(back);
 
 
             //INTERACTIVE OBJECTS
@@ -181,7 +184,7 @@ namespace EngineV2.Scenes
         public void update(GameTime gameTime)
         {
 
-            if (SceneManager.Level1 == true)
+            if (SceneManager.TestLevel == true)
             {
                 InputManager.GetInputInstance.update();
                 CollisionManager.GetColliderInstance.update();
@@ -198,11 +201,6 @@ namespace EngineV2.Scenes
 
                     Behaviours[i].update();
                 }
-                
-                if (SceneManager.Level1 == true)
-                {
-                    SoundManager.getSoundInstance.Playsnd(0, 0.5f);
-                }
 
 
                 physicsMgr.update();
@@ -213,13 +211,13 @@ namespace EngineV2.Scenes
         public void Draw(SpriteBatch spriteBatch)
         {
 
-                back.Draw(spriteBatch);
+            back.Draw(spriteBatch);
 
 
-                for (int i = 0; i < Scenegraph.Count; i++)
-                {
-                    Scenegraph[i].Draw(spriteBatch);
-                }
+            for (int i = 0; i < Scenegraph.Count; i++)
+            {
+                Scenegraph[i].Draw(spriteBatch);
+            }
 
 
         }

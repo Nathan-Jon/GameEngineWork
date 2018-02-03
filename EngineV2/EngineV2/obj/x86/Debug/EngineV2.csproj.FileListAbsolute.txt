@@ -1,280 +1,41 @@
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\square.png
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-G:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-E:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-E:\Second Year\Game Design And Engineering\Engines\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Thug.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\EnterDoor.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LadderClimbSFX.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Level1Music.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LoseGame.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuMusic.wav
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Rat.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\User\Desktop\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\User\Desktop\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\User\Desktop\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Brick.jpg
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chastings.png
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\DickButt.jpg
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Pug.png
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\Cowsgobaaahh\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ChastingSprite.png
-C:\Users\chac4_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
-C:\Users\User\Desktop\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
-C:\Users\Grebby\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Grebby\Downloads\GameEngineWork-master (1)\GameEngineWork-master\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\Grebby\Desktop\GameEngineWork-0654781b79c4cefafa1afa6d8f39902266d81d79\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LadderClimbSFX.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LadderClimbSFX.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LoseGame.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuMusic.wav
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.wav
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\EnterDoor.png
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Level1Music.wav
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LoseGame.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\EnterDoor.png
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Level1Music.wav
-C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuMusic.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.exe
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.pdb
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\obj\x86\Debug\EngineV2.csprojResolveAssemblyReference.cache
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\BackgroundTex1.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Chasting.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\crate.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\CratePushSFX.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Door.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Enemy.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\EnterDoor.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Exit Button.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\ExitLevelSFX.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Key.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\KeyPickupSFX.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Ladder.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LadderClimbSFX.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Level1Music.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Lever.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LLadderTex.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LoseGame.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\LPlatformTex.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuBackground.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MenuMusic.wav
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MLadderTex.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\MPlatformTex.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Platform.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\PPlateTex.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\SLadderTex.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Start Button.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Wall.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\WinGame.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\XLPlatformTex.png
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\background.xnb
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\Content\Footsteps.xnb
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.exe
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\EngineV2.pdb
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\MonoGame.Framework.dll
-C:\Users\Robn1_15\Documents\GitHub\GameEngineWork\EngineV2\EngineV2\bin\WindowsGL\Debug\OpenTK.dll

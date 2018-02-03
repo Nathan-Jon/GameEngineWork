@@ -82,11 +82,11 @@ namespace EngineV2.Behaviours
             keyState = data.newKey;
             if (doorContact && keyState.IsKeyDown(Keys.W) && Key.Unlock|| doorContact && keyState.IsKeyDown(Keys.Up) && Key.Unlock)
             {
-                SoundManager.getSoundInstance.Playsnd(3, 0.5f);
+                SoundManager.getSoundInstance.Playsnd("Exit", 0.5f);
                 EntityManager.Entities.Clear();
                 BehaviourManager.behaviours.Clear();
                 ButtonList.menuButtons.Clear();
-                SceneManager.Level1 = false;
+                SceneManager.TestLevel = false;
                 SceneManager.WinGame = true;
 
 
@@ -95,14 +95,14 @@ namespace EngineV2.Behaviours
             }
             if (doorContact == false)
             {
-                SoundManager.getSoundInstance.Stopsnd(3);
+                SoundManager.getSoundInstance.Stopsnd("Exit");
             }
         }
 
         //INITIALISE INTERACTIVEOBJS LIST
         public override void CollidableObjs()
         {
-            interactiveObjs = colliders.getPlayableObj();
+            interactiveObjs = colliders.getCollidableList();
         }
 
         //COLLISION EVENTS

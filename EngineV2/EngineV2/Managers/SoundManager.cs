@@ -10,8 +10,10 @@ namespace EngineV2.Managers
 {
     public sealed class SoundManager : ISoundManager
     {
-        List<SoundEffect> SoundEffects = new List<SoundEffect>();
-        List<SoundEffectInstance> InstanceList = new List<SoundEffectInstance>();
+        //public static List<SoundEffect> SoundEffects = new List<SoundEffect>();
+        //public static List<SoundEffectInstance> InstanceList = new List<SoundEffectInstance>();
+        public static IDictionary<string, SoundEffect> SoundEffects = new Dictionary<string, SoundEffect>();
+        public static IDictionary<string, SoundEffectInstance> InstanceList = new Dictionary<string, SoundEffectInstance>();
         SoundEffectInstance AudioInstance;
 
 
@@ -23,17 +25,13 @@ namespace EngineV2.Managers
 
         }
 
-        /// <summary>
-        /// Returns an instance of the ISoundManager
-        /// </summary>
         public static ISoundManager getSoundInstance
         {
             get
             {
                 if(instance == null)
                 {
-                    //Ensures only one class can access this if statement at a time
-                    lock (syncInstance)
+                    lock(syncInstance)
                     {
                         if (instance == null)
                             instance = new SoundManager();
@@ -43,50 +41,37 @@ namespace EngineV2.Managers
             }
         }
 
-        /// <summary>
-        /// Stores a SoundEffect in the SoundEffects list
-        /// </summary>
-        /// <param name="snd"></param>
-        public void Initialize(SoundEffect snd)
+
+
+
+        public void Initialize(string soundname, SoundEffect snd)
         {
-            SoundEffects.Add(snd);
+            SoundEffects.Add(soundname, snd);
             
         }
 
-        /// <summary>
-        /// Converts the SoundEffects to a class of type AudioInstance and stores them in a list called InstanceList
-        /// </summary>
         public void CreateInstance()
         {
-            for (int i = 0; i < SoundEffects.Count; i++)
+
+            foreach (var songName in SoundEffects.ToArray())
             {
-                AudioInstance = SoundEffects[i].CreateInstance();
-                InstanceList.Add(AudioInstance);
+                AudioInstance = SoundEffects[songName.Key].CreateInstance();
+                InstanceList.Add(songName.Key ,AudioInstance);
+                
             }
-            
-            
+            SoundEffects.Clear();
         }
 
-        /// <summary>
-        /// Starts the Audio from the instance list, setting the audio so it loops while setting the volume of said Audio
-        /// </summary>
-        /// <param name="sndno"></param>
-        /// <param name="Volumenum"></param>
-        public void Playsnd(int sndno, float Volumenum)
+        public void Playsnd(string soundName, float Volumenum)
         {
-            InstanceList[sndno].IsLooped = true;
-            InstanceList[sndno].Play();
-            InstanceList[sndno].Volume = Volumenum;
+            InstanceList[soundName].IsLooped = true;
+            InstanceList[soundName].Play();
+            InstanceList[soundName].Volume = Volumenum;
         }
 
-
-        /// <summary>
-        /// Stops specific Audio in the list from playing
-        /// </summary>
-        /// <param name="sndno"></param>
-        public void Stopsnd(int sndno)
+        public void Stopsnd(string soundName)
         {
-            InstanceList[sndno].Stop();
+            InstanceList[soundName].Stop();
         }
 
     }

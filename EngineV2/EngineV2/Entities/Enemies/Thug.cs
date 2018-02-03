@@ -38,6 +38,7 @@ namespace EngineV2.Entities
             phys.hasPhysics(this);
             ani = new ThugAnimation();
             ani.Initialize(this, 3, 3);
+
         }
 
         public virtual void onCollision(object source, CollisionEventData data)
@@ -49,7 +50,6 @@ namespace EngineV2.Entities
                 Position.X = 849;
                 row = 0;
                 Behaviours.EnemyMind.speed *= -1;
-                
             }
             if (HitBox.X < 0)
             {

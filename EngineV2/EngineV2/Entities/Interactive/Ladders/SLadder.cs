@@ -67,7 +67,7 @@ namespace EngineV2.Entities
         //INITIALISE INTERACTIVEOBJS LIST
         public override void CollidableObjs()
         {
-            playerObj = colliders.getPlayableObj();
+            playerObj = colliders.getCollidableList();
         }
 
         //COLLISION EVENTS

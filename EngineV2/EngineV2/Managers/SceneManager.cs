@@ -11,18 +11,15 @@ using EngineV2.Scenes;
 namespace EngineV2.Managers
 {
     class SceneManager : DrawableGameComponent, ISceneManager
-
-
     {
-        List<IBehaviour> behaviours = new List<IBehaviour>();
-        public static List<IScene> SceneList;
 
+
+        IDictionary<string, IScene> Scenes = new Dictionary<string, IScene>();
         SpriteBatch spriteBatch;
         IRenderable render;
-        static IBackGrounds background;
 
         public static bool WinGame = false;
-        public static bool Level1 = false;
+        public static bool TestLevel = false;
         public static bool mainmenu = true;
         public static bool ExitGame = false;
         public static bool LoseScreen = false;
@@ -32,22 +29,15 @@ namespace EngineV2.Managers
 
         }
 
-        public SceneManager(Game game, List<IScene> scenelist)
+        public SceneManager(Game game, IDictionary<string, IScene> scenes)
             : base(game)
         {
             render = new Renderable();
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            SceneList = scenelist;
-            render.Initalise(SceneList, spriteBatch);
+            Scenes = scenes;
+            render.Initalise(Scenes, spriteBatch);
         }
 
-
-        public void Initalize(IBackGrounds back)
-        {
-            background = back;
-            behaviours = BehaviourManager.behaviours;
-            
-        }
 
         public override void Update(GameTime gameTime) 
         {
@@ -63,21 +53,26 @@ namespace EngineV2.Managers
 
             if (mainmenu == true)
             {
-                SceneList[0].update(gameTime);
+                Scenes["Mainmenu"].update(gameTime);
+                
             }
 
-            if (Level1 == true)
+            if (TestLevel == true)
             {
-                SceneList[1].update(gameTime);
+                Scenes["TestLevel"].update(gameTime);
+                
             }
 
             if (WinGame == true)
             {
-                SceneList[2].update(gameTime);
+                
+                Scenes["Wingame"].update(gameTime);
             }
             if (LoseScreen == true)
             {
-                SceneList[3].update(gameTime);
+                
+                Scenes["LoseScreen"].update(gameTime);
+                SoundManager.getSoundInstance.Playsnd("Background", 1.0f);
             }
             base.Update(gameTime);
 

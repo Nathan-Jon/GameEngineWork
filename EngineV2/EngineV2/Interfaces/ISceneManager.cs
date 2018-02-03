@@ -12,7 +12,6 @@ namespace EngineV2.Interfaces
 {
     interface ISceneManager
     {
-        void Initalize(IBackGrounds back);
-        void Draw(GameTime gameTime);
+        void Update(GameTime gameTime);
     }
 }

@@ -32,7 +32,7 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            back.Initialize(Content.Load<Texture2D>("WinGame"));
+            back.Initialize("WinGame" ,Content.Load<Texture2D>("WinGame"));
             ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300));
 
         }

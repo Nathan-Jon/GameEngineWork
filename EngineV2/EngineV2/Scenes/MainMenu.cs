@@ -37,11 +37,11 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("MenuMusic"));
+            SoundManager.getSoundInstance.Initialize("MainMenu" ,Content.Load<SoundEffect>("MenuMusic"));
             SoundManager.getSoundInstance.CreateInstance();
 
 
-            back.Initialize(Content.Load<Texture2D>("MenuBackground"));
+            back.Initialize("Menu" ,Content.Load<Texture2D>("MenuBackground"));
 
             StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400));
             ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500));
@@ -55,15 +55,17 @@ namespace EngineV2.Scenes
         public void update(GameTime gameTime)
         {
             
-            for (int i = 0; i < Buttons.Count; i++)
-            {
-                Buttons[i].update();
-            }
-            mouseinput = Mouse.GetState();
-            mousePosition = new Point(mouseinput.X, mouseinput.Y);
 
-            if (Buttons.Count > 0)
+            if (SceneManager.mainmenu == true)
             {
+                for (int i = 0; i < Buttons.Count; i++)
+                {
+                    Buttons[i].update();
+                }
+                mouseinput = Mouse.GetState();
+                mousePosition = new Point(mouseinput.X, mouseinput.Y);
+
+
                 if (Buttons[0].getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
                 {
                     Buttons[0].click();
@@ -72,10 +74,8 @@ namespace EngineV2.Scenes
                 {
                     Buttons[1].click();
                 }
-            }
-            if (SceneManager.mainmenu == true)
-            {
-                SoundManager.getSoundInstance.Playsnd(0, 0.5f);
+
+
             }
         }
 

@@ -10,12 +10,12 @@ namespace EngineV2.Interfaces
 
         void isCollidableEntity(IEntity obj);
         void isInteractiveCollidable(IEntity obj);
-        void isPlayerEntity(IEntity obj);
         void isEnvironmentCollidable(IEntity obj);
+        void isPlayerEntity(IEntity obj);
 
-        List<IEntity> getEntityList();
+        List<IEntity> getCollidableList();
         List<IEntity> getInteractiveObj();
-        List<IEntity> getPlayableObj();
         List<IEntity> getEnvironment();
+        List<IEntity> getPlayableObj();
     }
 }

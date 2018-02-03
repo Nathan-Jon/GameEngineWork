@@ -33,11 +33,11 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            SoundManager.getSoundInstance.Initialize(Content.Load<SoundEffect>("background"));
+            SoundManager.getSoundInstance.Initialize("Background" ,Content.Load<SoundEffect>("background"));
             SoundManager.getSoundInstance.CreateInstance();
 
 
-            back.Initialize(Content.Load<Texture2D>("LoseGame"));
+            back.Initialize("LoseGame" ,Content.Load<Texture2D>("LoseGame"));
             ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300));
 
         }
@@ -51,11 +51,6 @@ namespace EngineV2.Scenes
             if (ExitBut.getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
             {
                 ExitBut.click();
-            }
-
-            if (SceneManager.LoseScreen == true)
-            {
-                SoundManager.getSoundInstance.Playsnd(0, 0.5f);
             }
 
         }

@@ -10,7 +10,7 @@ namespace EngineV2.Interfaces
 {
     interface IRenderable
     {
-        void Initalise(List<IScene> sceneList, SpriteBatch sprite);
+        void Initalise(IDictionary<string, IScene> scene, SpriteBatch sprite);
         void Draw();
     }
 }
