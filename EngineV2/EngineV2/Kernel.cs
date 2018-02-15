@@ -50,8 +50,6 @@ namespace EngineV2
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.PreferredBackBufferWidth = screenWidth;
             this.IsMouseVisible = true;
-
-            instance = this;
         }
 
         /// <summary>

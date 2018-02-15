@@ -18,7 +18,6 @@ namespace EngineV2.Entities
     {
         public string tag ="Thug";
         public IAnimations ani;
-        public Vector2 Position;
         public Rectangle HitBox;
         public int row = 1;
 

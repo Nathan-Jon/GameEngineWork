@@ -240,7 +240,7 @@ namespace EngineV2.Entities
         /// <param name="game"></param>
         public override void update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, PlayerAnimation.Width, PlayerAnimation.Height);
+            HitBox = new Rectangle((int)Position.X, (int)Position.Y, PlayerAnimation._width, PlayerAnimation._height);
 
             if (Animate == true)
             {
