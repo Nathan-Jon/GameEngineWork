@@ -58,28 +58,9 @@ namespace EngineV2.Managers
         {
             T Ent = new T();
             Ent.Initialize(text, Posn, col, phys, IBehave);
-            AddEnt(Ent);
+            Entities.Add(Ent);
             return Ent;      
         }
-
-        /// <summary>
-        /// Adds an object of type IEntity to the Entities list
-        /// </summary>
-        /// <param name="Ent"></param>
-        public void AddEnt(IEntity Ent)
-        {
-            Entities.Add(Ent);
-        }
-
-        /// <summary>
-        /// Removes an object of type IEntity from the Entities list
-        /// </summary>
-        /// <param name="Ent"></param>
-        public void RemoveEnt(IEntity Ent)
-        {
-            Entities.Remove(Ent);
-        }
-
 
     }
 }

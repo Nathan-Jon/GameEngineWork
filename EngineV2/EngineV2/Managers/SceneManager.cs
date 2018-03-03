@@ -72,7 +72,7 @@ namespace EngineV2.Managers
             {
                 
                 Scenes["LoseScreen"].update(gameTime);
-                SoundManager.getSoundInstance.Playsnd("Background", 1.0f);
+                SoundManager.getSoundInstance.Playsnd("MyHeartWillGoOn", 1.0f);
             }
             base.Update(gameTime);
 

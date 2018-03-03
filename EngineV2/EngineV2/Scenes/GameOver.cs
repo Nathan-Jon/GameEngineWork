@@ -33,11 +33,11 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            SoundManager.getSoundInstance.Initialize("Background" ,Content.Load<SoundEffect>("background"));
+            SoundManager.getSoundInstance.Initialize("MyHeartWillGoOn" ,Content.Load<SoundEffect>("MyHeartWillGoOn"));
             SoundManager.getSoundInstance.CreateInstance();
 
 
-            back.Initialize("LoseGame" ,Content.Load<Texture2D>("LoseGame"));
+            back.Initialize("LoseGameBackground" ,Content.Load<Texture2D>("LoseGameBackground"));
             ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(355, 300));
 
         }

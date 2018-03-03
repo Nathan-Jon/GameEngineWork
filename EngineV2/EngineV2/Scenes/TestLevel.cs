@@ -59,7 +59,7 @@ namespace EngineV2.Scenes
         public void LoadContent(ContentManager Content)
         {
             //Sounds
-            SoundManager.getSoundInstance.Initialize("Level1" , Content.Load<SoundEffect>("Level1Music"));
+            SoundManager.getSoundInstance.Initialize("Level1BackgroundMusic" , Content.Load<SoundEffect>("Level1BackgroundMusic"));
             SoundManager.getSoundInstance.Initialize("Walk" , Content.Load<SoundEffect>("Footsteps"));
             SoundManager.getSoundInstance.Initialize("Crate", Content.Load<SoundEffect>("CratePushSFX"));
             SoundManager.getSoundInstance.Initialize("Exit", Content.Load<SoundEffect>("ExitLevelSFX"));

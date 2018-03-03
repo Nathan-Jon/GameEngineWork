@@ -115,7 +115,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\background.wav">
+    <Content Include="Content\MyHeartWillGoOn.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\BackgroundTex1.png">
@@ -160,7 +160,7 @@
     <Content Include="Content\LadderClimbSFX.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Level1Music.wav">
+    <Content Include="Content\Level1BackgroundMusic.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Lever.png">
@@ -169,16 +169,16 @@
     <Content Include="Content\LLadderTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\LoseGame.png">
+    <Content Include="Content\LoseGameBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\LPlatformTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\MenuBackground.png">
+    <Content Include="Content\MainMenuBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\MenuMusic.wav">
+    <Content Include="Content\MainMenuMusic.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\MLadderTex.png">
@@ -205,7 +205,7 @@
     <Content Include="Content\Wall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\WinGame.png">
+    <Content Include="Content\WinGameBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\XLPlatformTex.png">

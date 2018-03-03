@@ -37,11 +37,11 @@ namespace EngineV2.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            SoundManager.getSoundInstance.Initialize("MainMenu" ,Content.Load<SoundEffect>("MenuMusic"));
+            SoundManager.getSoundInstance.Initialize("MainMenuMusic" ,Content.Load<SoundEffect>("MainMenuMusic"));
             SoundManager.getSoundInstance.CreateInstance();
 
 
-            back.Initialize("Menu" ,Content.Load<Texture2D>("MenuBackground"));
+            back.Initialize("Menu" ,Content.Load<Texture2D>("MainMenuBackground"));
 
             StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400));
             ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500));
