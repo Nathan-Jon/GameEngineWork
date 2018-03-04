@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BackGround\BackGrounds.cs" />
     <Compile Include="Buttons\ButtonList.cs" />
+    <Compile Include="ClearList\ListWipe.cs" />
     <Compile Include="Interfaces\IBackGrounds.cs" />
     <Compile Include="Collision Management\CollidableClass.cs" />
     <Compile Include="Collision Management\CollisionEventData.cs" />

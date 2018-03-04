@@ -56,7 +56,6 @@
     <Compile Include="Entities\Interactive\Lever.cs" />
     <Compile Include="Entities\Environment\Platform.cs" />
     <Compile Include="Entities\Environment\TriggerWall.cs" />
-    <Compile Include="ListWipe.cs" />
     <Compile Include="Behaviours\xMoveBehaviour.cs" />
     <Compile Include="Entities\Enemies\Thug.cs" />
     <Compile Include="Behaviours\EnemyMind.cs" />
