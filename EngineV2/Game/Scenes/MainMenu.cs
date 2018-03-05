@@ -28,7 +28,6 @@ namespace EngineV2.Scenes
             
             back = new BackGrounds(900, 600);
             StartBut = new StartButton();
-            ResumeBut = new ResumeButton();
             ExitBut = new ExitButton();
             buttonlist = new ButtonList();
             
@@ -66,11 +65,11 @@ namespace EngineV2.Scenes
                 mousePosition = new Point(mouseinput.X, mouseinput.Y);
 
 
-                if (Buttons[0].getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
+                if (Buttons[0].HitBox.Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
                 {
                     Buttons[0].click();
                 }
-                if (Buttons[1].getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
+                if (Buttons[1].HitBox.Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
                 {
                     Buttons[1].click();
                 }

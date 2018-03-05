@@ -1,5 +1,5 @@
 ﻿using System;
-using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
+using Microsoft.Xna.Framework.Input;
 
 
 namespace EngineV2.Input
@@ -7,6 +7,7 @@ namespace EngineV2.Input
     public class EventData : EventArgs
     {
         public KeyboardState newKey;
+        
 
         public EventData(KeyboardState state)
         {

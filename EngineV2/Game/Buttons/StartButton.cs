@@ -1,57 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using EngineV2.Managers;
-using EngineV2.Scenes;
 using EngineV2.Interfaces;
 
 namespace EngineV2.Buttons
 {
+
+    /// <summary>
+    /// Class to Create and update the start button.
+    /// 
+    /// Author: Carl Chalmers
+    /// Date of change: 04/03/18
+    /// Version 0.5
+    /// 
+    /// </summary>
     class StartButton : IButton
     {
+        #region Variables
+        //Create a variable of type Texture2D and call it Texture
         public Texture2D Texture;
+        //Create a variable of type Vector2 and call it Position
         public static Vector2 Position;
-        public Rectangle HitBox;
+        //Create a variable of type Rectangle and call it Hitbox, make it a get/set. 
+        public Rectangle HitBox { get; set; }
+        
+        #endregion
+
+        #region Methods
 
 
-
+        /// <summary>
+        /// Create a method called Initialize which will be passed varibales of type Vector2 and Texture2D,
+        /// call them Posn and tex.
+        /// This method will set the position and the texture of this class with the varibale that are being passed through.
+        /// </summary>
         public void Initialize(Texture2D tex, Vector2 Posn)
         {
             Texture = tex;
             Position = Posn;
         }
 
-
+        /// <summary>
+        /// Draws the entity using the classes texture and position  
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.AntiqueWhite);
 
         }
 
-        public Vector2 GetButtonPos()
-        {
-            return Position;
-        }
-
+        /// <summary>
+        /// Create a method called update, which will update the hitbox variable.
+        /// </summary>
         public void update()
         {
             HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
-        public Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-
+        /// <summary>
+        /// Create a method called Click, which will be called when the buttons recieves input from the mouse.
+        /// </summary>
         public void click()
         {
             SceneManager.mainmenu = false;
             SceneManager.TestLevel = true;
         }
-
+        #endregion
 
     }
 }

@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using EngineV2.Interfaces;
 
 
-/// <summary>
-/// Class for the Thug Animation
-/// 
-/// Author: Carl Chalmers
-/// Date of change: 04/03/18
-/// Version 0.5
-/// 
-/// </summary>
+
 namespace EngineV2.Animations
 {
     /// <summary>
-    /// This is a class that creates the animation for the player which will then be created with in the player class.
+    /// Class for the Thug Animation
+    /// 
+    /// Author: Carl Chalmers
+    /// Date of change: 04/03/18
+    /// Version 0.5
+    /// 
     /// </summary>
 
     class ThugAnimation : IAnimations
     {
+        #region Variables
         //Create Intergers called _width and _height that will store the height and width of the animation
         public static int _width, _height;
         //Create Intergers called CurrentFrame and totalFrames that will store.
@@ -41,6 +35,10 @@ namespace EngineV2.Animations
         //Create a variable of type Rectangle called sourceRectangle which will store information on what part of the spritesheet to look at for the animation.
         // Create a variable of type Rectangle called destinationRectangle which will store information on where sourceRectangle will be created.
         private Rectangle sourceRectangle, destinationRectangle;
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// Create a method called Initialize that gets passed variables of types IEntity, INTS and then stores then with in other variables.
@@ -113,6 +111,7 @@ namespace EngineV2.Animations
 
         }
 
+        #endregion
 
 
     }

@@ -48,7 +48,7 @@ namespace EngineV2.Scenes
             mouseinput = Mouse.GetState();
             mousePosition = new Point(mouseinput.X, mouseinput.Y);
 
-            if (ExitBut.getHitbox().Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
+            if (ExitBut.HitBox.Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
             {
                 ExitBut.click();
             }

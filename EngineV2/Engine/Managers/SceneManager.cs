@@ -19,10 +19,10 @@ namespace EngineV2.Managers
         IRenderable render;
 
         public static bool WinGame = false;
-        public static bool TestLevel = true;
+        public static bool TestLevel = false;
         public static bool mainmenu = false;
         public static bool ExitGame = false;
-        public static bool LoseScreen = false;
+        public static bool LoseScreen = true;
 
         public SceneManager(Game game) : base(game)
         {

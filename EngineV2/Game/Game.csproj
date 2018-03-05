@@ -44,7 +44,6 @@
     <Compile Include="Behaviours\Player Behaviours\PlayerController.cs" />
     <Compile Include="Behaviours\Player Behaviours\PlayerMind.cs" />
     <Compile Include="Buttons\ExitButton.cs" />
-    <Compile Include="Buttons\ResumeButton.cs" />
     <Compile Include="Buttons\StartButton.cs" />
     <Compile Include="Entities\GameEntity.cs" />
     <Compile Include="Entities\Interactive\Key.cs" />
@@ -180,9 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj">
