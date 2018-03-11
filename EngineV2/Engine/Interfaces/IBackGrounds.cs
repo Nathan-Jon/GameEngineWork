@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace EngineV2.Interfaces
+namespace Engine.Interfaces
 {
     public interface IBackGrounds
     {

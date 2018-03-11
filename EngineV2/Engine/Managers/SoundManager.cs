@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using EngineV2.Interfaces;
+using Engine.Interfaces;
 
-namespace EngineV2.Managers
+namespace Engine.Managers
 {
     public sealed class SoundManager : ISoundManager
     {

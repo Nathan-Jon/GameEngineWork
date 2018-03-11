@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineV2.Managers;
-using EngineV2.Interfaces;
+using Engine.Managers;
+using Engine.Interfaces;
 
-namespace EngineV2.Buttons
+namespace ProjectHastings.Buttons
 {
     /// <summary>
     /// Class to Create and update the Exit button.

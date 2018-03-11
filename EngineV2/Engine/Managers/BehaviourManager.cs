@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Interfaces;
+using Engine.Interfaces;
 
-namespace EngineV2.Managers
+namespace Engine.Managers
 {
     public sealed class BehaviourManager: IBehaviourManager
     {

@@ -1,5 +1,7 @@
 ﻿using System;
-namespace EngineV2.Input
+
+
+namespace Engine.Input_Managment
 {
     interface InputSubscriber
     {

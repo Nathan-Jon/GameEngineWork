@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using EngineV2.Collision_Management;
+using Engine.Collision_Management;
 
-namespace EngineV2.Interfaces
+namespace Engine.Interfaces
 {
     public interface ICollisionManager
     {

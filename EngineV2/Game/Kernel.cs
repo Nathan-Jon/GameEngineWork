@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using EngineV2.Interfaces;
-using EngineV2.Managers;
-using EngineV2.Collision_Management;
-using EngineV2.Physics;
-using EngineV2.Input_Managment;
-using EngineV2.Scenes;
+using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Collision_Management;
+using Engine.Physics;
+using Engine.Input_Managment;
+using ProjectHastings.Scenes;
 
-namespace EngineV2
+namespace ProjectHastings
 {
     /// <summary>
     /// This is the main type for your game.
@@ -66,7 +66,7 @@ namespace EngineV2
             Scenes.Add("Mainmenu", mainmenu);
             TestScene = new TestLevel();
             Scenes.Add("TestLevel", TestScene);
-            Wingame = new WinScreen();
+            Wingame = new WinGame();
             Scenes.Add("Wingame", Wingame);
             LoseScreen = new GameOver();
             Scenes.Add("LoseScreen", LoseScreen);

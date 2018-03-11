@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineV2.Interfaces;
+using Engine.Interfaces;
 
-namespace EngineV2.Collision_Management
+namespace Engine.Collision_Management
 {
     public sealed class CollisionManager : ICollisionManager
     {

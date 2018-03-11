@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineV2.Interfaces;
+using Engine.Interfaces;
 
 /// <summary>
 /// Class to Create and store backgrounds
@@ -11,7 +11,7 @@ using EngineV2.Interfaces;
 /// Version 0.5
 /// 
 /// </summary>
-namespace EngineV2.BackGround
+namespace Engine.BackGround
 {
     public class BackGrounds :IBackGrounds
     {

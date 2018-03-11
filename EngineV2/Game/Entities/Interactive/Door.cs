@@ -5,16 +5,15 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Interfaces;
-using EngineV2.Managers;
-using EngineV2.Collision_Management;
-using EngineV2.Entities;
-using EngineV2.Input;
-using EngineV2.Scenes;
-using EngineV2.Buttons;
-using EngineV2.Input_Managment;
+using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Collision_Management;
+using Engine.Input;
+using ProjectHastings.Scenes;
+using Engine.Buttons;
+using Engine.Input_Managment;
 
-namespace EngineV2.Behaviours
+namespace ProjectHastings.Entities
 {
     /// <summary>
     /// INteractive object that changes the scene

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineV2.Interfaces;
-using EngineV2.Collision_Management;
+using Engine.Interfaces;
+using Engine.Collision_Management;
 
-namespace EngineV2.Entities
+namespace ProjectHastings.Entities
 {
     /// <summary>
     /// Environment object for the player

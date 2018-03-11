@@ -6,13 +6,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
-using EngineV2.Buttons;
-using EngineV2.BackGround;
-using EngineV2.Managers;
-using EngineV2.Interfaces;
+using Engine.Buttons;
+using ProjectHastings.Buttons;
+using Engine.BackGround;
+using Engine.Managers;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework.Audio;
 
-namespace EngineV2.Scenes
+namespace ProjectHastings.Scenes
 {
     class MainMenu : IScene
     {

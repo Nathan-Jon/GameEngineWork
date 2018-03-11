@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EngineV2
+namespace ProjectHastings
 {
 #if WINDOWS || LINUX
     /// <summary>

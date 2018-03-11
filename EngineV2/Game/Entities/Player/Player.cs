@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using EngineV2.Behaviours.Player_Behaviours;
+using ProjectHastings.Behaviours.Player_Behaviours;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Input;
-using EngineV2.Managers;
-using EngineV2.Interfaces;
-using EngineV2.Collision_Management;
-using EngineV2.Input_Managment;
-using EngineV2.Animations;
+using Engine.Managers;
+using Engine.Interfaces;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
+using ProjectHastings.Animations;
 
-namespace EngineV2.Entities
+namespace ProjectHastings.Entities
 {
     /// <summary>
     /// Class for Player Entity

@@ -7,12 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
-using EngineV2.Buttons;
-using EngineV2.BackGround;
-using EngineV2.Managers;
-using EngineV2.Interfaces;
+using ProjectHastings.Buttons;
+using Engine.BackGround;
+using Engine.Managers;
+using Engine.Interfaces;
 
-namespace EngineV2.Scenes
+namespace ProjectHastings.Scenes
 {
     class GameOver : IScene
     {

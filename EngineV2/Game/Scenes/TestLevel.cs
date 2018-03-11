@@ -7,18 +7,18 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
-using EngineV2.Interfaces;
-using EngineV2.Managers;
-using EngineV2.Entities;
-using EngineV2.Behaviours;
-using EngineV2.Collision_Management;
-using EngineV2.Input;
-using EngineV2.Physics;
-using EngineV2.BackGround;
-using EngineV2.Input_Managment;
+using Engine.Interfaces;
+using Engine.Managers;
+using ProjectHastings.Entities;
+using ProjectHastings.Behaviours;
+using Engine.Collision_Management;
+using Engine.Input;
+using Engine.Physics;
+using Engine.BackGround;
+using Engine.Input_Managment;
 
 
-namespace EngineV2.Scenes
+namespace ProjectHastings.Scenes
 {
     class TestLevel : IScene
     {

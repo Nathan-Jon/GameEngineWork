@@ -1,6 +1,6 @@
-﻿using EngineV2.Interfaces;
+﻿using Engine.Interfaces;
 
-namespace EngineV2.Behaviours
+namespace ProjectHastings.Behaviours
 {
     class EnemyMind : IBehaviour
     {

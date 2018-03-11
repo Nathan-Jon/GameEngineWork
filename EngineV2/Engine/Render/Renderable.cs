@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Interfaces;
-using EngineV2.Managers;
+using Engine.Interfaces;
+using Engine.Managers;
 
-namespace EngineV2.Render
+namespace Engine.Render
 {
     class Renderable : IRenderable
     {

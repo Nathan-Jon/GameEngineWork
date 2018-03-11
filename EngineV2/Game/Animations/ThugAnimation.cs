@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineV2.Interfaces;
+using Engine.Interfaces;
 
 
 
-namespace EngineV2.Animations
+namespace ProjectHastings.Animations
 {
     /// <summary>
     /// Class for the Thug Animation

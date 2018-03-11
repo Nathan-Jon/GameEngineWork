@@ -1,8 +1,8 @@
-﻿using EngineV2.Input_Managment;
-using EngineV2.Interfaces;
+﻿using Engine.Input_Managment;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework.Input;
 
-namespace EngineV2.Behaviours.Player_Behaviours
+namespace ProjectHastings.Behaviours.Player_Behaviours
 {
     class PlayerController
     {

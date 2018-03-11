@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineV2.Interfaces;
-using EngineV2.Collision_Management;
+using Engine.Interfaces;
+using Engine.Collision_Management;
 
 
-namespace EngineV2.Entity_Management
+namespace Engine.Entity_Management
 {
     public abstract class Entity : IEntity
     {

@@ -1,10 +1,8 @@
 ﻿using System;
-using EngineV2.Input;
 using Microsoft.Xna.Framework.Input;
-using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
 
 
-namespace EngineV2.Input_Managment
+namespace Engine.Input_Managment
 {
     public sealed class InputManager
     {

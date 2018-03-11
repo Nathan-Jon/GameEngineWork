@@ -2,12 +2,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Interfaces;
-using EngineV2.Collision_Management;
-using EngineV2.Input;
-using EngineV2.Input_Managment;
+using Engine.Interfaces;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
 
-namespace EngineV2.Entities
+namespace ProjectHastings.Entities
 {
     /// <summary>
     /// Interactive object for the player allowing them to go up and down the y axis

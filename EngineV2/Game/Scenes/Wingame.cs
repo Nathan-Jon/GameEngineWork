@@ -6,14 +6,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
-using EngineV2.Buttons;
-using EngineV2.BackGround;
-using EngineV2.Managers;
-using EngineV2.Interfaces;
+using ProjectHastings.Buttons;
+using Engine.BackGround;
+using Engine.Managers;
+using Engine.Interfaces;
 
-namespace EngineV2.Scenes
+namespace ProjectHastings.Scenes
 {
-    class WinScreen : IScene
+    class WinGame : IScene
     {
 
         IButton ExitBut;
@@ -22,7 +22,7 @@ namespace EngineV2.Scenes
         Point mousePosition;
 
 
-        public WinScreen()
+        public WinGame()
         {
 
             back = new BackGrounds(900, 600);

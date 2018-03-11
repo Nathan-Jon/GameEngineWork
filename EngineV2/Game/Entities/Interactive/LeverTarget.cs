@@ -5,12 +5,12 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using EngineV2.Interfaces;
-using EngineV2.Managers;
-using EngineV2.Collision_Management;
-using EngineV2.Input;
+using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Collision_Management;
+using Engine.Input;
 
-namespace EngineV2.Entities
+namespace ProjectHastings.Entities
 {
     /// <summary>
     /// ojbect which is triggered by lever

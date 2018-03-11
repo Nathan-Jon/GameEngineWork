@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 
 
-namespace EngineV2.Input
+namespace Engine.Input_Managment
 {
     public class EventData : EventArgs
     {

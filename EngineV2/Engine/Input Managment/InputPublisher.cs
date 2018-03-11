@@ -1,6 +1,8 @@
-﻿using KeyboardState = Microsoft.Xna.Framework.Input.KeyboardState;
+﻿using Microsoft.Xna.Framework.Input;
 
-namespace EngineV2.Input
+
+
+namespace Engine.Input
 {
     interface InputPublisher
     {

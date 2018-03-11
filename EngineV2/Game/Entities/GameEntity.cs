@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineV2.Interfaces;
-using EngineV2.Entity_Management;
+using Engine.Interfaces;
+using Engine.Entity_Management;
 
-namespace EngineV2.Entities
+namespace ProjectHastings.Entities
 {
     /// <summary>
     /// Game Entity Class, To be inherited by game entities, adding them to the scene

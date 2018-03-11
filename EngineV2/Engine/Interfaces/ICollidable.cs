@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using EngineV2.Interfaces;
+using Engine.Interfaces;
 
-namespace EngineV2.Interfaces
+namespace Engine.Interfaces
 {
     
     public interface ICollidable

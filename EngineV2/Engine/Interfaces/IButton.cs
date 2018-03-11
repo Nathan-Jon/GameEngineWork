@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace EngineV2.Interfaces
+namespace Engine.Interfaces
 {
     public interface IButton
     {

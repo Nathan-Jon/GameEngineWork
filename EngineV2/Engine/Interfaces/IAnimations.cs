@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Text;
 
-namespace EngineV2.Interfaces
+namespace Engine.Interfaces
 {
     public interface IAnimations
     {

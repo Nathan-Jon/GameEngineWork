@@ -10,3 +10,15 @@ C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Engine\bin\Debug\MonoGame
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Engine\bin\Debug\OpenTK.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Engine\obj\Debug\Engine.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Engine\obj\Debug\Engine.pdb
+C:\Users\act1w\OneDrive\Documents\GitHub\GameEngineWork\EngineV2\Engine\bin\Debug\Engine.dll
+C:\Users\act1w\OneDrive\Documents\GitHub\GameEngineWork\EngineV2\Engine\bin\Debug\Engine.pdb
+C:\Users\act1w\OneDrive\Documents\GitHub\GameEngineWork\EngineV2\Engine\bin\Debug\MonoGame.Framework.dll
+C:\Users\act1w\OneDrive\Documents\GitHub\GameEngineWork\EngineV2\Engine\bin\Debug\OpenTK.dll
+C:\Users\act1w\OneDrive\Documents\GitHub\GameEngineWork\EngineV2\Engine\obj\Debug\Engine.dll
+C:\Users\act1w\OneDrive\Documents\GitHub\GameEngineWork\EngineV2\Engine\obj\Debug\Engine.pdb
+C:\Users\act1w\OneDrive\Desktop\EngineV2\Engine\obj\Debug\Engine.dll
+C:\Users\act1w\OneDrive\Desktop\EngineV2\Engine\obj\Debug\Engine.pdb
+C:\Users\act1w\OneDrive\Desktop\EngineV2\Engine\bin\Debug\Engine.dll
+C:\Users\act1w\OneDrive\Desktop\EngineV2\Engine\bin\Debug\Engine.pdb
+C:\Users\act1w\OneDrive\Desktop\EngineV2\Engine\bin\Debug\MonoGame.Framework.dll
+C:\Users\act1w\OneDrive\Desktop\EngineV2\Engine\bin\Debug\OpenTK.dll

@@ -1,6 +1,6 @@
-﻿using EngineV2.Interfaces;
+﻿using Engine.Interfaces;
 
-namespace EngineV2.Behaviours.Player_Behaviours
+namespace ProjectHastings.Behaviours.Player_Behaviours
 {
     interface IPlayerBehaviour
     {
