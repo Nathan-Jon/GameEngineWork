@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Engine.Interfaces;
 using Engine.Collision_Management;
 
 namespace ProjectHastings.Entities
@@ -15,7 +15,7 @@ namespace ProjectHastings.Entities
     class TriggerWall : GameEntity
     {
         //Tag Identifier
-        public string tag = "triggerWall";
+        public string Tag = "triggerWall";
 
         //COLLISIONS
         private IEntity collisionObj;
@@ -30,7 +30,7 @@ namespace ProjectHastings.Entities
         public override void UniqueData()
         {
             CollisionManager.GetColliderInstance.subscribe(onCollision);
-            physicsObjs = _PhysicsObj.getPhysicsList();
+            // physicsObjs = _PhysicsObj.getPhysicsList();
             _Collisions.isEnvironmentCollidable(this);
         }
 
@@ -46,18 +46,18 @@ namespace ProjectHastings.Entities
 
             collision = data.objectCollider;
 
-            for (int i = 0; i < physicsObjs.Count; i++)
-            {
-                //if (HitBox.Intersects(physicsObjs[i].getHitbox()))
-                //{ physicsObjs[i].setXPos(physicsObjs[i].getPos().X - 3); }
-                if (HitBox.Intersects(physicsObjs[i].getHitbox()))
-                {
-                    if (physicsObjs[i].getPos().X < HitBox.Width)
-                    { physicsObjs[i].setXPos(physicsObjs[i].getPos().X - 3); }
-                    if (physicsObjs[i].getPos().X > HitBox.Width/2)
-                    { physicsObjs[i].setXPos(physicsObjs[i].getPos().X - 3); }
-                }
-            }
+            //for (int i = 0; i < physicsObjs.Count; i++)
+            //{
+            //    //if (Hitbox.Intersects(physicsObjs[i].Hitbox))
+            //    //{ physicsObjs[i].setXPos(physicsObjs[i].getPos().X - 3); }
+            //    if (Hitbox.Intersects(physicsObjs[i].Hitbox))
+            //    {
+            //        //if (physicsObjs[i].Position.X < Hitbox.Width)
+            //        //{ physicsObjs[i].Position.X = physicsObjs[i].getPos().X - 3; }
+            //        //if (physicsObjs[i].Position.X > Hitbox.Width/2)
+            //        //{ physicsObjs[i].Position.X = physicsObjs[i].Position.X - 3; }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -73,30 +73,9 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-        #region get/Sets
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-        public override string getTag()
-        {
-            return tag;
-        }
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
-        public override Vector2 getPos()
-        { return Position; }
-        #endregion
     }
 }

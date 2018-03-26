@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Engine.Interfaces;
-using Engine.Managers;
 using Engine.Collision_Management;
-using Engine.Input;
+using Engine.Physics;
 
 namespace ProjectHastings.Entities
 {
@@ -26,7 +21,7 @@ namespace ProjectHastings.Entities
 
 
         //PHYSICS
-        private IPhysicsObj physics;
+        private IPhysics physics;
 
         //LISTS
         private List<IEntity> physicsObjs;
@@ -37,7 +32,7 @@ namespace ProjectHastings.Entities
         public override void UniqueData()
         {
             _Collisions.isEnvironmentCollidable(this);
-            physicsObjs = _PhysicsObj.getPhysicsList();
+            //physicsObjs = _PhysicsObj.getPhysicsList();
             CollisionManager.GetColliderInstance.subscribe(onCollision);
 
         }
@@ -56,8 +51,11 @@ namespace ProjectHastings.Entities
 
             for (int i = 0; i < physicsObjs.Count; i++)
             {
-                if (HitBox.Intersects(physicsObjs[i].getHitbox()))
-                { physicsObjs[i].setGrav(false); }
+                if (Hitbox.Intersects(physicsObjs[i].Hitbox))
+                {
+                    //physicsObjs[i].setGrav(false); 
+
+                }
 
 
             }
@@ -76,25 +74,10 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-        #region get/sets
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
-        #endregion
     }
 }
 

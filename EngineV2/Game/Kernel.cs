@@ -61,7 +61,6 @@ namespace ProjectHastings
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            physicsObj = new PhysicsObj();
             mainmenu = new MainMenu();
             Scenes.Add("Mainmenu", mainmenu);
             TestScene = new TestLevel();

@@ -14,25 +14,26 @@ using ProjectHastings.Animations;
 
 namespace ProjectHastings.Entities
 {
-    class Thug : GameEntity
+    class Thug : GamePhysicsEntity
     {
-        public string tag ="Thug";
         public IAnimations ani;
-        public Rectangle HitBox;
         public int row = 1;
 
         private IEntity collisionObj;
+
+        private EnemyMind mind;
 
         /// <summary>
         /// Initialise the Variables specific to this object
         /// </summary>
         public override void UniqueData()
         {
+            Tag = "thug";
             ani = new ThugAnimation();
             ani.Initialize(this, 3, 3);
-            _BehaviourManager.createMind<EnemyMind>(this);
+            mind = new EnemyMind();
+            mind.Initialise(this);
             _Collisions.isCollidableEntity(this);
-            _PhysicsObj.hasPhysics(this);
             CollisionManager.GetColliderInstance.subscribe(onCollision);
 
 
@@ -42,74 +43,38 @@ namespace ProjectHastings.Entities
         {
             collisionObj = data.objectCollider;
 
-            if (HitBox.X > 850)
-            {
-                Position.X = 849;
-                row = 0;
-                Behaviours.EnemyMind.speed *= -1;
-            }
-            if (HitBox.X < 0)
-            {
-                Position.X = 1;
-                row = 1;
-                Behaviours.EnemyMind.speed *= -1;
-            }
+            //if (Hitbox.X > 850)
+            //{
+            //    Position = new Vector2(849, Position.Y);
+            //    row = 0;
+            //    Behaviours.EnemyMind.speed *= -1;
+            //}
+            //if (Hitbox.X < 0)
+            //{
+            //    Position = new Vector2(1, Position.Y);
+            //    row = 1;
+            //    Behaviours.EnemyMind.speed *= -1;
+            //}
 
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            ani.Draw(spriteBatch);
-        }
 
-
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
 
             ani.Update(game);
-
+            mind.Update();
         }
 
-        public override Vector2 getPos()
-        {
-            return Position;
-        }
-
-        public override Texture2D getTex()
-        {
-            return Texture;
-        }
-        
         public override int getRows()
         {
             return row;
         }
 
-
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-
-        }
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-
-        }
-
         public override void setRow(int rows)
         {
             row = rows;
-        }
-        public override string getTag()
-        {
-            return tag;
         }
     }
 }

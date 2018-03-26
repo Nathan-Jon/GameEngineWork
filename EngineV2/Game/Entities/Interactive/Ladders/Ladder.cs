@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Interfaces;
 using Engine.Collision_Management;
+using Engine.Input;
 using Engine.Input_Managment;
 
 namespace ProjectHastings.Entities
@@ -40,7 +41,7 @@ namespace ProjectHastings.Entities
             _Collisions.isInteractiveCollidable(this);
             CollidableObjs();
         }
-        
+
         /// <summary>
         /// Initialise Keyboard Event Handler
         /// </summary>
@@ -50,7 +51,7 @@ namespace ProjectHastings.Entities
         {
             keyState = data.newKey;
         }
-        
+
         /// <summary>
         /// Get the player Object list
         /// </summary>
@@ -70,7 +71,7 @@ namespace ProjectHastings.Entities
 
             for (int i = 0; i < playerObj.Count; i++)
             {
-                if (HitBox.Intersects(playerObj[i].getHitbox()) && playerObj[i].getTag() == "Player")
+                if (Hitbox.Intersects(playerObj[i].Hitbox) && playerObj[i].Tag == "Player")
                 {
                     Player.canClimb = true;
                 }
@@ -93,28 +94,9 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-        #region get/sets
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-        public override string getTag()
-        {
-            return tag;
-        }
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
-        #endregion
     }
 }

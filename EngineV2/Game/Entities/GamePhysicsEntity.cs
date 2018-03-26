@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Engine.Entity_Management;
 using Engine.Interfaces;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Engine.Entity_Management;
+using Engine.Physics;
 
 namespace ProjectHastings.Entities
 {
@@ -11,13 +13,14 @@ namespace ProjectHastings.Entities
     /// Date of Change: 03/02/18
     /// Version: 0.4
     /// </summary>
-    public class GameEntity : Entity
+    public class GamePhysicsEntity : PhysicsEntity
     {
         public override string Tag { get; set; }
         public override Vector2 Position { get; set; }
         public override Texture2D Texture { get; set; }
         public override Rectangle Hitbox { get; set; }
         public int row;
+
         public bool onTerrain;
         public float speed;
 
@@ -28,6 +31,7 @@ namespace ProjectHastings.Entities
 
         public override void Initialize(Texture2D tex, Vector2 posn, ICollidable _collider, IBehaviourManager behaviours)
         {
+            GravityBool = false;
             Position = posn;
             Texture = tex;
             _Collisions = _collider;
@@ -41,11 +45,9 @@ namespace ProjectHastings.Entities
         }                    // Used to apply the specific variables such as animations onto the entity
         public override void CollidableObjs()
         { }                //Used to get the Lists for the collidable Objects
-
-
         public virtual void Move()
         {
-            Position += new Vector2(4, 0);
+            Position += new Vector2(4,0);
         }                           //Move Method used for testing entities
         public override void Update(GameTime game)
         {
@@ -69,3 +71,5 @@ namespace ProjectHastings.Entities
 
 
 }
+
+

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using Engine.Collision_Management;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Engine.Interfaces;
 using Engine.Collision_Management;
+
 
 namespace ProjectHastings.Entities
 {
@@ -14,9 +16,6 @@ namespace ProjectHastings.Entities
     /// </summary>
     class TriggerPlatform : GameEntity
     {
-        //Tag Identifier
-        public string tag = "leverObj";
-
         //COLLISIONS
         private IEntity collisionObj;
         private IEntity collision;
@@ -30,8 +29,9 @@ namespace ProjectHastings.Entities
         /// </summary>
         public override void UniqueData()
         {
+            Tag = "leverObj";
             CollisionManager.GetColliderInstance.subscribe(onCollision);
-            physicsObjs = _PhysicsObj.getPhysicsList();
+            //physicsObjs = _PhysicsObj.getPhysicsList();
             _Collisions.isEnvironmentCollidable(this);
         }
 
@@ -39,7 +39,7 @@ namespace ProjectHastings.Entities
         public void lower()
         {
             if (Position.Y < 107)
-                Position.Y += 1;
+                Position += new Vector2(0, 1);
         }
         #endregion
 
@@ -55,13 +55,13 @@ namespace ProjectHastings.Entities
 
             collision = data.objectCollider;
 
-            for (int i = 0; i < physicsObjs.Count; i++)
-            {
-                if (HitBox.Intersects(physicsObjs[i].getHitbox()))
-                {
-                    physicsObjs[i].setGrav(false);
-                }
-            }
+            //for (int i = 0; i < physicsObjs.Count; i++)
+            //{
+            //    //if (Hitbox.Intersects(physicsObjs[i].Hitbox))
+            //    //{
+            //    //    physicsObjs[i].setGrav(false);
+            //    //}
+            //}
         }
 
         /// <summary>
@@ -77,29 +77,10 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
 
         }
-
-        #region GET/SETS
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
-        public override string getTag()
-        {
-            return tag;
-        }
-        #endregion
     }
 }

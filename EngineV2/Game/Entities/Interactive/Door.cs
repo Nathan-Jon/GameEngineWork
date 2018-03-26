@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Engine.Buttons;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
+using Engine.Interfaces;
+using Engine.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Interfaces;
-using Engine.Managers;
-using Engine.Collision_Management;
-using Engine.Input;
-using ProjectHastings.Scenes;
-using Engine.Buttons;
-using Engine.Input_Managment;
 
 namespace ProjectHastings.Entities
 {
@@ -25,7 +20,7 @@ namespace ProjectHastings.Entities
     {
         #region Instance Variables
         public bool doorContact = false;
-        
+
 
         //Input Management
         private KeyboardState keyState;
@@ -33,7 +28,7 @@ namespace ProjectHastings.Entities
         //Collision Management Variables
         private IEntity collisionObj;
         private ICollidable colliders;
-        
+
 
         //Lists
         private List<IEntity> interactiveObjs;
@@ -66,11 +61,10 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
 
         /// <summary>
         /// Trigger Input Event
@@ -82,7 +76,7 @@ namespace ProjectHastings.Entities
             keyState = data.newKey;
 
             //if Plyaer has unlocked the door, change scene and play audio instance
-            if (doorContact && keyState.IsKeyDown(Keys.W) && Key.Unlock|| doorContact && keyState.IsKeyDown(Keys.Up) && Key.Unlock)
+            if (doorContact && keyState.IsKeyDown(Keys.W) && Key.Unlock || doorContact && keyState.IsKeyDown(Keys.Up) && Key.Unlock)
             {
                 SoundManager.getSoundInstance.Playsnd("Exit", 0.5f);
                 EntityManager.Entities.Clear();
@@ -121,7 +115,7 @@ namespace ProjectHastings.Entities
             for (int i = 0; i < interactiveObjs.Count; i++)
             {
                 //checks to see if player is in contact with the door 
-                if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
+                if (Hitbox.Intersects((interactiveObjs[0].Hitbox)))
                 {
                     doorContact = true;
                 }

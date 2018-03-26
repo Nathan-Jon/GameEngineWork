@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Interfaces;
-using Engine.Managers;
-using Engine.Collision_Management;
-using Engine.Input_Managment;
+
 
 namespace ProjectHastings.Entities
 {
@@ -60,11 +57,11 @@ namespace ProjectHastings.Entities
             {
                 for (int i = 0; i < targetObjs.Count; i++)
                 {
-                    if (targetObjs[i].getTag() == "leverObj")
-                    {
-                            targetObjs[i].setYPos(105);
-   
-                    }
+                    //if (targetObjs[i].Tag == "leverObj")
+                    //{
+                    //        targetObjs[i].setYPos(105);
+
+                    //}
                 }
             }
         }
@@ -90,7 +87,7 @@ namespace ProjectHastings.Entities
             for (int i = 0; i < playerObj.Count; i++)
             {
                 //checks to see if player is in contact with the lever 
-                if (HitBox.Intersects((playerObj[0].getHitbox())))
+                if (Hitbox.Intersects((playerObj[0].Hitbox)))
                 {
                     //CAN ACTIVATE LEVER
                     canTrigger = true;
@@ -114,22 +111,14 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
 
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
 
 
         #region GET/SETS
-                public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
         public override void setRow(int rows)
         {
             row = rows;

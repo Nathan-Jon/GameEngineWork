@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
+using Engine.Interfaces;
+using Engine.Physics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Interfaces;
-using Engine.Managers;
-using Engine.Collision_Management;
-using Engine.Input_Managment;
+
 
 namespace ProjectHastings.Entities
 {
@@ -18,7 +16,7 @@ namespace ProjectHastings.Entities
     class PressurePlate : GameEntity
     {
         //tag Identifier
-        public string tag = "PressurePlate";
+        public string Tag = "PressurePlate";
         private float moveDirec = 3;
         private bool moveObject = false;
         private bool canMove = true;
@@ -33,7 +31,7 @@ namespace ProjectHastings.Entities
         //Collision Management
         private IEntity collisionObj;
         private ICollidable colliders;
-        IPhysicsObj physics;
+        IPhysics physics;
 
         //Lists
         private List<IEntity> environementObjs;
@@ -85,13 +83,13 @@ namespace ProjectHastings.Entities
             #region Player Collision
             for (int i = 0; i < interactiveObj.Count; i++)
             {
-                if (HitBox.Intersects(interactiveObj[i].getHitbox()) && interactiveObj[i].getTag() == "Crate")
+                if (Hitbox.Intersects(interactiveObj[i].Hitbox) && interactiveObj[i].Tag == "Crate")
                 {
                     activate();
                 }
-                
+
             }
-            
+
             #endregion
         }
 
@@ -101,16 +99,16 @@ namespace ProjectHastings.Entities
         {
             for (int i = 0; i < environementObjs.Count; i++)
             {
-                if (environementObjs[i].getTag() == "triggerWall")
+                if (environementObjs[i].Tag == "triggerWall")
                 {
                     triggerWall = environementObjs[i];
                 }
             }
-            triggerWall.setYPos(1000);
+            triggerWall.Position = new Vector2(0, 1000);
         }
 
         public void reset()
-        { triggerWall.setYPos(351); }
+        { triggerWall.Position = new Vector2(0, 351); }
 
         #endregion
 
@@ -127,46 +125,9 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-
-        #region  get/Sets
-
-
-        public override Vector2 getPos()
-        {
-            return Position;
-        }
-
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-        public override bool getGrav()
-        {
-            return gravity;
-        }
-        public override string getTag()
-        {
-            return tag;
-        }
-
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setGrav(bool active)
-        {
-            gravity = active;
-        }
-
-        #endregion
     }
 }

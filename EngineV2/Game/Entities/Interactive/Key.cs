@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
+using Engine.Interfaces;
+using Engine.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Interfaces;
-using Engine.Managers;
-using Engine.Collision_Management;
-using Engine.Input_Managment;
 
 
 namespace ProjectHastings.Entities
@@ -45,7 +42,7 @@ namespace ProjectHastings.Entities
         {
             InputManager.GetInputInstance.AddListener(OnNewInput);
             CollisionManager.GetColliderInstance.subscribe(onCollision);
-            _PhysicsObj.hasPhysics(this);
+            //_PhysicsObj.hasPhysics(this);
             _Collisions.isEnvironmentCollidable(this);
             CollidableObjs();
         }
@@ -63,13 +60,10 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-
-
 
         /// <summary>
         /// Trigger Input Event
@@ -112,7 +106,7 @@ namespace ProjectHastings.Entities
             for (int i = 0; i < interactiveObjs.Count; i++)
             {
                 //checks to see if player is in contact with the door 
-                if (HitBox.Intersects((interactiveObjs[0].getHitbox())))
+                if (Hitbox.Intersects((interactiveObjs[0].Hitbox)))
                 {
                     keyContact = true;
                     EntityManager.Entities.Remove(this);
@@ -123,18 +117,6 @@ namespace ProjectHastings.Entities
                 }
             }
         }
-        
 
-
-        #region GET/SETS
-        public override bool getGrav()
-        {
-            return gravity;
-        }
-        public override void setGrav(bool active)
-        {
-            gravity = active;
-        }
-        #endregion
     }
 }

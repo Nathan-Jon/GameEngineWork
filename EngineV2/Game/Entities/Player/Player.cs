@@ -19,11 +19,9 @@ namespace ProjectHastings.Entities
     /// Version 0.5
     /// 
     /// </summary>
-    class Player : GameEntity
+    public class Player : GamePhysicsEntity
     {
         #region Properties
-        public string tag = "Player";
-
         //Animation Variable
         public IAnimations ani;
         public static int row = 1;
@@ -31,8 +29,6 @@ namespace ProjectHastings.Entities
 
 
         //Movement
-        private float speed = 3;
-        private float ySpeed = 2;
         public static bool canClimb = false;
         public bool sprint = false;
 
@@ -60,12 +56,14 @@ namespace ProjectHastings.Entities
         /// </summary>
         public override void UniqueData()
         {
+            Tag = "Player";
+            speed = 3;
             ani = new PlayerAnimation();
             ani.Initialize(this, 3, 3);
             CollidableObjs();
-            _BehaviourManager.createMind<PlayerMind>(this);
+            // _BehaviourManager.createMind<PlayerMind>(this);
 
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            // CollisionManager.GetColliderInstance.subscribe(onCollision);
             InputManager.GetInputInstance.AddListener(OnNewInput);
         }
 
@@ -112,90 +110,81 @@ namespace ProjectHastings.Entities
         /// </summary>
         public override void CollidableObjs()
         {
-            collisionObjs = _Collisions.getCollidableList();
-            interactiveObjs = _Collisions.getInteractiveObj();
-            environment = _Collisions.getEnvironment();
+            //   collisionObjs = _Collisions.getCollidableList();
+            //   interactiveObjs = _Collisions.getInteractiveObj();
+            //   environment = _Collisions.getEnvironment();
         }
         /// <summary>
         /// Send Event to collision Event Manager
         /// </summary>
         /// <param name="source"></param>
         /// <param name="data"></param>
-        public virtual void onCollision(object source, CollisionEventData data)
-        {
-            collision = data.objectCollider;
+        //public virtual void onCollision(object source, CollisionEventData data)
+        //{
+        //    collision = data.objectCollider;
 
-            //gravity = true;
-            canClimb = false;
+        //    //gravity = true;
+        //    canClimb = false;
 
-            #region Map corners 
-            if (HitBox.X <= 0)
-            { Position.X -= -3; }
+        //    #region Map corners 
+        //    if (Hitbox.X <= 0)
+        //    { Position += new Vector2(3, 0); }
 
-            if (HitBox.X >= 875)
-            { Position.X -= 3; }
+        //    if (Hitbox.X >= 875)
+        //    { Position += new Vector2(-3,0); }
 
-            if (HitBox.Y <= 0)
-            { Position.Y += ySpeed; }
+        //    if (Hitbox.Y <= 0)
+        //    { Position += new Vector2(0, ySpeed);}
 
-            if (HitBox.Y >= 559)
-            {
-                gravity = false;
-                canJump = true;
-            }
-            #endregion
-
-            #region Enemy collisions
-            for (int i = 0; i < collisionObjs.Count; i++)
-            {
-                if (HitBox.Intersects(collisionObjs[i].getHitbox()) && collisionObjs[i].getTag() == "Thug")
-                {
-                    EntityManager.Entities.Clear();
-                    BehaviourManager.behaviours.Clear();
-                    SceneManager.LoseScreen = true;
-                }
-            }
-            #endregion
-
-            #region Interactive Obj collisions
-            for (int i = 0; i < interactiveObjs.Count; i++)
-            {
-                if (HitBox.Intersects(interactiveObjs[i].getHitbox()) && interactiveObjs[i].getTag() == "Crate")
-                { }
-
-                if (HitBox.Intersects(interactiveObjs[i].getHitbox()) && interactiveObjs[i].getTag() == "Ladder")
-                {
-                    gravity = false;
-                    ySpeed = 2;
-                    canClimb = true;
-                }
-
-                if (HitBox.Intersects(interactiveObjs[i].getHitbox()))
-                {
-                    //gravity = false;
-                    canClimb = false;
-                }
-                else gravity = true;
-            }
-
-            for (int i = 0; i < environment.Count; i++)
-            {
-                if (HitBox.Intersects(environment[i].getHitbox()))
-                {
-                    gravity = false;
-                    canJump = true;
-                }
-                else if (!HitBox.Intersects(environment[i].getHitbox()))
-                {
-                    gravity = true;
-                }
-            }
-
-        }
+        //    if (Hitbox.Y >= 559)
+        //    {
+        //        canJump = true;
+        //    }
         #endregion
 
-
+        #region Enemy collisions
+        //    //for (int i = 0; i < collisionObjs.Count; i++)
+        //    //{
+        //    //    if (Hitbox.Intersects(collisionObjs[i].Hitbox) && collisionObjs[i].Tag == "Thug")
+        //    //    {
+        //    //        EntityManager.Entities.Clear();
+        //    //        BehaviourManager.behaviours.Clear();
+        //    //        SceneManager.LoseScreen = true;
+        //    //    }
+        //    //}
         #endregion
+
+        //    #region Interactive Obj collisions
+        //    for (int i = 0; i < interactiveObjs.Count; i++)
+        //    {
+        //        if (Hitbox.Intersects(interactiveObjs[i].Hitbox) && interactiveObjs[i].Tag == "Crate")
+        //        { }
+
+        //        if (Hitbox.Intersects(interactiveObjs[i].Hitbox) && interactiveObjs[i].Tag == "Ladder")
+        //        {
+        //            ySpeed = 2;
+        //            canClimb = true;
+        //        }
+
+        //        if (Hitbox.Intersects(interactiveObjs[i].Hitbox))
+        //        {
+        //            //gravity = false;
+        //            canClimb = false;
+        //        }
+        //    }
+
+        //    for (int i = 0; i < environment.Count; i++)
+        //    {
+        //        if (Hitbox.Intersects(environment[i].Hitbox))
+        //        {
+        //            canJump = true;
+        //        }
+        //        else if (!Hitbox.Intersects(environment[i].Hitbox))
+        //        {
+        //        }
+        //    }
+
+        //}
 
         #region Behaviours
         /// <summary>
@@ -209,9 +198,9 @@ namespace ProjectHastings.Entities
                 //            gravity = false;
                 if (isJumping)
                 {
-                    Position.Y -= jumpForce;
+                    Position -= new Vector2(0, jumpForce);
                     jumpHeight += jumpForce;
-                    Position.Y += 3f;
+                    Position += new Vector2(0, jumpForce);
                 }
 
                 if (jumpHeight >= maxJump)
@@ -237,9 +226,9 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, PlayerAnimation._width, PlayerAnimation._height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, PlayerAnimation._width, PlayerAnimation._height);
 
             if (Animate == true)
             {
@@ -249,49 +238,13 @@ namespace ProjectHastings.Entities
         }
 
         #region get/sets
-        public override Vector2 getPos()
-        {
-            return Position;
-        }
-        public override Texture2D getTex()
-        {
-            return Texture;
-        }
         public override int getRows()
         {
             return row;
         }
-        public override bool getGrav()
-        {
-            return gravity;
-        }
-        public float getDirection()
-        {
-            return speed;
-        }
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-        public override string getTag()
-        {
-            return tag;
-        }
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
         public override void setRow(int rows)
         {
             row = rows;
-        }
-        public override void setGrav(bool active)
-        {
-            gravity = active;
         }
 
         #endregion

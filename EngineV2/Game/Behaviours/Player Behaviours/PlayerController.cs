@@ -1,5 +1,6 @@
 ﻿using Engine.Input_Managment;
 using Engine.Interfaces;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace ProjectHastings.Behaviours.Player_Behaviours
@@ -19,7 +20,7 @@ namespace ProjectHastings.Behaviours.Player_Behaviours
 
         public void move()
         {
-            body.setXPos(body.getPos().X + speed);
+            body.Position += new Vector2(speed,0);
         }
     }
 }

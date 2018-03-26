@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Engine.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace ProjectHastings.Behaviours
 {
@@ -24,7 +25,7 @@ namespace ProjectHastings.Behaviours
         #region Behaviour
         public void move(IEntity body, float speed)
         {
-            body.setXPos(body.getPos().X + speed);
+            body.Position += new Vector2(speed, 0);
         }
     }
         #endregion

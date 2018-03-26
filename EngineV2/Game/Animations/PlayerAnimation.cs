@@ -87,10 +87,10 @@ namespace ProjectHastings.Animations
 
                 //Assign _width variable with the correct width of one of the images with in the spritesheet. 
                 //Do this by getting the texture width and divide it by the amount of columns the spritesheet has.
-                _width = entity.getTex().Width / _columns;
+                _width = entity.Texture.Width / _columns;
                 //Assign _height variable with the correct height of one of the images with in the spritesheet. 
                 //Do this by getting the texture height and divide it by the amount of rows the spritesheet has.
-                _height = entity.getTex().Height / _rows;
+                _height = entity.Texture.Height / _rows;
                 //Assign _row variable the row that wants to be shown in the animation.
                 _row = entity.getRows();
                 //Assign _column variable the columns that are going to be shown in the animation.
@@ -101,9 +101,9 @@ namespace ProjectHastings.Animations
                 sourceRectangle = new Rectangle(_width * _column, _height * _row, _width, _height);
                 //Create a new rectangle and assign it to the destinationRectangle variable.
                 //The rectangle will hold all the information it needs for where the animations is going to be created.
-                destinationRectangle = new Rectangle((int)entity.getPos().X,(int)entity.getPos().Y, _width, _height);
+                destinationRectangle = new Rectangle((int)entity.Position.X,(int)entity.Position.Y, _width, _height);
                 //Call the Draw method from the spritebatch method and assign it the correct parameters need to draw the animations.
-                spriteBatch.Draw(entity.getTex(), destinationRectangle, sourceRectangle, Color.White);
+                spriteBatch.Draw(entity.Texture, destinationRectangle, sourceRectangle, Color.White);
                 
             
             

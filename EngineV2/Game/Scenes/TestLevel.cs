@@ -1,21 +1,16 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
 using Engine.Interfaces;
 using Engine.Managers;
 using ProjectHastings.Entities;
-using ProjectHastings.Behaviours;
 using Engine.Collision_Management;
-using Engine.Input;
 using Engine.Physics;
 using Engine.BackGround;
 using Engine.Input_Managment;
+using ProjectHastings.Entities;
 
 
 namespace ProjectHastings.Scenes
@@ -24,26 +19,24 @@ namespace ProjectHastings.Scenes
     {
         List<IEntity> Scenegraph = new List<IEntity>();
         List<IBehaviour> Behaviours = new List<IBehaviour>();
+        List<IPhysics> PhysicsEntites = new List<IPhysics>();
 
         //Managers
-        IEntityManager ent;
+        IEntityManager entManager;
         IBackGrounds back;
         ICollidable collider;
         ISceneManager scn;
         IBehaviourManager behaviours;
         PhysicsManager physicsMgr;
-        IPhysicsObj physicsObj;
 
         public TestLevel()
         {
 
             #region Instantiate Managers
 
-            ent = EntityManager.getEntityManager;
-            physicsObj = new PhysicsObj();
+            entManager = new EntityManager();
 
-            physicsMgr = PhysicsManager.getPhysicsInstance;
-            physicsMgr.setPhysicsList(physicsObj);
+            physicsMgr = new PhysicsManager();
 
             scn = new SceneManager(Kernel.instance);
 
@@ -59,8 +52,8 @@ namespace ProjectHastings.Scenes
         public void LoadContent(ContentManager Content)
         {
             //Sounds
-            SoundManager.getSoundInstance.Initialize("Level1BackgroundMusic" , Content.Load<SoundEffect>("Level1BackgroundMusic"));
-            SoundManager.getSoundInstance.Initialize("Walk" , Content.Load<SoundEffect>("Footsteps"));
+            SoundManager.getSoundInstance.Initialize("Level1BackgroundMusic", Content.Load<SoundEffect>("Level1BackgroundMusic"));
+            SoundManager.getSoundInstance.Initialize("Walk", Content.Load<SoundEffect>("Footsteps"));
             SoundManager.getSoundInstance.Initialize("Crate", Content.Load<SoundEffect>("CratePushSFX"));
             SoundManager.getSoundInstance.Initialize("Exit", Content.Load<SoundEffect>("ExitLevelSFX"));
             SoundManager.getSoundInstance.Initialize("Key", Content.Load<SoundEffect>("KeyPickupSFX"));
@@ -68,73 +61,81 @@ namespace ProjectHastings.Scenes
             SoundManager.getSoundInstance.CreateInstance();
 
             //BackGround
-            back.Initialize("Background" ,Content.Load<Texture2D>("BackgroundTex1"));
+            back.Initialize("Background", Content.Load<Texture2D>("BackgroundTex1"));
 
             //Ladders
-            IEntity Ladder1 = ent.CreateEnt<Ladder>(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, physicsObj, behaviours);
-            IEntity Ladder2 = ent.CreateEnt<Ladder>(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, physicsObj, behaviours);
-            IEntity Ladder3 = ent.CreateEnt<Ladder>(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Ladder>(Content.Load<Texture2D>("SLadderTex"), new Vector2(200, 110), collider, behaviours);
+            entManager.CreateEnt<Ladder>(Content.Load<Texture2D>("LLadderTex"), new Vector2(400, 107), collider, behaviours);
+            entManager.CreateEnt<Ladder>(Content.Load<Texture2D>("LLadderTex"), new Vector2(675, 107), collider, behaviours);
 
 
             //Door
-            IEntity Door = ent.CreateEnt<Door>(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Door>(Content.Load<Texture2D>("Door"), new Vector2(850, 555), collider, behaviours);
 
             //Key
-            IEntity key = ent.CreateEnt<Key>(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Key>(Content.Load<Texture2D>("Key"), new Vector2(850, -30), collider, behaviours);
 
             //Platforms          
-            IEntity platform1 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, physicsObj, behaviours);
-            IEntity platform2 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, physicsObj, behaviours);
-            IEntity platform3 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, physicsObj, behaviours);
-            IEntity leverPlatformTarget = ent.CreateEnt<TriggerPlatform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, physicsObj, behaviours);
-            IEntity platform5 = ent.CreateEnt<Platform>(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Platform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 595), collider, behaviours);
+            entManager.CreateEnt<Platform>(Content.Load<Texture2D>("MPlatformTex"), new Vector2(695, 475), collider, behaviours);
+            entManager.CreateEnt<Platform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(0, 355), collider, behaviours);
+            entManager.CreateEnt<TriggerPlatform>(Content.Load<Texture2D>("XLPlatformTex"), new Vector2(400, -10), collider, behaviours);
+            entManager.CreateEnt<Platform>(Content.Load<Texture2D>("MPlatformTex"), new Vector2(-4, 107), collider, behaviours);
             //INTERACTIVE OBJECTS
 
             //Crates
-            IEntity crate = ent.CreateEnt<Crate>(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Crate>(Content.Load<Texture2D>("crate"), new Vector2(10, 80), collider, behaviours);
 
             //Pressure Plates
-            IEntity pressurePlate = ent.CreateEnt<PressurePlate>(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, physicsObj, behaviours);
+            entManager.CreateEnt<PressurePlate>(Content.Load<Texture2D>("PPlateTex"), new Vector2(10, 355), collider, behaviours);
 
             //Walls
-            IEntity wall = ent.CreateEnt<TriggerWall>(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, physicsObj, behaviours);
+            entManager.CreateEnt<TriggerWall>(Content.Load<Texture2D>("Wall"), new Vector2(705, 357), collider, behaviours);
 
             //Lever
-            IEntity Lever1 = ent.CreateEnt<Lever>(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Lever>(Content.Load<Texture2D>("Lever"), new Vector2(840, 450), collider, behaviours);
 
             //The Player
-            IEntity player = ent.CreateEnt<Player>(Content.Load<Texture2D>("Chasting"), new Vector2(50, 100), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Player>(Content.Load<Texture2D>("Chasting"), new Vector2(50, 100), collider, behaviours);
 
             //Enemies
-            IEntity thug = ent.CreateEnt<Thug>(Content.Load<Texture2D>("Thug"), new Vector2(630, 564), collider, physicsObj, behaviours);
+            entManager.CreateEnt<Thug>(Content.Load<Texture2D>("Thug"), new Vector2(630, 564), collider, behaviours);
 
-            Scenegraph = EntityManager.Entities;
+            Scenegraph.AddRange(EntityManager.Entities);
             Behaviours = BehaviourManager.behaviours;
+
+            foreach (var entity in Scenegraph)
+            {
+                if (entity is IPhysics)
+                {
+                    PhysicsEntites.Add((IPhysics)entity);
+                }
+            }
         }
 
         public void update(GameTime gameTime)
         {
 
-            if (SceneManager.TestLevel == true)
+            if (SceneManager.TestLevel)
             {
                 InputManager.GetInputInstance.update();
                 CollisionManager.GetColliderInstance.update();
 
 
-                for (int i = 0; i < Scenegraph.Count; i++)
+                foreach (var entity in Scenegraph)
                 {
-                    Scenegraph[i].update(gameTime);
+                    entity.Update(gameTime);
                 }
 
-
-                for (int i = 0; i < Behaviours.Count; i++)
+                foreach (var behaviour in Behaviours)
                 {
-
-                    Behaviours[i].update();
+                    behaviour.update();
                 }
 
-
-                physicsMgr.update();
+                foreach (var physics in PhysicsEntites)
+                {
+                    physics.UpdatePhysics();
+                }
             }
         }
 

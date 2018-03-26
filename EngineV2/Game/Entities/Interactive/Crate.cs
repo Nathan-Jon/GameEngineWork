@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Interfaces;
 using Engine.Managers;
 using Engine.Collision_Management;
+using Engine.Input;
 using Engine.Input_Managment;
 
 namespace ProjectHastings.Entities
@@ -39,7 +37,7 @@ namespace ProjectHastings.Entities
             CollisionManager.GetColliderInstance.subscribe(onCollision);
             CollidableObjs();
             _Collisions.isInteractiveCollidable(this);
-            _PhysicsObj.hasPhysics(this);
+            //  _PhysicsObj.hasPhysics(this);
         }
 
         /// <summary>
@@ -57,12 +55,12 @@ namespace ProjectHastings.Entities
 
                 if (crateContact && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
                 {
-                    Position.X += 3;
+                    Position += new Vector2(3, 0);
                     SoundManager.getSoundInstance.Playsnd("Crate", 0.2f);
                 }
                 if (crateContact && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
                 {
-                    Position.X += -3;
+                    Position += new Vector2(-3, 0);
                     SoundManager.getSoundInstance.Playsnd("Crate", 0.2f);
                 }
 
@@ -97,28 +95,29 @@ namespace ProjectHastings.Entities
             #region wall collisions
 
             if (Position.X <= 0)
-            { Position.X -= -3; }
-            if (HitBox.X >= 850)
-            { Position.X -= 3; }
+            {
+                Position += new Vector2(3, 0);
+            }
+            if (Hitbox.X >= 850)
+            { Position -= new Vector2(3, 0); }
             if (Position.Y >= 570)
             {
                 gravity = false;
-                Position.Y -= 2;
+                Position -= new Vector2(2, 0);
             }
             #endregion
 
             #region Player Collision
             for (int i = 0; i < player.Count; i++)
             {
-                if (HitBox.Intersects((player[i].getHitbox())))
+                if (Hitbox.Intersects((player[i].Hitbox)))
                 {
-                    //if (player[i].getTag() == "Player")
+                    //if (player[i].Tag == "Player")
                     //{ crateContact = true; }
-                    //else if (player[i].getTag() != "Player")
+                    //else if (player[i].Tag != "Player")
                     //{ crateContact = false; }
 
                     crateContact = true;
-                    player[i].setGrav(false);
                 }
                 else
                 { crateContact = false; }
@@ -126,7 +125,7 @@ namespace ProjectHastings.Entities
             }
             for (int i = 0; i < environment.Count; i++)
             {
-                if (HitBox.Intersects(environment[i].getHitbox()))
+                if (Hitbox.Intersects(environment[i].Hitbox))
                 {
                     gravity = false;
                 }
@@ -147,46 +146,9 @@ namespace ProjectHastings.Entities
         /// Called Every Frame
         /// </summary>
         /// <param name="game"></param>
-        public override void update(GameTime game)
+        public override void Update(GameTime game)
         {
-            HitBox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-
-        #region  get/Sets
-
-
-        public override Vector2 getPos()
-        {
-            return Position;
-        }
-
-        public override Rectangle getHitbox()
-        {
-            return HitBox;
-        }
-        public override bool getGrav()
-        {
-            return gravity;
-        }
-        public override string getTag()
-        {
-            return tag;
-        }
-
-        public override void setYPos(float Ypos)
-        {
-            Position.Y = Ypos;
-        }
-        public override void setXPos(float Xpos)
-        {
-            Position.X = Xpos;
-        }
-        public override void setGrav(bool active)
-        {
-            gravity = active;
-        }
-
-        #endregion
     }
 }

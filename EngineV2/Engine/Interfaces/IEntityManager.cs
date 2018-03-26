@@ -18,6 +18,6 @@ namespace Engine.Interfaces
     /// </summary>
     public interface IEntityManager
     {
-        T CreateEnt<T>(Texture2D text, Vector2 Posn, ICollidable col, IPhysicsObj phys, IBehaviourManager IBehave) where T : IEntity, new();    
+        T CreateEnt<T>(Texture2D text, Vector2 Posn, ICollidable col, IBehaviourManager IBehave) where T : IEntity, new();    
     }
 }

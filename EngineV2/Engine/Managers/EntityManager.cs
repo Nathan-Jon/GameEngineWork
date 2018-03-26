@@ -15,35 +15,18 @@ namespace Engine.Managers
     /// </summary>
     public sealed class EntityManager : IEntityManager
     {
-        public static List<IEntity> Entities = new List<IEntity>();
-        private static IEntityManager instance = null;
-        private static object syncInstance = new object();
+        public static IList<IEntity> Entities;
 
         public EntityManager()
         {
-          
+            Entities = new List<IEntity>();
+
         }
 
-        /// <summary>
-        /// Returns an instance of the IEntityManager interface
-        /// </summary>
-        public static IEntityManager getEntityManager
+        public void ListClear()
         {
-           get
-            {
-                if (instance == null)
-                {
-                    //Ensures only one class can access this if statement at a time
-                    lock (syncInstance)
-                        if (instance == null)
-                            instance = new EntityManager();
-                }
-
-                return instance;
-
-            }
+            Entities.Clear();
         }
-
 
         /// <summary>
         /// Factory for the creation of entities - Passes 
@@ -53,12 +36,15 @@ namespace Engine.Managers
         /// <param name="phys"></param>
         /// <param name="IBehave"></param>
         /// <returns></returns>
-        public T CreateEnt<T>(Texture2D text, Vector2 Posn, ICollidable col, IPhysicsObj phys, IBehaviourManager IBehave) where T : IEntity, new()
+        public T CreateEnt<T>(Texture2D text, Vector2 posn, ICollidable col, IBehaviourManager behave) where T : IEntity, new()
         {
+            //Create a new object of type T
             T Ent = new T();
-            Ent.Initialize(text, Posn, col, phys, IBehave);
+            //Call the Initialise Method of Type T
+            Ent.Initialize(text, posn, col, behave);
+            //Add the object to a list of entities
             Entities.Add(Ent);
-            return Ent;      
+            return Ent;
         }
 
     }

@@ -46,6 +46,7 @@
     <Compile Include="Buttons\ExitButton.cs" />
     <Compile Include="Buttons\StartButton.cs" />
     <Compile Include="Entities\GameEntity.cs" />
+    <Compile Include="Entities\GamePhysicsEntity.cs" />
     <Compile Include="Entities\Interactive\Key.cs" />
     <Compile Include="Entities\Interactive\LeverTarget.cs" />
     <Compile Include="Entities\Interactive\PressurePlate.cs" />
