@@ -3,6 +3,7 @@ using Engine.Physics;
 using Engine.StateMachines;
 using Engine.StateMachines.TestStates;
 using Microsoft.Xna.Framework;
+using ProjectHastings.Animations;
 
 namespace ProjectHastings.Behaviours
 {
@@ -55,6 +56,7 @@ namespace ProjectHastings.Behaviours
 
         public void Update()
         {
+            
             stateMachine.Update();
         }
 

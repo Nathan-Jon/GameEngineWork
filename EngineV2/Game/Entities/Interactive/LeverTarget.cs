@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
 using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Physics;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Engine.Collision_Management;
-using Engine.Physics;
 
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Interactive
 {
     /// <summary>
     /// ojbect which is triggered by lever
@@ -26,6 +29,8 @@ namespace ProjectHastings.Entities
         //LISTS
         private List<IEntity> physicsObjs;
 
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+
         /// <summary>
         /// Initialise the Variables specific to this object
         /// </summary>
@@ -33,7 +38,7 @@ namespace ProjectHastings.Entities
         {
             _Collisions.isEnvironmentCollidable(this);
             //physicsObjs = _PhysicsObj.getPhysicsList();
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            coli.subscribe(onCollision);
 
         }
 

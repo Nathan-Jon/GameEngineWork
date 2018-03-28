@@ -1,11 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Engine.Interfaces;
 using Engine.Managers;
-using Engine.Collision_Management;
-using Engine.Physics;
-using Engine.Input_Managment;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ProjectHastings.Scenes;
 
 namespace ProjectHastings

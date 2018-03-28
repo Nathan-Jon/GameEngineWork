@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
 using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Collision_Management;
-using Engine.Input;
-using Engine.Input_Managment;
 
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Interactive.Ladders
 {
     /// <summary>
     /// Interactive object for the player allowing them to go up and down the y axis
@@ -29,6 +30,9 @@ namespace ProjectHastings.Entities
         private ICollidable colliders;
         private List<IEntity> playerObj;
 
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+
         #endregion
 
         /// <summary>
@@ -36,8 +40,8 @@ namespace ProjectHastings.Entities
         /// </summary>
         public override void UniqueData()
         {
-            InputManager.GetInputInstance.AddListener(OnNewInput);
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            input.AddListener(OnNewInput);
+            coli.subscribe(onCollision);
             _Collisions.isInteractiveCollidable(this);
             CollidableObjs();
         }
@@ -73,10 +77,10 @@ namespace ProjectHastings.Entities
             {
                 if (Hitbox.Intersects(playerObj[i].Hitbox) && playerObj[i].Tag == "Player")
                 {
-                    Player.canClimb = true;
+                    Player.Player.canClimb = true;
                 }
 
-                Player.canClimb = false;
+                Player.Player.canClimb = false;
             }
 
 

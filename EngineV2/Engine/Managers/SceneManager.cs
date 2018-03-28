@@ -3,10 +3,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Engine.Interfaces;
-using Engine.Collision_Management;
-using Engine.BackGround;
-using Engine.Input_Managment;
 using Engine.Render;
+using Engine.Service_Locator;
 
 namespace Engine.Managers
 {
@@ -19,10 +17,12 @@ namespace Engine.Managers
         IRenderable render;
 
         public static bool WinGame = false;
-        public static bool TestLevel = false;
+        public static bool TestLevel = true;
         public static bool mainmenu = false;
         public static bool ExitGame = false;
-        public static bool LoseScreen = true;
+        public static bool LoseScreen = false;
+
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
 
         public SceneManager(Game game) : base(game)
         {
@@ -72,7 +72,7 @@ namespace Engine.Managers
             {
                 
                 Scenes["LoseScreen"].update(gameTime);
-                SoundManager.getSoundInstance.Playsnd("MyHeartWillGoOn", 1.0f);
+                sound.Playsnd("MyHeartWillGoOn", 1.0f);
             }
             base.Update(gameTime);
 

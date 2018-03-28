@@ -1,14 +1,13 @@
-﻿
-using Engine.Input_Managment;
+﻿using Engine.Input_Managment;
 using Engine.Interfaces;
 using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using ProjectHastings.Animations;
-using ProjectHastings.Entities;
+using ProjectHastings.Entities.Player;
 
-
-namespace ProjectHastings.Behaviours
+namespace ProjectHastings.Behaviours.Player_Behaviours
 {
     class PlayerMind : IBehaviour
     {
@@ -18,6 +17,8 @@ namespace ProjectHastings.Behaviours
         private Player player;
         private PlayerAnimation ani;
 
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
+        private IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
 
         private float speed = 2.5f;
 
@@ -30,7 +31,7 @@ namespace ProjectHastings.Behaviours
         {
             body = ent;
             ani = new PlayerAnimation();
-            InputManager.GetInputInstance.AddListener(OnNewInput);
+            input.AddListener(OnNewInput);
         }
 
         public virtual void OnNewInput(object source, EventData data)
@@ -62,7 +63,7 @@ namespace ProjectHastings.Behaviours
                 body.Position += new Vector2(speed);
                 Player.Animate = true;
                 Player.row = 2;
-                SoundManager.getSoundInstance.Playsnd("Ladder", 0.3f);
+                sound.Playsnd("Ladder", 0.3f);
 
             }
             if (Player.canClimb && keyState.IsKeyDown(Keys.S) || Player.canClimb && keyState.IsKeyDown(Keys.Down))
@@ -71,7 +72,7 @@ namespace ProjectHastings.Behaviours
                 body.Position += new Vector2(speed, 0);
                 Player.Animate = true;
                 Player.row = 2;
-                SoundManager.getSoundInstance.Playsnd("Ladder", 0.3f);
+                sound.Playsnd("Ladder", 0.3f);
             }
         }
 

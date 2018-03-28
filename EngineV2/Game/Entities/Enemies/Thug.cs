@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using Engine.Collision_Management;
 using Engine.Interfaces;
 using Engine.Managers;
-using Engine.Collision_Management;
-using Engine.Input;
-using ProjectHastings.Behaviours;
+using Engine.Service_Locator;
+using Microsoft.Xna.Framework;
 using ProjectHastings.Animations;
+using ProjectHastings.Behaviours;
 
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Enemies
 {
     class Thug : GamePhysicsEntity
     {
@@ -22,6 +16,8 @@ namespace ProjectHastings.Entities
         private IEntity collisionObj;
 
         private EnemyMind mind;
+
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
 
         /// <summary>
         /// Initialise the Variables specific to this object
@@ -34,7 +30,7 @@ namespace ProjectHastings.Entities
             mind = new EnemyMind();
             mind.Initialise(this);
             _Collisions.isCollidableEntity(this);
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            coli.subscribe(onCollision);
 
 
         }

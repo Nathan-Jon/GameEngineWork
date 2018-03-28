@@ -4,11 +4,12 @@ using Engine.Collision_Management;
 using Engine.Input_Managment;
 using Engine.Interfaces;
 using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Interactive
 {
     /// <summary>
     /// INteractive object that changes the scene
@@ -33,6 +34,10 @@ namespace ProjectHastings.Entities
         //Lists
         private List<IEntity> interactiveObjs;
 
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
+
         #endregion
 
         /// <summary>
@@ -40,9 +45,9 @@ namespace ProjectHastings.Entities
         /// </summary>
         public override void UniqueData()
         {
-            InputManager.GetInputInstance.AddListener(OnNewInput);
+            input.AddListener(OnNewInput);
 
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            coli.subscribe(onCollision);
 
             //CALL COLLIDABLEOBJS()
             CollidableObjs();
@@ -78,7 +83,7 @@ namespace ProjectHastings.Entities
             //if Plyaer has unlocked the door, change scene and play audio instance
             if (doorContact && keyState.IsKeyDown(Keys.W) && Key.Unlock || doorContact && keyState.IsKeyDown(Keys.Up) && Key.Unlock)
             {
-                SoundManager.getSoundInstance.Playsnd("Exit", 0.5f);
+                sound.Playsnd("Exit", 0.5f);
                 EntityManager.Entities.Clear();
                 BehaviourManager.behaviours.Clear();
                 ButtonList.menuButtons.Clear();
@@ -91,7 +96,7 @@ namespace ProjectHastings.Entities
             }
             if (doorContact == false)
             {
-                SoundManager.getSoundInstance.Stopsnd("Exit");
+                sound.Stopsnd("Exit");
             }
         }
 

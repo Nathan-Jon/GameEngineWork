@@ -1,8 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Engine.Interfaces;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Engine.Interfaces;
-
-
 
 namespace ProjectHastings.Animations
 {
@@ -19,7 +17,7 @@ namespace ProjectHastings.Animations
     {
         #region Variables
         //Create Intergers called _width and _height that will store the height and width of the animation
-        public static int _width, _height;
+        private static int _width, _height;
         //Create Intergers called CurrentFrame and totalFrames that will store.
         private int _currentFrame, _totalFrames;
         //Create an Interger called _timeSinceLatFrame that will store how long it has been since last frame, set it to 0.
@@ -31,7 +29,7 @@ namespace ProjectHastings.Animations
         //Create Intergers called _row, _column that will store which row and column is needed for a specific animation.
         private int _row, _column;
         //Create a variable of type IEntity called entity that will store object of type IEntity.
-        public IEntity entity;
+        private IEntity entity;
         //Create a variable of type Rectangle called sourceRectangle which will store information on what part of the spritesheet to look at for the animation.
         // Create a variable of type Rectangle called destinationRectangle which will store information on where sourceRectangle will be created.
         private Rectangle sourceRectangle, destinationRectangle;

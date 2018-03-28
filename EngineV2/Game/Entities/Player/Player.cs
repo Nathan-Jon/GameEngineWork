@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using ProjectHastings.Behaviours.Player_Behaviours;
+using Engine.Input_Managment;
+using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Managers;
-using Engine.Interfaces;
-using Engine.Collision_Management;
-using Engine.Input_Managment;
 using ProjectHastings.Animations;
 
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Player
 {
     /// <summary>
     /// Class for Player Entity
@@ -49,6 +48,9 @@ namespace ProjectHastings.Entities
 
         private IEntity collision;
 
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
+
         #endregion
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace ProjectHastings.Entities
             // _BehaviourManager.createMind<PlayerMind>(this);
 
             // CollisionManager.GetColliderInstance.subscribe(onCollision);
-            InputManager.GetInputInstance.AddListener(OnNewInput);
+            input.AddListener(OnNewInput);
         }
 
         /// <summary>
@@ -99,8 +101,8 @@ namespace ProjectHastings.Entities
 
             if (keyState.GetPressedKeys().Length == 0)
             {
-                SoundManager.getSoundInstance.Stopsnd("Walk");
-                SoundManager.getSoundInstance.Stopsnd("Ladder");
+                sound.Stopsnd("Walk");
+                sound.Stopsnd("Ladder");
             }
         }
 

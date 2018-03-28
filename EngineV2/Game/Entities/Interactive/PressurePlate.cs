@@ -3,12 +3,12 @@ using Engine.Collision_Management;
 using Engine.Input_Managment;
 using Engine.Interfaces;
 using Engine.Physics;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Interactive
 {
     /// <summary>
     /// Trigger Object
@@ -38,14 +38,17 @@ namespace ProjectHastings.Entities
         private List<IEntity> interactiveObj;
         private IEntity triggerWall;
 
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+
         /// <summary>
         /// Initialise the Variables specific to this object
         /// </summary>
         public override void UniqueData()
         {
-            InputManager.GetInputInstance.AddListener(OnNewInput);
+           input.AddListener(OnNewInput);
 
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            coli.subscribe(onCollision);
             CollidableObjs();
             _Collisions.isInteractiveCollidable(this);
         }

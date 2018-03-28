@@ -3,31 +3,12 @@ using Engine.Managers;
 using Engine.Buttons;
 using Engine.BackGround;
 
-namespace Engine
+namespace Engine.ClearList
 {
-    public sealed class ListWipe : IListWipe
+    public sealed class ListWipe : IListWipe, IProvider
     {
 
         //Variables
-        private static ListWipe instance = null;
-        private static object syncInstance = new object();
-
-        public static IListWipe getListWipe
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncInstance)
-                        if (instance == null)
-                            instance = new ListWipe();
-                }
-
-                return instance;
-
-            }
-
-        }
 
         public void Clear()
         {

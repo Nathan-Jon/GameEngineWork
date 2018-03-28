@@ -2,12 +2,13 @@
 using Engine.Collision_Management;
 using Engine.Input_Managment;
 using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Interactive
 {
     /// <summary>
     /// Lever Used to Trigger the event on an object
@@ -30,6 +31,9 @@ namespace ProjectHastings.Entities
         private List<IEntity> playerObj;
         private List<IEntity> targetObjs;
 
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+
         #endregion
 
         /// <summary>
@@ -38,8 +42,8 @@ namespace ProjectHastings.Entities
         public override void UniqueData()
         {
             //SUBSCRIBERS
-            InputManager.GetInputInstance.AddListener(OnNewInput);
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            input.AddListener(OnNewInput);
+            coli.subscribe(onCollision);
 
             //CALL COLLIDABLEOBJS()
             CollidableObjs();

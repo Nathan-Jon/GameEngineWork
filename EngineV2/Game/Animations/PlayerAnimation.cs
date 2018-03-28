@@ -1,8 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Engine.Interfaces;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Engine.Interfaces;
-
-
 
 namespace ProjectHastings.Animations
 {

@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
 using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Engine.Managers;
-using Engine.Collision_Management;
-using Engine.Input;
-using Engine.Input_Managment;
 
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Interactive
 {
     class Crate : GameEntity
     {
@@ -31,10 +31,14 @@ namespace ProjectHastings.Entities
         private List<IEntity> player;
         private List<IEntity> environment;
 
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
+
         public override void UniqueData()
         {
-            InputManager.GetInputInstance.AddListener(OnNewInput);
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            input.AddListener(OnNewInput);
+            coli.subscribe(onCollision);
             CollidableObjs();
             _Collisions.isInteractiveCollidable(this);
             //  _PhysicsObj.hasPhysics(this);
@@ -56,19 +60,19 @@ namespace ProjectHastings.Entities
                 if (crateContact && keyState.IsKeyDown(Keys.D) || moveObject && keyState.IsKeyDown(Keys.Right))
                 {
                     Position += new Vector2(3, 0);
-                    SoundManager.getSoundInstance.Playsnd("Crate", 0.2f);
+                    sound.Playsnd("Crate", 0.2f);
                 }
                 if (crateContact && keyState.IsKeyDown(Keys.A) || moveObject && keyState.IsKeyDown(Keys.Left))
                 {
                     Position += new Vector2(-3, 0);
-                    SoundManager.getSoundInstance.Playsnd("Crate", 0.2f);
+                    sound.Playsnd("Crate", 0.2f);
                 }
 
             }
 
             if (crateContact == false)
             {
-                SoundManager.getSoundInstance.Stopsnd("Crate");
+                sound.Stopsnd("Crate");
             }
         }
 

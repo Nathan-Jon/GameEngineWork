@@ -8,37 +8,14 @@ using Engine.Interfaces;
 
 namespace Engine.Collision_Management
 {
-    public sealed class CollisionManager : ICollisionManager
+    public class CollisionManager : ICollisionManager, IProvider
     {
         public event EventHandler<CollisionEventData> NewCollision;
         public IEntity collisionObj;
 
-        private static CollisionManager instance = null;
-        private static object syncInstance = new object();
-
-
         //SETING UP SINGLETON
-        private CollisionManager()
+        public CollisionManager()
         { }
-
-        public static ICollisionManager GetColliderInstance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncInstance)
-                    {
-                        if (instance == null)
-                            instance = new CollisionManager();
-                    }
-                }
-                return instance;
-            }
-        }
-
-
-
 
         //Raise the event
         public void onCollision(object source, IEntity collidedObject)

@@ -8,8 +8,8 @@
     <ProjectGuid>{9A4C81AA-B44B-41C7-8239-043009B0F896}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EngineV2</RootNamespace>
-    <AssemblyName>EngineV2</AssemblyName>
+    <RootNamespace>ProjectHastings</RootNamespace>
+    <AssemblyName>ProjectHastings</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>WindowsGL</MonoGamePlatform>
     <MonoGameContentBuilderExe>

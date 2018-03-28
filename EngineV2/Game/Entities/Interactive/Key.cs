@@ -3,12 +3,12 @@ using Engine.Collision_Management;
 using Engine.Input_Managment;
 using Engine.Interfaces;
 using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Interactive
 {
     /// <summary>
     /// Interactive object used to Unlock Doors
@@ -36,12 +36,16 @@ namespace ProjectHastings.Entities
         //Lists
         private List<IEntity> interactiveObjs;
 
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
+
         #endregion
 
         public override void UniqueData()
         {
-            InputManager.GetInputInstance.AddListener(OnNewInput);
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            input.AddListener(OnNewInput);
+            coli.subscribe(onCollision);
             //_PhysicsObj.hasPhysics(this);
             _Collisions.isEnvironmentCollidable(this);
             CollidableObjs();
@@ -75,13 +79,13 @@ namespace ProjectHastings.Entities
             keyState = data.newKey;
             if (keyContact)
             {
-                SoundManager.getSoundInstance.Playsnd("Key", 0.5f);
+                sound.Playsnd("Key", 0.5f);
                 Unlock = true;
 
             }
             if (keyContact == false)
             {
-                SoundManager.getSoundInstance.Stopsnd("Key");
+                sound.Stopsnd("Key");
             }
         }
 

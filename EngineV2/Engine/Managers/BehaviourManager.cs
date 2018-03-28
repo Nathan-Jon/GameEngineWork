@@ -9,31 +9,13 @@ using Engine.Interfaces;
 
 namespace Engine.Managers
 {
-    public sealed class BehaviourManager: IBehaviourManager
+    public sealed class BehaviourManager: IBehaviourManager, IProvider
     {
-
-        private static IBehaviourManager instance = null;
-        private static object syncnstance = new object();
 
         public BehaviourManager()
         {
 
         }
-
-        public static IBehaviourManager getBehaviourManager
-        {
-            get
-            {
-                if(instance == null)
-                {
-                    lock (syncnstance)
-                        if (instance == null)
-                            instance = new BehaviourManager();
-                }
-                return instance;
-            }
-        }
-
 
         public static List<IBehaviour> behaviours = new List<IBehaviour>();
 

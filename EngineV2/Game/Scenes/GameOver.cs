@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Engine.BackGround;
+using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Audio;
 using ProjectHastings.Buttons;
-using Engine.BackGround;
-using Engine.Managers;
-using Engine.Interfaces;
 
 namespace ProjectHastings.Scenes
 {
@@ -22,6 +19,7 @@ namespace ProjectHastings.Scenes
         MouseState mouseinput;
         Point mousePosition;
 
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
 
         public GameOver()
         {
@@ -33,8 +31,8 @@ namespace ProjectHastings.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            SoundManager.getSoundInstance.Initialize("MyHeartWillGoOn" ,Content.Load<SoundEffect>("MyHeartWillGoOn"));
-            SoundManager.getSoundInstance.CreateInstance();
+            sound.Initialize("MyHeartWillGoOn" ,Content.Load<SoundEffect>("MyHeartWillGoOn"));
+            sound.CreateInstance();
 
 
             back.Initialize("LoseGameBackground" ,Content.Load<Texture2D>("LoseGameBackground"));

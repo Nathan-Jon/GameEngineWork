@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Engine.BackGround;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
 using ProjectHastings.Buttons;
-using Engine.BackGround;
-using Engine.Managers;
-using Engine.Interfaces;
 
 namespace ProjectHastings.Scenes
 {

@@ -55,8 +55,6 @@
     <Compile Include="Entity Management\Entity.cs" />
     <Compile Include="Input Managment\EventData.cs" />
     <Compile Include="Input Managment\InputManager.cs" />
-    <Compile Include="Input Managment\InputPublisher.cs" />
-    <Compile Include="Input Managment\InputSubscriber.cs" />
     <Compile Include="Interfaces\IAnimations.cs" />
     <Compile Include="Interfaces\IBehaviour.cs" />
     <Compile Include="Interfaces\IBehaviourManager.cs" />
@@ -65,10 +63,12 @@
     <Compile Include="Interfaces\ICollisionManager.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IEntityManager.cs" />
+    <Compile Include="Interfaces\IInputManager.cs" />
     <Compile Include="Interfaces\IListWipe.cs" />
     <Compile Include="Interfaces\IMoveBehaviour.cs" />
     <Compile Include="Interfaces\IPhysicsMgr.cs" />
     <Compile Include="Interfaces\IPhysicsObj.cs" />
+    <Compile Include="Interfaces\IProvider.cs" />
     <Compile Include="Interfaces\IRenderable.cs" />
     <Compile Include="Interfaces\IScene.cs" />
     <Compile Include="Interfaces\ISceneManager.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Physics\IPhysics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Render\Renderable.cs" />
+    <Compile Include="Service Locator\Locator.cs" />
     <Compile Include="StateMachines\IState.cs" />
     <Compile Include="StateMachines\IStateMachine.cs" />
     <Compile Include="StateMachines\StateMachine.cs" />

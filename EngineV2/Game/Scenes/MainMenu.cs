@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Engine.BackGround;
+using Engine.Buttons;
+using Engine.Interfaces;
+using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Engine.Buttons;
 using ProjectHastings.Buttons;
-using Engine.BackGround;
-using Engine.Managers;
-using Engine.Interfaces;
-using Microsoft.Xna.Framework.Audio;
 
 namespace ProjectHastings.Scenes
 {
@@ -23,6 +21,8 @@ namespace ProjectHastings.Scenes
         ButtonList buttonlist;
         MouseState mouseinput;
         Point mousePosition;
+
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
 
         public MainMenu()
         {
@@ -37,8 +37,8 @@ namespace ProjectHastings.Scenes
 
         public void LoadContent(ContentManager Content)
         {
-            SoundManager.getSoundInstance.Initialize("MainMenuMusic" ,Content.Load<SoundEffect>("MainMenuMusic"));
-            SoundManager.getSoundInstance.CreateInstance();
+            sound.Initialize("MainMenuMusic" ,Content.Load<SoundEffect>("MainMenuMusic"));
+            sound.CreateInstance();
 
 
             back.Initialize("Menu" ,Content.Load<Texture2D>("MainMenuBackground"));

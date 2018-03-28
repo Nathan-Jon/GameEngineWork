@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Engine.Collision_Management;
 using Engine.Interfaces;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Engine.Collision_Management;
 
-namespace ProjectHastings.Entities
+namespace ProjectHastings.Entities.Environment
 {
     /// <summary>
     /// Environment object for the player
@@ -21,12 +22,14 @@ namespace ProjectHastings.Entities
         //LISTS
         private List<IEntity> physicsObjs;
 
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+
         /// <summary>
         /// Initialise the Variables specific to this object
         /// </summary>
         public override void UniqueData()
         {
-            CollisionManager.GetColliderInstance.subscribe(onCollision);
+            coli.subscribe(onCollision);
             //  physicsObjs = _PhysicsObj.getPhysicsList();
             _Collisions.isEnvironmentCollidable(this);
         }

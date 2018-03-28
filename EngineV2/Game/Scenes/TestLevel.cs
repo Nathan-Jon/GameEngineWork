@@ -1,17 +1,20 @@
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Audio;
+using Engine.BackGround;
+using Engine.Collision_Management;
+using Engine.Input_Managment;
 using Engine.Interfaces;
 using Engine.Managers;
-using ProjectHastings.Entities;
-using Engine.Collision_Management;
 using Engine.Physics;
-using Engine.BackGround;
-using Engine.Input_Managment;
-using ProjectHastings.Entities;
-
+using Engine.Service_Locator;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using ProjectHastings.Entities.Enemies;
+using ProjectHastings.Entities.Environment;
+using ProjectHastings.Entities.Interactive;
+using ProjectHastings.Entities.Interactive.Ladders;
+using ProjectHastings.Entities.Player;
 
 namespace ProjectHastings.Scenes
 {
@@ -26,8 +29,12 @@ namespace ProjectHastings.Scenes
         IBackGrounds back;
         ICollidable collider;
         ISceneManager scn;
-        IBehaviourManager behaviours;
         PhysicsManager physicsMgr;
+
+        IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
+        ICollisionManager coli = Locator.Instance.getProvider<CollisionManager>() as ICollisionManager;
+        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
+        IBehaviourManager behaviours = Locator.Instance.getProvider<BehaviourManager>() as IBehaviourManager;
 
         public TestLevel()
         {
@@ -40,7 +47,6 @@ namespace ProjectHastings.Scenes
 
             scn = new SceneManager(Kernel.instance);
 
-            behaviours = BehaviourManager.getBehaviourManager;
             collider = new CollidableClass();
 
             #endregion
@@ -52,13 +58,13 @@ namespace ProjectHastings.Scenes
         public void LoadContent(ContentManager Content)
         {
             //Sounds
-            SoundManager.getSoundInstance.Initialize("Level1BackgroundMusic", Content.Load<SoundEffect>("Level1BackgroundMusic"));
-            SoundManager.getSoundInstance.Initialize("Walk", Content.Load<SoundEffect>("Footsteps"));
-            SoundManager.getSoundInstance.Initialize("Crate", Content.Load<SoundEffect>("CratePushSFX"));
-            SoundManager.getSoundInstance.Initialize("Exit", Content.Load<SoundEffect>("ExitLevelSFX"));
-            SoundManager.getSoundInstance.Initialize("Key", Content.Load<SoundEffect>("KeyPickupSFX"));
-            SoundManager.getSoundInstance.Initialize("Ladder", Content.Load<SoundEffect>("LadderClimbSFX"));
-            SoundManager.getSoundInstance.CreateInstance();
+            sound.Initialize("Level1BackgroundMusic", Content.Load<SoundEffect>("Level1BackgroundMusic"));
+            sound.Initialize("Walk", Content.Load<SoundEffect>("Footsteps"));
+            sound.Initialize("Crate", Content.Load<SoundEffect>("CratePushSFX"));
+            sound.Initialize("Exit", Content.Load<SoundEffect>("ExitLevelSFX"));
+            sound.Initialize("Key", Content.Load<SoundEffect>("KeyPickupSFX"));
+            sound.Initialize("Ladder", Content.Load<SoundEffect>("LadderClimbSFX"));
+            sound.CreateInstance();
 
             //BackGround
             back.Initialize("Background", Content.Load<Texture2D>("BackgroundTex1"));
@@ -118,8 +124,8 @@ namespace ProjectHastings.Scenes
 
             if (SceneManager.TestLevel)
             {
-                InputManager.GetInputInstance.update();
-                CollisionManager.GetColliderInstance.update();
+                input.update();
+                coli.update();
 
 
                 foreach (var entity in Scenegraph)

@@ -2,8 +2,6 @@
 using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Engine.Entity_Management;
-using Engine.Physics;
 
 namespace ProjectHastings.Entities
 {
