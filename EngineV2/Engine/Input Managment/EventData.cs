@@ -4,14 +4,24 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Engine.Input_Managment
 {
-    public class EventData : EventArgs
+    public class KeyEventData : EventArgs
     {
-        public KeyboardState newKey;
+        public KeyboardState _newKey;
         
 
-        public EventData(KeyboardState state)
+        public KeyEventData(KeyboardState state)
         {
-            newKey = state;
+            _newKey = state;
+        }
+    }
+
+    public class MouseEventData : EventArgs
+    {
+        public MouseState _newMouse;
+
+        public MouseEventData(MouseState state)
+        {
+            _newMouse = state;
         }
     }
 }

@@ -8,36 +8,58 @@ namespace Engine.Input_Managment
     public class InputManager : IInputManager, IProvider
     {
 
-    public event EventHandler<EventData> NewInput;
+    public event EventHandler<KeyEventData> NewKeyInput;
+    public event EventHandler<MouseEventData> NewMouseInput;
     public KeyboardState NewKey;
+    public MouseState NewMouse;
 
-    //PRIVATE INSTANTIATER
+    //Public INSTANTIATER
     public InputManager()
     {
 
     }
 
     //Raise the event
-    public void OnNewInput(object source, KeyboardState data)
+    public void OnNewKeyInput(object source, KeyboardState data)
     {
-        EventData args = new EventData(data);
-        NewInput(this, args);
-        NewKey = args.newKey;
+        KeyEventData args = new KeyEventData(data);
+            NewKeyInput(this, args);
+            NewKey = args._newKey;
     }
 
-    public void AddListener(EventHandler<EventData> handler)
+    public void AddKeyListener(EventHandler<KeyEventData> handler)
     {
         //Add Event Handlers
-        NewInput += handler;
+        NewKeyInput += handler;
     }
 
-    public void update()
+    public void OnNewMouseInput(object source, MouseState data)
+    {
+        MouseEventData args = new MouseEventData(data);
+        NewMouseInput(this, args);
+        NewMouse = args._newMouse;
+    }
+
+        public void AddMouseListener(EventHandler<MouseEventData> handler)
+        {
+            NewMouseInput += handler;
+        }
+
+    
+
+    public void Update()
     {
         NewKey = Keyboard.GetState();
+        NewMouse = Mouse.GetState();
 
-        if (NewInput != null)
+        if (NewKeyInput != null)
         {
-            OnNewInput(this, NewKey);
+            OnNewKeyInput(this, NewKey);
+        }
+
+        if (NewMouseInput != null)
+        {
+            OnNewMouseInput(this, NewMouse);
         }
     }
 

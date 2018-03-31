@@ -20,7 +20,7 @@ namespace ProjectHastings.Buttons
         //Create a variable of type Texture2D and call it Texture
         public Texture2D Texture;
         //Create a variable of type Vector2 and call it Position
-        public static Vector2 Position;
+        public Vector2 Position;
         //Create a variable of type Rectangle and call it Hitbox, make it a get/set. 
         public Rectangle HitBox { get; set; }
         
@@ -62,8 +62,7 @@ namespace ProjectHastings.Buttons
         /// </summary>
         public void click()
         {
-            SceneManager.mainmenu = false;
-            SceneManager.TestLevel = true;
+
         }
         #endregion
 

@@ -16,7 +16,7 @@ namespace Engine.ClearList
             BehaviourManager.behaviours.Clear();
             //SoundManager.InstanceList.Clear();
             //SoundManager.SoundEffects.Clear();
-            ButtonList.menuButtons.Clear();
+            ButtonList.Buttons.Clear();
             BackGrounds.Backgrounds.Clear();
 
 

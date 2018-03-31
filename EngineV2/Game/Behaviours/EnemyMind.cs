@@ -13,7 +13,6 @@ namespace ProjectHastings.Behaviours
         private IPhysics body;
         private IStateMachine<IPhysics> stateMachine;
 
-        public static float speed = 4;
 
         public EnemyMind()
         {

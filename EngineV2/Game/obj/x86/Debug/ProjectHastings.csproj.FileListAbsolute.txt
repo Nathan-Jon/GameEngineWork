@@ -43,7 +43,6 @@ C:\Users\act1w\OneDrive\Desktop\EngineV2\Game\obj\x86\Debug\EngineV2.pdb
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\Game\obj\x86\Debug\EngineV2.exe
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\Game\obj\x86\Debug\EngineV2.pdb
 C:\Users\Nathan\Documents\GitHub\GameEngineWork\EngineV2\Game\obj\x86\Debug\ProjectHastings.csprojResolveAssemblyReference.cache
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\obj\x86\Debug\ProjectHastings.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\Content\MyHeartWillGoOn.wav
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\Content\BackgroundTex1.png
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\Content\Chasting.png
@@ -82,6 +81,7 @@ C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\Engine.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\MonoGame.Framework.dll
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\OpenTK.dll
-C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\Engine.pdb
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\obj\x86\Debug\ProjectHastings.exe
 C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\obj\x86\Debug\ProjectHastings.pdb
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\bin\WindowsGL\Debug\Engine.pdb
+C:\Users\User\Documents\GitHub\GameEngineWork\EngineV2\Game\obj\x86\Debug\ProjectHastings.csprojResolveAssemblyReference.cache

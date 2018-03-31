@@ -31,12 +31,12 @@ namespace ProjectHastings.Behaviours.Player_Behaviours
         {
             body = ent;
             ani = new PlayerAnimation();
-            input.AddListener(OnNewInput);
+            input.AddKeyListener(OnNewKeyInput);
         }
 
-        public virtual void OnNewInput(object source, EventData data)
+        public virtual void OnNewKeyInput(object source, KeyEventData data)
         {
-            keyState = data.newKey;
+            keyState = data._newKey;
 
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
             {

@@ -51,8 +51,7 @@ namespace Engine.BackGround
         /// </summary>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Backgrounds[BackGround], Size, Color.AntiqueWhite);
-
+            spriteBatch.Draw(Backgrounds[BackGround], Size, Color.AntiqueWhite);   
         }
         #endregion
     }

@@ -15,7 +15,7 @@ namespace Engine.Buttons
     {
         #region Variables
 
-        public static List<IButton> menuButtons= new List<IButton>();
+        public static List<IButton> Buttons = new List<IButton>();
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace Engine.Buttons
 
         public void Initalize(IButton but)
         {
-            menuButtons.Add(but);
+            Buttons.Add(but);
         }
 
         #endregion

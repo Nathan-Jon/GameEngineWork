@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Engine.Input_Managment;
 using Engine.Interfaces;
 using Engine.Managers;
+using Engine.Service_Locator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProjectHastings.Scenes;
@@ -21,7 +23,6 @@ namespace ProjectHastings
         ICollidable collider;
         IPhysicsObj physicsObj;
 
-        IDictionary<string, IScene> Scenes = new Dictionary<string, IScene>();
         IScene TestScene;
         IScene mainmenu;
         IScene Wingame;
@@ -33,8 +34,6 @@ namespace ProjectHastings
         //Screen Size
         int screenWidth = 900;
         int screenHeight = 600;
-
-        
 
         #endregion
 
@@ -59,15 +58,11 @@ namespace ProjectHastings
         {
             // TODO: Add your initialization logic here
             mainmenu = new MainMenu();
-            Scenes.Add("Mainmenu", mainmenu);
             TestScene = new TestLevel();
-            Scenes.Add("TestLevel", TestScene);
             Wingame = new WinGame();
-            Scenes.Add("Wingame", Wingame);
             LoseScreen = new GameOver();
-            Scenes.Add("LoseScreen", LoseScreen);
-            scn = new SceneManager(this, Scenes);
-            SceneManager.mainmenu = true;
+            scn = new SceneManager(this);
+
 
             Components.Add((GameComponent)scn);
 
@@ -85,6 +80,11 @@ namespace ProjectHastings
             TestScene.LoadContent(Content);
             Wingame.LoadContent(Content);
             LoseScreen.LoadContent(Content);
+
+            scn.AddScene("Mainmenu", mainmenu);
+            scn.AddScene("TestLevel", TestScene);
+            scn.AddScene("WinGame", Wingame);
+            scn.AddScene("LoseScreen", LoseScreen);
 
         }
 

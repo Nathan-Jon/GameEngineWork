@@ -46,21 +46,10 @@ namespace ProjectHastings.Entities.Interactive
         /// </summary>
         public override void UniqueData()
         {
-           input.AddListener(OnNewInput);
 
             coli.subscribe(onCollision);
             CollidableObjs();
             _Collisions.isInteractiveCollidable(this);
-        }
-
-        /// <summary>
-        /// Trigger Input Event
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="data"></param>
-        public virtual void OnNewInput(object source, EventData data)
-        {
-            keyState = data.newKey;
         }
 
         /// <summary>

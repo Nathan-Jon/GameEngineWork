@@ -7,9 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Engine.Interfaces
 {
-    interface IRenderable
+    public interface IRenderable
     {
-        void Initalise(IDictionary<string, IScene> scene, SpriteBatch sprite);
-        void Draw();
+        void Draw(IScene scene, SpriteBatch sprite);
     }
 }

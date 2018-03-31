@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using OpenTK.Graphics.OpenGL;
 using ProjectHastings.Buttons;
 
 namespace ProjectHastings.Scenes
@@ -45,6 +46,8 @@ namespace ProjectHastings.Scenes
             ExitBut.update();
             mouseinput = Mouse.GetState();
             mousePosition = new Point(mouseinput.X, mouseinput.Y);
+
+            sound.Playsnd("MyHeartWillGoOn", 1.0f);
 
             if (ExitBut.HitBox.Contains(mousePosition) && mouseinput.LeftButton == ButtonState.Pressed)
             {

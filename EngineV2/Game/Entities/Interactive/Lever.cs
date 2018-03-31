@@ -42,7 +42,7 @@ namespace ProjectHastings.Entities.Interactive
         public override void UniqueData()
         {
             //SUBSCRIBERS
-            input.AddListener(OnNewInput);
+            input.AddKeyListener(OnNewKeyInput);
             coli.subscribe(onCollision);
 
             //CALL COLLIDABLEOBJS()
@@ -54,9 +54,9 @@ namespace ProjectHastings.Entities.Interactive
         /// </summary>
         /// <param name="source"></param>
         /// <param name="data"></param>
-        public virtual void OnNewInput(object source, EventData data)
+        public virtual void OnNewKeyInput(object source, KeyEventData data)
         {
-            keyState = data.newKey;
+            keyState = data._newKey;
             if (canTrigger && keyState.IsKeyDown(Keys.H) || canTrigger && keyState.IsKeyDown(Keys.E))
             {
                 for (int i = 0; i < targetObjs.Count; i++)

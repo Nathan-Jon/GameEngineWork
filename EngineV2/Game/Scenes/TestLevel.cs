@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Engine.BackGround;
 using Engine.Collision_Management;
@@ -28,7 +29,6 @@ namespace ProjectHastings.Scenes
         IEntityManager entManager;
         IBackGrounds back;
         ICollidable collider;
-        ISceneManager scn;
         PhysicsManager physicsMgr;
 
         IInputManager input = Locator.Instance.getProvider<InputManager>() as IInputManager;
@@ -45,7 +45,6 @@ namespace ProjectHastings.Scenes
 
             physicsMgr = new PhysicsManager();
 
-            scn = new SceneManager(Kernel.instance);
 
             collider = new CollidableClass();
 
@@ -119,12 +118,15 @@ namespace ProjectHastings.Scenes
             }
         }
 
+        public void UnloadContent()
+        {
+
+        }
+
         public void update(GameTime gameTime)
         {
 
-            if (SceneManager.TestLevel)
-            {
-                input.update();
+                input.Update();
                 coli.update();
 
 
@@ -142,7 +144,7 @@ namespace ProjectHastings.Scenes
                 {
                     physics.UpdatePhysics();
                 }
-            }
+            
         }
 
 

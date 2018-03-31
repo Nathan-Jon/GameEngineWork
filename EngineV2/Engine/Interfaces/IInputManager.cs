@@ -10,8 +10,12 @@ namespace Engine.Interfaces
 {
     public interface IInputManager
     {
-        void OnNewInput(object source, KeyboardState data);
-        void AddListener(EventHandler<EventData> handler);
-        void update();
+        void OnNewKeyInput(object source, KeyboardState data);
+        void OnNewMouseInput(object source, MouseState data);
+
+        void AddKeyListener(EventHandler<KeyEventData> handler);
+        void AddMouseListener(EventHandler<MouseEventData> handler);
+
+        void Update();
     }
 }

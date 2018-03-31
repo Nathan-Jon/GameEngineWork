@@ -19,7 +19,6 @@ namespace ProjectHastings.Entities.Interactive
     class Key : GameEntity
     {
         #region Instance Variables
-        public bool keyContact = false;
         public static bool Unlock = false;
         public bool gravity = true;
 
@@ -44,7 +43,6 @@ namespace ProjectHastings.Entities.Interactive
 
         public override void UniqueData()
         {
-            input.AddListener(OnNewInput);
             coli.subscribe(onCollision);
             //_PhysicsObj.hasPhysics(this);
             _Collisions.isEnvironmentCollidable(this);
@@ -70,26 +68,6 @@ namespace ProjectHastings.Entities.Interactive
         }
 
         /// <summary>
-        /// Trigger Input Event
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="data"></param>
-        public virtual void OnNewInput(object source, EventData data)
-        {
-            keyState = data.newKey;
-            if (keyContact)
-            {
-                sound.Playsnd("Key", 0.5f);
-                Unlock = true;
-
-            }
-            if (keyContact == false)
-            {
-                sound.Stopsnd("Key");
-            }
-        }
-
-        /// <summary>
         /// Get the list of interactive objects
         /// </summary>
         public override void CollidableObjs()
@@ -112,12 +90,13 @@ namespace ProjectHastings.Entities.Interactive
                 //checks to see if player is in contact with the door 
                 if (Hitbox.Intersects((interactiveObjs[0].Hitbox)))
                 {
-                    keyContact = true;
+                    sound.Playsnd("Key", 0.5f);
+                    Unlock = true;
                     EntityManager.Entities.Remove(this);
                 }
                 else
                 {
-                    keyContact = false;
+                    sound.Stopsnd("Key");
                 }
             }
         }

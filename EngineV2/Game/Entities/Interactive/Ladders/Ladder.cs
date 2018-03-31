@@ -40,20 +40,9 @@ namespace ProjectHastings.Entities.Interactive.Ladders
         /// </summary>
         public override void UniqueData()
         {
-            input.AddListener(OnNewInput);
             coli.subscribe(onCollision);
             _Collisions.isInteractiveCollidable(this);
             CollidableObjs();
-        }
-
-        /// <summary>
-        /// Initialise Keyboard Event Handler
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="data"></param>
-        public virtual void OnNewInput(object source, EventData data)
-        {
-            keyState = data.newKey;
         }
 
         /// <summary>

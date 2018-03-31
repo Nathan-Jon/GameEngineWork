@@ -46,7 +46,7 @@ namespace ProjectHastings.Scenes
             StartBut.Initialize(Content.Load<Texture2D>("Start Button"), new Vector2(25, 400));
             ExitBut.Initialize(Content.Load<Texture2D>("Exit Button"), new Vector2(25, 500));
 
-            Buttons = ButtonList.menuButtons;
+            Buttons = ButtonList.Buttons;
             buttonlist.Initalize(StartBut);
             buttonlist.Initalize(ExitBut);
 
@@ -56,8 +56,6 @@ namespace ProjectHastings.Scenes
         {
             
 
-            if (SceneManager.mainmenu == true)
-            {
                 for (int i = 0; i < Buttons.Count; i++)
                 {
                     Buttons[i].update();
@@ -76,7 +74,7 @@ namespace ProjectHastings.Scenes
                 }
 
 
-            }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)

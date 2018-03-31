@@ -45,7 +45,7 @@ namespace ProjectHastings.Entities.Interactive
         /// </summary>
         public override void UniqueData()
         {
-            input.AddListener(OnNewInput);
+            input.AddKeyListener(OnNewKeyInput);
 
             coli.subscribe(onCollision);
 
@@ -76,9 +76,9 @@ namespace ProjectHastings.Entities.Interactive
         /// </summary>
         /// <param name="source"></param>
         /// <param name="data"></param>
-        public virtual void OnNewInput(object source, EventData data)
+        public virtual void OnNewKeyInput(object source, KeyEventData data)
         {
-            keyState = data.newKey;
+            keyState = data._newKey;
 
             //if Plyaer has unlocked the door, change scene and play audio instance
             if (doorContact && keyState.IsKeyDown(Keys.W) && Key.Unlock || doorContact && keyState.IsKeyDown(Keys.Up) && Key.Unlock)
@@ -86,9 +86,7 @@ namespace ProjectHastings.Entities.Interactive
                 sound.Playsnd("Exit", 0.5f);
                 EntityManager.Entities.Clear();
                 BehaviourManager.behaviours.Clear();
-                ButtonList.menuButtons.Clear();
-                SceneManager.TestLevel = false;
-                SceneManager.WinGame = true;
+                ButtonList.Buttons.Clear();
 
 
                 //doorContact = false;

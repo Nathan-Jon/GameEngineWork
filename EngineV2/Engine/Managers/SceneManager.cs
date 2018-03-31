@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,72 +13,63 @@ namespace Engine.Managers
     public class SceneManager : DrawableGameComponent, ISceneManager
     {
 
-
-        IDictionary<string, IScene> Scenes = new Dictionary<string, IScene>();
-        SpriteBatch spriteBatch;
-        IRenderable render;
-
-        public static bool WinGame = false;
-        public static bool TestLevel = true;
-        public static bool mainmenu = false;
-        public static bool ExitGame = false;
-        public static bool LoseScreen = false;
-
-        ISoundManager sound = Locator.Instance.getProvider<SoundManager>() as ISoundManager;
+        public IDictionary<string, IScene> CurrentScene;
+        public IDictionary<string, IScene> AllScenes;
+        private IRenderable render;
+        private SpriteBatch sprt;
 
         public SceneManager(Game game) : base(game)
         {
-
-        }
-
-        public SceneManager(Game game, IDictionary<string, IScene> scenes)
-            : base(game)
-        {
             render = new Renderable();
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            Scenes = scenes;
-            render.Initalise(Scenes, spriteBatch);
+            CurrentScene = new Dictionary<string, IScene>();
+            AllScenes = new Dictionary<string, IScene>();
+            sprt = new SpriteBatch(GraphicsDevice);
         }
 
+        public void AddScene(string name, IScene scenes)
+        {
+            if (CurrentScene.Count == 0 && AllScenes.Count == 0)  
+            {
+               CurrentScene.Add(name, scenes);
+            }
+            else
+            {
+                AllScenes.Add(name, scenes);
+            }
+        }
 
+        public void ChangeScene (string name)
+        {
+            if (!CurrentScene.ContainsKey(name))
+            {
+                CurrentScene[name] = AllScenes[name];
+                AllScenes.Remove(name);
+            }
+        }
+
+        public void RemoveScene(string name)
+        {
+            CurrentScene.Remove(name);
+        }
         public override void Update(GameTime gameTime) 
         {
             if(Keyboard.GetState().IsKeyDown(Keys.Escape))
             Game.Exit();
 
-            render.Draw();
+            
 
-            if (ExitGame == true)
+            IList<IScene> scene = CurrentScene.Values.ToList();
+            foreach (IScene screen in scene)
             {
-                Game.Exit();
-            }
-
-            if (mainmenu == true)
-            {
-                Scenes["Mainmenu"].update(gameTime);
-                
+                screen.update(gameTime);
+                render.Draw(screen, sprt);
             }
 
-            if (TestLevel == true)
-            {
-                Scenes["TestLevel"].update(gameTime);
-                
-            }
-
-            if (WinGame == true)
-            {
-                
-                Scenes["Wingame"].update(gameTime);
-            }
-            if (LoseScreen == true)
-            {
-                
-                Scenes["LoseScreen"].update(gameTime);
-                sound.Playsnd("MyHeartWillGoOn", 1.0f);
-            }
             base.Update(gameTime);
 
         }
+
+
 
     }
 }

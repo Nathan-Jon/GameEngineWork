@@ -66,7 +66,7 @@ namespace ProjectHastings.Entities.Player
             // _BehaviourManager.createMind<PlayerMind>(this);
 
             // CollisionManager.GetColliderInstance.subscribe(onCollision);
-            input.AddListener(OnNewInput);
+            input.AddKeyListener(OnNewKeyInput);
         }
 
         /// <summary>
@@ -74,9 +74,9 @@ namespace ProjectHastings.Entities.Player
         /// </summary>
         /// <param name="source"></param>
         /// <param name="data"></param>
-        public virtual void OnNewInput(object source, EventData data)
+        public virtual void OnNewKeyInput(object source, KeyEventData data)
         {
-            keyState = data.newKey;
+            keyState = data._newKey;
 
 
             #region SPACEBAR

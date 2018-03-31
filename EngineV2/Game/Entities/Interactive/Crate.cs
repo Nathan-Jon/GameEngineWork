@@ -37,7 +37,7 @@ namespace ProjectHastings.Entities.Interactive
 
         public override void UniqueData()
         {
-            input.AddListener(OnNewInput);
+            input.AddKeyListener(OnNewKeyInput);
             coli.subscribe(onCollision);
             CollidableObjs();
             _Collisions.isInteractiveCollidable(this);
@@ -49,9 +49,9 @@ namespace ProjectHastings.Entities.Interactive
         /// </summary>
         /// <param name="source"></param>
         /// <param name="data"></param>
-        public virtual void OnNewInput(object source, EventData data)
+        public virtual void OnNewKeyInput(object source, KeyEventData data)
         {
-            keyState = data.newKey;
+            keyState = data._newKey;
             if (crateContact && keyState.IsKeyDown(Keys.H) || crateContact && keyState.IsKeyDown(Keys.E))
             {
 
