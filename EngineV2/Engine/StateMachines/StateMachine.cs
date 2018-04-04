@@ -13,15 +13,15 @@ namespace Engine.StateMachines
         #region Variables
 
         //Dictionary to hold the different State classes
-        private IDictionary<string, IState<T>> States;
+        private readonly IDictionary<string, IState<T>> States;
         //Dictionary to hold the different Transition types
-        private IDictionary<string, ITransitionHandler> Transitions;
+        private readonly IDictionary<string, ITransitionHandler> Transitions;
 
         //Generic Type ActiveState
         private string ActiveState;
 
         //To Store the entity which this state machine belongs to
-        private T Holder;
+        private readonly T Holder;
 
         //private IAnimation AnimationClass
 

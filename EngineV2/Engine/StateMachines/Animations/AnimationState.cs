@@ -1,19 +1,114 @@
-﻿using Engine.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using Engine.Animations;
+using Engine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ProjectHastings.Animations
+namespace Engine.StateMachines.Animations
 {
-    /// <summary>
-    /// Class for the Player Animation
-    /// 
-    /// Author: Carl Chalmers
-    /// Date of change: 04/03/18
-    /// Version 0.5
-    /// 
-    /// </summary>
-    class PlayerAnimation : IAnimations
+    public class AnimationState : IAnimationState
     {
+        //Int of Current Frame in Animation
+        public int CurrentFrame { get; private set; }
+        //In for the FrameRate of the Animation
+        public float FrameRate { get; private set; }
+        //float for the Speed of the Animation - <0 plays backwards >0 plays forwards
+        public float AnimationSpeed { get; private set; }
+        //Animation Variables
+        public Texture2D SpriteSheet { get; private set; }
+        public int TargetRow { get; private set; }
+        public int TargetColumn { get; private set; }
+
+        /// <summary>
+        /// Initialise a SpriteSheet Animation state
+        /// </summary>
+        /// <param name="fps"></param>
+        public AnimationState(Texture2D animation, int fps, int targetRow, int targetColumn)
+        {
+            //Perform a null check on the animation
+            if (animation != null)
+                //Set the SpriteSheet variable to animation
+                SpriteSheet = animation;
+            else { throw new Exception("SpritesheetAnimation is Null"); }
+
+            //Initialise Rows and ColumnsVariables
+            TargetRow = targetRow;
+            TargetColumn = targetColumn;
+
+            //Set the Animation speed of the animation
+            FrameRate = 1f / fps;
+
+            //Initialise the current Frame
+            CurrentFrame = 0;
+        }
+
+        /// <summary>
+        /// Initialise a SpriteSheet Animation state and animation speed 
+        /// </summary>
+        /// <param name="animationSpeed"></param>
+        /// <param name="fps"></param>
+        public AnimationState(Texture2D animation, int fps, int targetRow, int targetColumn, float animationSpeed)
+        {
+            //Perform a null check on the animation
+            if (animation != null)
+                //Set the SpriteSheet variable to animation
+                SpriteSheet = animation;
+            else { throw new Exception("SpritesheetAnimation is Null"); }
+
+            //Initialise Rows and ColumnsVariables
+            TargetRow = targetRow;
+            TargetColumn = targetColumn;
+
+            //Set the Animation speed of the animation
+            FrameRate = animationSpeed / fps;
+            //Store the AnimationSpeed Variable
+            AnimationSpeed = animationSpeed;
+            //Set the Initialise currentframe variable
+            CurrentFrame = 0;
+        }
+
+        /// <summary>
+        /// Initialise a SpriteSheet Animation state and Starting frame
+        /// </summary>
+        /// <param name="animationSpeed"></param>
+        /// <param name="fps"></param>
+        /// <param name="currentFrame"></param>
+        public AnimationState(Texture2D animation, int fps, int targetRow, int targetColumn, float animationSpeed, int currentFrame)
+        {
+
+            //Perform a null check on the animation
+            if (animation != null)
+                //Set the SpriteSheet variable to animation
+                SpriteSheet = animation;
+            else { throw new Exception("SpritesheetAnimation is Null"); }
+
+            //Initialise Rows and ColumnsVariables
+            TargetRow = targetRow;
+            TargetColumn = targetColumn;
+
+            //Set the Animation speed of the animation
+            FrameRate = animationSpeed / fps;
+            //Store the AnimationSpeed Variable
+            AnimationSpeed = animationSpeed;
+            //Set the Initialise currentframe variable
+            CurrentFrame = currentFrame;
+        }
+
+
+
+        /// <summary>
+        /// Reverts the Current Frame Variable to 0
+        /// </summary>
+        public void ResetAnimation()
+        {
+            CurrentFrame = 0;
+        }
+
+        #region Animation
+
+        /*
         #region Variables
         //Create Intergers called _width and _height that will store the height and width of the animation
         public static int _width, _height;
@@ -49,9 +144,8 @@ namespace ProjectHastings.Animations
 
         /// <summary>
         /// Create a method called Update that gets passed a variable of type GameTime.
-        /// This method will update the animation frames. 
+        /// This method updates the animation frames. 
         /// </summary>
-
         public void Update(GameTime gameTime)
         {
             //Set _timeSinceLastFrame += milliseconds generated by gametime.
@@ -106,10 +200,8 @@ namespace ProjectHastings.Animations
         }
 
         #endregion
+        */
 
+        #endregion
     }
-
-
-
 }
-
